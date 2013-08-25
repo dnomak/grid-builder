@@ -28,7 +28,7 @@
 
 (defn run [port]
   (defonce ^:private server
-    (jetty/run-jetty app {:port port :join? false}))
+    (jetty/run-jetty app {:port (Integer. port) :join? false}))
   server)
 
 (defn -main
