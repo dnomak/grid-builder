@@ -1,1 +1,1 @@
-web: lein with-profile production trampoline run -m shoelace.server $PORT
+web: lein run -m shoelace.server $PORT
