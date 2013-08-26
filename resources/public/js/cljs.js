@@ -15139,8 +15139,12 @@ bigsky.aui.draggable.draggable = function() {
 var shoelace = {client:{}};
 shoelace.client.body = document.body;
 shoelace.client.layout = cljs.core.atom.call(null, cljs.core.PersistentVector.EMPTY);
-shoelace.client.add_row = function() {
-  return console.log("ADD ROW")
+shoelace.client.add_row = function(a) {
+  return dommy.core.prepend_BANG_.call(null, a, function() {
+    var a = document.createElement("div");
+    a.className = "row";
+    return a
+  }())
 };
 shoelace.client.draw_workspace = function() {
   var a = document.createElement("div");
@@ -15178,20 +15182,25 @@ shoelace.client.draw_workspace = function() {
   var g = document.createElement("div");
   g.className = "container";
   var h = document.createElement("div");
-  h.className = "columns";
-  cljs.core.doall.call(null, cljs.core.map.call(null, function(a, b, c, d, e, f, g, h) {
+  h.className = "rows";
+  var i = document.createElement("div");
+  i.className = "columns";
+  cljs.core.doall.call(null, cljs.core.map.call(null, function(a, b, c, d, e, f, g, h, i) {
     return function() {
       var a = document.createElement("div");
       a.className = "col";
-      dommy.core.append_BANG_.call(null, h, a);
+      dommy.core.append_BANG_.call(null, i, a);
       return a
     }
-  }(a, b, c, d, e, f, g, h), cljs.core.range.call(null, 13)));
-  var i = document.createElement("div");
-  i.className = "new-row";
-  dommy.core.listen_BANG_.call(null, i, "\ufdd0:click", shoelace.client.add_row);
-  dommy.core.append_BANG_.call(null, g, h);
+  }(a, b, c, d, e, f, g, h, i), cljs.core.range.call(null, 13)));
+  var j = document.createElement("div");
+  j.className = "row new-row";
+  dommy.core.listen_BANG_.call(null, j, "\ufdd0:click", function() {
+    return shoelace.client.add_row.call(null, h)
+  });
   dommy.core.append_BANG_.call(null, g, i);
+  dommy.core.append_BANG_.call(null, g, h);
+  dommy.core.append_BANG_.call(null, h, j);
   dommy.core.append_BANG_.call(null, b, c);
   dommy.core.append_BANG_.call(null, b, d);
   dommy.core.append_BANG_.call(null, b, e);

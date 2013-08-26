@@ -11,8 +11,8 @@
 
 (def layout (atom []))
 
-(defn add-row []
-  (js/console.log "ADD ROW"))
+(defn add-row [rows-el]
+  (dom/prepend! rows-el (node [:.row])))
 
 (defn draw-workspace []
   (let [workspace (node [:.workspace])
@@ -22,16 +22,18 @@
         media-desktop (node [:.media.media-desktop [:h4 "@media-desktop"]])
         media-lg-desktop (node [:.media.media-lg-desktop [:h4 "@media-lg-desktop"]])
         container (node [:.container])
+        rows (node [:.rows])
         columns (node [:.columns])
         cols (doall (map (fn [i]
                            (let [col (node [:.col])]
                              (dom/append! columns col)
                              col))
                          (range 13)))
-        new-row (node [:.new-row])]
-    (dom/listen! new-row :click add-row)
+        new-row (node [:.row.new-row])]
+    (dom/listen! new-row :click #(add-row rows))
     (dom/append! container columns)
-    (dom/append! container new-row)
+    (dom/append! container rows)
+    (dom/append! rows new-row)
     (dom/append! medias media-xs)
     (dom/append! medias media-tablet)
     (dom/append! medias media-desktop)
