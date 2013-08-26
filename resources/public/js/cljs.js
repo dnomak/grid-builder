@@ -1638,93 +1638,93 @@ cljs.core._invoke = function() {
     }
     return n.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m)
   }, p = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n) {
-    var p;
-    p = a ? a.cljs$core$IFn$_invoke$arity$14 : a;
-    if(p) {
-      return a.cljs$core$IFn$_invoke$arity$14(a, b, c, d, e, f, g, h, i, j, k, l, m, n)
-    }
-    p = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
-    if(!p && (p = cljs.core._invoke._, !p)) {
-      throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
-    }
-    return p.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n)
-  }, q = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, p) {
     var q;
-    q = a ? a.cljs$core$IFn$_invoke$arity$15 : a;
+    q = a ? a.cljs$core$IFn$_invoke$arity$14 : a;
     if(q) {
-      return a.cljs$core$IFn$_invoke$arity$15(a, b, c, d, e, f, g, h, i, j, k, l, m, n, p)
+      return a.cljs$core$IFn$_invoke$arity$14(a, b, c, d, e, f, g, h, i, j, k, l, m, n)
     }
     q = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
     if(!q && (q = cljs.core._invoke._, !q)) {
       throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
     }
-    return q.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, p)
-  }, r = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, p, q) {
+    return q.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n)
+  }, r = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q) {
     var s;
-    s = a ? a.cljs$core$IFn$_invoke$arity$16 : a;
+    s = a ? a.cljs$core$IFn$_invoke$arity$15 : a;
     if(s) {
-      return a.cljs$core$IFn$_invoke$arity$16(a, b, c, d, e, f, g, h, i, j, k, l, m, n, p, q)
+      return a.cljs$core$IFn$_invoke$arity$15(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q)
     }
     s = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
     if(!s && (s = cljs.core._invoke._, !s)) {
       throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
     }
-    return s.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, p, q)
-  }, s = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, p, q, s) {
+    return s.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, q)
+  }, q = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s) {
+    var p;
+    p = a ? a.cljs$core$IFn$_invoke$arity$16 : a;
+    if(p) {
+      return a.cljs$core$IFn$_invoke$arity$16(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s)
+    }
+    p = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
+    if(!p && (p = cljs.core._invoke._, !p)) {
+      throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
+    }
+    return p.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s)
+  }, s = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p) {
     var r;
     r = a ? a.cljs$core$IFn$_invoke$arity$17 : a;
     if(r) {
-      return a.cljs$core$IFn$_invoke$arity$17(a, b, c, d, e, f, g, h, i, j, k, l, m, n, p, q, s)
+      return a.cljs$core$IFn$_invoke$arity$17(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p)
     }
     r = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
     if(!r && (r = cljs.core._invoke._, !r)) {
       throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
     }
-    return r.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, p, q, s)
-  }, t = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, p, q, s, r) {
+    return r.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p)
+  }, t = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p, r) {
     var t;
     t = a ? a.cljs$core$IFn$_invoke$arity$18 : a;
     if(t) {
-      return a.cljs$core$IFn$_invoke$arity$18(a, b, c, d, e, f, g, h, i, j, k, l, m, n, p, q, s, r)
+      return a.cljs$core$IFn$_invoke$arity$18(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p, r)
     }
     t = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
     if(!t && (t = cljs.core._invoke._, !t)) {
       throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
     }
-    return t.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, p, q, s, r)
-  }, u = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, p, q, s, r, t) {
+    return t.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p, r)
+  }, u = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p, r, t) {
     var u;
     u = a ? a.cljs$core$IFn$_invoke$arity$19 : a;
     if(u) {
-      return a.cljs$core$IFn$_invoke$arity$19(a, b, c, d, e, f, g, h, i, j, k, l, m, n, p, q, s, r, t)
+      return a.cljs$core$IFn$_invoke$arity$19(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p, r, t)
     }
     u = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
     if(!u && (u = cljs.core._invoke._, !u)) {
       throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
     }
-    return u.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, p, q, s, r, t)
-  }, x = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, p, q, s, r, t, u) {
+    return u.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p, r, t)
+  }, x = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p, r, t, u) {
     var x;
     x = a ? a.cljs$core$IFn$_invoke$arity$20 : a;
     if(x) {
-      return a.cljs$core$IFn$_invoke$arity$20(a, b, c, d, e, f, g, h, i, j, k, l, m, n, p, q, s, r, t, u)
+      return a.cljs$core$IFn$_invoke$arity$20(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p, r, t, u)
     }
     x = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
     if(!x && (x = cljs.core._invoke._, !x)) {
       throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
     }
-    return x.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, p, q, s, r, t, u)
-  }, A = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, p, q, s, r, t, u, x) {
+    return x.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p, r, t, u)
+  }, A = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p, r, t, u, x) {
     var A;
     A = a ? a.cljs$core$IFn$_invoke$arity$21 : a;
     if(A) {
-      return a.cljs$core$IFn$_invoke$arity$21(a, b, c, d, e, f, g, h, i, j, k, l, m, n, p, q, s, r, t, u, x)
+      return a.cljs$core$IFn$_invoke$arity$21(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p, r, t, u, x)
     }
     A = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
     if(!A && (A = cljs.core._invoke._, !A)) {
       throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
     }
-    return A.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, p, q, s, r, t, u, x)
+    return A.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p, r, t, u, x)
   }, a = function(a, v, w, y, z, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q) {
     switch(arguments.length) {
       case 1:
@@ -1756,9 +1756,9 @@ cljs.core._invoke = function() {
       case 14:
         return p.call(this, a, v, w, y, z, B, C, D, E, F, G, H, I, J);
       case 15:
-        return q.call(this, a, v, w, y, z, B, C, D, E, F, G, H, I, J, K);
+        return r.call(this, a, v, w, y, z, B, C, D, E, F, G, H, I, J, K);
       case 16:
-        return r.call(this, a, v, w, y, z, B, C, D, E, F, G, H, I, J, K, L);
+        return q.call(this, a, v, w, y, z, B, C, D, E, F, G, H, I, J, K, L);
       case 17:
         return s.call(this, a, v, w, y, z, B, C, D, E, F, G, H, I, J, K, L, M);
       case 18:
@@ -1786,8 +1786,8 @@ cljs.core._invoke = function() {
   a.cljs$core$IFn$_invoke$arity$12 = m;
   a.cljs$core$IFn$_invoke$arity$13 = n;
   a.cljs$core$IFn$_invoke$arity$14 = p;
-  a.cljs$core$IFn$_invoke$arity$15 = q;
-  a.cljs$core$IFn$_invoke$arity$16 = r;
+  a.cljs$core$IFn$_invoke$arity$15 = r;
+  a.cljs$core$IFn$_invoke$arity$16 = q;
   a.cljs$core$IFn$_invoke$arity$17 = s;
   a.cljs$core$IFn$_invoke$arity$18 = t;
   a.cljs$core$IFn$_invoke$arity$19 = u;
@@ -3389,22 +3389,22 @@ cljs.core.with_meta = function with_meta(b, c) {
   var d = cljs.core.fn_QMARK_.call(null, b);
   d && (d = b ? ((d = b.cljs$lang$protocol_mask$partition0$ & 262144) ? d : b.cljs$core$IWithMeta$) || (b.cljs$lang$protocol_mask$partition0$ ? 0 : cljs.core.type_satisfies_.call(null, cljs.core.IWithMeta, b)) : cljs.core.type_satisfies_.call(null, cljs.core.IWithMeta, b), d = !d);
   return d ? with_meta.call(null, function() {
-    if(void 0 === cljs.core.t5163) {
-      cljs.core.t5163 = {};
-      cljs.core.t5163 = function(b, c, d, e) {
+    if(void 0 === cljs.core.t5492) {
+      cljs.core.t5492 = {};
+      cljs.core.t5492 = function(b, c, d, e) {
         this.meta = b;
         this.o = c;
         this.with_meta = d;
-        this.meta5164 = e;
+        this.meta5493 = e;
         this.cljs$lang$protocol_mask$partition1$ = 0;
         this.cljs$lang$protocol_mask$partition0$ = 393217
       };
-      cljs.core.t5163.cljs$lang$type = !0;
-      cljs.core.t5163.cljs$lang$ctorStr = "cljs.core/t5163";
-      cljs.core.t5163.cljs$lang$ctorPrWriter = function(b, c) {
-        return cljs.core._write.call(null, c, "cljs.core/t5163")
+      cljs.core.t5492.cljs$lang$type = !0;
+      cljs.core.t5492.cljs$lang$ctorStr = "cljs.core/t5492";
+      cljs.core.t5492.cljs$lang$ctorPrWriter = function(b, c) {
+        return cljs.core._write.call(null, c, "cljs.core/t5492")
       };
-      var d = cljs.core.t5163.prototype, f = function(b, c) {
+      var d = cljs.core.t5492.prototype, f = function(b, c) {
         return cljs.core.apply.call(null, b.o, c)
       }, g = function(b, c) {
         var b = this, d = null;
@@ -3418,19 +3418,19 @@ cljs.core.with_meta = function with_meta(b, c) {
       };
       g.cljs$core$IFn$_invoke$arity$variadic = f;
       d.call = g;
-      cljs.core.t5163.prototype.apply = function(b, c) {
+      cljs.core.t5492.prototype.apply = function(b, c) {
         b = this;
         return b.call.apply(b, [b].concat(c.slice()))
       };
-      cljs.core.t5163.prototype.cljs$core$Fn$ = !0;
-      cljs.core.t5163.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
-        return this.meta5164
+      cljs.core.t5492.prototype.cljs$core$Fn$ = !0;
+      cljs.core.t5492.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
+        return this.meta5493
       };
-      cljs.core.t5163.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, c) {
-        return new cljs.core.t5163(this.meta, this.o, this.with_meta, c)
+      cljs.core.t5492.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, c) {
+        return new cljs.core.t5492(this.meta, this.o, this.with_meta, c)
       }
     }
-    return new cljs.core.t5163(c, b, with_meta, null)
+    return new cljs.core.t5492(c, b, with_meta, null)
   }(), c) : cljs.core._with_meta.call(null, b, c)
 };
 cljs.core.meta = function(a) {
@@ -5930,39 +5930,39 @@ cljs.core.apply_to = function(a, b, c) {
   if(12 === b) {
     return a.cljs$core$IFn$_invoke$arity$12 ? a.cljs$core$IFn$_invoke$arity$12(c, d, e, f, g, a, h, i, j, k, l, m) : a.call(null, c, d, e, f, g, a, h, i, j, k, l, m)
   }
-  var n = cljs.core._first.call(null, p), q = cljs.core._rest.call(null, p);
+  var n = cljs.core._first.call(null, p), r = cljs.core._rest.call(null, p);
   if(13 === b) {
     return a.cljs$core$IFn$_invoke$arity$13 ? a.cljs$core$IFn$_invoke$arity$13(c, d, e, f, g, a, h, i, j, k, l, m, n) : a.call(null, c, d, e, f, g, a, h, i, j, k, l, m, n)
   }
-  var p = cljs.core._first.call(null, q), r = cljs.core._rest.call(null, q);
+  var p = cljs.core._first.call(null, r), q = cljs.core._rest.call(null, r);
   if(14 === b) {
     return a.cljs$core$IFn$_invoke$arity$14 ? a.cljs$core$IFn$_invoke$arity$14(c, d, e, f, g, a, h, i, j, k, l, m, n, p) : a.call(null, c, d, e, f, g, a, h, i, j, k, l, m, n, p)
   }
-  var q = cljs.core._first.call(null, r), s = cljs.core._rest.call(null, r);
+  var r = cljs.core._first.call(null, q), s = cljs.core._rest.call(null, q);
   if(15 === b) {
-    return a.cljs$core$IFn$_invoke$arity$15 ? a.cljs$core$IFn$_invoke$arity$15(c, d, e, f, g, a, h, i, j, k, l, m, n, p, q) : a.call(null, c, d, e, f, g, a, h, i, j, k, l, m, n, p, q)
+    return a.cljs$core$IFn$_invoke$arity$15 ? a.cljs$core$IFn$_invoke$arity$15(c, d, e, f, g, a, h, i, j, k, l, m, n, p, r) : a.call(null, c, d, e, f, g, a, h, i, j, k, l, m, n, p, r)
   }
-  var r = cljs.core._first.call(null, s), t = cljs.core._rest.call(null, s);
+  var q = cljs.core._first.call(null, s), t = cljs.core._rest.call(null, s);
   if(16 === b) {
-    return a.cljs$core$IFn$_invoke$arity$16 ? a.cljs$core$IFn$_invoke$arity$16(c, d, e, f, g, a, h, i, j, k, l, m, n, p, q, r) : a.call(null, c, d, e, f, g, a, h, i, j, k, l, m, n, p, q, r)
+    return a.cljs$core$IFn$_invoke$arity$16 ? a.cljs$core$IFn$_invoke$arity$16(c, d, e, f, g, a, h, i, j, k, l, m, n, p, r, q) : a.call(null, c, d, e, f, g, a, h, i, j, k, l, m, n, p, r, q)
   }
   var s = cljs.core._first.call(null, t), u = cljs.core._rest.call(null, t);
   if(17 === b) {
-    return a.cljs$core$IFn$_invoke$arity$17 ? a.cljs$core$IFn$_invoke$arity$17(c, d, e, f, g, a, h, i, j, k, l, m, n, p, q, r, s) : a.call(null, c, d, e, f, g, a, h, i, j, k, l, m, n, p, q, r, s)
+    return a.cljs$core$IFn$_invoke$arity$17 ? a.cljs$core$IFn$_invoke$arity$17(c, d, e, f, g, a, h, i, j, k, l, m, n, p, r, q, s) : a.call(null, c, d, e, f, g, a, h, i, j, k, l, m, n, p, r, q, s)
   }
   var t = cljs.core._first.call(null, u), x = cljs.core._rest.call(null, u);
   if(18 === b) {
-    return a.cljs$core$IFn$_invoke$arity$18 ? a.cljs$core$IFn$_invoke$arity$18(c, d, e, f, g, a, h, i, j, k, l, m, n, p, q, r, s, t) : a.call(null, c, d, e, f, g, a, h, i, j, k, l, m, n, p, q, r, s, t)
+    return a.cljs$core$IFn$_invoke$arity$18 ? a.cljs$core$IFn$_invoke$arity$18(c, d, e, f, g, a, h, i, j, k, l, m, n, p, r, q, s, t) : a.call(null, c, d, e, f, g, a, h, i, j, k, l, m, n, p, r, q, s, t)
   }
   u = cljs.core._first.call(null, x);
   x = cljs.core._rest.call(null, x);
   if(19 === b) {
-    return a.cljs$core$IFn$_invoke$arity$19 ? a.cljs$core$IFn$_invoke$arity$19(c, d, e, f, g, a, h, i, j, k, l, m, n, p, q, r, s, t, u) : a.call(null, c, d, e, f, g, a, h, i, j, k, l, m, n, p, q, r, s, t, u)
+    return a.cljs$core$IFn$_invoke$arity$19 ? a.cljs$core$IFn$_invoke$arity$19(c, d, e, f, g, a, h, i, j, k, l, m, n, p, r, q, s, t, u) : a.call(null, c, d, e, f, g, a, h, i, j, k, l, m, n, p, r, q, s, t, u)
   }
   var A = cljs.core._first.call(null, x);
   cljs.core._rest.call(null, x);
   if(20 === b) {
-    return a.cljs$core$IFn$_invoke$arity$20 ? a.cljs$core$IFn$_invoke$arity$20(c, d, e, f, g, a, h, i, j, k, l, m, n, p, q, r, s, t, u, A) : a.call(null, c, d, e, f, g, a, h, i, j, k, l, m, n, p, q, r, s, t, u, A)
+    return a.cljs$core$IFn$_invoke$arity$20 ? a.cljs$core$IFn$_invoke$arity$20(c, d, e, f, g, a, h, i, j, k, l, m, n, p, r, q, s, t, u, A) : a.call(null, c, d, e, f, g, a, h, i, j, k, l, m, n, p, r, q, s, t, u, A)
   }
   throw Error("Only up to 20 arguments supported on functions");
 };
@@ -6751,24 +6751,24 @@ cljs.core.every_pred = function() {
         var e = d.call(null, a);
         return cljs.core.truth_(e) ? (e = d.call(null, b), cljs.core.truth_(e) ? d.call(null, c) : e) : e
       }, e)
-    }, q = function(a, b, c, d) {
+    }, r = function(a, b, c, d) {
       return cljs.core.boolean$.call(null, function() {
         var g = f.call(null, a, b, c);
         return cljs.core.truth_(g) ? cljs.core.every_QMARK_.call(null, function(a) {
           return cljs.core.every_QMARK_.call(null, a, d)
         }, e) : g
       }())
-    }, r = function(a, b, c, d) {
+    }, q = function(a, b, c, d) {
       var e = null;
       3 < arguments.length && (e = cljs.core.array_seq(Array.prototype.slice.call(arguments, 3), 0));
-      return q.call(this, a, b, c, e)
+      return r.call(this, a, b, c, e)
     };
-    r.cljs$lang$maxFixedArity = 3;
-    r.cljs$lang$applyTo = function(a) {
+    q.cljs$lang$maxFixedArity = 3;
+    q.cljs$lang$applyTo = function(a) {
       var b = cljs.core.first(a), a = cljs.core.next(a), c = cljs.core.first(a), a = cljs.core.next(a), d = cljs.core.first(a), a = cljs.core.rest(a);
-      return q(b, c, d, a)
+      return r(b, c, d, a)
     };
-    r.cljs$core$IFn$_invoke$arity$variadic = q;
+    q.cljs$core$IFn$_invoke$arity$variadic = r;
     f = function(a, b, c, d) {
       switch(arguments.length) {
         case 0:
@@ -6780,19 +6780,19 @@ cljs.core.every_pred = function() {
         case 3:
           return p.call(this, a, b, c);
         default:
-          return r.cljs$core$IFn$_invoke$arity$variadic(a, b, c, cljs.core.array_seq(arguments, 3))
+          return q.cljs$core$IFn$_invoke$arity$variadic(a, b, c, cljs.core.array_seq(arguments, 3))
       }
       throw Error("Invalid arity: " + arguments.length);
     };
     f.cljs$lang$maxFixedArity = 3;
-    f.cljs$lang$applyTo = r.cljs$lang$applyTo;
+    f.cljs$lang$applyTo = q.cljs$lang$applyTo;
     f.cljs$core$IFn$_invoke$arity$0 = function() {
       return!0
     };
     f.cljs$core$IFn$_invoke$arity$1 = m;
     f.cljs$core$IFn$_invoke$arity$2 = n;
     f.cljs$core$IFn$_invoke$arity$3 = p;
-    f.cljs$core$IFn$_invoke$arity$variadic = r.cljs$core$IFn$_invoke$arity$variadic;
+    f.cljs$core$IFn$_invoke$arity$variadic = q.cljs$core$IFn$_invoke$arity$variadic;
     return f
   }, f = function(a, b, c, d) {
     var f = null;
@@ -7078,22 +7078,22 @@ cljs.core.some_fn = function() {
         e = d.call(null, b);
         return cljs.core.truth_(e) ? e : d.call(null, c)
       }, e)
-    }, q = function(a, b, c, d) {
+    }, r = function(a, b, c, d) {
       a = f.call(null, a, b, c);
       return cljs.core.truth_(a) ? a : cljs.core.some.call(null, function(a) {
         return cljs.core.some.call(null, a, d)
       }, e)
-    }, r = function(a, b, c, d) {
+    }, q = function(a, b, c, d) {
       var e = null;
       3 < arguments.length && (e = cljs.core.array_seq(Array.prototype.slice.call(arguments, 3), 0));
-      return q.call(this, a, b, c, e)
+      return r.call(this, a, b, c, e)
     };
-    r.cljs$lang$maxFixedArity = 3;
-    r.cljs$lang$applyTo = function(a) {
+    q.cljs$lang$maxFixedArity = 3;
+    q.cljs$lang$applyTo = function(a) {
       var b = cljs.core.first(a), a = cljs.core.next(a), c = cljs.core.first(a), a = cljs.core.next(a), d = cljs.core.first(a), a = cljs.core.rest(a);
-      return q(b, c, d, a)
+      return r(b, c, d, a)
     };
-    r.cljs$core$IFn$_invoke$arity$variadic = q;
+    q.cljs$core$IFn$_invoke$arity$variadic = r;
     f = function(a, b, c, d) {
       switch(arguments.length) {
         case 0:
@@ -7105,19 +7105,19 @@ cljs.core.some_fn = function() {
         case 3:
           return p.call(this, a, b, c);
         default:
-          return r.cljs$core$IFn$_invoke$arity$variadic(a, b, c, cljs.core.array_seq(arguments, 3))
+          return q.cljs$core$IFn$_invoke$arity$variadic(a, b, c, cljs.core.array_seq(arguments, 3))
       }
       throw Error("Invalid arity: " + arguments.length);
     };
     f.cljs$lang$maxFixedArity = 3;
-    f.cljs$lang$applyTo = r.cljs$lang$applyTo;
+    f.cljs$lang$applyTo = q.cljs$lang$applyTo;
     f.cljs$core$IFn$_invoke$arity$0 = function() {
       return null
     };
     f.cljs$core$IFn$_invoke$arity$1 = m;
     f.cljs$core$IFn$_invoke$arity$2 = n;
     f.cljs$core$IFn$_invoke$arity$3 = p;
-    f.cljs$core$IFn$_invoke$arity$variadic = r.cljs$core$IFn$_invoke$arity$variadic;
+    f.cljs$core$IFn$_invoke$arity$variadic = q.cljs$core$IFn$_invoke$arity$variadic;
     return f
   }, f = function(a, b, c, d) {
     var f = null;
@@ -12837,24 +12837,24 @@ cljs.core.async.impl.ioc_helpers.finished_QMARK_ = function(a) {
   return"\ufdd0:finished" === a[cljs.core.async.impl.ioc_helpers.STATE_IDX]
 };
 cljs.core.async.impl.ioc_helpers.fn_handler = function fn_handler(b) {
-  void 0 === cljs.core.async.impl.ioc_helpers.t6012 && (cljs.core.async.impl.ioc_helpers.t6012 = {}, cljs.core.async.impl.ioc_helpers.t6012 = function(b, d, e) {
+  void 0 === cljs.core.async.impl.ioc_helpers.t6328 && (cljs.core.async.impl.ioc_helpers.t6328 = {}, cljs.core.async.impl.ioc_helpers.t6328 = function(b, d, e) {
     this.f = b;
     this.fn_handler = d;
-    this.meta6013 = e;
+    this.meta6329 = e;
     this.cljs$lang$protocol_mask$partition1$ = 0;
     this.cljs$lang$protocol_mask$partition0$ = 393216
-  }, cljs.core.async.impl.ioc_helpers.t6012.cljs$lang$type = !0, cljs.core.async.impl.ioc_helpers.t6012.cljs$lang$ctorStr = "cljs.core.async.impl.ioc-helpers/t6012", cljs.core.async.impl.ioc_helpers.t6012.cljs$lang$ctorPrWriter = function(b, d) {
-    return cljs.core._write.call(null, d, "cljs.core.async.impl.ioc-helpers/t6012")
-  }, cljs.core.async.impl.ioc_helpers.t6012.prototype.cljs$core$async$impl$protocols$Handler$ = !0, cljs.core.async.impl.ioc_helpers.t6012.prototype.cljs$core$async$impl$protocols$Handler$active_QMARK_$arity$1 = function() {
+  }, cljs.core.async.impl.ioc_helpers.t6328.cljs$lang$type = !0, cljs.core.async.impl.ioc_helpers.t6328.cljs$lang$ctorStr = "cljs.core.async.impl.ioc-helpers/t6328", cljs.core.async.impl.ioc_helpers.t6328.cljs$lang$ctorPrWriter = function(b, d) {
+    return cljs.core._write.call(null, d, "cljs.core.async.impl.ioc-helpers/t6328")
+  }, cljs.core.async.impl.ioc_helpers.t6328.prototype.cljs$core$async$impl$protocols$Handler$ = !0, cljs.core.async.impl.ioc_helpers.t6328.prototype.cljs$core$async$impl$protocols$Handler$active_QMARK_$arity$1 = function() {
     return!0
-  }, cljs.core.async.impl.ioc_helpers.t6012.prototype.cljs$core$async$impl$protocols$Handler$commit$arity$1 = function() {
+  }, cljs.core.async.impl.ioc_helpers.t6328.prototype.cljs$core$async$impl$protocols$Handler$commit$arity$1 = function() {
     return this.f
-  }, cljs.core.async.impl.ioc_helpers.t6012.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
-    return this.meta6013
-  }, cljs.core.async.impl.ioc_helpers.t6012.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, d) {
-    return new cljs.core.async.impl.ioc_helpers.t6012(this.f, this.fn_handler, d)
+  }, cljs.core.async.impl.ioc_helpers.t6328.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
+    return this.meta6329
+  }, cljs.core.async.impl.ioc_helpers.t6328.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, d) {
+    return new cljs.core.async.impl.ioc_helpers.t6328(this.f, this.fn_handler, d)
   });
-  return new cljs.core.async.impl.ioc_helpers.t6012(b, fn_handler, null)
+  return new cljs.core.async.impl.ioc_helpers.t6328(b, fn_handler, null)
 };
 cljs.core.async.impl.ioc_helpers.run_state_machine = function(a) {
   return cljs.core.async.impl.ioc_helpers.aget_object.call(null, a, cljs.core.async.impl.ioc_helpers.FN_IDX).call(null, a)
@@ -12912,53 +12912,210 @@ cljs.core.async.impl.ioc_helpers.return_chan = function(a, b) {
   cljs.core.async.impl.protocols.close_BANG_.call(null, c);
   return c
 };
+cljs.core.async.impl.buffers = {};
+cljs.core.async.impl.buffers.acopy = function(a, b, c, d, e) {
+  for(var f = 0;;) {
+    if(f < e) {
+      c[d + f] = a[b + f], f += 1
+    }else {
+      return null
+    }
+  }
+};
+cljs.core.async.impl.buffers.RingBuffer = function(a, b, c, d) {
+  this.head = a;
+  this.tail = b;
+  this.length = c;
+  this.arr = d
+};
+cljs.core.async.impl.buffers.RingBuffer.cljs$lang$type = !0;
+cljs.core.async.impl.buffers.RingBuffer.cljs$lang$ctorStr = "cljs.core.async.impl.buffers/RingBuffer";
+cljs.core.async.impl.buffers.RingBuffer.cljs$lang$ctorPrWriter = function(a, b) {
+  return cljs.core._write.call(null, b, "cljs.core.async.impl.buffers/RingBuffer")
+};
+cljs.core.async.impl.buffers.RingBuffer.prototype.pop = function() {
+  if(0 === this.length) {
+    return null
+  }
+  var a = this.arr[this.tail];
+  this.tail = (this.tail + 1) % this.arr.length;
+  this.length -= 1;
+  return a
+};
+cljs.core.async.impl.buffers.RingBuffer.prototype.unshift = function(a) {
+  this.arr[this.head] = a;
+  this.head = (this.head + 1) % this.arr.length;
+  this.length += 1;
+  return null
+};
+cljs.core.async.impl.buffers.RingBuffer.prototype.unbounded_unshift = function(a) {
+  this.length + 1 === this.arr.length && this.resize();
+  return this.unshift(a)
+};
+cljs.core.async.impl.buffers.RingBuffer.prototype.resize = function() {
+  var a = Array(2 * this.arr.length);
+  return this.tail < this.head ? (cljs.core.async.impl.buffers.acopy.call(null, this.arr, this.tail, a, 0, this.length), this.tail = 0, this.head = this.length, this.arr = a) : this.tail > this.head ? (cljs.core.async.impl.buffers.acopy.call(null, this.arr, this.tail, a, 0, this.arr.length - this.tail), cljs.core.async.impl.buffers.acopy.call(null, this.arr, 0, a, this.arr.length - this.tail, this.head), this.tail = 0, this.head = this.length, this.arr = a) : this.tail === this.head ? (this.head = 
+  this.tail = 0, this.arr = a) : null
+};
+cljs.core.async.impl.buffers.ring_buffer = function(a) {
+  if(!(0 < a)) {
+    throw Error([cljs.core.str("Assert failed: "), cljs.core.str("Can't create a ring buffer of size 0"), cljs.core.str("\n"), cljs.core.str(cljs.core.pr_str.call(null, cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, ">", ">", -1640531465, null), new cljs.core.Symbol(null, "n", "n", -1640531417, null), 0), cljs.core.hash_map("\ufdd0:line", 68, "\ufdd0:column", 11))))].join(""));
+  }
+  return new cljs.core.async.impl.buffers.RingBuffer(0, 0, 0, Array(a))
+};
+cljs.core.async.impl.buffers.FixedBuffer = function(a, b) {
+  this.buf = a;
+  this.n = b;
+  this.cljs$lang$protocol_mask$partition1$ = 0;
+  this.cljs$lang$protocol_mask$partition0$ = 2
+};
+cljs.core.async.impl.buffers.FixedBuffer.cljs$lang$type = !0;
+cljs.core.async.impl.buffers.FixedBuffer.cljs$lang$ctorStr = "cljs.core.async.impl.buffers/FixedBuffer";
+cljs.core.async.impl.buffers.FixedBuffer.cljs$lang$ctorPrWriter = function(a, b) {
+  return cljs.core._write.call(null, b, "cljs.core.async.impl.buffers/FixedBuffer")
+};
+cljs.core.async.impl.buffers.FixedBuffer.prototype.cljs$core$ICounted$_count$arity$1 = function() {
+  return this.buf.length
+};
+cljs.core.async.impl.buffers.FixedBuffer.prototype.cljs$core$async$impl$protocols$Buffer$ = !0;
+cljs.core.async.impl.buffers.FixedBuffer.prototype.cljs$core$async$impl$protocols$Buffer$full_QMARK_$arity$1 = function() {
+  return this.buf.length === this.n
+};
+cljs.core.async.impl.buffers.FixedBuffer.prototype.cljs$core$async$impl$protocols$Buffer$remove_BANG_$arity$1 = function() {
+  return this.buf.pop()
+};
+cljs.core.async.impl.buffers.FixedBuffer.prototype.cljs$core$async$impl$protocols$Buffer$add_BANG_$arity$2 = function(a, b) {
+  if(!cljs.core.not.call(null, a.cljs$core$async$impl$protocols$Buffer$full_QMARK_$arity$1(a))) {
+    throw Error([cljs.core.str("Assert failed: "), cljs.core.str("Can't add to a full buffer"), cljs.core.str("\n"), cljs.core.str(cljs.core.pr_str.call(null, cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, "not", "not", -1640422260, null), cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol("impl", "full?", "impl/full?", -1337857039, null), new cljs.core.Symbol(null, "this", "this", -1636972457, null)), cljs.core.hash_map("\ufdd0:line", 80, "\ufdd0:column", 18))), cljs.core.hash_map("\ufdd0:line", 
+    80, "\ufdd0:column", 13))))].join(""));
+  }
+  return this.buf.unshift(b)
+};
+cljs.core.async.impl.buffers.fixed_buffer = function(a) {
+  return new cljs.core.async.impl.buffers.FixedBuffer(cljs.core.async.impl.buffers.ring_buffer.call(null, a), a)
+};
+cljs.core.async.impl.buffers.DroppingBuffer = function(a, b) {
+  this.buf = a;
+  this.n = b;
+  this.cljs$lang$protocol_mask$partition1$ = 0;
+  this.cljs$lang$protocol_mask$partition0$ = 2
+};
+cljs.core.async.impl.buffers.DroppingBuffer.cljs$lang$type = !0;
+cljs.core.async.impl.buffers.DroppingBuffer.cljs$lang$ctorStr = "cljs.core.async.impl.buffers/DroppingBuffer";
+cljs.core.async.impl.buffers.DroppingBuffer.cljs$lang$ctorPrWriter = function(a, b) {
+  return cljs.core._write.call(null, b, "cljs.core.async.impl.buffers/DroppingBuffer")
+};
+cljs.core.async.impl.buffers.DroppingBuffer.prototype.cljs$core$ICounted$_count$arity$1 = function() {
+  return this.buf.length
+};
+cljs.core.async.impl.buffers.DroppingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$ = !0;
+cljs.core.async.impl.buffers.DroppingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$full_QMARK_$arity$1 = function() {
+  return!1
+};
+cljs.core.async.impl.buffers.DroppingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$remove_BANG_$arity$1 = function() {
+  return this.buf.pop()
+};
+cljs.core.async.impl.buffers.DroppingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$add_BANG_$arity$2 = function(a, b) {
+  return this.buf.length === this.n ? null : this.buf.unshift(b)
+};
+cljs.core.async.impl.buffers.dropping_buffer = function(a) {
+  return new cljs.core.async.impl.buffers.DroppingBuffer(cljs.core.async.impl.buffers.ring_buffer.call(null, a), a)
+};
+cljs.core.async.impl.buffers.SlidingBuffer = function(a, b) {
+  this.buf = a;
+  this.n = b;
+  this.cljs$lang$protocol_mask$partition1$ = 0;
+  this.cljs$lang$protocol_mask$partition0$ = 2
+};
+cljs.core.async.impl.buffers.SlidingBuffer.cljs$lang$type = !0;
+cljs.core.async.impl.buffers.SlidingBuffer.cljs$lang$ctorStr = "cljs.core.async.impl.buffers/SlidingBuffer";
+cljs.core.async.impl.buffers.SlidingBuffer.cljs$lang$ctorPrWriter = function(a, b) {
+  return cljs.core._write.call(null, b, "cljs.core.async.impl.buffers/SlidingBuffer")
+};
+cljs.core.async.impl.buffers.SlidingBuffer.prototype.cljs$core$ICounted$_count$arity$1 = function() {
+  return this.buf.length
+};
+cljs.core.async.impl.buffers.SlidingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$ = !0;
+cljs.core.async.impl.buffers.SlidingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$full_QMARK_$arity$1 = function() {
+  return!1
+};
+cljs.core.async.impl.buffers.SlidingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$remove_BANG_$arity$1 = function() {
+  return this.buf.pop()
+};
+cljs.core.async.impl.buffers.SlidingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$add_BANG_$arity$2 = function(a, b) {
+  this.buf.length === this.n && a.cljs$core$async$impl$protocols$Buffer$remove_BANG_$arity$1(a);
+  return this.buf.unshift(b)
+};
+cljs.core.async.impl.buffers.sliding_buffer = function(a) {
+  return new cljs.core.async.impl.buffers.SlidingBuffer(cljs.core.async.impl.buffers.ring_buffer.call(null, a), a)
+};
 cljs.core.async.impl.dispatch = {};
 cljs.core.async.impl.dispatch.message_channel = null;
-cljs.core.async.impl.dispatch.tasks = null;
-"undefined" !== typeof MessageChannel && (cljs.core.async.impl.dispatch.message_channel = new MessageChannel, cljs.core.async.impl.dispatch.tasks = [], cljs.core.async.impl.dispatch.message_channel.port1.onmessage = function() {
-  return cljs.core.async.impl.dispatch.tasks.shift().call(null)
+cljs.core.async.impl.dispatch.tasks = cljs.core.async.impl.buffers.ring_buffer.call(null, 32);
+cljs.core.async.impl.dispatch.running_QMARK_ = !1;
+cljs.core.async.impl.dispatch.queued_QMARK_ = !1;
+cljs.core.async.impl.dispatch.TASK_BATCH_SIZE = 1024;
+cljs.core.async.impl.dispatch.process_messages = function() {
+  cljs.core.async.impl.dispatch.running_QMARK_ = !0;
+  cljs.core.async.impl.dispatch.queued_QMARK_ = !1;
+  for(var a = 0;;) {
+    var b = cljs.core.async.impl.dispatch.tasks.pop();
+    if(null != b && (b.call(null), a < cljs.core.async.impl.dispatch.TASK_BATCH_SIZE)) {
+      a += 1;
+      continue
+    }
+    break
+  }
+  cljs.core.async.impl.dispatch.running_QMARK_ = !1;
+  return 0 < cljs.core.async.impl.dispatch.tasks.length ? cljs.core.async.impl.dispatch.queue_dispatcher.call(null) : null
+};
+"undefined" !== typeof MessageChannel && (cljs.core.async.impl.dispatch.message_channel = new MessageChannel, cljs.core.async.impl.dispatch.message_channel.port1.onmessage = function() {
+  return cljs.core.async.impl.dispatch.process_messages.call(null)
 });
-cljs.core.async.impl.dispatch.queue_task = function(a) {
-  cljs.core.async.impl.dispatch.tasks.push(a);
-  return cljs.core.async.impl.dispatch.message_channel.port2.postMessage(0)
+cljs.core.async.impl.dispatch.queue_dispatcher = function() {
+  if(cljs.core.truth_(function() {
+    var a = cljs.core.async.impl.dispatch.queued_QMARK_;
+    return cljs.core.truth_(a) ? cljs.core.async.impl.dispatch.running_QMARK_ : a
+  }())) {
+    return null
+  }
+  cljs.core.async.impl.dispatch.queued_QMARK_ = !0;
+  return"undefined" !== typeof MessageChannel ? cljs.core.async.impl.dispatch.message_channel.port2.postMessage(0) : "undefined" !== typeof setImmediate ? setImmediate(cljs.core.async.impl.dispatch.process_messages) : setTimeout(cljs.core.async.impl.dispatch.process_messages, 0)
 };
 cljs.core.async.impl.dispatch.run = function(a) {
-  return"undefined" !== typeof MessageChannel ? cljs.core.async.impl.dispatch.queue_task.call(null, a) : "undefined" !== typeof setImmediate ? setImmediate(a) : setTimeout(a, 0)
+  cljs.core.async.impl.dispatch.tasks.unbounded_unshift(a);
+  return cljs.core.async.impl.dispatch.queue_dispatcher.call(null)
 };
 cljs.core.async.impl.dispatch.queue_delay = function(a, b) {
   return setTimeout(a, b)
 };
 cljs.core.async.impl.channels = {};
 cljs.core.async.impl.channels.box = function box(b) {
-  void 0 === cljs.core.async.impl.channels.t5987 && (cljs.core.async.impl.channels.t5987 = {}, cljs.core.async.impl.channels.t5987 = function(b, d, e) {
+  void 0 === cljs.core.async.impl.channels.t6319 && (cljs.core.async.impl.channels.t6319 = {}, cljs.core.async.impl.channels.t6319 = function(b, d, e) {
     this.val = b;
     this.box = d;
-    this.meta5988 = e;
+    this.meta6320 = e;
     this.cljs$lang$protocol_mask$partition1$ = 0;
     this.cljs$lang$protocol_mask$partition0$ = 425984
-  }, cljs.core.async.impl.channels.t5987.cljs$lang$type = !0, cljs.core.async.impl.channels.t5987.cljs$lang$ctorStr = "cljs.core.async.impl.channels/t5987", cljs.core.async.impl.channels.t5987.cljs$lang$ctorPrWriter = function(b, d) {
-    return cljs.core._write.call(null, d, "cljs.core.async.impl.channels/t5987")
-  }, cljs.core.async.impl.channels.t5987.prototype.cljs$core$IDeref$_deref$arity$1 = function() {
+  }, cljs.core.async.impl.channels.t6319.cljs$lang$type = !0, cljs.core.async.impl.channels.t6319.cljs$lang$ctorStr = "cljs.core.async.impl.channels/t6319", cljs.core.async.impl.channels.t6319.cljs$lang$ctorPrWriter = function(b, d) {
+    return cljs.core._write.call(null, d, "cljs.core.async.impl.channels/t6319")
+  }, cljs.core.async.impl.channels.t6319.prototype.cljs$core$IDeref$_deref$arity$1 = function() {
     return this.val
-  }, cljs.core.async.impl.channels.t5987.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
-    return this.meta5988
-  }, cljs.core.async.impl.channels.t5987.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, d) {
-    return new cljs.core.async.impl.channels.t5987(this.val, this.box, d)
+  }, cljs.core.async.impl.channels.t6319.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
+    return this.meta6320
+  }, cljs.core.async.impl.channels.t6319.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, d) {
+    return new cljs.core.async.impl.channels.t6319(this.val, this.box, d)
   });
-  return new cljs.core.async.impl.channels.t5987(b, box, null)
+  return new cljs.core.async.impl.channels.t6319(b, box, null)
 };
-cljs.core.async.impl.channels.MMC = {};
-cljs.core.async.impl.channels.cleanup = function(a) {
-  var b;
-  b = a ? a.cljs$core$async$impl$channels$MMC$cleanup$arity$1 : a;
-  if(b) {
-    return a.cljs$core$async$impl$channels$MMC$cleanup$arity$1(a)
-  }
-  b = cljs.core.async.impl.channels.cleanup[goog.typeOf(null == a ? null : a)];
-  if(!b && (b = cljs.core.async.impl.channels.cleanup._, !b)) {
-    throw cljs.core.missing_protocol.call(null, "MMC.cleanup", a);
-  }
-  return b.call(null, a)
+cljs.core.async.impl.channels.PutBox = function(a, b) {
+  this.handler = a;
+  this.val = b
+};
+cljs.core.async.impl.channels.PutBox.cljs$lang$type = !0;
+cljs.core.async.impl.channels.PutBox.cljs$lang$ctorStr = "cljs.core.async.impl.channels/PutBox";
+cljs.core.async.impl.channels.PutBox.cljs$lang$ctorPrWriter = function(a, b) {
+  return cljs.core._write.call(null, b, "cljs.core.async.impl.channels/PutBox")
 };
 cljs.core.async.impl.channels.ManyToManyChannel = function(a, b, c, d) {
   this.takes = a;
@@ -12972,22 +13129,19 @@ cljs.core.async.impl.channels.ManyToManyChannel.cljs$lang$ctorPrWriter = functio
   return cljs.core._write.call(null, b, "cljs.core.async.impl.channels/ManyToManyChannel")
 };
 cljs.core.async.impl.channels.ManyToManyChannel.prototype.cljs$core$async$impl$protocols$Channel$ = !0;
-cljs.core.async.impl.channels.ManyToManyChannel.prototype.cljs$core$async$impl$protocols$Channel$close_BANG_$arity$1 = function(a) {
-  a.cljs$core$async$impl$channels$MMC$cleanup$arity$1(a);
-  if(!cljs.core.deref.call(null, this.closed)) {
-    cljs.core.reset_BANG_.call(null, this.closed, !0);
-    for(var a = this.takes.length, b = 0;;) {
-      if(b < a) {
-        var c = this.takes[b];
-        if(cljs.core.async.impl.protocols.active_QMARK_.call(null, c)) {
-          var d = cljs.core.async.impl.protocols.commit.call(null, c);
-          null != d && cljs.core.async.impl.dispatch.run.call(null, function(a, b) {
+cljs.core.async.impl.channels.ManyToManyChannel.prototype.cljs$core$async$impl$protocols$Channel$close_BANG_$arity$1 = function() {
+  if(!this.closed) {
+    for(this.closed = !0;;) {
+      var a = this.takes.pop();
+      if(null != a) {
+        if(cljs.core.async.impl.protocols.active_QMARK_.call(null, a)) {
+          var b = cljs.core.async.impl.protocols.commit.call(null, a);
+          cljs.core.async.impl.dispatch.run.call(null, function(a) {
             return function() {
-              return b.call(null, null)
+              return a.call(null, null)
             }
-          }(b, d, c))
+          }(b, a))
         }
-        b += 1
       }else {
         break
       }
@@ -12997,121 +13151,73 @@ cljs.core.async.impl.channels.ManyToManyChannel.prototype.cljs$core$async$impl$p
 };
 cljs.core.async.impl.channels.ManyToManyChannel.prototype.cljs$core$async$impl$protocols$ReadPort$ = !0;
 cljs.core.async.impl.channels.ManyToManyChannel.prototype.cljs$core$async$impl$protocols$ReadPort$take_BANG_$arity$2 = function(a, b) {
-  a.cljs$core$async$impl$channels$MMC$cleanup$arity$1(a);
-  var c;
-  c = (c = null != this.buf) ? 0 < cljs.core.count.call(null, this.buf) : c;
-  if(c) {
-    return c = (c = cljs.core.async.impl.protocols.active_QMARK_.call(null, b)) ? null != cljs.core.async.impl.protocols.commit.call(null, b) : c, !1 !== c ? cljs.core.async.impl.channels.box.call(null, cljs.core.async.impl.protocols.remove_BANG_.call(null, this.buf)) : null
-  }
-  var d;
-  a: {
-    for(c = 0;;) {
-      if(c < this.puts.length) {
-        d = this.puts[c];
-        var e = cljs.core.nth.call(null, d, 0, null);
-        d = cljs.core.nth.call(null, d, 1, null);
-        var f = cljs.core.async.impl.protocols.active_QMARK_.call(null, b), e = (f ? cljs.core.async.impl.protocols.active_QMARK_.call(null, e) : f) ? cljs.core.PersistentVector.fromArray([cljs.core.async.impl.protocols.commit.call(null, b), cljs.core.async.impl.protocols.commit.call(null, e), d], !0) : null;
-        if(null != e) {
-          this.puts.splice(c, 1);
-          d = e;
-          break a
-        }else {
-          c += 1
+  if(cljs.core.async.impl.protocols.active_QMARK_.call(null, b)) {
+    var c;
+    c = (c = null != this.buf) ? 0 < cljs.core.count.call(null, this.buf) : c;
+    if(c) {
+      return cljs.core.async.impl.protocols.commit.call(null, b), cljs.core.async.impl.channels.box.call(null, cljs.core.async.impl.protocols.remove_BANG_.call(null, this.buf))
+    }
+    for(;;) {
+      var d = this.puts.pop();
+      if(null != d) {
+        if(c = d.handler, d = d.val, cljs.core.async.impl.protocols.active_QMARK_.call(null, c)) {
+          return c = cljs.core.async.impl.protocols.commit.call(null, c), cljs.core.async.impl.protocols.commit.call(null, b), cljs.core.async.impl.dispatch.run.call(null, c), cljs.core.async.impl.channels.box.call(null, d)
         }
       }else {
-        d = null;
-        break a
+        if(this.closed) {
+          return cljs.core.async.impl.protocols.commit.call(null, b), cljs.core.async.impl.channels.box.call(null, null)
+        }
+        if(!(this.takes.length < cljs.core.async.impl.protocols.MAX_QUEUE_SIZE)) {
+          throw Error([cljs.core.str("Assert failed: "), cljs.core.str([cljs.core.str("No more than "), cljs.core.str(cljs.core.async.impl.protocols.MAX_QUEUE_SIZE), cljs.core.str(" pending takes are allowed on a single channel.")].join("")), cljs.core.str("\n"), cljs.core.str(cljs.core.pr_str.call(null, cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, "<", "<", -1640531467, null), cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, ".-length", ".-length", 1395928862, null), 
+          new cljs.core.Symbol(null, "takes", "takes", -1530407291, null)), cljs.core.hash_map("\ufdd0:line", 76, "\ufdd0:column", 30)), new cljs.core.Symbol("impl", "MAX-QUEUE-SIZE", "impl/MAX-QUEUE-SIZE", -1989946393, null)), cljs.core.hash_map("\ufdd0:line", 76, "\ufdd0:column", 27))))].join(""));
+        }
+        this.takes.unbounded_unshift(b);
+        return null
       }
     }
-    d = void 0
-  }
-  c = cljs.core.nth.call(null, d, 0, null);
-  e = cljs.core.nth.call(null, d, 1, null);
-  d = cljs.core.nth.call(null, d, 2, null);
-  f = null == e;
-  if(f ? f : null == c) {
-    if(cljs.core.deref.call(null, this.closed)) {
-      return c = (c = cljs.core.async.impl.protocols.active_QMARK_.call(null, b)) ? null != cljs.core.async.impl.protocols.commit.call(null, b) : c, !1 !== c ? cljs.core.async.impl.channels.box.call(null, null) : null
-    }
-    if(!(this.takes.length < cljs.core.async.impl.protocols.MAX_QUEUE_SIZE)) {
-      throw Error([cljs.core.str("Assert failed: "), cljs.core.str([cljs.core.str("No more than "), cljs.core.str(cljs.core.async.impl.protocols.MAX_QUEUE_SIZE), cljs.core.str(" pending takes are allowed on a single channel.")].join("")), cljs.core.str("\n"), cljs.core.str(cljs.core.pr_str.call(null, cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, "<", "<", -1640531467, null), cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, ".-length", ".-length", 1395928862, null), new cljs.core.Symbol(null, 
-      "takes", "takes", -1530407291, null)), cljs.core.hash_map("\ufdd0:line", 102, "\ufdd0:column", 26)), new cljs.core.Symbol("impl", "MAX-QUEUE-SIZE", "impl/MAX-QUEUE-SIZE", -1989946393, null)), cljs.core.hash_map("\ufdd0:line", 102, "\ufdd0:column", 23))))].join(""));
-    }
-    this.takes.push(b);
+  }else {
     return null
   }
-  cljs.core.async.impl.dispatch.run.call(null, e);
-  return cljs.core.async.impl.channels.box.call(null, d)
 };
 cljs.core.async.impl.channels.ManyToManyChannel.prototype.cljs$core$async$impl$protocols$WritePort$ = !0;
 cljs.core.async.impl.channels.ManyToManyChannel.prototype.cljs$core$async$impl$protocols$WritePort$put_BANG_$arity$3 = function(a, b, c) {
   if(null == b) {
-    throw Error([cljs.core.str("Assert failed: "), cljs.core.str("Can't put nil in on a channel"), cljs.core.str("\n"), cljs.core.str(cljs.core.pr_str.call(null, cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, "not", "not", -1640422260, null), cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, "nil?", "nil?", -1637150201, null), new cljs.core.Symbol(null, "val", "val", -1640415014, null)), cljs.core.hash_map("\ufdd0:line", 43, "\ufdd0:column", 18))), cljs.core.hash_map("\ufdd0:line", 
-    43, "\ufdd0:column", 13))))].join(""));
+    throw Error([cljs.core.str("Assert failed: "), cljs.core.str("Can't put nil in on a channel"), cljs.core.str("\n"), cljs.core.str(cljs.core.pr_str.call(null, cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, "not", "not", -1640422260, null), cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, "nil?", "nil?", -1637150201, null), new cljs.core.Symbol(null, "val", "val", -1640415014, null)), cljs.core.hash_map("\ufdd0:line", 25, "\ufdd0:column", 18))), cljs.core.hash_map("\ufdd0:line", 
+    25, "\ufdd0:column", 13))))].join(""));
   }
-  a.cljs$core$async$impl$channels$MMC$cleanup$arity$1(a);
-  if(cljs.core.deref.call(null, this.closed)) {
+  a = (a = this.closed) ? a : !cljs.core.async.impl.protocols.active_QMARK_.call(null, c);
+  if(a) {
     return cljs.core.async.impl.channels.box.call(null, null)
   }
-  a: {
-    for(a = 0;;) {
-      if(a < this.takes.length) {
-        var d = this.takes[a], e = cljs.core.async.impl.protocols.active_QMARK_.call(null, d);
-        if(e ? cljs.core.async.impl.protocols.active_QMARK_.call(null, c) : e) {
-          this.takes.splice(a, 1);
-          a = cljs.core.PersistentVector.fromArray([cljs.core.async.impl.protocols.commit.call(null, c), cljs.core.async.impl.protocols.commit.call(null, d)], !0);
-          break a
-        }else {
-          a += 1
+  for(;;) {
+    if(a = this.takes.pop(), null != a) {
+      if(cljs.core.async.impl.protocols.active_QMARK_.call(null, a)) {
+        var d = cljs.core.async.impl.protocols.commit.call(null, a), c = cljs.core.async.impl.protocols.commit.call(null, c);
+        cljs.core.async.impl.dispatch.run.call(null, function(a) {
+          return function() {
+            return a.call(null, b)
+          }
+        }(d, c, a));
+        return cljs.core.async.impl.channels.box.call(null, null)
+      }
+    }else {
+      a = (a = null == this.buf) ? a : cljs.core.async.impl.protocols.full_QMARK_.call(null, this.buf);
+      if(a) {
+        if(!(this.puts.length < cljs.core.async.impl.protocols.MAX_QUEUE_SIZE)) {
+          throw Error([cljs.core.str("Assert failed: "), cljs.core.str([cljs.core.str("No more than "), cljs.core.str(cljs.core.async.impl.protocols.MAX_QUEUE_SIZE), cljs.core.str(" pending puts are allowed on a single channel."), cljs.core.str(" Consider using a windowed buffer.")].join("")), cljs.core.str("\n"), cljs.core.str(cljs.core.pr_str.call(null, cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, "<", "<", -1640531467, null), cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, 
+          ".-length", ".-length", 1395928862, null), new cljs.core.Symbol(null, "puts", "puts", -1637078787, null)), cljs.core.hash_map("\ufdd0:line", 47, "\ufdd0:column", 30)), new cljs.core.Symbol("impl", "MAX-QUEUE-SIZE", "impl/MAX-QUEUE-SIZE", -1989946393, null)), cljs.core.hash_map("\ufdd0:line", 47, "\ufdd0:column", 27))))].join(""));
         }
-      }else {
-        a = null;
-        break a
+        this.puts.unbounded_unshift(new cljs.core.async.impl.channels.PutBox(c, b));
+        return null
       }
-    }
-    a = void 0
-  }
-  var d = cljs.core.nth.call(null, a, 0, null), f = cljs.core.nth.call(null, a, 1, null);
-  a = null == d;
-  if(a ? a : null == f) {
-    a = (a = null == this.buf) ? a : cljs.core.async.impl.protocols.full_QMARK_.call(null, this.buf);
-    if(a) {
-      if(!(this.puts.length < cljs.core.async.impl.protocols.MAX_QUEUE_SIZE)) {
-        throw Error([cljs.core.str("Assert failed: "), cljs.core.str([cljs.core.str("No more than "), cljs.core.str(cljs.core.async.impl.protocols.MAX_QUEUE_SIZE), cljs.core.str(" pending puts are allowed on a single channel."), cljs.core.str(" Consider using a windowed buffer.")].join("")), cljs.core.str("\n"), cljs.core.str(cljs.core.pr_str.call(null, cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, "<", "<", -1640531467, null), cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, 
-        ".-length", ".-length", 1395928862, null), new cljs.core.Symbol(null, "puts", "puts", -1637078787, null)), cljs.core.hash_map("\ufdd0:line", 66, "\ufdd0:column", 26)), new cljs.core.Symbol("impl", "MAX-QUEUE-SIZE", "impl/MAX-QUEUE-SIZE", -1989946393, null)), cljs.core.hash_map("\ufdd0:line", 66, "\ufdd0:column", 23))))].join(""));
-      }
-      this.puts.push(cljs.core.PersistentVector.fromArray([c, b], !0));
-      return null
-    }
-    c = (a = cljs.core.async.impl.protocols.active_QMARK_.call(null, c)) ? null != cljs.core.async.impl.protocols.commit.call(null, c) : a;
-    return!1 !== c ? (cljs.core.async.impl.protocols.add_BANG_.call(null, this.buf, b), cljs.core.async.impl.channels.box.call(null, null)) : null
-  }
-  cljs.core.async.impl.dispatch.run.call(null, function() {
-    return f.call(null, b)
-  });
-  return cljs.core.async.impl.channels.box.call(null, null)
-};
-cljs.core.async.impl.channels.ManyToManyChannel.prototype.cljs$core$async$impl$channels$MMC$ = !0;
-cljs.core.async.impl.channels.ManyToManyChannel.prototype.cljs$core$async$impl$channels$MMC$cleanup$arity$1 = function() {
-  for(var a = 0;;) {
-    if(a < this.puts.length) {
-      var b = this.puts[a], c = cljs.core.nth.call(null, b, 0, null);
-      cljs.core.nth.call(null, b, 1, null);
-      cljs.core.async.impl.protocols.active_QMARK_.call(null, c) ? a += 1 : this.puts.splice(a, 1)
-    }else {
-      break
-    }
-  }
-  for(a = 0;;) {
-    if(a < this.takes.length) {
-      cljs.core.async.impl.protocols.active_QMARK_.call(null, this.takes[a]) ? a += 1 : this.takes.splice(a, 1)
-    }else {
-      return null
+      c = cljs.core.async.impl.protocols.commit.call(null, c);
+      cljs.core.async.impl.protocols.add_BANG_.call(null, this.buf, b);
+      return cljs.core.async.impl.channels.box.call(null, null)
     }
   }
 };
 cljs.core.async.impl.channels.chan = function(a) {
-  return new cljs.core.async.impl.channels.ManyToManyChannel([], [], a, cljs.core.atom.call(null, null))
+  return new cljs.core.async.impl.channels.ManyToManyChannel(cljs.core.async.impl.buffers.ring_buffer.call(null, 32), cljs.core.async.impl.buffers.ring_buffer.call(null, 32), a, null)
 };
 cljs.core.async.impl.timers = {};
 cljs.core.async.impl.timers.MAX_LEVEL = 15;
@@ -13354,141 +13460,25 @@ cljs.core.async.impl.timers.timeout = function(a) {
   }, a);
   return d
 };
-cljs.core.async.impl.buffers = {};
-cljs.core.async.impl.buffers.RingBuffer = function(a, b, c, d) {
-  this.head = a;
-  this.tail = b;
-  this.length = c;
-  this.arr = d
-};
-cljs.core.async.impl.buffers.RingBuffer.cljs$lang$type = !0;
-cljs.core.async.impl.buffers.RingBuffer.cljs$lang$ctorStr = "cljs.core.async.impl.buffers/RingBuffer";
-cljs.core.async.impl.buffers.RingBuffer.cljs$lang$ctorPrWriter = function(a, b) {
-  return cljs.core._write.call(null, b, "cljs.core.async.impl.buffers/RingBuffer")
-};
-cljs.core.async.impl.buffers.RingBuffer.prototype.pop = function() {
-  if(0 === this.length) {
-    return null
-  }
-  var a = this.arr[this.tail];
-  this.tail = (this.tail + 1) % this.arr.length;
-  this.length -= 1;
-  return a
-};
-cljs.core.async.impl.buffers.RingBuffer.prototype.unshift = function(a) {
-  this.arr[this.head] = a;
-  this.head = (this.head + 1) % this.arr.length;
-  this.length += 1;
-  return null
-};
-cljs.core.async.impl.buffers.ring_buffer = function(a) {
-  return new cljs.core.async.impl.buffers.RingBuffer(0, 0, 0, Array(a))
-};
-cljs.core.async.impl.buffers.FixedBuffer = function(a, b) {
-  this.buf = a;
-  this.n = b;
-  this.cljs$lang$protocol_mask$partition1$ = 0;
-  this.cljs$lang$protocol_mask$partition0$ = 2
-};
-cljs.core.async.impl.buffers.FixedBuffer.cljs$lang$type = !0;
-cljs.core.async.impl.buffers.FixedBuffer.cljs$lang$ctorStr = "cljs.core.async.impl.buffers/FixedBuffer";
-cljs.core.async.impl.buffers.FixedBuffer.cljs$lang$ctorPrWriter = function(a, b) {
-  return cljs.core._write.call(null, b, "cljs.core.async.impl.buffers/FixedBuffer")
-};
-cljs.core.async.impl.buffers.FixedBuffer.prototype.cljs$core$ICounted$_count$arity$1 = function() {
-  return this.buf.length
-};
-cljs.core.async.impl.buffers.FixedBuffer.prototype.cljs$core$async$impl$protocols$Buffer$ = !0;
-cljs.core.async.impl.buffers.FixedBuffer.prototype.cljs$core$async$impl$protocols$Buffer$full_QMARK_$arity$1 = function() {
-  return this.buf.length === this.n
-};
-cljs.core.async.impl.buffers.FixedBuffer.prototype.cljs$core$async$impl$protocols$Buffer$remove_BANG_$arity$1 = function() {
-  return this.buf.pop()
-};
-cljs.core.async.impl.buffers.FixedBuffer.prototype.cljs$core$async$impl$protocols$Buffer$add_BANG_$arity$2 = function(a, b) {
-  if(!cljs.core.not.call(null, a.cljs$core$async$impl$protocols$Buffer$full_QMARK_$arity$1(a))) {
-    throw Error([cljs.core.str("Assert failed: "), cljs.core.str("Can't add to a full buffer"), cljs.core.str("\n"), cljs.core.str(cljs.core.pr_str.call(null, cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, "not", "not", -1640422260, null), cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol("impl", "full?", "impl/full?", -1337857039, null), new cljs.core.Symbol(null, "this", "this", -1636972457, null)), cljs.core.hash_map("\ufdd0:line", 41, "\ufdd0:column", 18))), cljs.core.hash_map("\ufdd0:line", 
-    41, "\ufdd0:column", 13))))].join(""));
-  }
-  return this.buf.unshift(b)
-};
-cljs.core.async.impl.buffers.fixed_buffer = function(a) {
-  return new cljs.core.async.impl.buffers.FixedBuffer(cljs.core.async.impl.buffers.ring_buffer.call(null, a), a)
-};
-cljs.core.async.impl.buffers.DroppingBuffer = function(a, b) {
-  this.buf = a;
-  this.n = b;
-  this.cljs$lang$protocol_mask$partition1$ = 0;
-  this.cljs$lang$protocol_mask$partition0$ = 2
-};
-cljs.core.async.impl.buffers.DroppingBuffer.cljs$lang$type = !0;
-cljs.core.async.impl.buffers.DroppingBuffer.cljs$lang$ctorStr = "cljs.core.async.impl.buffers/DroppingBuffer";
-cljs.core.async.impl.buffers.DroppingBuffer.cljs$lang$ctorPrWriter = function(a, b) {
-  return cljs.core._write.call(null, b, "cljs.core.async.impl.buffers/DroppingBuffer")
-};
-cljs.core.async.impl.buffers.DroppingBuffer.prototype.cljs$core$ICounted$_count$arity$1 = function() {
-  return this.buf.length
-};
-cljs.core.async.impl.buffers.DroppingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$ = !0;
-cljs.core.async.impl.buffers.DroppingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$full_QMARK_$arity$1 = function() {
-  return!1
-};
-cljs.core.async.impl.buffers.DroppingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$remove_BANG_$arity$1 = function() {
-  return this.buf.pop()
-};
-cljs.core.async.impl.buffers.DroppingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$add_BANG_$arity$2 = function(a, b) {
-  return this.buf.length === this.n ? null : this.buf.unshift(b)
-};
-cljs.core.async.impl.buffers.dropping_buffer = function(a) {
-  return new cljs.core.async.impl.buffers.DroppingBuffer(cljs.core.async.impl.buffers.ring_buffer.call(null, a), a)
-};
-cljs.core.async.impl.buffers.SlidingBuffer = function(a, b) {
-  this.buf = a;
-  this.n = b;
-  this.cljs$lang$protocol_mask$partition1$ = 0;
-  this.cljs$lang$protocol_mask$partition0$ = 2
-};
-cljs.core.async.impl.buffers.SlidingBuffer.cljs$lang$type = !0;
-cljs.core.async.impl.buffers.SlidingBuffer.cljs$lang$ctorStr = "cljs.core.async.impl.buffers/SlidingBuffer";
-cljs.core.async.impl.buffers.SlidingBuffer.cljs$lang$ctorPrWriter = function(a, b) {
-  return cljs.core._write.call(null, b, "cljs.core.async.impl.buffers/SlidingBuffer")
-};
-cljs.core.async.impl.buffers.SlidingBuffer.prototype.cljs$core$ICounted$_count$arity$1 = function() {
-  return this.buf.length
-};
-cljs.core.async.impl.buffers.SlidingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$ = !0;
-cljs.core.async.impl.buffers.SlidingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$full_QMARK_$arity$1 = function() {
-  return!1
-};
-cljs.core.async.impl.buffers.SlidingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$remove_BANG_$arity$1 = function() {
-  return this.buf.pop()
-};
-cljs.core.async.impl.buffers.SlidingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$add_BANG_$arity$2 = function(a, b) {
-  this.buf.length === this.n && a.cljs$core$async$impl$protocols$Buffer$remove_BANG_$arity$1(a);
-  return this.buf.unshift(b)
-};
-cljs.core.async.impl.buffers.sliding_buffer = function(a) {
-  return new cljs.core.async.impl.buffers.SlidingBuffer(cljs.core.async.impl.buffers.ring_buffer.call(null, a), a)
-};
 cljs.core.async.fn_handler = function fn_handler$$0(b) {
-  void 0 === cljs.core.async.t5934 && (cljs.core.async.t5934 = {}, cljs.core.async.t5934 = function(b, d, e) {
+  void 0 === cljs.core.async.t6263 && (cljs.core.async.t6263 = {}, cljs.core.async.t6263 = function(b, d, e) {
     this.f = b;
     this.fn_handler = d;
-    this.meta5935 = e;
+    this.meta6264 = e;
     this.cljs$lang$protocol_mask$partition1$ = 0;
     this.cljs$lang$protocol_mask$partition0$ = 393216
-  }, cljs.core.async.t5934.cljs$lang$type = !0, cljs.core.async.t5934.cljs$lang$ctorStr = "cljs.core.async/t5934", cljs.core.async.t5934.cljs$lang$ctorPrWriter = function(b, d) {
-    return cljs.core._write.call(null, d, "cljs.core.async/t5934")
-  }, cljs.core.async.t5934.prototype.cljs$core$async$impl$protocols$Handler$ = !0, cljs.core.async.t5934.prototype.cljs$core$async$impl$protocols$Handler$active_QMARK_$arity$1 = function() {
+  }, cljs.core.async.t6263.cljs$lang$type = !0, cljs.core.async.t6263.cljs$lang$ctorStr = "cljs.core.async/t6263", cljs.core.async.t6263.cljs$lang$ctorPrWriter = function(b, d) {
+    return cljs.core._write.call(null, d, "cljs.core.async/t6263")
+  }, cljs.core.async.t6263.prototype.cljs$core$async$impl$protocols$Handler$ = !0, cljs.core.async.t6263.prototype.cljs$core$async$impl$protocols$Handler$active_QMARK_$arity$1 = function() {
     return!0
-  }, cljs.core.async.t5934.prototype.cljs$core$async$impl$protocols$Handler$commit$arity$1 = function() {
+  }, cljs.core.async.t6263.prototype.cljs$core$async$impl$protocols$Handler$commit$arity$1 = function() {
     return this.f
-  }, cljs.core.async.t5934.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
-    return this.meta5935
-  }, cljs.core.async.t5934.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, d) {
-    return new cljs.core.async.t5934(this.f, this.fn_handler, d)
+  }, cljs.core.async.t6263.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
+    return this.meta6264
+  }, cljs.core.async.t6263.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, d) {
+    return new cljs.core.async.t6263(this.f, this.fn_handler, d)
   });
-  return new cljs.core.async.t5934(b, fn_handler$$0, null)
+  return new cljs.core.async.t6263(b, fn_handler$$0, null)
 };
 cljs.core.async.buffer = function(a) {
   return cljs.core.async.impl.buffers.fixed_buffer.call(null, a)
@@ -13602,47 +13592,47 @@ cljs.core.async.random_array = function(a) {
 };
 cljs.core.async.alt_flag = function alt_flag() {
   var b = cljs.core.atom.call(null, !0);
-  void 0 === cljs.core.async.t5945 && (cljs.core.async.t5945 = {}, cljs.core.async.t5945 = function(b, d, e) {
+  void 0 === cljs.core.async.t6274 && (cljs.core.async.t6274 = {}, cljs.core.async.t6274 = function(b, d, e) {
     this.flag = b;
     this.alt_flag = d;
-    this.meta5946 = e;
+    this.meta6275 = e;
     this.cljs$lang$protocol_mask$partition1$ = 0;
     this.cljs$lang$protocol_mask$partition0$ = 393216
-  }, cljs.core.async.t5945.cljs$lang$type = !0, cljs.core.async.t5945.cljs$lang$ctorStr = "cljs.core.async/t5945", cljs.core.async.t5945.cljs$lang$ctorPrWriter = function(b, d) {
-    return cljs.core._write.call(null, d, "cljs.core.async/t5945")
-  }, cljs.core.async.t5945.prototype.cljs$core$async$impl$protocols$Handler$ = !0, cljs.core.async.t5945.prototype.cljs$core$async$impl$protocols$Handler$active_QMARK_$arity$1 = function() {
+  }, cljs.core.async.t6274.cljs$lang$type = !0, cljs.core.async.t6274.cljs$lang$ctorStr = "cljs.core.async/t6274", cljs.core.async.t6274.cljs$lang$ctorPrWriter = function(b, d) {
+    return cljs.core._write.call(null, d, "cljs.core.async/t6274")
+  }, cljs.core.async.t6274.prototype.cljs$core$async$impl$protocols$Handler$ = !0, cljs.core.async.t6274.prototype.cljs$core$async$impl$protocols$Handler$active_QMARK_$arity$1 = function() {
     return cljs.core.deref.call(null, this.flag)
-  }, cljs.core.async.t5945.prototype.cljs$core$async$impl$protocols$Handler$commit$arity$1 = function() {
+  }, cljs.core.async.t6274.prototype.cljs$core$async$impl$protocols$Handler$commit$arity$1 = function() {
     cljs.core.reset_BANG_.call(null, this.flag, null);
     return!0
-  }, cljs.core.async.t5945.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
-    return this.meta5946
-  }, cljs.core.async.t5945.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, d) {
-    return new cljs.core.async.t5945(this.flag, this.alt_flag, d)
+  }, cljs.core.async.t6274.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
+    return this.meta6275
+  }, cljs.core.async.t6274.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, d) {
+    return new cljs.core.async.t6274(this.flag, this.alt_flag, d)
   });
-  return new cljs.core.async.t5945(b, alt_flag, null)
+  return new cljs.core.async.t6274(b, alt_flag, null)
 };
 cljs.core.async.alt_handler = function alt_handler(b, c) {
-  void 0 === cljs.core.async.t5952 && (cljs.core.async.t5952 = {}, cljs.core.async.t5952 = function(b, c, f, g) {
+  void 0 === cljs.core.async.t6281 && (cljs.core.async.t6281 = {}, cljs.core.async.t6281 = function(b, c, f, g) {
     this.cb = b;
     this.flag = c;
     this.alt_handler = f;
-    this.meta5953 = g;
+    this.meta6282 = g;
     this.cljs$lang$protocol_mask$partition1$ = 0;
     this.cljs$lang$protocol_mask$partition0$ = 393216
-  }, cljs.core.async.t5952.cljs$lang$type = !0, cljs.core.async.t5952.cljs$lang$ctorStr = "cljs.core.async/t5952", cljs.core.async.t5952.cljs$lang$ctorPrWriter = function(b, c) {
-    return cljs.core._write.call(null, c, "cljs.core.async/t5952")
-  }, cljs.core.async.t5952.prototype.cljs$core$async$impl$protocols$Handler$ = !0, cljs.core.async.t5952.prototype.cljs$core$async$impl$protocols$Handler$active_QMARK_$arity$1 = function() {
+  }, cljs.core.async.t6281.cljs$lang$type = !0, cljs.core.async.t6281.cljs$lang$ctorStr = "cljs.core.async/t6281", cljs.core.async.t6281.cljs$lang$ctorPrWriter = function(b, c) {
+    return cljs.core._write.call(null, c, "cljs.core.async/t6281")
+  }, cljs.core.async.t6281.prototype.cljs$core$async$impl$protocols$Handler$ = !0, cljs.core.async.t6281.prototype.cljs$core$async$impl$protocols$Handler$active_QMARK_$arity$1 = function() {
     return cljs.core.async.impl.protocols.active_QMARK_.call(null, this.flag)
-  }, cljs.core.async.t5952.prototype.cljs$core$async$impl$protocols$Handler$commit$arity$1 = function() {
+  }, cljs.core.async.t6281.prototype.cljs$core$async$impl$protocols$Handler$commit$arity$1 = function() {
     cljs.core.async.impl.protocols.commit.call(null, this.flag);
     return this.cb
-  }, cljs.core.async.t5952.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
-    return this.meta5953
-  }, cljs.core.async.t5952.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, c) {
-    return new cljs.core.async.t5952(this.cb, this.flag, this.alt_handler, c)
+  }, cljs.core.async.t6281.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
+    return this.meta6282
+  }, cljs.core.async.t6281.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, c) {
+    return new cljs.core.async.t6281(this.cb, this.flag, this.alt_handler, c)
   });
-  return new cljs.core.async.t5952(c, b, alt_handler, null)
+  return new cljs.core.async.t6281(c, b, alt_handler, null)
 };
 cljs.core.async.do_alts = function(a, b, c) {
   var d = cljs.core.async.alt_flag.call(null), e = cljs.core.count.call(null, b), f = cljs.core.async.random_array.call(null, e), g = (new cljs.core.Keyword("\ufdd0:priority")).call(null, c);
@@ -14407,12 +14397,12 @@ try {
   Window.prototype.dommy$template$PElement$ = !0, Window.prototype.dommy$template$PElement$_elem$arity$1 = function(a) {
     return a
   }
-}catch(e6585) {
-  if(e6585 instanceof ReferenceError) {
-    var __6586 = e6585;
+}catch(e6901) {
+  if(e6901 instanceof ReferenceError) {
+    var __6902 = e6901;
     console.log("PElement: js/Window not defined by browser, skipping it... (running on phantomjs?)")
   }else {
-    throw e6585;
+    throw e6901;
   }
 }
 dommy.template.node = function(a) {
@@ -14719,9 +14709,9 @@ dommy.core.listen_BANG_ = function() {
       if(j < i) {
         for(var k = cljs.core._nth.call(null, h, j), l = cljs.core.nth.call(null, k, 0, null), k = cljs.core.nth.call(null, k, 1, null), l = cljs.core.seq.call(null, cljs.core.get.call(null, dommy.core.special_listener_makers, l, cljs.core.PersistentArrayMap.fromArray([l, cljs.core.identity], !0))), m = null, n = 0, p = 0;;) {
           if(p < n) {
-            var q = cljs.core._nth.call(null, m, p), r = cljs.core.nth.call(null, q, 0, null), q = cljs.core.nth.call(null, q, 1, null), q = (cljs.core.truth_(e) ? cljs.core.partial.call(null, dommy.core.live_listener, f, e) : cljs.core.identity).call(null, q.call(null, k));
-            dommy.core.update_event_listeners_BANG_.call(null, f, cljs.core.assoc_in, cljs.core.PersistentVector.fromArray([e, r, k], !0), q);
-            cljs.core.truth_(f.addEventListener) ? f.addEventListener(cljs.core.name.call(null, r), q) : f.attachEvent(cljs.core.name.call(null, r), q);
+            var r = cljs.core._nth.call(null, m, p), q = cljs.core.nth.call(null, r, 0, null), r = cljs.core.nth.call(null, r, 1, null), r = (cljs.core.truth_(e) ? cljs.core.partial.call(null, dommy.core.live_listener, f, e) : cljs.core.identity).call(null, r.call(null, k));
+            dommy.core.update_event_listeners_BANG_.call(null, f, cljs.core.assoc_in, cljs.core.PersistentVector.fromArray([e, q, k], !0), r);
+            cljs.core.truth_(f.addEventListener) ? f.addEventListener(cljs.core.name.call(null, q), r) : f.attachEvent(cljs.core.name.call(null, q), r);
             p += 1
           }else {
             if(l = cljs.core.seq.call(null, l)) {
@@ -14789,11 +14779,11 @@ dommy.core.unlisten_BANG_ = function() {
       if(j < i) {
         for(var k = cljs.core._nth.call(null, h, j), l = cljs.core.nth.call(null, k, 0, null), k = cljs.core.nth.call(null, k, 1, null), l = cljs.core.seq.call(null, cljs.core.get.call(null, dommy.core.special_listener_makers, l, cljs.core.PersistentArrayMap.fromArray([l, cljs.core.identity], !0))), m = null, n = 0, p = 0;;) {
           if(p < n) {
-            var q = cljs.core._nth.call(null, m, p), r = cljs.core.nth.call(null, q, 0, null);
-            cljs.core.nth.call(null, q, 1, null);
-            var q = cljs.core.PersistentVector.fromArray([e, r, k], !0), s = cljs.core.get_in.call(null, dommy.core.event_listeners.call(null, f), q);
-            dommy.core.update_event_listeners_BANG_.call(null, f, dommy.utils.dissoc_in, q);
-            cljs.core.truth_(f.removeEventListener) ? f.removeEventListener(cljs.core.name.call(null, r), s) : f.detachEvent(cljs.core.name.call(null, r), s);
+            var r = cljs.core._nth.call(null, m, p), q = cljs.core.nth.call(null, r, 0, null);
+            cljs.core.nth.call(null, r, 1, null);
+            var r = cljs.core.PersistentVector.fromArray([e, q, k], !0), s = cljs.core.get_in.call(null, dommy.core.event_listeners.call(null, f), r);
+            dommy.core.update_event_listeners_BANG_.call(null, f, dommy.utils.dissoc_in, r);
+            cljs.core.truth_(f.removeEventListener) ? f.removeEventListener(cljs.core.name.call(null, q), s) : f.detachEvent(cljs.core.name.call(null, q), s);
             p += 1
           }else {
             if(l = cljs.core.seq.call(null, l)) {
@@ -14933,10 +14923,385 @@ dommy.core.fire_BANG_ = function() {
   b.cljs$core$IFn$_invoke$arity$variadic = a;
   return b
 }();
+var bigsky = {aui:{}};
+bigsky.aui.draggable = {};
+bigsky.aui.draggable.draggable = function() {
+  var a = null, b = function(b) {
+    return a.call(null, b, null)
+  }, c = function(a, b) {
+    var c = cljs.core.async.chan.call(null, cljs.core.async.sliding_buffer.call(null, 10)), g = cljs.core.async.chan.call(null, cljs.core.async.sliding_buffer.call(null, 10)), h = cljs.core.atom.call(null, cljs.core.ObjMap.EMPTY), i;
+    i = function() {
+      return cljs.core.reset_BANG_.call(null, h, cljs.core.PersistentArrayMap.fromArray(["\ufdd0:x", function() {
+        var b = dommy.core.px.call(null, a, "left");
+        return cljs.core.truth_(b) ? b : 0
+      }(), "\ufdd0:y", function() {
+        var b = dommy.core.px.call(null, a, "top");
+        return cljs.core.truth_(b) ? b : 0
+      }()], !0))
+    };
+    var j;
+    j = function(b, c) {
+      var e = b + (new cljs.core.Keyword("\ufdd0:x")).call(null, cljs.core.deref.call(null, h)), f = c + (new cljs.core.Keyword("\ufdd0:y")).call(null, cljs.core.deref.call(null, h));
+      return dommy.core.set_px_BANG_.call(null, a, "\ufdd0:left", e, "\ufdd0:top", f)
+    };
+    i.call(null);
+    var k = cljs.core.async.chan.call(null, 1);
+    cljs.core.async.impl.dispatch.run.call(null, function() {
+      var a = function(a) {
+        var b = a[1];
+        if(1 === b) {
+          return a[2] = null, a[1] = 2, "\ufdd0:recur"
+        }
+        if(2 === b) {
+          return cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, a, 4, c)
+        }
+        if(3 === b) {
+          return b = a[2], cljs.core.async.impl.ioc_helpers.return_chan.call(null, a, b)
+        }
+        if(4 === b) {
+          var d = a[5], e = a[2], b = cljs.core.nth.call(null, e, 0, null), d = cljs.core.nth.call(null, e, 1, null), e = cljs.core.nth.call(null, e, 2, null), g = cljs.core._EQ_.call(null, b, "\ufdd0:drag");
+          a[6] = e;
+          a[7] = d;
+          a[5] = b;
+          a[1] = g ? 5 : 6;
+          return"\ufdd0:recur"
+        }
+        return 5 === b ? (e = a[6], d = a[7], b = j.call(null, d, e), a[2] = b, a[1] = 7, "\ufdd0:recur") : 6 === b ? (a[2] = null, a[1] = 7, "\ufdd0:recur") : 7 === b ? (d = a[5], b = a[2], d = cljs.core._EQ_.call(null, d, "\ufdd0:drag-stop"), a[8] = b, a[1] = d ? 8 : 9, "\ufdd0:recur") : 8 === b ? (b = i.call(null), a[2] = b, a[1] = 10, "\ufdd0:recur") : 9 === b ? (a[2] = null, a[1] = 10, "\ufdd0:recur") : 10 === b ? (a[9] = a[2], a[2] = null, a[1] = 2, "\ufdd0:recur") : null
+      }, b = null, d = function() {
+        var a = Array(10);
+        a[0] = b;
+        a[1] = 1;
+        return a
+      }, e = function(b) {
+        for(;;) {
+          var c = a.call(null, b);
+          if("\ufdd0:recur" !== c) {
+            return c
+          }
+        }
+      }, b = function(a) {
+        switch(arguments.length) {
+          case 0:
+            return d.call(this);
+          case 1:
+            return e.call(this, a)
+        }
+        throw Error("Invalid arity: " + arguments.length);
+      };
+      b.cljs$core$IFn$_invoke$arity$0 = d;
+      b.cljs$core$IFn$_invoke$arity$1 = e;
+      var g = b.call(null);
+      g[cljs.core.async.impl.ioc_helpers.USER_START_IDX] = k;
+      return cljs.core.async.impl.ioc_helpers.run_state_machine_wrapped.call(null, g)
+    });
+    dommy.core.listen_BANG_.call(null, null == b ? a : cljs.core.PersistentVector.fromArray([a, b], !0), "\ufdd0:mousedown", function(a) {
+      var b = a.x, d = a.y, e;
+      e = function(a) {
+        var e = a.x - b, a = a.y - d, k = cljs.core.async.chan.call(null, 1);
+        cljs.core.async.impl.dispatch.run.call(null, function(a, b, c, d, e, f, g, h, i, j) {
+          return function() {
+            var d = function(a) {
+              var d = a[1];
+              if(2 === d) {
+                var d = a[2], e = j.call(null, b, c);
+                a[5] = d;
+                return cljs.core.async.impl.ioc_helpers.return_chan.call(null, a, e)
+              }
+              return 1 === d ? (d = cljs.core.vector.call(null, "\ufdd0:drag", b, c), cljs.core.async.impl.ioc_helpers.put_BANG_.call(null, a, 2, g, d)) : null
+            }, e = null, f = function() {
+              var a = Array(6);
+              a[0] = e;
+              a[1] = 1;
+              return a
+            }, h = function(a) {
+              for(;;) {
+                var b = d.call(null, a);
+                if("\ufdd0:recur" !== b) {
+                  return b
+                }
+              }
+            }, e = function(a) {
+              switch(arguments.length) {
+                case 0:
+                  return f.call(this);
+                case 1:
+                  return h.call(this, a)
+              }
+              throw Error("Invalid arity: " + arguments.length);
+            };
+            e.cljs$core$IFn$_invoke$arity$0 = f;
+            e.cljs$core$IFn$_invoke$arity$1 = h;
+            var i = e.call(null);
+            i[cljs.core.async.impl.ioc_helpers.USER_START_IDX] = a;
+            return cljs.core.async.impl.ioc_helpers.run_state_machine_wrapped.call(null, i)
+          }
+        }(k, e, a, b, d, c, g, h, i, j));
+        return k
+      };
+      a = cljs.core.async.chan.call(null, 1);
+      cljs.core.async.impl.dispatch.run.call(null, function(a, b, c, d, e, f, g) {
+        return function() {
+          var b = function(a) {
+            var b = a[1];
+            if(2 === b) {
+              var b = a[2], c = dommy.core.listen_BANG_.call(null, document, "\ufdd0:mousemove", d), f = dommy.core.listen_once_BANG_.call(null, document, "\ufdd0:mouseup", e);
+              a[5] = b;
+              a[6] = c;
+              return cljs.core.async.impl.ioc_helpers.return_chan.call(null, a, f)
+            }
+            return 1 === b ? (b = cljs.core.vector.call(null, "\ufdd0:drag-start", 0, 0), cljs.core.async.impl.ioc_helpers.put_BANG_.call(null, a, 2, g, b)) : null
+          }, c = null, f = function() {
+            var a = Array(7);
+            a[0] = c;
+            a[1] = 1;
+            return a
+          }, h = function(a) {
+            for(;;) {
+              var c = b.call(null, a);
+              if("\ufdd0:recur" !== c) {
+                return c
+              }
+            }
+          }, c = function(a) {
+            switch(arguments.length) {
+              case 0:
+                return f.call(this);
+              case 1:
+                return h.call(this, a)
+            }
+            throw Error("Invalid arity: " + arguments.length);
+          };
+          c.cljs$core$IFn$_invoke$arity$0 = f;
+          c.cljs$core$IFn$_invoke$arity$1 = h;
+          var i = c.call(null);
+          i[cljs.core.async.impl.ioc_helpers.USER_START_IDX] = a;
+          return cljs.core.async.impl.ioc_helpers.run_state_machine_wrapped.call(null, i)
+        }
+      }(a, b, d, e, function() {
+        var a = cljs.core.async.chan.call(null, 1);
+        cljs.core.async.impl.dispatch.run.call(null, function(a, b, c, d, e, f, g, h) {
+          return function() {
+            var b = function(a) {
+              var b = a[1];
+              if(2 === b) {
+                var b = a[2], c = dommy.core.unlisten_BANG_.call(null, document, "\ufdd0:mousemove", d);
+                a[5] = b;
+                return cljs.core.async.impl.ioc_helpers.return_chan.call(null, a, c)
+              }
+              return 1 === b ? (b = h.call(null), c = cljs.core.vector.call(null, "\ufdd0:drag-stop", 0, 0), a[6] = b, cljs.core.async.impl.ioc_helpers.put_BANG_.call(null, a, 2, f, c)) : null
+            }, c = null, e = function() {
+              var a = Array(7);
+              a[0] = c;
+              a[1] = 1;
+              return a
+            }, g = function(a) {
+              for(;;) {
+                var c = b.call(null, a);
+                if("\ufdd0:recur" !== c) {
+                  return c
+                }
+              }
+            }, c = function(a) {
+              switch(arguments.length) {
+                case 0:
+                  return e.call(this);
+                case 1:
+                  return g.call(this, a)
+              }
+              throw Error("Invalid arity: " + arguments.length);
+            };
+            c.cljs$core$IFn$_invoke$arity$0 = e;
+            c.cljs$core$IFn$_invoke$arity$1 = g;
+            var i = c.call(null);
+            i[cljs.core.async.impl.ioc_helpers.USER_START_IDX] = a;
+            return cljs.core.async.impl.ioc_helpers.run_state_machine_wrapped.call(null, i)
+          }
+        }(a, b, d, e, c, g, h, i, j));
+        return a
+      }, c, g, h, i, j));
+      return a
+    });
+    dommy.core.add_class_BANG_.call(null, a, "\ufdd0:aui-draggable");
+    return cljs.core.PersistentVector.fromArray([c, g], !0)
+  }, a = function(a, e) {
+    switch(arguments.length) {
+      case 1:
+        return b.call(this, a);
+      case 2:
+        return c.call(this, a, e)
+    }
+    throw Error("Invalid arity: " + arguments.length);
+  };
+  a.cljs$core$IFn$_invoke$arity$1 = b;
+  a.cljs$core$IFn$_invoke$arity$2 = c;
+  return a
+}();
 var shoelace = {client:{}};
 shoelace.client.body = document.body;
-dommy.core.append_BANG_.call(null, shoelace.client.body, function() {
-  var a = document.createElement("h1");
-  a.appendChild(document.createTextNode("shoelace"));
-  return a
-}());
+shoelace.client.layout = cljs.core.atom.call(null, cljs.core.PersistentVector.EMPTY);
+shoelace.client.add_row = function() {
+  return console.log("ADD ROW")
+};
+shoelace.client.draw_workspace = function() {
+  var a = document.createElement("div");
+  a.className = "workspace";
+  var b = document.createElement("div");
+  b.className = "medias";
+  var c = document.createElement("div");
+  c.className = "media media-xs";
+  c.appendChild(function() {
+    var a = document.createElement("h4");
+    a.appendChild(document.createTextNode("@media-xs"));
+    return a
+  }());
+  var d = document.createElement("div");
+  d.className = "media media-tablet";
+  d.appendChild(function() {
+    var a = document.createElement("h4");
+    a.appendChild(document.createTextNode("@media-tablet"));
+    return a
+  }());
+  var e = document.createElement("div");
+  e.className = "media media-desktop";
+  e.appendChild(function() {
+    var a = document.createElement("h4");
+    a.appendChild(document.createTextNode("@media-desktop"));
+    return a
+  }());
+  var f = document.createElement("div");
+  f.className = "media media-lg-desktop";
+  f.appendChild(function() {
+    var a = document.createElement("h4");
+    a.appendChild(document.createTextNode("@media-lg-desktop"));
+    return a
+  }());
+  var g = document.createElement("div");
+  g.className = "container";
+  var h = document.createElement("div");
+  h.className = "columns";
+  cljs.core.doall.call(null, cljs.core.map.call(null, function(a, b, c, d, e, f, g, h) {
+    return function() {
+      var a = document.createElement("div");
+      a.className = "col";
+      dommy.core.append_BANG_.call(null, h, a);
+      return a
+    }
+  }(a, b, c, d, e, f, g, h), cljs.core.range.call(null, 13)));
+  var i = document.createElement("div");
+  i.className = "new-row";
+  dommy.core.listen_BANG_.call(null, i, "\ufdd0:click", shoelace.client.add_row);
+  dommy.core.append_BANG_.call(null, g, h);
+  dommy.core.append_BANG_.call(null, g, i);
+  dommy.core.append_BANG_.call(null, b, c);
+  dommy.core.append_BANG_.call(null, b, d);
+  dommy.core.append_BANG_.call(null, b, e);
+  dommy.core.append_BANG_.call(null, b, f);
+  dommy.core.append_BANG_.call(null, a, b);
+  dommy.core.append_BANG_.call(null, a, g);
+  return dommy.core.append_BANG_.call(null, shoelace.client.body, a)
+};
+shoelace.client.draw_workspace.call(null);
+bigsky.aui.resizable = {};
+bigsky.aui.resizable.body = document.body;
+bigsky.aui.resizable.resizable = function(a) {
+  var b = cljs.core.async.chan.call(null, cljs.core.async.sliding_buffer.call(null, 10)), c = cljs.core.async.chan.call(null, cljs.core.async.sliding_buffer.call(null, 10)), d = document.createElement("div");
+  d.className = "drag-handle drag-handle-e";
+  var e = bigsky.aui.draggable.draggable.call(null, d);
+  cljs.core.nth.call(null, e, 0, null);
+  var f = cljs.core.nth.call(null, e, 1, null), g = cljs.core.atom.call(null, cljs.core.ObjMap.EMPTY), h;
+  h = function() {
+    return cljs.core.reset_BANG_.call(null, g, cljs.core.PersistentArrayMap.fromArray(["\ufdd0:width", dommy.core.px.call(null, a, "width"), "\ufdd0:height", dommy.core.px.call(null, a, "height")], !0))
+  };
+  var i;
+  i = function() {
+    var b = dommy.core.px.call(null, a, "left"), c = dommy.core.px.call(null, a, "top"), e = dommy.core.px.call(null, a, "width"), f = dommy.core.px.call(null, a, "height");
+    return dommy.core.set_px_BANG_.call(null, d, "\ufdd0:left", b + e - 3, "\ufdd0:top", c, "\ufdd0:height", f)
+  };
+  dommy.core.append_BANG_.call(null, bigsky.aui.resizable.body, d);
+  i.call(null);
+  h.call(null);
+  var j = cljs.core.async.chan.call(null, 1);
+  cljs.core.async.impl.dispatch.run.call(null, function() {
+    var a = function(a) {
+      var c = a[1];
+      return 7 === c ? (a[5] = a[2], a[2] = null, a[1] = 2, "\ufdd0:recur") : 6 === c ? (a[2] = null, a[1] = 7, "\ufdd0:recur") : 5 === c ? (c = i.call(null), a[2] = c, a[1] = 7, "\ufdd0:recur") : 4 === c ? (c = cljs.core.nth.call(null, a[2], 0, null), c = cljs.core._EQ_.call(null, c, "\ufdd0:drag"), a[1] = c ? 5 : 6, "\ufdd0:recur") : 3 === c ? (c = a[2], cljs.core.async.impl.ioc_helpers.return_chan.call(null, a, c)) : 2 === c ? cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, a, 4, b) : 1 === 
+      c ? (a[2] = null, a[1] = 2, "\ufdd0:recur") : null
+    }, c = null, d = function() {
+      var a = Array(6);
+      a[0] = c;
+      a[1] = 1;
+      return a
+    }, e = function(b) {
+      for(;;) {
+        var c = a.call(null, b);
+        if("\ufdd0:recur" !== c) {
+          return c
+        }
+      }
+    }, c = function(a) {
+      switch(arguments.length) {
+        case 0:
+          return d.call(this);
+        case 1:
+          return e.call(this, a)
+      }
+      throw Error("Invalid arity: " + arguments.length);
+    };
+    c.cljs$core$IFn$_invoke$arity$0 = d;
+    c.cljs$core$IFn$_invoke$arity$1 = e;
+    var f = c.call(null);
+    f[cljs.core.async.impl.ioc_helpers.USER_START_IDX] = j;
+    return cljs.core.async.impl.ioc_helpers.run_state_machine_wrapped.call(null, f)
+  });
+  var k = cljs.core.async.chan.call(null, 1);
+  cljs.core.async.impl.dispatch.run.call(null, function() {
+    var b = function(b) {
+      var c = b[1];
+      if(1 === c) {
+        return b[2] = null, b[1] = 2, "\ufdd0:recur"
+      }
+      if(2 === c) {
+        return cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, b, 4, f)
+      }
+      if(3 === c) {
+        return c = b[2], cljs.core.async.impl.ioc_helpers.return_chan.call(null, b, c)
+      }
+      if(4 === c) {
+        var d = b[5], e = b[2], d = cljs.core.nth.call(null, e, 0, null), c = cljs.core.nth.call(null, e, 1, null), e = cljs.core.nth.call(null, e, 2, null), j = cljs.core._EQ_.call(null, d, "\ufdd0:drag");
+        b[6] = e;
+        b[7] = c;
+        b[5] = d;
+        b[1] = j ? 5 : 6;
+        return"\ufdd0:recur"
+      }
+      return 5 === c ? (c = b[7], d = cljs.core.deref.call(null, g), c = (new cljs.core.Keyword("\ufdd0:width")).call(null, d) + c, c = dommy.core.set_px_BANG_.call(null, a, "\ufdd0:width", c), b[2] = c, b[1] = 7, "\ufdd0:recur") : 6 === c ? (b[2] = null, b[1] = 7, "\ufdd0:recur") : 7 === c ? (d = b[5], c = b[2], d = cljs.core._EQ_.call(null, d, "\ufdd0:drag-stop"), b[8] = c, b[1] = d ? 8 : 9, "\ufdd0:recur") : 8 === c ? (d = h.call(null), c = i.call(null), b[9] = d, b[2] = c, b[1] = 10, "\ufdd0:recur") : 
+      9 === c ? (b[2] = null, b[1] = 10, "\ufdd0:recur") : 10 === c ? (b[10] = b[2], b[2] = null, b[1] = 2, "\ufdd0:recur") : null
+    }, c = null, d = function() {
+      var a = Array(11);
+      a[0] = c;
+      a[1] = 1;
+      return a
+    }, e = function(a) {
+      for(;;) {
+        var c = b.call(null, a);
+        if("\ufdd0:recur" !== c) {
+          return c
+        }
+      }
+    }, c = function(a) {
+      switch(arguments.length) {
+        case 0:
+          return d.call(this);
+        case 1:
+          return e.call(this, a)
+      }
+      throw Error("Invalid arity: " + arguments.length);
+    };
+    c.cljs$core$IFn$_invoke$arity$0 = d;
+    c.cljs$core$IFn$_invoke$arity$1 = e;
+    var j = c.call(null);
+    j[cljs.core.async.impl.ioc_helpers.USER_START_IDX] = k;
+    return cljs.core.async.impl.ioc_helpers.run_state_machine_wrapped.call(null, j)
+  });
+  return cljs.core.PersistentVector.fromArray([b, c], !0)
+};

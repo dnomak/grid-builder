@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: helvetica;
+}
+
+.col {
+    width: 60px;
+    margin-right: 10px;
+    background: #ccc;
+    height: 100%;
+    float: left;
+}
+
+.col:last-child {
+    margin-right: 0;
+}
+
+.container {
+    position: relative;
+    height: 800px;
+    float: left;
+}
+
+.columns {
+    height: 100%;
+}
+
+.new-row {
+    height: 150px;
+    width: 100%;
+    border: 1px dashed rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 0;
+}
+
+.new-row:hover {
+    background: rgba(255, 0, 0, 0.5);
+}
+
+.medias {
+    float: left;
+}
+.media {
+    width: 150px;
+    height: 100px;
+}
+
+.media h4 {
+    background: #bbb;
+    color: white;
+    padding: 5px;
+    margin: 0;
+    font-weight: normal;
+}

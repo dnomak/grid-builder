@@ -13,7 +13,7 @@
        [:html
          [:head
           [:title "shoelace"]
-          [:link {:rel "stylesheet" :href "css/page.css"}]
+          [:link {:rel "stylesheet" :href "css/shoelace.css"}]
           [:link {:rel "stylesheet" :href "css/bigsky.aui.css"}]]
          [:body]
            [:script {:src "js/cljs.js"}]]))})
