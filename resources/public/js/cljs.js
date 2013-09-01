@@ -14924,6 +14924,14 @@ dommy.core.fire_BANG_ = function() {
   return b
 }();
 var bigsky = {aui:{}};
+bigsky.aui.util = {};
+bigsky.aui.util.event_chan = function(a, b, c) {
+  var d = cljs.core.async.chan.call(null);
+  dommy.core.listen_BANG_.call(null, b, a, function(a) {
+    return cljs.core.async.put_BANG_.call(null, d, cljs.core.PersistentVector.fromArray([c, a], !0))
+  });
+  return d
+};
 bigsky.aui.draggable = {};
 bigsky.aui.draggable.draggable = function() {
   var a = null, b = function(b) {
@@ -15137,77 +15145,153 @@ bigsky.aui.draggable.draggable = function() {
   return a
 }();
 var shoelace = {client:{}};
+shoelace.client.spy = function(a) {
+  console.log("" + cljs.core.str(a));
+  return a
+};
 shoelace.client.body = document.body;
+shoelace.client.id = cljs.core.atom.call(null, 1);
+shoelace.client.new_id_BANG_ = function(a) {
+  cljs.core.swap_BANG_.call(null, shoelace.client.id, cljs.core.inc);
+  return[cljs.core.str(a), cljs.core.str("-"), cljs.core.str(cljs.core.deref.call(null, shoelace.client.id))].join("")
+};
+shoelace.client.settings = cljs.core.atom.call(null, cljs.core.PersistentArrayMap.fromArray(["\ufdd0:media-mode", "\ufdd0:md"], !0));
 shoelace.client.layout = cljs.core.atom.call(null, cljs.core.PersistentVector.EMPTY);
-shoelace.client.add_row = function(a) {
-  return dommy.core.prepend_BANG_.call(null, a, function() {
-    var a = document.createElement("div");
-    a.className = "row";
-    return a
-  }())
+shoelace.client.get_row = function(a) {
+  return cljs.core.first.call(null, cljs.core.filter.call(null, function(b) {
+    return cljs.core._EQ_.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, b), a)
+  }, cljs.core.deref.call(null, shoelace.client.layout)))
+};
+shoelace.client.sizes = cljs.core.PersistentVector.fromArray(["\ufdd0:xs", "\ufdd0:sm", "\ufdd0:md", "\ufdd0:lg"], !0);
+shoelace.client.sizes_index = cljs.core.PersistentArrayMap.fromArray(["\ufdd0:xs", 0, "\ufdd0:sm", 1, "\ufdd0:md", 2, "\ufdd0:lg", 3], !0);
+shoelace.client.sizes_up_to = function(a) {
+  return cljs.core.subvec.call(null, shoelace.client.sizes, 0, shoelace.client.sizes_index.call(null, a) + 1)
+};
+shoelace.client.cols_for_media = function(a, b) {
+  var c = shoelace.client.spy.call(null, cljs.core.reverse.call(null, shoelace.client.sizes_up_to.call(null, b)));
+  return shoelace.client.spy.call(null, cljs.core.map.call(null, function(a) {
+    return cljs.core.first.call(null, cljs.core.keep.call(null, function(b) {
+      return b.call(null, a)
+    }, c))
+  }, a))
+};
+shoelace.client.col_width = 60;
+shoelace.client.col_height = 150;
+shoelace.client.col_margin_width = 10;
+shoelace.client.pt = function(a, b) {
+  return cljs.core.PersistentArrayMap.fromArray(["\ufdd0:x", a, "\ufdd0:y", b], !0)
+};
+shoelace.client.rect = function(a, b, c, d) {
+  return cljs.core.PersistentArrayMap.fromArray(["\ufdd0:p1", shoelace.client.pt.call(null, a, b), "\ufdd0:p2", shoelace.client.pt.call(null, a + c, b), "\ufdd0:p3", shoelace.client.pt.call(null, a + c, b + d), "\ufdd0:p4", shoelace.client.pt.call(null, a, b + d)], !0)
+};
+shoelace.client.pt_in_rect = function(a, b) {
+  var c = (new cljs.core.Keyword("\ufdd0:x")).call(null, a) > (new cljs.core.Keyword("\ufdd0:x")).call(null, (new cljs.core.Keyword("\ufdd0:p1")).call(null, b));
+  return c && (c = (new cljs.core.Keyword("\ufdd0:x")).call(null, a) < (new cljs.core.Keyword("\ufdd0:x")).call(null, (new cljs.core.Keyword("\ufdd0:p2")).call(null, b))) ? (c = (new cljs.core.Keyword("\ufdd0:y")).call(null, a) > (new cljs.core.Keyword("\ufdd0:y")).call(null, (new cljs.core.Keyword("\ufdd0:p1")).call(null, b))) ? (new cljs.core.Keyword("\ufdd0:y")).call(null, a) < (new cljs.core.Keyword("\ufdd0:y")).call(null, (new cljs.core.Keyword("\ufdd0:p3")).call(null, b)) : c : c
+};
+shoelace.client.get_col_containing = function(a, b, c) {
+  return cljs.core.first.call(null, cljs.core.keep_indexed.call(null, function(a, e) {
+    console.log(a);
+    var f = shoelace.client.pt_in_rect.call(null, shoelace.client.pt.call(null, b, c), shoelace.client.rect.call(null, shoelace.client.col_width * e + shoelace.client.col_margin_width * e, 0, shoelace.client.col_width, shoelace.client.col_height));
+    return cljs.core.truth_(f) ? f : null
+  }, shoelace.client.spy.call(null, shoelace.client.cols_for_media.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, a), cljs.core.deref.call(null, shoelace.client.settings).call(null, "\ufdd0:media-mode")))))
+};
+shoelace.client.snap_threshold = 30;
+shoelace.client.add_col_BANG_ = function(a) {
+  var b = shoelace.client.new_id_BANG_.call(null, "col"), c = document.createElement("div");
+  c.className = "col";
+  dommy.core.append_BANG_.call(null, c, "" + cljs.core.str(b));
+  dommy.core.insert_before_BANG_.call(null, c, a);
+  return dommy.core.listen_BANG_.call(null, c, "\ufdd0:mousedown", function(a) {
+    var b = a.x, f = dommy.core.px.call(null, c, "width"), g;
+    g = function(a) {
+      return dommy.core.set_px_BANG_.call(null, c, "\ufdd0:width", f + (a.x - b))
+    };
+    var h = function() {
+      var a = dommy.core.px.call(null, c, "width"), b = shoelace.client.col_margin_width + shoelace.client.col_width, d = cljs.core.quot.call(null, a, b), a = cljs.core.mod.call(null, a, b);
+      return dommy.core.set_px_BANG_.call(null, c, "\ufdd0:width", (a > shoelace.client.snap_threshold ? (d + 1) * b : d * b) - 10)
+    };
+    dommy.core.listen_BANG_.call(null, document, "\ufdd0:mousemove", g);
+    return dommy.core.listen_once_BANG_.call(null, document, "\ufdd0:mouseup", function() {
+      dommy.core.unlisten_BANG_.call(null, document, "\ufdd0:mousemove", g);
+      return h.call(null)
+    })
+  })
+};
+shoelace.client.add_row_BANG_ = function() {
+  var a = shoelace.client.new_id_BANG_.call(null, "row"), b = document.createElement("div");
+  b.className = "row";
+  var c = document.createElement("div");
+  c.className = "new-col";
+  cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.conj, cljs.core.PersistentArrayMap.fromArray(["\ufdd0:id", a, "\ufdd0:pos", cljs.core.count.call(null, cljs.core.deref.call(null, shoelace.client.layout)), "\ufdd0:cols", cljs.core.PersistentVector.EMPTY], !0));
+  dommy.core.insert_before_BANG_.call(null, b, this);
+  dommy.core.append_BANG_.call(null, b, c);
+  return dommy.core.listen_BANG_.call(null, c, "\ufdd0:click", function() {
+    return shoelace.client.add_col_BANG_.call(null, c, a)
+  })
 };
 shoelace.client.draw_workspace = function() {
   var a = document.createElement("div");
   a.className = "workspace";
   var b = document.createElement("div");
-  b.className = "medias";
+  b.className = "toolbar";
   var c = document.createElement("div");
-  c.className = "media media-xs";
-  c.appendChild(function() {
-    var a = document.createElement("h4");
-    a.appendChild(document.createTextNode("@media-xs"));
-    return a
-  }());
+  c.className = "medias";
   var d = document.createElement("div");
-  d.className = "media media-tablet";
+  d.className = "media media-xs";
   d.appendChild(function() {
     var a = document.createElement("h4");
-    a.appendChild(document.createTextNode("@media-tablet"));
+    a.appendChild(document.createTextNode("xs"));
     return a
   }());
   var e = document.createElement("div");
-  e.className = "media media-desktop";
+  e.className = "media media-tablet";
   e.appendChild(function() {
     var a = document.createElement("h4");
-    a.appendChild(document.createTextNode("@media-desktop"));
+    a.appendChild(document.createTextNode("sm - @media-tablet"));
     return a
   }());
   var f = document.createElement("div");
-  f.className = "media media-lg-desktop";
+  f.className = "media media-desktop";
   f.appendChild(function() {
     var a = document.createElement("h4");
-    a.appendChild(document.createTextNode("@media-lg-desktop"));
+    a.appendChild(document.createTextNode("md - @media-desktop"));
     return a
   }());
   var g = document.createElement("div");
-  g.className = "container";
+  g.className = "media media-lg-desktop";
+  g.appendChild(function() {
+    var a = document.createElement("h4");
+    a.appendChild(document.createTextNode("lg - @media-lg-desktop"));
+    return a
+  }());
   var h = document.createElement("div");
-  h.className = "rows";
+  h.className = "container";
   var i = document.createElement("div");
-  i.className = "columns";
-  cljs.core.doall.call(null, cljs.core.map.call(null, function(a, b, c, d, e, f, g, h, i) {
+  i.className = "rows";
+  var j = document.createElement("div");
+  j.className = "columns";
+  cljs.core.doall.call(null, cljs.core.map.call(null, function(a, b, c, d, e, f, g, h, i, j) {
     return function() {
       var a = document.createElement("div");
       a.className = "col";
-      dommy.core.append_BANG_.call(null, i, a);
+      dommy.core.append_BANG_.call(null, j, a);
       return a
     }
-  }(a, b, c, d, e, f, g, h, i), cljs.core.range.call(null, 13)));
-  var j = document.createElement("div");
-  j.className = "row new-row";
-  dommy.core.listen_BANG_.call(null, j, "\ufdd0:click", function() {
-    return shoelace.client.add_row.call(null, h)
-  });
-  dommy.core.append_BANG_.call(null, g, i);
-  dommy.core.append_BANG_.call(null, g, h);
+  }(a, b, c, d, e, f, g, h, i, j), cljs.core.range.call(null, 13)));
+  var k = document.createElement("div");
+  k.className = "row new-row";
+  dommy.core.listen_BANG_.call(null, k, "\ufdd0:click", shoelace.client.add_row_BANG_);
   dommy.core.append_BANG_.call(null, h, j);
-  dommy.core.append_BANG_.call(null, b, c);
-  dommy.core.append_BANG_.call(null, b, d);
-  dommy.core.append_BANG_.call(null, b, e);
-  dommy.core.append_BANG_.call(null, b, f);
-  dommy.core.append_BANG_.call(null, a, b);
-  dommy.core.append_BANG_.call(null, a, g);
-  return dommy.core.append_BANG_.call(null, shoelace.client.body, a)
+  dommy.core.append_BANG_.call(null, h, i);
+  dommy.core.append_BANG_.call(null, i, k);
+  dommy.core.append_BANG_.call(null, c, d);
+  dommy.core.append_BANG_.call(null, c, e);
+  dommy.core.append_BANG_.call(null, c, f);
+  dommy.core.append_BANG_.call(null, c, g);
+  dommy.core.append_BANG_.call(null, a, c);
+  dommy.core.append_BANG_.call(null, a, h);
+  dommy.core.append_BANG_.call(null, shoelace.client.body, a);
+  return dommy.core.append_BANG_.call(null, shoelace.client.body, b)
 };
 shoelace.client.draw_workspace.call(null);
 bigsky.aui.resizable = {};
