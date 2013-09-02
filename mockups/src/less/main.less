@@ -1,0 +1,120 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: hsl(195, 6%, 13%);
+  font-family: @copy;
+  font-weight: @light;
+  font-size: 16px;
+  line-height: 1.6em;
+  color: hsl(0, 0%, 45%);
+
+}
+
+
+// Basic appliaction frame
+header {
+  background-color: hsl(0, 0%, 0%);
+  position: fixed;
+  height: 55px;
+  width: 100%;
+  z-index: 999;
+  min-width: 1000px;
+  border-bottom: 1px solid hsl(0, 0%, 22%);
+}
+
+footer {
+  background-color: hsl(0, 0%, 0%);
+  position: fixed;
+  bottom: 0px;
+  height: 55px;
+  width: 100%;
+  z-index: 999;
+  min-width: 1000px;
+  border-top: 1px solid hsl(0, 0%, 22%);
+}
+
+.application-frame {
+  height: 100%;
+  width: 100%;
+  min-width: 1000px;
+  min-height: 500px;
+  position: relative;
+  border-top: 55px solid hsla(0, 0%, 100%, 0);
+}
+
+.panels-wrapper {
+  position: absolute;
+  height: 100%;
+  left:0px;
+  right:0px;
+}
+
+.navigator {
+  width: 220px;
+  //height: 100%;
+  position: absolute !important;
+  left: 0px;
+  top: 0px;
+  bottom: 55px;
+  white-space: nowrap;
+  //overflow-x: hidden;
+  //overflow-y: hidden;
+  z-index: 1;
+  background-color: hsl(0, 0%, 17%);
+}
+
+.workspace {
+  position: absolute;
+  top: 0px;
+  bottom: 55px;
+  right: 220px;
+  left: 220px;
+}
+
+.html {
+  width: 220px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 55px;
+  background-color: hsl(0, 0%, 0%);
+}
+
+.section-border {
+  width: 5px;
+  border-left: 1px solid hsl(0, 0%, 22%);
+  border-right: 1px solid hsl(0, 0%, 22%);
+  background-color: hsl(0, 0%, 17%);
+  position: absolute;
+  top: 0px;
+  bottom: 55px;
+  &.left {
+    left: 220px;
+  }
+  &.right {
+    right: 220px;
+  }
+}
+
+.collapse-panel {
+  #gradient > .vertical(hsl(0, 0%, 26%), hsl(0, 0%, 19%), 0%, 100%);
+  border: 1px solid hsl(200, 5%, 11%);
+  position: absolute;
+  z-index: 999;
+  top: 0px;
+  width: 30px;
+  height: 30px;
+  color: hsl(0, 0%, 50%);
+  &.left {
+    .border-radius(0px 3px 3px 0px);
+    right: -35px;
+    padding-left: 10px;
+  }
+  &.right {
+    .border-radius(3px 0px 0px 3px);
+    left: -35px;
+    padding-left: 10px;
+  }
+}

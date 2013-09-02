@@ -1,0 +1,720 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"min",
+				"min-width"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"backg",
+				"background-image"
+			],
+			[
+				"li",
+				"li	list li"
+			],
+			[
+				"ul",
+				"ul	HTML - Unordered list"
+			],
+			[
+				"padding",
+				"padding"
+			],
+			[
+				"div",
+				"div	div id"
+			],
+			[
+				"font",
+				"font-style"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"font-",
+				"font-style"
+			],
+			[
+				"border-r",
+				"border-right"
+			],
+			[
+				"pad",
+				"padding-top"
+			],
+			[
+				"margin",
+				"margin-left"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"bacl",
+				"background-color"
+			],
+			[
+				"backgrou",
+				"background-color"
+			],
+			[
+				"mw",
+				"max-width"
+			],
+			[
+				"tex",
+				"text-transform"
+			],
+			[
+				"pa",
+				"padding"
+			],
+			[
+				"backgr",
+				"background-repeat"
+			],
+			[
+				"backgroun",
+				"background-attachment"
+			],
+			[
+				"background-",
+				"background-image"
+			],
+			[
+				"border",
+				"border-left"
+			],
+			[
+				"backgro",
+				"background-color"
+			],
+			[
+				"paddin",
+				"padding-right"
+			],
+			[
+				"scroll",
+				"scrollTop"
+			],
+			[
+				"scro",
+				"scrollTop"
+			],
+			[
+				"fade",
+				"fadeIn"
+			],
+			[
+				"fa",
+				"fadeOut"
+			],
+			[
+				"fad",
+				"fadeIn"
+			],
+			[
+				"listty",
+				"list-style"
+			],
+			[
+				"ui-men",
+				"ui-menu-item"
+			],
+			[
+				"sear",
+				"search-field"
+			],
+			[
+				"list",
+				"list	list-style: type position image"
+			],
+			[
+				"ui-stat",
+				"ui-state-hover"
+			],
+			[
+				"bord",
+				"border-radius"
+			],
+			[
+				"ui",
+				"ui-daterangepickercontain"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 374.0,
+		"selected_items":
+		[
+			[
+				"Snippet: ",
+				"Snippet: HTML - Unordered list"
+			],
+			[
+				"Pacckage",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: Disable Package"
+			]
+		],
+		"width": 543.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/eflowers/Library/Application Support/Sublime Text 2/Packages/User/media.snippet",
+		"/Users/eflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/font-family: families.tmSnippet",
+		"/Users/eflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/font:.tmSnippet",
+		"/Users/eflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/letter-spacing: length.tmSnippet",
+		"/Users/eflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/line-height: length.tmSnippet",
+		"/Users/eflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/margin-bottom.tmSnippet",
+		"/Users/eflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/margin-left.tmSnippet",
+		"/Users/eflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/margin-right.tmSnippet",
+		"/Users/eflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/margin-top.tmSnippet",
+		"/Users/eflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/margin: all.tmSnippet",
+		"/Users/eflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/padding-bottom.tmSnippet",
+		"/Users/eflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/padding-left.tmSnippet",
+		"/Users/eflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/padding-right.tmSnippet",
+		"/Users/eflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/padding-top.tmSnippet",
+		"/Users/eflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/padding: all.tmSnippet",
+		"/Users/eflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/text-indent: length.tmSnippet",
+		"/Users/eflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/word-spacing: length.tmSnippet",
+		"/Users/eflowers/Library/Application Support/Sublime Text 2/Settings/Auto Save Session.sublime_session",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/User/jade-a.sublime-snippet",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/User/font-awesome.xsublime-completions",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/html5.tmbundle/Snippets/(a).tmSnippet",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/User/jade.sublime-snippet",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/User/import.sublime-snippet",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/font-weight: normal.tmSnippet",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/User/hsl.sublime-snippet",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/User/color.sublime-snippet",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/User/hsla.sublime-snippet",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/html5.tmbundle/Preferences/Completions HTML Attributes.tmPreferences",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/color: hex.tmSnippet",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/selection.tmSnippet",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/CSS/CSS.tmLanguage",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/font-weight: bold 2.tmSnippet",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/padding-bottom.tmSnippet",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/margin-bottom.tmSnippet",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/margin-left.tmSnippet",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/margin-top.tmSnippet",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/margin: all.tmSnippet",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/padding-left.tmSnippet",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/margin-right.tmSnippet",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/padding-right.tmSnippet",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/padding-top.tmSnippet",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/mCSS.tmbundle/Snippets/padding: all.tmSnippet",
+		"/Users/erikflowers/Dropbox/UXP Consulting/Jive Dashboard/src/cs/scripts.coffee",
+		"/Users/erikflowers/Dropbox/UXP Consulting/Jive Dashboard/src/head.jade",
+		"/Users/erikflowers/Dropbox/UXP Consulting/Jive Dashboard/src/index.jade",
+		"/Users/erikflowers/Dropbox/UXP Consulting/Jive Dashboard/src/less/breadcrumb.less",
+		"/Users/erikflowers/Dropbox/Eriks Misc/Air Downloads/bootstrap-daterangepicker-master/bootstrap-daterangepicker-master/examples.html",
+		"/Users/erikflowers/Dropbox/UXP Consulting/Jive Dashboard/src/less/mixins.less",
+		"/Users/erikflowers/Dropbox/UXP Consulting/Jive Dashboard/src/less/responsive.less",
+		"/Users/erikflowers/Dropbox/UXP Consulting/Jive Dashboard/src/less/workspace.less",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/BrowserRefresh-Sublime/win/pywinauto/controls/common_controls.py",
+		"/Users/erikflowers/Dropbox/UXP Consulting/Jive Dashboard/src/less/main.less",
+		"/Users/erikflowers/Dropbox/UXP Consulting/Jive Dashboard/src/less/variables.less",
+		"/Users/erikflowers/Dropbox/UXP Consulting/Jive Dashboard/src/header.jade",
+		"/Users/erikflowers/Dropbox/UXP Consulting/Jive Dashboard/src/less/ui-components.less",
+		"/Users/erikflowers/Dropbox/UXP Consulting/Jive Dashboard/src/less/header.less",
+		"/Users/erikflowers/Dropbox/UXP Consulting/Jive Dashboard/src/footer.jade",
+		"/Users/erikflowers/Dropbox/UXP Consulting/Jive Dashboard/src/less/bootstrap/bootstrap.less",
+		"/Users/erikflowers/Desktop/hsl.sublime-snippet",
+		"/Users/erikflowers/Dropbox/UXP Consulting/Jive Dashboard/public/css/styles.min.css",
+		"/Users/erikflowers/Dropbox/UXP Consulting/Jive Dashboard/public/js/example.js",
+		"/Users/erikflowers/Dropbox/UXP Consulting/Jive Dashboard/src/less/sidebar.less",
+		"/Users/erikflowers/Dropbox/UXP Consulting/Jive Dashboard/src/nav.jade",
+		"/Users/erikflowers/Dropbox/UXP Consulting/Jive Dashboard/src/less/styles.less",
+		"/Users/erikflowers/Dropbox/UXP Consulting/Jive Dashboard/src/less/font-awesome.less",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/cs/expander.coffee",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less/portfolio2.less",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/jquery.masonry.js",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/portfolio2.php",
+		"/Users/erikflowers/Dropbox/Eriks Misc/Air Downloads/blueberry/blueberry/_layouts/default.html",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less/responsive-smallest-normal.less",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/HTML/html_completions.py",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less/main.less",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less/home.less",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less/style.less",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/footer.php",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/header.php",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hybrid/library/functions/styles.php",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less/primary-menu.less",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less/mixins.less",
+		"/Users/erikflowers/Desktop/desktop/desktop/hlgwgtaijfhioxlbqnth_e.txt",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less/variables.less",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/page-home4.php",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/Color Scheme - Default/Cobalt copy.tmTheme",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less/footer.less",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less/content.less",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less/style.min.less",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/style.css",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less/portfolio.less",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/cs/sticky-header.coffee",
+		"/Users/erikflowers/Dropbox/Eriks Misc/Air Downloads/products_WB0F35928/documentation/css/bootstrap.css",
+		"/Users/erikflowers/Dropbox/Eriks Misc/Air Downloads/products_WB0F35928/documentation/css/doc.css",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less/gallery.less",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/portfolio.php",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/cs/ipad-disable-sticky.coffee",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less/responsive-collapsed-mobile.less",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/page-home3.php",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/cs/mobile-menu.coffee",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/cs/helloerik.coffee",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/helloerik.js",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less/mobile-nav.less",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/index.php",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/cs/scroll-to-top-button.coffee",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/menu-primary.php",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less/job-history.less",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/job-history.php",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less/bootstrap/bootstrap.less",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less/bootstrap/variables.less",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/about.php",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/singular.php",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/search.php",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/post.php",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/archive.php",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/page.php",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/page-blog.php",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/page-all-posts.php",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/functions.php",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less/expander.less",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/main_widths.php",
+		"/Users/erikflowers/Dropbox/Eriks Misc/Air Downloads/aFarkas-html5shiv-3.6.1-13-ga487592/aFarkas-html5shiv-a487592/src/html5shiv.js",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/erikflowers/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/expander-example.htm",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/expander.php",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less/bootstrap/mixins.less",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less/post-nav-buttons.less",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less/header.less",
+		"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/cs/aside-sticky.coffee"
+	],
+	"find":
+	{
+		"height": 37.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"",
+			"mCSS.tmbundle",
+			"",
+			"/Users/erikflowers/Dropbox/UXP Consulting/Jive Dashboard/src/less,-/bootstrap",
+			"",
+			"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less/bootstrap",
+			"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/",
+			"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less/",
+			"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/",
+			"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less",
+			"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less,-/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less/bootstrap",
+			"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less,-,/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less/bootstrap",
+			"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less",
+			"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/",
+			"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/",
+			"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less",
+			"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs",
+			"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/",
+			"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs/less",
+			"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hello_erik_bs",
+			"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes",
+			"/Users/erikflowers/Dropbox/devsite/helloerik/wp-content/themes/hybrid",
+			"/Users/erikflowers/Dropbox/devsite/wp-content/themes/hybrid/",
+			"/Users/erikflowers/Dropbox/devsite/wp-content/themes/hello_erik_bs/less",
+			"/Users/erikflowers/Dropbox/devsite/",
+			"/Users/erikflowers/Dropbox/devsite/wp-content/themes/hello_erik_bs/",
+			"/Users/erikflowers/Dropbox/devsite/wp-content/themes/hello_erik_bs/less",
+			"",
+			"/Users/eflowers/Dropbox/website/new venafi dot com/",
+			"/Users/eflowers/Dropbox/website/new venafi dot com/src",
+			"/Users/erikflowers/Dropbox/website/new venafi dot com",
+			"/Users/eflowers/Dropbox/website/new venafi dot com",
+			"/Users/eflowers/Dropbox/website/what is flame/websiteV2/src/less",
+			"/Users/eflowers/SelfServicePortal/src/",
+			"/Users/eflowers/SelfServicePortal/src/portal/plugins/Certificates",
+			"/Users/eflowers/SelfServicePortal/src/,/Users/eflowers/SelfServicePortal/src/portal/plugins/Certificates",
+			"/Users/eflowers/SelfServicePortal/src/",
+			"/Users/eflowers/SelfServicePortal/features",
+			"f,/Users/eflowers/SelfServicePortal/features",
+			"/Users/eflowers/SelfServicePortal/src"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"font-weight",
+			"font-family",
+			"text-shadow",
+			":em}",
+			"margin-top",
+			"em",
+			">color<",
+			"color:",
+			"color",
+			">color",
+			">fw",
+			"fw",
+			"em}",
+			">mr",
+			"td test",
+			"td test\n                  td test\n                  td test\n                  td test\n                  td test\n                  td test",
+			"row-fluid",
+			"ul\n                li.value\n                  img(src=\"img/sparkline1.png\")\n                li.title 1123 Calls",
+			".wrapper",
+			"min-height",
+			"relic",
+			".click",
+			"../img",
+			"@headlines",
+			"style.css",
+			"styles.css",
+			"style.min.css",
+			"www.elisabethhubert.com|admin:",
+			"@freight",
+			"@fright",
+			"@light",
+			"@freight",
+			"prox",
+			"@prox",
+			"at2x",
+			"transition",
+			"table",
+			"makeColumn",
+			"sup",
+			"@light",
+			"@ultraLight",
+			"freight",
+			"@white",
+			"dsq_comments_template",
+			"<?php get_template_part(\"main_widths\"); ?>",
+			"design",
+			"principal",
+			"post_box_title",
+			"port_box_title",
+			"thedate",
+			"@prox",
+			"4em",
+			"@light",
+			"@normal",
+			"weight",
+			"jQuery",
+			"section",
+			".scrollup",
+			".stick",
+			"; ",
+			"navbg",
+			"maindate",
+			"main-date",
+			"post_date",
+			"entry",
+			"@mainTextColor",
+			"@paragraph",
+			"color: @black",
+			"color:@black",
+			"color:",
+			"register_sidebar",
+			"Newer Posts",
+			"class=\"navigation-links\"",
+			"jQuery",
+			"navigation",
+			"#content",
+			"min-height: 600px",
+			"lighten(@black, 97%);",
+			"kaffeesatz",
+			"\nkaffeesatz",
+			"meta",
+			"big_header",
+			".big_header",
+			".container",
+			"no-repeat",
+			"post_box_title",
+			".transition",
+			".eric",
+			"continue reading",
+			".transition",
+			".highlight",
+			".entry-content",
+			".clearfix",
+			"display: table",
+			"*zoom: 1",
+			".clearfix",
+			".at2x(",
+			"bigHeader",
+			"url(",
+			"transition",
+			"excerpt",
+			"kaff",
+			"class=\"search-text\"",
+			"class=\"hfeed content\">",
+			".intro",
+			"id=\"secondary\"",
+			"transition",
+			"transitiom",
+			"3.4.2",
+			"ver=3.4.2",
+			"wp_register_script",
+			"jquery.1.7",
+			"jquery",
+			"50px",
+			"aligncenter",
+			"alignCenter",
+			"**\n",
+			"article",
+			"alignleft",
+			" ",
+			"recent",
+			"^\\n",
+			"font-weight: light",
+			"font-weight: semibold",
+			"font-weight: bold",
+			"font-weight: normal",
+			"font-weight:",
+			"allPostsLink"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			":px}",
+			"img",
+			"",
+			"@copy",
+			"<?php get_template_part(\"snippets/main_widths\"); ?>",
+			"$",
+			"",
+			"row-fluid",
+			"bet",
+			"Previous",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.647037797801,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"content",
+				"hello_erik_bs/less/content.less"
+			],
+			[
+				"styles",
+				"hello_erik_bs/less/styles.less"
+			],
+			[
+				"sty",
+				"hello_erik_bs/style.css"
+			],
+			[
+				"hell",
+				"hello_erik_bs/helloerik.coffee"
+			],
+			[
+				"footer",
+				"hello_erik_bs/less/footer.less"
+			],
+			[
+				"footer.les",
+				"hello_erik_bs/less/footer.less"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 208.0,
+	"status_bar_visible": true
+}
