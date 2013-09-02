@@ -7,9 +7,24 @@
   (:require-macros
     [cljs.core.async.macros :refer [go]]
     [dommy.macros :refer [node]]))
+
 (defn spy [x]
   (js/console.log (str x))
   x)
+
+(def col-offset-pos 0)
+
+(def col-width-pos 1)
+
+(def col-width 60)
+
+(def col-height 150)
+
+(def col-margin-width 10)
+
+(def snap-threshold 20)
+
+(def grid-cols 12)
 
 (def body js/document.body)
 
@@ -22,81 +37,98 @@
 (def settings (atom {:media-mode :md}))
 
 (def layout (atom []))
+
+(defn get-by-key
+  [col attr val]
+  (first (filter (fn [i] (= (attr i) val)) col)))
+
+(defn get-by-id
+  [col id]
+  (get-by-key col :id id))
+
 (defn get-row
   [row-id]
-  (first (filter (fn [r] (= (:id r) row-id))
-                 @layout)))
+  (get-by-id @layout row-id))
+
+(defn get-col
+  [row-id col-id]
+  (get-by-id ((get-row row-id) :cols) col-id))
 
 (def sizes [:xs :sm :md :lg])
 
 (def sizes-index {:xs 0 :sm 1 :md 2 :lg 3})
 
-(defn sizes-up-to [max]
-  (subvec sizes 0 (inc (sizes-index max))))
+(defn sizes-up-to
+  [max]
+  (reverse (subvec sizes 0 (inc (sizes-index max)))))
 
-(defn cols-for-media [row media]
-  (let [sizes (spy (reverse (sizes-up-to media)))]
-    (spy (map (fn [col] (first (keep #(% col) sizes)))
-              row))))
+(def sizes-up-to-memo (memoize sizes-up-to))
 
-(def col-width 60)
-(def col-height 150)
-(def col-margin-width 10)
+(defn col-for-media
+  [col media]
+  (first (keep #(% col) (sizes-up-to-memo media))))
 
-(defn pt [x y] {:x x :y y})
-(defn rect [x y w h]
-  {:p1 (pt x y)
-   :p2 (pt (+ x w) y)
-   :p3 (pt (+ x w) (+ y h))
-   :p4 (pt x (+ y h))})
+(defn cols-for-media
+  [row media]
+  (map #(col-for-media % media) (:cols row)))
 
-(defn pt-in-rect [p r]
-  (and (> (:x p) (:x (:p1 r)))
-       (< (:x p) (:x (:p2 r)))
-       (> (:y p) (:y (:p1 r)))
-       (< (:y p) (:y (:p3 r)))))
+(defn total-cols-used
+  [row media]
+  (apply + (flatten (cols-for-media row media))))
 
-
-(defn get-col-containing [row x y]
-  (first (->> (spy (cols-for-media (:cols row)
-                                   (@settings :media-mode)))
-              (keep-indexed
-               (fn [col i]
-                 (js/console.log col)
-                 (or (pt-in-rect (pt x y)
-                                 (rect (+ (* col-width i)
-                                          (* col-margin-width i))
-                                       0
-                                       col-width
-                                       col-height))
-                     nil))))))
-
-(def snap-threshold 30)
-
-(defn add-col! [new-col-el row-id]
+(defn add-col!
+  [cols-el new-col-el row-id]
   (let [col-id (new-id! "col")
-        col (node [:.col])]
-    (dom/append! col (str col-id))
-    (dom/insert-before! col new-col-el)
-    (dom/listen! col :mousedown
+        col-el (node [:.col])
+        row (get-row row-id)
+        total-cols (fn [] (total-cols-used (get-row row-id) (@settings :media-mode)))
+        check-to-hide-new-col (fn [] (if (= grid-cols (total-cols))
+                                      (dom/add-class! new-col-el "hidden")
+                                      (dom/remove-class! new-col-el "hidden")))]
+    (swap! layout update-in [(:pos row) :cols] conj {:id col-id
+                                                     :pos (count (:cols row))
+                                                     (@settings :media-mode) [0 1]})
+    (dom/append! col-el (str col-id))
+    (dom/append! cols-el col-el)
+    (check-to-hide-new-col)
+    (dom/remove-class! new-col-el "no-cols")
+    (dom/listen! col-el :mousedown
                  (fn [e]
                    (let [start-x (aget e "x")
-                         start-w (dom/px col "width")
+                         start-w (dom/px col-el "width")
+                         media (@settings :media-mode)
+                         col-unit (+ col-margin-width col-width)
+                         col (get-col row-id col-id)
+                         cur-cols-used (col-for-media col media)
+                         row (get-row row-id)
+                         max-cols (- grid-cols (total-cols-used row media))
                          snap! (fn []
-                                 (let [w (dom/px col "width")
-                                       base (+ col-margin-width col-width)
-                                       c (quot w base)
-                                       r (mod w base)]
-                                   (dom/set-px! col :width
-                                                (- (if (> r snap-threshold)
-                                                     (* (+ c 1) base)
-                                                     (* c  base)) 10))))
+                                 (let [w (dom/px col-el "width")
+                                       c (quot w col-unit)
+                                       r (mod w col-unit)
+                                       new-width ((if (> r snap-threshold) + max) c 1)]
+                                   (swap! layout assoc-in
+                                          [(:pos row) :cols (:pos col) media col-width-pos]
+                                          new-width)
+                                   (dom/set-px! col-el :width (- (* new-width col-unit) 10))))
+                         valid-step (fn [width]
+                                      (let [c (quot width col-unit)]
+                                        (or
+                                         (< c (cur-cols-used col-width-pos))
+                                         (and (= max-cols 0)
+                                              (< c (cur-cols-used col-width-pos)))
+                                         (and (> c 0)
+                                              (< c (+ max-cols (cur-cols-used col-width-pos)))))))
                          move-handler (fn [e]
-                                        (let [dx (- (aget e "x") start-x)]
-                                          (dom/set-px! col :width (+ start-w dx))))
+                                        (let [dx (- (aget e "x") start-x)
+                                              nw (+ start-w dx)]
+                                          (when (valid-step nw)
+                                            (dom/set-px! col-el :width nw))))
                          stop-handler (fn [e]
                                         (dom/unlisten! js/document :mousemove move-handler)
-                                        (snap!))]
+                                        (snap!)
+                                        (check-to-hide-new-col))]
+                     (dom/add-class! new-col-el "hidden")
                      (dom/listen! js/document :mousemove move-handler)
                      (dom/listen-once! js/document :mouseup stop-handler))))))
 
@@ -104,13 +136,15 @@
   (this-as new-row-el
            (let [row-id (new-id! "row")
                  row (node [:.row])
-                 new-col (node [:.new-col])]
+                 cols (node [:.cols])
+                 new-col (node [:.new-col.no-cols])]
              (swap! layout conj {:id row-id :pos (count @layout) :cols []})
              (dom/insert-before! row new-row-el)
+             (dom/append! row cols)
              (dom/append! row new-col)
              (dom/listen! new-col
                           :click (fn [e]
-                                   (add-col! new-col row-id))))))
+                                   (add-col! cols new-col row-id))))))
 
 (defn draw-workspace []
   (let [workspace (node [:.workspace])
@@ -127,7 +161,7 @@
                            (let [col (node [:.col])]
                              (dom/append! columns col)
                              col))
-                         (range 13)))
+                         (range grid-cols)))
         new-row (node [:.row.new-row])]
     (dom/listen! new-row :click add-row!)
     (dom/append! container columns)

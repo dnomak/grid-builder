@@ -3,6 +3,10 @@ body {
     padding: 0;
     font-family: helvetica;
 }
+.cols {
+    height: 100%;
+    display: inline-block;
+}
 
 .col {
     width: 60px;
@@ -27,7 +31,7 @@ body {
     margin-left: 250px;
     min-height: 3200px;
     height: 100%;
-    width: 900px;
+    width: 840px;
     margin-top: 6em;
 }
 
@@ -82,12 +86,20 @@ body {
 .new-col {
     cursor: pointer;
     width: 50px;
-    margin-left: 4px;
-    margin-top: 5px;
+    margin-left: 14px;
+    margin-bottom: 4px;
     height: 140px;
     border: 1px dashed rgba(0, 0, 0, 0.3);
     background: transparent;
     display: inline-block;
+}
+
+.new-col.no-cols {
+    margin-left: 4px;
+}
+
+.new-col.hidden {
+    display: none;
 }
 
 .new-col:first-child {
