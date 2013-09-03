@@ -12,7 +12,6 @@ body {
 
 }
 
-
 // Basic appliaction frame
 header {
   background-color: hsl(0, 0%, 0%);
@@ -20,7 +19,7 @@ header {
   height: 55px;
   width: 100%;
   z-index: 999;
-  min-width: 1000px;
+  min-width: 1170px;
   border-bottom: 1px solid hsl(0, 0%, 22%);
 }
 
@@ -38,7 +37,7 @@ footer {
 .application-frame {
   height: 100%;
   width: 100%;
-  min-width: 1000px;
+  min-width: 1170px;
   min-height: 500px;
   position: relative;
   border-top: 55px solid hsla(0, 0%, 100%, 0);
@@ -111,10 +110,12 @@ footer {
     .border-radius(0px 3px 3px 0px);
     right: -35px;
     padding-left: 10px;
+    border-left: none;
   }
   &.right {
     .border-radius(3px 0px 0px 3px);
     left: -35px;
     padding-left: 10px;
+    border-right: none;
   }
 }
