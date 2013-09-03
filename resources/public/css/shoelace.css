@@ -14,11 +14,39 @@ body {
     background: #ccc;
     height: 100%;
     float: left;
+    position: relative;
 }
 
-.row .col {
-    cursor: pointer;
+.width {
+    width: 60px;
+    height: 100%;
+    display: inline-block;
     background: rgba(0, 0, 255, 0.5);
+    position: relative;
+    float: left;
+}
+
+.offset {
+    height: 100%;
+    display: inline-block;
+    float: left;
+    background: rgba(0, 255, 0, 0.3);
+}
+
+.offset-handle {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 15px;
+    height: 100%;
+    background: rgba(0,0,0, 0.2);
+}
+
+
+.row .col {
+    width: auto;
+    cursor: pointer;
+    background: transparent;
 }
 
 .col:last-child {

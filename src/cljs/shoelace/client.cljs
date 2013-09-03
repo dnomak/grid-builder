@@ -80,57 +80,69 @@
   [cols-el new-col-el row-id]
   (let [col-id (new-id! "col")
         col-el (node [:.col])
+        offset-el (node [:.offset])
+        width-el (node [:.width])
+        els {:width width-el
+             :offset offset-el}
+        type-pos {:offset 0
+                  :width 1}
+        offset-handle-el (node [:.offset-handle])
         row (get-row row-id)
         total-cols (fn [] (total-cols-used (get-row row-id) (@settings :media-mode)))
         check-to-hide-new-col (fn [] (if (= grid-cols (total-cols))
                                       (dom/add-class! new-col-el "hidden")
-                                      (dom/remove-class! new-col-el "hidden")))]
+                                      (dom/remove-class! new-col-el "hidden")))
+        handle-drag (fn [type e]
+          (.stopPropagation e)
+          (let [start-x (aget e "x")
+                start-w (dom/px (els type) "width")
+                media (@settings :media-mode)
+                col-unit (+ col-margin-width col-width)
+                row (get-row row-id)
+                col (get-col row-id col-id)
+                cur-cols-used (col-for-media col media)
+                max-cols (- grid-cols (total-cols-used row media))
+                snap! (fn []
+                        (let [w (dom/px (els type) "width")
+                              c (quot w col-unit)
+                              r (mod w col-unit)
+                              new-width ((if (> r snap-threshold) + max) c 1)]
+                          (swap! layout assoc-in
+                                 [(:pos row) :cols (:pos col) media (type-pos type)]
+                                 new-width)
+                          (dom/set-px! (els type) :width (- (* new-width col-unit) (if (= type :width) 10 0)))))
+                valid-step (fn [width]
+                             (let [c (quot width col-unit)]
+                               (or
+                                (< c (cur-cols-used (type-pos type)))
+                                (and (= max-cols 0)
+                                     (< c (cur-cols-used (type-pos type))))
+                                (and (or (= type :offset) (> c 0))
+                                     (< c (+ max-cols (cur-cols-used (type-pos type))))))))
+                move-handler (fn [e]
+                               (let [dx (- (aget e "x") start-x)
+                                     nw (+ start-w dx)]
+                                 (when (valid-step nw)
+                                   (dom/set-px! (els type) :width nw))))
+                stop-handler (fn [e]
+                               (dom/unlisten! js/document :mousemove move-handler)
+                               (snap!)
+                               (check-to-hide-new-col))]
+            (dom/add-class! new-col-el "hidden")
+            (dom/listen! js/document :mousemove move-handler)
+            (dom/listen-once! js/document :mouseup stop-handler)))]
+
     (swap! layout update-in [(:pos row) :cols] conj {:id col-id
                                                      :pos (count (:cols row))
                                                      (@settings :media-mode) [0 1]})
-    (dom/append! col-el (str col-id))
+    (dom/append! width-el offset-handle-el)
+    (dom/append! col-el offset-el)
+    (dom/append! col-el width-el)
     (dom/append! cols-el col-el)
     (check-to-hide-new-col)
     (dom/remove-class! new-col-el "no-cols")
-    (dom/listen! col-el :mousedown
-                 (fn [e]
-                   (let [start-x (aget e "x")
-                         start-w (dom/px col-el "width")
-                         media (@settings :media-mode)
-                         col-unit (+ col-margin-width col-width)
-                         col (get-col row-id col-id)
-                         cur-cols-used (col-for-media col media)
-                         row (get-row row-id)
-                         max-cols (- grid-cols (total-cols-used row media))
-                         snap! (fn []
-                                 (let [w (dom/px col-el "width")
-                                       c (quot w col-unit)
-                                       r (mod w col-unit)
-                                       new-width ((if (> r snap-threshold) + max) c 1)]
-                                   (swap! layout assoc-in
-                                          [(:pos row) :cols (:pos col) media col-width-pos]
-                                          new-width)
-                                   (dom/set-px! col-el :width (- (* new-width col-unit) 10))))
-                         valid-step (fn [width]
-                                      (let [c (quot width col-unit)]
-                                        (or
-                                         (< c (cur-cols-used col-width-pos))
-                                         (and (= max-cols 0)
-                                              (< c (cur-cols-used col-width-pos)))
-                                         (and (> c 0)
-                                              (< c (+ max-cols (cur-cols-used col-width-pos)))))))
-                         move-handler (fn [e]
-                                        (let [dx (- (aget e "x") start-x)
-                                              nw (+ start-w dx)]
-                                          (when (valid-step nw)
-                                            (dom/set-px! col-el :width nw))))
-                         stop-handler (fn [e]
-                                        (dom/unlisten! js/document :mousemove move-handler)
-                                        (snap!)
-                                        (check-to-hide-new-col))]
-                     (dom/add-class! new-col-el "hidden")
-                     (dom/listen! js/document :mousemove move-handler)
-                     (dom/listen-once! js/document :mouseup stop-handler))))))
+    (dom/listen! offset-handle-el :mousedown #(handle-drag :offset %))
+    (dom/listen! width-el :mousedown #(handle-drag :width %))))
 
 (defn add-row! []
   (this-as new-row-el
