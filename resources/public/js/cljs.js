@@ -15232,9 +15232,10 @@ shoelace.client.add_col_BANG_ = function(a, b, c) {
       return cljs.core.truth_(x.call(null, b)) ? dommy.core.set_px_BANG_.call(null, h.call(null, a), "\ufdd0:width", b) : null
     };
     var y = function() {
-      var b = dommy.core.px.call(null, h.call(null, a), "width"), c = cljs.core.quot.call(null, b, k), b = (cljs.core.mod.call(null, b, k) > shoelace.client.snap_threshold ? cljs.core._PLUS_ : cljs.core.max).call(null, c, 1);
-      cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, l), "\ufdd0:cols", (new cljs.core.Keyword("\ufdd0:pos")).call(null, n), j, i.call(null, a)], !0), b);
-      return dommy.core.set_px_BANG_.call(null, h.call(null, a), "\ufdd0:width", b * k - (cljs.core._EQ_.call(null, a, "\ufdd0:width") ? 10 : 0))
+      var b = (cljs.core._EQ_.call(null, a, "\ufdd0:offset") ? 10 : 0) + dommy.core.px.call(null, h.call(null, a), "width"), c = cljs.core.quot.call(null, b, k), d = cljs.core.mod.call(null, b, k), e = cljs.core._EQ_.call(null, a, "\ufdd0:offset") ? 0 < c ? c : 0 : (d > shoelace.client.snap_threshold ? cljs.core._PLUS_ : cljs.core.max).call(null, c, 1);
+      shoelace.client.spy.call(null, cljs.core.PersistentVector.fromArray([b, c, d], !0));
+      cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, l), "\ufdd0:cols", (new cljs.core.Keyword("\ufdd0:pos")).call(null, n), j, i.call(null, a)], !0), e);
+      return dommy.core.set_px_BANG_.call(null, h.call(null, a), "\ufdd0:width", e * k - (cljs.core._EQ_.call(null, a, "\ufdd0:width") ? 10 : 0))
     };
     dommy.core.add_class_BANG_.call(null, b, "hidden");
     dommy.core.listen_BANG_.call(null, document, "\ufdd0:mousemove", w);
@@ -15252,6 +15253,9 @@ shoelace.client.add_col_BANG_ = function(a, b, c) {
   m.call(null);
   dommy.core.remove_class_BANG_.call(null, b, "no-cols");
   dommy.core.listen_BANG_.call(null, j, "\ufdd0:mousedown", function(a) {
+    return n.call(null, "\ufdd0:offset", a)
+  });
+  dommy.core.listen_BANG_.call(null, f, "\ufdd0:mousedown", function(a) {
     return n.call(null, "\ufdd0:offset", a)
   });
   return dommy.core.listen_BANG_.call(null, g, "\ufdd0:mousedown", function(a) {

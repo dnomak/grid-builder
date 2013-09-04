@@ -103,10 +103,15 @@
                 cur-cols-used (col-for-media col media)
                 max-cols (- grid-cols (total-cols-used row media))
                 snap! (fn []
-                        (let [w (dom/px (els type) "width")
+                        (let [w (+ (if (= type :offset) 10 0)
+                                   (dom/px (els type) "width"))
                               c (quot w col-unit)
                               r (mod w col-unit)
-                              new-width ((if (> r snap-threshold) + max) c 1)]
+                              new-width (if (= type :offset)
+                                          (max c 0)
+                                          ((if (> r snap-threshold) + max) c 1))]
+
+                          (spy [w c r])
                           (swap! layout assoc-in
                                  [(:pos row) :cols (:pos col) media (type-pos type)]
                                  new-width)
@@ -142,6 +147,7 @@
     (check-to-hide-new-col)
     (dom/remove-class! new-col-el "no-cols")
     (dom/listen! offset-handle-el :mousedown #(handle-drag :offset %))
+    (dom/listen! offset-el :mousedown #(handle-drag :offset %))
     (dom/listen! width-el :mousedown #(handle-drag :width %))))
 
 (defn add-row! []
