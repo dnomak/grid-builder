@@ -194,7 +194,7 @@
 
 (defn draw-workspace []
   (let [workspace (node [:.workspace])
-        toolbar (node [:.toolbar])
+        toolbar (node [:.toolbar [:.title "shoelace"]])
         medias (node [:.medias])
         media-xs (node [:.media.media-xs [:h4 "xs"]])
         media-tablet (node [:.media.media-tablet [:h4 "sm - @media-tablet"]])

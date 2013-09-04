@@ -15318,6 +15318,12 @@ shoelace.client.draw_workspace = function() {
   a.className = "workspace";
   var b = document.createElement("div");
   b.className = "toolbar";
+  b.appendChild(function() {
+    var a = document.createElement("div");
+    a.className = "title";
+    a.appendChild(document.createTextNode("shoelace"));
+    return a
+  }());
   var c = document.createElement("div");
   c.className = "medias";
   var d = document.createElement("div");

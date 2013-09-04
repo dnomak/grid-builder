@@ -96,6 +96,11 @@ body {
     background: #333;
 }
 
+.toolbar .title {
+    color: white;
+    padding: 5px;
+}
+
 .rows {
     min-width: 830px;
     position: absolute;
