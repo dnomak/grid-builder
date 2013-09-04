@@ -1,12 +1,13 @@
 (ns shoelace.client
   (:require
-    [dommy.core :as dom]
-    [cljs.core.async :refer [>! <! chan sliding-buffer]]
-    [bigsky.aui.util :refer [event-chan]]
-    [bigsky.aui.draggable :refer [draggable]])
+   [dommy.core :as dom]
+   [dommy.utils :refer [dissoc-in]]
+   [cljs.core.async :refer [>! <! chan sliding-buffer]]
+   [bigsky.aui.util :refer [event-chan]]
+   [bigsky.aui.draggable :refer [draggable]])
   (:require-macros
-    [cljs.core.async.macros :refer [go]]
-    [dommy.macros :refer [node]]))
+   [cljs.core.async.macros :refer [go]]
+   [dommy.macros :refer [node sel1]]))
 
 (defn spy [x]
   (js/console.log (str x))
@@ -32,9 +33,10 @@
 
 (defn new-id! [prefix]
   (swap! id inc)
-  (str prefix "-" @id))
+  (keyword (str prefix "-" @id)))
 
-(def settings (atom {:media-mode :md}))
+(def settings (atom {:media-mode :md
+                     :active-col :none}))
 
 (def layout (atom []))
 
@@ -76,11 +78,15 @@
   [row media]
   (apply + (flatten (cols-for-media row media))))
 
+(defn get-el [id]
+  (sel1 (keyword (str "#" (name id)))))
+
 (defn add-col!
   [e cols-el new-col-el row-id]
-  (let [col-id (new-id! "col")
-        col-el (node [:.col])
+  (let [col-id (new-id! 'col)
+        col-el (node [:.col {:id (name col-id)}])
         offset-el (node [:.offset])
+        remove-el (node [:.remove "remove"])
         width-el (node [:.width])
         els {:width width-el
              :offset offset-el}
@@ -90,10 +96,28 @@
         row (get-row row-id)
         total-cols (fn [] (total-cols-used (get-row row-id) (@settings :media-mode)))
         check-to-hide-new-col (fn [] (if (= grid-cols (total-cols))
-                                      (dom/add-class! new-col-el "hidden")
-                                      (dom/remove-class! new-col-el "hidden")))
+                                      (dom/add-class! new-col-el :hidden)
+                                      (dom/remove-class! new-col-el :hidden)))
+        active-col (fn [e]
+                     (.stopPropagation e)
+                     (when (not (= (:active-col @settings) :none))
+                       (dom/remove-class! (get-el (:active-col @settings)) :active))
+                     (swap! settings assoc :active-col col-id)
+                     (dom/add-class! col-el :active))
+        handle-remove (fn [e]
+                        (.stopPropagation e)
+                        (let [row (get-row row-id)]
+                          (swap! settings assoc :active-col :none)
+                          (swap! layout assoc-in
+                                 [(:pos row) :cols]
+                                 (into [] (map-indexed (fn [i c] (assoc c :pos i))
+                                                       (filter (fn [c] (not (= (:id c) col-id)))
+                                                               (get-in @layout [(:pos row) :cols])))))
+                          (dom/remove! col-el)
+                          (check-to-hide-new-col)))
         handle-drag (fn [type e]
           (.stopPropagation e)
+          (active-col e)
           (let [start-x (aget e "x")
                 start-w (dom/px (els type) "width")
                 media (@settings :media-mode)
@@ -143,12 +167,15 @@
     (dom/append! width-el offset-handle-el)
     (dom/append! col-el offset-el)
     (dom/append! col-el width-el)
+    (dom/append! col-el remove-el)
     (dom/append! cols-el col-el)
     (check-to-hide-new-col)
     (dom/remove-class! new-col-el "no-cols")
+    (dom/listen! remove-el :mousedown #(handle-remove %))
     (dom/listen! offset-handle-el :mousedown #(handle-drag :offset %))
     (dom/listen! offset-el :mousedown #(handle-drag :offset %))
     (dom/listen! width-el :mousedown #(handle-drag :width %))
+
     (handle-drag :width e)))
 
 (defn add-row! []
@@ -195,4 +222,8 @@
     (dom/append! body workspace)
     (dom/append! body toolbar)))
 
+(dom/listen! js/document :mousedown (fn []
+                           (when (not (= (:active-col @settings) :none))
+                             (dom/remove-class! (get-el (:active-col @settings)) :active))
+                           (swap! settings assoc :active-col :none)))
 (draw-workspace)

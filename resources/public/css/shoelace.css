@@ -17,6 +17,23 @@ body {
     position: relative;
 }
 
+.col.active .remove {
+    display: block;
+}
+
+.remove {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: none;
+    background: rgba(255, 0, 0, 0.6);
+    color: white;
+    padding: 5px;
+    font-size: 80%;
+    width: calc(100% - 10px);
+    text-align: center;
+}
+
 .width {
     width: 60px;
     height: 100%;
