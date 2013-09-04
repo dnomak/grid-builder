@@ -77,7 +77,7 @@
   (apply + (flatten (cols-for-media row media))))
 
 (defn add-col!
-  [cols-el new-col-el row-id]
+  [e cols-el new-col-el row-id]
   (let [col-id (new-id! "col")
         col-el (node [:.col])
         offset-el (node [:.offset])
@@ -110,8 +110,6 @@
                               new-width (if (= type :offset)
                                           (max c 0)
                                           ((if (> r snap-threshold) + max) c 1))]
-
-                          (spy [w c r])
                           (swap! layout assoc-in
                                  [(:pos row) :cols (:pos col) media (type-pos type)]
                                  new-width)
@@ -148,7 +146,8 @@
     (dom/remove-class! new-col-el "no-cols")
     (dom/listen! offset-handle-el :mousedown #(handle-drag :offset %))
     (dom/listen! offset-el :mousedown #(handle-drag :offset %))
-    (dom/listen! width-el :mousedown #(handle-drag :width %))))
+    (dom/listen! width-el :mousedown #(handle-drag :width %))
+    (handle-drag :width e)))
 
 (defn add-row! []
   (this-as new-row-el
@@ -161,8 +160,8 @@
              (dom/append! row cols)
              (dom/append! row new-col)
              (dom/listen! new-col
-                          :click (fn [e]
-                                   (add-col! cols new-col row-id))))))
+                          :mousedown (fn [e]
+                                       (add-col! e cols new-col row-id))))))
 
 (defn draw-workspace []
   (let [workspace (node [:.workspace])
