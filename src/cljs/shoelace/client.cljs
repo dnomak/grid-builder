@@ -102,6 +102,7 @@
                 col (get-col row-id col-id)
                 cur-cols-used (col-for-media col media)
                 max-cols (- grid-cols (total-cols-used row media))
+                max-width (- (* (+ (cur-cols-used (type-pos type)) max-cols) col-unit) 10)
                 snap! (fn []
                         (let [w (+ (if (= type :offset) 10 0)
                                    (dom/px (els type) "width"))
@@ -124,7 +125,8 @@
                                      (< c (+ max-cols (cur-cols-used (type-pos type))))))))
                 move-handler (fn [e]
                                (let [dx (- (aget e "x") start-x)
-                                     nw (+ start-w dx)]
+                                     sdx (+ start-w dx)
+                                     nw (if (> sdx  max-width) max-width sdx)]
                                  (when (valid-step nw)
                                    (dom/set-px! (els type) :width nw))))
                 stop-handler (fn [e]

@@ -1714,61 +1714,61 @@ cljs.core._invoke = function() {
       throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
     }
     return z.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, r, q, p, s, t, u)
-  }, B = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, r, q, p, s, t, u, z) {
-    var B;
-    B = a ? a.cljs$core$IFn$_invoke$arity$21 : a;
-    if(B) {
+  }, C = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, r, q, p, s, t, u, z) {
+    var C;
+    C = a ? a.cljs$core$IFn$_invoke$arity$21 : a;
+    if(C) {
       return a.cljs$core$IFn$_invoke$arity$21(a, b, c, d, e, f, g, h, i, j, k, l, m, n, r, q, p, s, t, u, z)
     }
-    B = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
-    if(!B && (B = cljs.core._invoke._, !B)) {
+    C = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
+    if(!C && (C = cljs.core._invoke._, !C)) {
       throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
     }
-    return B.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, r, q, p, s, t, u, z)
-  }, a = function(a, x, v, w, y, A, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q) {
+    return C.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, r, q, p, s, t, u, z)
+  }, a = function(a, y, v, w, x, A, B, D, E, F, G, H, I, J, K, L, M, N, O, P, Q) {
     switch(arguments.length) {
       case 1:
         return b.call(this, a);
       case 2:
-        return c.call(this, a, x);
+        return c.call(this, a, y);
       case 3:
-        return d.call(this, a, x, v);
+        return d.call(this, a, y, v);
       case 4:
-        return e.call(this, a, x, v, w);
+        return e.call(this, a, y, v, w);
       case 5:
-        return f.call(this, a, x, v, w, y);
+        return f.call(this, a, y, v, w, x);
       case 6:
-        return g.call(this, a, x, v, w, y, A);
+        return g.call(this, a, y, v, w, x, A);
       case 7:
-        return h.call(this, a, x, v, w, y, A, C);
+        return h.call(this, a, y, v, w, x, A, B);
       case 8:
-        return i.call(this, a, x, v, w, y, A, C, D);
+        return i.call(this, a, y, v, w, x, A, B, D);
       case 9:
-        return j.call(this, a, x, v, w, y, A, C, D, E);
+        return j.call(this, a, y, v, w, x, A, B, D, E);
       case 10:
-        return k.call(this, a, x, v, w, y, A, C, D, E, F);
+        return k.call(this, a, y, v, w, x, A, B, D, E, F);
       case 11:
-        return l.call(this, a, x, v, w, y, A, C, D, E, F, G);
+        return l.call(this, a, y, v, w, x, A, B, D, E, F, G);
       case 12:
-        return m.call(this, a, x, v, w, y, A, C, D, E, F, G, H);
+        return m.call(this, a, y, v, w, x, A, B, D, E, F, G, H);
       case 13:
-        return n.call(this, a, x, v, w, y, A, C, D, E, F, G, H, I);
+        return n.call(this, a, y, v, w, x, A, B, D, E, F, G, H, I);
       case 14:
-        return p.call(this, a, x, v, w, y, A, C, D, E, F, G, H, I, J);
+        return p.call(this, a, y, v, w, x, A, B, D, E, F, G, H, I, J);
       case 15:
-        return q.call(this, a, x, v, w, y, A, C, D, E, F, G, H, I, J, K);
+        return q.call(this, a, y, v, w, x, A, B, D, E, F, G, H, I, J, K);
       case 16:
-        return r.call(this, a, x, v, w, y, A, C, D, E, F, G, H, I, J, K, L);
+        return r.call(this, a, y, v, w, x, A, B, D, E, F, G, H, I, J, K, L);
       case 17:
-        return s.call(this, a, x, v, w, y, A, C, D, E, F, G, H, I, J, K, L, M);
+        return s.call(this, a, y, v, w, x, A, B, D, E, F, G, H, I, J, K, L, M);
       case 18:
-        return t.call(this, a, x, v, w, y, A, C, D, E, F, G, H, I, J, K, L, M, N);
+        return t.call(this, a, y, v, w, x, A, B, D, E, F, G, H, I, J, K, L, M, N);
       case 19:
-        return u.call(this, a, x, v, w, y, A, C, D, E, F, G, H, I, J, K, L, M, N, O);
+        return u.call(this, a, y, v, w, x, A, B, D, E, F, G, H, I, J, K, L, M, N, O);
       case 20:
-        return z.call(this, a, x, v, w, y, A, C, D, E, F, G, H, I, J, K, L, M, N, O, P);
+        return z.call(this, a, y, v, w, x, A, B, D, E, F, G, H, I, J, K, L, M, N, O, P);
       case 21:
-        return B.call(this, a, x, v, w, y, A, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q)
+        return C.call(this, a, y, v, w, x, A, B, D, E, F, G, H, I, J, K, L, M, N, O, P, Q)
     }
     throw Error("Invalid arity: " + arguments.length);
   };
@@ -1792,7 +1792,7 @@ cljs.core._invoke = function() {
   a.cljs$core$IFn$_invoke$arity$18 = t;
   a.cljs$core$IFn$_invoke$arity$19 = u;
   a.cljs$core$IFn$_invoke$arity$20 = z;
-  a.cljs$core$IFn$_invoke$arity$21 = B;
+  a.cljs$core$IFn$_invoke$arity$21 = C;
   return a
 }();
 cljs.core.ICounted = {};
@@ -5959,10 +5959,10 @@ cljs.core.apply_to = function(a, b, c) {
   if(19 === b) {
     return a.cljs$core$IFn$_invoke$arity$19 ? a.cljs$core$IFn$_invoke$arity$19(c, d, e, f, g, a, h, i, j, k, l, m, n, p, q, r, s, t, u) : a.call(null, c, d, e, f, g, a, h, i, j, k, l, m, n, p, q, r, s, t, u)
   }
-  var B = cljs.core._first.call(null, z);
+  var C = cljs.core._first.call(null, z);
   cljs.core._rest.call(null, z);
   if(20 === b) {
-    return a.cljs$core$IFn$_invoke$arity$20 ? a.cljs$core$IFn$_invoke$arity$20(c, d, e, f, g, a, h, i, j, k, l, m, n, p, q, r, s, t, u, B) : a.call(null, c, d, e, f, g, a, h, i, j, k, l, m, n, p, q, r, s, t, u, B)
+    return a.cljs$core$IFn$_invoke$arity$20 ? a.cljs$core$IFn$_invoke$arity$20(c, d, e, f, g, a, h, i, j, k, l, m, n, p, q, r, s, t, u, C) : a.call(null, c, d, e, f, g, a, h, i, j, k, l, m, n, p, q, r, s, t, u, C)
   }
   throw Error("Only up to 20 arguments supported on functions");
 };
@@ -14854,8 +14854,8 @@ dommy.core.listen_once_BANG_ = function() {
       if(h < g) {
         var i = cljs.core._nth.call(null, f, h), j = cljs.core.nth.call(null, i, 0, null), k = cljs.core.nth.call(null, i, 1, null);
         dommy.core.listen_BANG_.call(null, a, j, function(b, d, e, f, g, h, i) {
-          return function B(b) {
-            dommy.core.unlisten_BANG_.call(null, a, h, B);
+          return function C(b) {
+            dommy.core.unlisten_BANG_.call(null, a, h, C);
             return i.call(null, b)
           }
         }(e, f, g, h, i, j, k));
@@ -14868,8 +14868,8 @@ dommy.core.listen_once_BANG_ = function() {
           }else {
             var k = cljs.core.first.call(null, i), l = cljs.core.nth.call(null, k, 0, null), m = cljs.core.nth.call(null, k, 1, null);
             dommy.core.listen_BANG_.call(null, a, l, function(b, d, e, f, g, h, i) {
-              return function B(b) {
-                dommy.core.unlisten_BANG_.call(null, a, h, B);
+              return function C(b) {
+                dommy.core.unlisten_BANG_.call(null, a, h, C);
                 return i.call(null, b)
               }
             }(e, f, g, h, k, l, m, i, j));
@@ -15215,7 +15215,8 @@ shoelace.client.add_col_BANG_ = function(a, b, c, d) {
   var p;
   p = function(a, b) {
     b.stopPropagation();
-    var f = b.x, g = dommy.core.px.call(null, i.call(null, a), "width"), h = cljs.core.deref.call(null, shoelace.client.settings).call(null, "\ufdd0:media-mode"), k = shoelace.client.col_margin_width + shoelace.client.col_width, l = shoelace.client.get_row.call(null, d), m = shoelace.client.get_col.call(null, d, e), p = shoelace.client.col_for_media.call(null, m, h), v = shoelace.client.grid_cols - shoelace.client.total_cols_used.call(null, l, h), w, y = function(b) {
+    var f = b.x, g = dommy.core.px.call(null, i.call(null, a), "width"), h = cljs.core.deref.call(null, shoelace.client.settings).call(null, "\ufdd0:media-mode"), k = shoelace.client.col_margin_width + shoelace.client.col_width, l = shoelace.client.get_row.call(null, d), m = shoelace.client.get_col.call(null, d, e), p = shoelace.client.col_for_media.call(null, m, h), v = shoelace.client.grid_cols - shoelace.client.total_cols_used.call(null, l, h), w = (p.call(null, j.call(null, a)) + v) * k - 10, 
+    x, A = function(b) {
       var b = cljs.core.quot.call(null, b, k), c = b < p.call(null, j.call(null, a));
       if(c) {
         return c
@@ -15227,20 +15228,21 @@ shoelace.client.add_col_BANG_ = function(a, b, c, d) {
       c = (c = cljs.core._EQ_.call(null, a, "\ufdd0:offset")) ? c : 0 < b;
       return cljs.core.truth_(c) ? b < v + p.call(null, j.call(null, a)) : c
     };
-    w = function(b) {
+    x = function(b) {
       b = g + (b.x - f);
-      return cljs.core.truth_(y.call(null, b)) ? dommy.core.set_px_BANG_.call(null, i.call(null, a), "\ufdd0:width", b) : null
+      b = b > w ? w : b;
+      return cljs.core.truth_(A.call(null, b)) ? dommy.core.set_px_BANG_.call(null, i.call(null, a), "\ufdd0:width", b) : null
     };
-    var A = function() {
+    var B = function() {
       var b = (cljs.core._EQ_.call(null, a, "\ufdd0:offset") ? 10 : 0) + dommy.core.px.call(null, i.call(null, a), "width"), c = cljs.core.quot.call(null, b, k), b = cljs.core.mod.call(null, b, k), c = cljs.core._EQ_.call(null, a, "\ufdd0:offset") ? 0 < c ? c : 0 : (b > shoelace.client.snap_threshold ? cljs.core._PLUS_ : cljs.core.max).call(null, c, 1);
       cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, l), "\ufdd0:cols", (new cljs.core.Keyword("\ufdd0:pos")).call(null, m), h, j.call(null, a)], !0), c);
       return dommy.core.set_px_BANG_.call(null, i.call(null, a), "\ufdd0:width", c * k - (cljs.core._EQ_.call(null, a, "\ufdd0:width") ? 10 : 0))
     };
     dommy.core.add_class_BANG_.call(null, c, "hidden");
-    dommy.core.listen_BANG_.call(null, document, "\ufdd0:mousemove", w);
+    dommy.core.listen_BANG_.call(null, document, "\ufdd0:mousemove", x);
     return dommy.core.listen_once_BANG_.call(null, document, "\ufdd0:mouseup", function() {
-      dommy.core.unlisten_BANG_.call(null, document, "\ufdd0:mousemove", w);
-      A.call(null);
+      dommy.core.unlisten_BANG_.call(null, document, "\ufdd0:mousemove", x);
+      B.call(null);
       return n.call(null)
     })
   };
