@@ -200,6 +200,7 @@
         media-tablet (node [:.media.media-tablet [:h4 "sm - @media-tablet"]])
         media-desktop (node [:.media.media-desktop [:h4 "md - @media-desktop"]])
         media-lg-desktop (node [:.media.media-lg-desktop [:h4 "lg - @media-lg-desktop"]])
+        output (node [:.output])
         container (node [:.container])
         rows (node [:.rows])
         columns (node [:.columns])
@@ -209,6 +210,9 @@
                              col))
                          (range grid-cols)))
         new-row (node [:.row.new-row])]
+    (add-watch layout :update-output
+               (fn [k r os ns]
+                 (dom/set-text! output (str (map (fn [r] (map (fn [c] (dissoc c :id :pos)) (:cols r))) ns)))))
     (dom/listen! new-row :click add-row!)
     (dom/append! container columns)
     (dom/append! container rows)
@@ -219,6 +223,7 @@
     (dom/append! medias media-lg-desktop)
     (dom/append! workspace medias)
     (dom/append! workspace container)
+    (dom/append! workspace output)
     (dom/append! body workspace)
     (dom/append! body toolbar)))
 

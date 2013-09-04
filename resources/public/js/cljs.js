@@ -7013,7 +7013,7 @@ cljs.core.some_fn = function() {
       }
       e = b.call(null, f);
       return cljs.core.truth_(e) ? e : c.call(null, f)
-    }, n = function(e, f, k, l) {
+    }, n = function(e, f, k, m) {
       e = d.call(null, e, f, k);
       return cljs.core.truth_(e) ? e : cljs.core.some.call(null, function(d) {
         var e = a.call(null, d);
@@ -7022,7 +7022,7 @@ cljs.core.some_fn = function() {
         }
         e = b.call(null, d);
         return cljs.core.truth_(e) ? e : c.call(null, d)
-      }, l)
+      }, m)
     }, p = function(a, b, c, d) {
       var e = null;
       3 < arguments.length && (e = cljs.core.array_seq(Array.prototype.slice.call(arguments, 3), 0));
@@ -15245,7 +15245,7 @@ shoelace.client.add_col_BANG_ = function(a, b, c, d) {
   s = function(a, b) {
     b.stopPropagation();
     r.call(null, b);
-    var f = b.x, g = dommy.core.px.call(null, j.call(null, a), "width"), h = cljs.core.deref.call(null, shoelace.client.settings).call(null, "\ufdd0:media-mode"), i = shoelace.client.col_margin_width + shoelace.client.col_width, l = shoelace.client.get_row.call(null, d), m = shoelace.client.get_col.call(null, d, e), n = shoelace.client.col_for_media.call(null, m, h), q = shoelace.client.grid_cols - shoelace.client.total_cols_used.call(null, l, h), s = (n.call(null, k.call(null, a)) + q) * i - 10, 
+    var f = b.x, g = dommy.core.px.call(null, j.call(null, a), "width"), h = cljs.core.deref.call(null, shoelace.client.settings).call(null, "\ufdd0:media-mode"), i = shoelace.client.col_margin_width + shoelace.client.col_width, m = shoelace.client.get_row.call(null, d), l = shoelace.client.get_col.call(null, d, e), n = shoelace.client.col_for_media.call(null, l, h), q = shoelace.client.grid_cols - shoelace.client.total_cols_used.call(null, m, h), s = (n.call(null, k.call(null, a)) + q) * i - 10, 
     z, E = function(b) {
       var b = cljs.core.quot.call(null, b, i), c = b < n.call(null, k.call(null, a));
       if(c) {
@@ -15265,7 +15265,7 @@ shoelace.client.add_col_BANG_ = function(a, b, c, d) {
     };
     var F = function() {
       var b = (cljs.core._EQ_.call(null, a, "\ufdd0:offset") ? 10 : 0) + dommy.core.px.call(null, j.call(null, a), "width"), c = cljs.core.quot.call(null, b, i), b = cljs.core.mod.call(null, b, i), c = cljs.core._EQ_.call(null, a, "\ufdd0:offset") ? 0 < c ? c : 0 : (b > shoelace.client.snap_threshold ? cljs.core._PLUS_ : cljs.core.max).call(null, c, 1);
-      cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, l), "\ufdd0:cols", (new cljs.core.Keyword("\ufdd0:pos")).call(null, m), h, k.call(null, a)], !0), c);
+      cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, m), "\ufdd0:cols", (new cljs.core.Keyword("\ufdd0:pos")).call(null, l), h, k.call(null, a)], !0), c);
       return dommy.core.set_px_BANG_.call(null, j.call(null, a), "\ufdd0:width", c * i - (cljs.core._EQ_.call(null, a, "\ufdd0:width") ? 10 : 0))
     };
     dommy.core.add_class_BANG_.call(null, c, "hidden");
@@ -15355,30 +15355,40 @@ shoelace.client.draw_workspace = function() {
     return a
   }());
   var h = document.createElement("div");
-  h.className = "container";
+  h.className = "output";
   var i = document.createElement("div");
-  i.className = "rows";
+  i.className = "container";
   var j = document.createElement("div");
-  j.className = "columns";
-  cljs.core.doall.call(null, cljs.core.map.call(null, function(a, b, c, d, e, f, g, h, i, j) {
+  j.className = "rows";
+  var k = document.createElement("div");
+  k.className = "columns";
+  cljs.core.doall.call(null, cljs.core.map.call(null, function(a, b, c, d, e, f, g, h, i, j, k) {
     return function() {
       var a = document.createElement("div");
       a.className = "col";
-      dommy.core.append_BANG_.call(null, j, a);
+      dommy.core.append_BANG_.call(null, k, a);
       return a
     }
-  }(a, b, c, d, e, f, g, h, i, j), cljs.core.range.call(null, shoelace.client.grid_cols)));
-  var k = document.createElement("div");
-  k.className = "row new-row";
-  dommy.core.listen_BANG_.call(null, k, "\ufdd0:click", shoelace.client.add_row_BANG_);
-  dommy.core.append_BANG_.call(null, h, j);
-  dommy.core.append_BANG_.call(null, h, i);
+  }(a, b, c, d, e, f, g, h, i, j, k), cljs.core.range.call(null, shoelace.client.grid_cols)));
+  var l = document.createElement("div");
+  l.className = "row new-row";
+  cljs.core.add_watch.call(null, shoelace.client.layout, "\ufdd0:update-output", function(a, b, c, d) {
+    return dommy.core.set_text_BANG_.call(null, h, "" + cljs.core.str(cljs.core.map.call(null, function(a) {
+      return cljs.core.map.call(null, function(a) {
+        return cljs.core.dissoc.call(null, a, "\ufdd0:id", "\ufdd0:pos")
+      }, (new cljs.core.Keyword("\ufdd0:cols")).call(null, a))
+    }, d)))
+  });
+  dommy.core.listen_BANG_.call(null, l, "\ufdd0:click", shoelace.client.add_row_BANG_);
   dommy.core.append_BANG_.call(null, i, k);
+  dommy.core.append_BANG_.call(null, i, j);
+  dommy.core.append_BANG_.call(null, j, l);
   dommy.core.append_BANG_.call(null, c, d);
   dommy.core.append_BANG_.call(null, c, e);
   dommy.core.append_BANG_.call(null, c, f);
   dommy.core.append_BANG_.call(null, c, g);
   dommy.core.append_BANG_.call(null, a, c);
+  dommy.core.append_BANG_.call(null, a, i);
   dommy.core.append_BANG_.call(null, a, h);
   dommy.core.append_BANG_.call(null, shoelace.client.body, a);
   return dommy.core.append_BANG_.call(null, shoelace.client.body, b)
