@@ -14932,6 +14932,68 @@ bigsky.aui.util.event_chan = function(a, b, c) {
   });
   return d
 };
+var hiccups = {runtime:{}};
+hiccups.runtime.re_tag = /([^\s\.#]+)(?:#([^\s\.#]+))?(?:\.([^\s#]+))?/;
+hiccups.runtime.character_escapes = cljs.core.PersistentArrayMap.fromArray('& &amp; < &lt; > &gt; " &quot;'.split(" "), !0);
+hiccups.runtime.container_tags = cljs.core.PersistentHashSet.fromArray(["dd", null, "head", null, "a", null, "b", null, "body", null, "pre", null, "form", null, "iframe", null, "dl", null, "em", null, "fieldset", null, "i", null, "h1", null, "h2", null, "span", null, "h3", null, "script", null, "html", null, "h4", null, "h5", null, "h6", null, "table", null, "dt", null, "div", null, "style", null, "label", null, "option", null, "ul", null, "strong", null, "canvas", null, "textarea", null, "li", null, 
+"ol", null], !0);
+hiccups.runtime.as_str = function(a) {
+  var b;
+  b = (b = cljs.core.keyword_QMARK_.call(null, a)) ? b : a instanceof cljs.core.Symbol;
+  return b ? cljs.core.name.call(null, a) : "" + cljs.core.str(a)
+};
+hiccups.runtime._STAR_html_mode_STAR_ = "\ufdd0:xml";
+hiccups.runtime.xml_mode_QMARK_ = function() {
+  return cljs.core._EQ_.call(null, hiccups.runtime._STAR_html_mode_STAR_, "\ufdd0:xml")
+};
+hiccups.runtime.in_mode = function(a, b) {
+  var c = hiccups.runtime._STAR_html_mode_STAR_;
+  try {
+    return hiccups.runtime._STAR_html_mode_STAR_ = a, b.call(null)
+  }finally {
+    hiccups.runtime._STAR_html_mode_STAR_ = c
+  }
+};
+hiccups.runtime.escape_html = function(a) {
+  return clojure.string.escape.call(null, hiccups.runtime.as_str.call(null, a), hiccups.runtime.character_escapes)
+};
+hiccups.runtime.h = hiccups.runtime.escape_html;
+hiccups.runtime.end_tag = function() {
+  return cljs.core.truth_(hiccups.runtime.xml_mode_QMARK_.call(null)) ? " />" : ">"
+};
+hiccups.runtime.xml_attribute = function(a, b) {
+  return[cljs.core.str(" "), cljs.core.str(hiccups.runtime.as_str.call(null, a)), cljs.core.str('="'), cljs.core.str(hiccups.runtime.escape_html.call(null, b)), cljs.core.str('"')].join("")
+};
+hiccups.runtime.render_attribute = function(a) {
+  var b = cljs.core.nth.call(null, a, 0, null), a = cljs.core.nth.call(null, a, 1, null);
+  return!0 === a ? cljs.core.truth_(hiccups.runtime.xml_mode_QMARK_.call(null)) ? hiccups.runtime.xml_attribute.call(null, b, b) : [cljs.core.str(" "), cljs.core.str(hiccups.runtime.as_str.call(null, b))].join("") : cljs.core.not.call(null, a) ? "" : hiccups.runtime.xml_attribute.call(null, b, a)
+};
+hiccups.runtime.render_attr_map = function(a) {
+  return cljs.core.apply.call(null, cljs.core.str, cljs.core.sort.call(null, cljs.core.map.call(null, hiccups.runtime.render_attribute, a)))
+};
+hiccups.runtime.normalize_element = function(a) {
+  var b = cljs.core.nth.call(null, a, 0, null), a = cljs.core.nthnext.call(null, a, 1), c;
+  c = cljs.core.keyword_QMARK_.call(null, b);
+  c || (c = (c = b instanceof cljs.core.Symbol) ? c : cljs.core.string_QMARK_.call(null, b));
+  if(!c) {
+    throw[cljs.core.str(b), cljs.core.str(" is not a valid tag name")].join("");
+  }
+  var d = cljs.core.re_matches.call(null, hiccups.runtime.re_tag, hiccups.runtime.as_str.call(null, b));
+  cljs.core.nth.call(null, d, 0, null);
+  b = cljs.core.nth.call(null, d, 1, null);
+  c = cljs.core.nth.call(null, d, 2, null);
+  d = cljs.core.nth.call(null, d, 3, null);
+  c = cljs.core.PersistentArrayMap.fromArray(["\ufdd0:id", c, "\ufdd0:class", cljs.core.truth_(d) ? d.replace(".", " ") : null], !0);
+  d = cljs.core.first.call(null, a);
+  return cljs.core.map_QMARK_.call(null, d) ? cljs.core.PersistentVector.fromArray([b, cljs.core.merge.call(null, c, d), cljs.core.next.call(null, a)], !0) : cljs.core.PersistentVector.fromArray([b, c, a], !0)
+};
+hiccups.runtime.render_element = function(a) {
+  var b = hiccups.runtime.normalize_element.call(null, a), a = cljs.core.nth.call(null, b, 0, null), c = cljs.core.nth.call(null, b, 1, null), b = cljs.core.nth.call(null, b, 2, null);
+  return cljs.core.truth_(cljs.core.truth_(b) ? b : hiccups.runtime.container_tags.call(null, a)) ? [cljs.core.str("<"), cljs.core.str(a), cljs.core.str(hiccups.runtime.render_attr_map.call(null, c)), cljs.core.str(">"), cljs.core.str(hiccups.runtime.render_html.call(null, b)), cljs.core.str("</"), cljs.core.str(a), cljs.core.str(">")].join("") : [cljs.core.str("<"), cljs.core.str(a), cljs.core.str(hiccups.runtime.render_attr_map.call(null, c)), cljs.core.str(hiccups.runtime.end_tag.call(null))].join("")
+};
+hiccups.runtime.render_html = function render_html(b) {
+  return cljs.core.vector_QMARK_.call(null, b) ? hiccups.runtime.render_element.call(null, b) : cljs.core.seq_QMARK_.call(null, b) ? cljs.core.apply.call(null, cljs.core.str, cljs.core.map.call(null, render_html, b)) : hiccups.runtime.as_str.call(null, b)
+};
 bigsky.aui.draggable = {};
 bigsky.aui.draggable.draggable = function() {
   var a = null, b = function(b) {
@@ -15162,7 +15224,7 @@ shoelace.client.new_id_BANG_ = function(a) {
   cljs.core.swap_BANG_.call(null, shoelace.client.id, cljs.core.inc);
   return cljs.core.keyword.call(null, [cljs.core.str(a), cljs.core.str("-"), cljs.core.str(cljs.core.deref.call(null, shoelace.client.id))].join(""))
 };
-shoelace.client.settings = cljs.core.atom.call(null, cljs.core.PersistentArrayMap.fromArray(["\ufdd0:media-mode", "\ufdd0:md", "\ufdd0:active-col", "\ufdd0:none"], !0));
+shoelace.client.settings = cljs.core.atom.call(null, cljs.core.PersistentArrayMap.fromArray("\ufdd0:media-mode \ufdd0:md \ufdd0:active-col \ufdd0:none \ufdd0:output-mode \ufdd0:html".split(" "), !0));
 shoelace.client.layout = cljs.core.atom.call(null, cljs.core.PersistentVector.EMPTY);
 shoelace.client.get_by_key = function(a, b, c) {
   return cljs.core.first.call(null, cljs.core.filter.call(null, function(a) {
@@ -15354,7 +15416,7 @@ shoelace.client.draw_workspace = function() {
     a.appendChild(document.createTextNode("lg - @media-lg-desktop"));
     return a
   }());
-  var h = document.createElement("div");
+  var h = document.createElement("pre");
   h.className = "output";
   var i = document.createElement("div");
   i.className = "container";
@@ -15373,11 +15435,30 @@ shoelace.client.draw_workspace = function() {
   var l = document.createElement("div");
   l.className = "row new-row";
   cljs.core.add_watch.call(null, shoelace.client.layout, "\ufdd0:update-output", function(a, b, c, d) {
-    return dommy.core.set_text_BANG_.call(null, h, "" + cljs.core.str(cljs.core.map.call(null, function(a) {
-      return cljs.core.map.call(null, function(a) {
-        return cljs.core.dissoc.call(null, a, "\ufdd0:id", "\ufdd0:pos")
-      }, (new cljs.core.Keyword("\ufdd0:cols")).call(null, a))
-    }, d)))
+    return dommy.core.set_text_BANG_.call(null, h, function() {
+      var a = cljs.core._EQ_, b = (new cljs.core.Keyword("\ufdd0:output-mode")).call(null, cljs.core.deref.call(null, shoelace.client.settings));
+      if(a.call(null, "\ufdd0:html", b)) {
+        return hiccups.runtime.render_html.call(null, cljs.core.conj.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:div.container"], !0), cljs.core.map.call(null, function(a) {
+          return cljs.core.conj.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:div.row"], !0), cljs.core.map.call(null, function(a) {
+            return cljs.core.PersistentVector.fromArray([cljs.core.keyword.call(null, [cljs.core.str("div"), cljs.core.str(cljs.core.apply.call(null, cljs.core.str, cljs.core.flatten.call(null, cljs.core.map.call(null, function(b) {
+              if(cljs.core.truth_(b.call(null, a))) {
+                var c = b.call(null, a), d = cljs.core.nth.call(null, c, 0, null), c = cljs.core.nth.call(null, c, 1, null);
+                return cljs.core.PersistentVector.fromArray([0 < d ? [cljs.core.str(".offset-"), cljs.core.str(d)].join("") : null, [cljs.core.str(".col-"), cljs.core.str(cljs.core.name.call(null, b)), cljs.core.str("-"), cljs.core.str(c)].join("")], !0)
+              }
+              return null
+            }, shoelace.client.sizes))))].join("")), "\ufdd0:div.col"], !0)
+          }, (new cljs.core.Keyword("\ufdd0:cols")).call(null, a)))
+        }, d)))
+      }
+      if(a.call(null, "\ufdd0:edn", b)) {
+        return"" + cljs.core.str(cljs.core.mapv.call(null, function(a) {
+          return cljs.core.mapv.call(null, function(a) {
+            return cljs.core.dissoc.call(null, a, "\ufdd0:id", "\ufdd0:pos")
+          }, (new cljs.core.Keyword("\ufdd0:cols")).call(null, a))
+        }, d))
+      }
+      throw Error([cljs.core.str("No matching clause: "), cljs.core.str(b)].join(""));
+    }())
   });
   dommy.core.listen_BANG_.call(null, l, "\ufdd0:click", shoelace.client.add_row_BANG_);
   dommy.core.append_BANG_.call(null, i, k);

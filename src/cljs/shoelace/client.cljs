@@ -1,5 +1,7 @@
 (ns shoelace.client
   (:require
+   [clojure.string :refer [join]]
+   [hiccups.runtime :as hrt]
    [dommy.core :as dom]
    [dommy.utils :refer [dissoc-in]]
    [cljs.core.async :refer [>! <! chan sliding-buffer]]
@@ -36,7 +38,8 @@
   (keyword (str prefix "-" @id)))
 
 (def settings (atom {:media-mode :md
-                     :active-col :none}))
+                     :active-col :none
+                     :output-mode :html}))
 
 (def layout (atom []))
 
@@ -192,6 +195,7 @@
                           :mousedown (fn [e]
                                        (add-col! e cols new-col row-id))))))
 
+
 (defn draw-workspace []
   (let [workspace (node [:.workspace])
         toolbar (node [:.toolbar [:.title "shoelace"]])
@@ -200,7 +204,7 @@
         media-tablet (node [:.media.media-tablet [:h4 "sm - @media-tablet"]])
         media-desktop (node [:.media.media-desktop [:h4 "md - @media-desktop"]])
         media-lg-desktop (node [:.media.media-lg-desktop [:h4 "lg - @media-lg-desktop"]])
-        output (node [:.output])
+        output (node [:pre.output])
         container (node [:.container])
         rows (node [:.rows])
         columns (node [:.columns])
@@ -212,7 +216,26 @@
         new-row (node [:.row.new-row])]
     (add-watch layout :update-output
                (fn [k r os ns]
-                 (dom/set-text! output (str (map (fn [r] (map (fn [c] (dissoc c :id :pos)) (:cols r))) ns)))))
+                 (dom/set-text! output
+                  (condp = (:output-mode @settings)
+                    :html (hrt/render-html (conj [:div.container]
+                                                 (map (fn [r]
+                                                        (conj [:div.row]
+                                                              (map (fn [c]
+                                                                     [(keyword (str "div"
+                                                                                    (apply str (flatten (map (fn [s]
+                                                                                                               (if (s c)
+                                                                                                                 (let [[offset width] (s c)]
+                                                                                                                   [(when (> offset 0)
+                                                                                                                      (str ".offset-" offset))
+                                                                                                                    (str ".col-" (name s) "-" width)]
+                                                                                                                   )))
+                                                                                                             sizes))))) :div.col])
+                                                                   (:cols r))))
+                                                      ns)))
+
+                    :edn (str (mapv (fn [r] (mapv (fn [c] (dissoc c :id :pos)) (:cols r))) ns))))))
+
     (dom/listen! new-row :click add-row!)
     (dom/append! container columns)
     (dom/append! container rows)

@@ -3,6 +3,7 @@
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [ring "1.1.8"]
                  [hiccup "1.0.4"]
+                 [hiccups "0.2.0"]
                  [prismatic/dommy "0.1.1"]
                  [cljs-ajax "0.1.6"]
                  [org.clojure/core.async "0.1.0-SNAPSHOT"]]
@@ -11,7 +12,7 @@
   :repositories {"sonatype-oss-public" "https://oss.sonatype.org/content/groups/public/"}
   :hooks [leiningen.cljsbuild]
   :source-paths ["src/clj"]
-  :cljsbuild { 
+  :cljsbuild {
     :builds {
       :main {
         :source-paths ["src/cljs"]
