@@ -196,6 +196,26 @@
                                        (add-col! e cols new-col row-id))))))
 
 
+(defn layout->html
+  [rows]
+  (letfn [(size-classes [c]
+            (apply str
+             (flatten
+              (map (fn [s]
+                     (if (s c)
+                       (let [[offset width] (s c)]
+                         [(when (> offset 0)
+                            (str ".col-" (name s) "-offset-" offset))
+                          (str ".col-" (name s) "-" width)])))
+                   sizes))))]
+    (map
+     (fn [r]
+       (conj [:div.row]
+             (map (fn [c]
+                    [(keyword (str "div" (size-classes c)))])
+                  (:cols r))))
+     rows)))
+
 (defn draw-workspace []
   (let [workspace (node [:.workspace])
         toolbar (node [:.toolbar [:.title "shoelace"]])
@@ -204,7 +224,7 @@
         media-tablet (node [:.media.media-tablet [:h4 "sm - @media-tablet"]])
         media-desktop (node [:.media.media-desktop [:h4 "md - @media-desktop"]])
         media-lg-desktop (node [:.media.media-lg-desktop [:h4 "lg - @media-lg-desktop"]])
-        output (node [:pre.output.prettyprint.lang-html])
+        output (node [:pre.output.prettyprint.linenums.lang-html])
         container (node [:.container])
         rows (node [:.rows])
         columns (node [:.columns])
@@ -216,27 +236,15 @@
         new-row (node [:.row.new-row])]
     (add-watch layout :update-output
                (fn [k r os ns]
+                 (dom/remove-class! output :prettyprinted)
                  (dom/set-text! output
                   (condp = (:output-mode @settings)
                     :html (js/html_beautify
                            (hrt/render-html
-                            (conj [:div.container]
-                                  (map (fn [r]
-                                         (conj [:div.row]
-                                               (map (fn [c]
-                                                      [(keyword (str "div"
-                                                                     (apply str (flatten (map (fn [s]
-                                                                                                (if (s c)
-                                                                                                  (let [[offset width] (s c)]
-                                                                                                    [(when (> offset 0)
-                                                                                                       (str ".col-" (name s) "-offset-" offset))
-                                                                                                     (str ".col-" (name s) "-" width)]
-                                                                                                    )))
-                                                                                              sizes)))))])
-                                                    (:cols r))))
-                                       ns))))
+                            (conj [:div.container] (layout->html ns))))
 
-                    :edn (str (mapv (fn [r] (mapv (fn [c] (dissoc c :id :pos)) (:cols r))) ns))))))
+                    :edn (str (mapv (fn [r] (mapv (fn [c] (dissoc c :id :pos)) (:cols r))) ns))))
+                 (js/PR.prettyPrint)))
 
     (dom/listen! new-row :click add-row!)
     (dom/append! container columns)

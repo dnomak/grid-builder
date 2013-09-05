@@ -14,8 +14,10 @@
          [:head
           [:title "shoelace"]
           [:link {:rel "stylesheet" :href "css/shoelace.css"}]
-          [:link {:rel "stylesheet" :href "css/bigsky.aui.css"}]]
+          [:link {:rel "stylesheet" :href "css/bigsky.aui.css"}]
+          [:link {:rel "stylesheet" :href "css/prettyprint.css"}]]
         [:body]
+        [:script {:src "https://google-code-prettify.googlecode.com/svn/loader/prettify.js"}]
         [:script {:src "http://jsbeautifier.org/js/lib/beautify-html.js"}]
         [:script {:src "js/cljs.js"}]]))})
 

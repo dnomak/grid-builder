@@ -15375,6 +15375,22 @@ shoelace.client.add_row_BANG_ = function() {
     return shoelace.client.add_col_BANG_.call(null, b, c, d, a)
   })
 };
+shoelace.client.layout__GT_html = function(a) {
+  var b = function(a) {
+    return cljs.core.apply.call(null, cljs.core.str, cljs.core.flatten.call(null, cljs.core.map.call(null, function(b) {
+      if(cljs.core.truth_(b.call(null, a))) {
+        var e = b.call(null, a), f = cljs.core.nth.call(null, e, 0, null), e = cljs.core.nth.call(null, e, 1, null);
+        return cljs.core.PersistentVector.fromArray([0 < f ? [cljs.core.str(".col-"), cljs.core.str(cljs.core.name.call(null, b)), cljs.core.str("-offset-"), cljs.core.str(f)].join("") : null, [cljs.core.str(".col-"), cljs.core.str(cljs.core.name.call(null, b)), cljs.core.str("-"), cljs.core.str(e)].join("")], !0)
+      }
+      return null
+    }, shoelace.client.sizes)))
+  };
+  return cljs.core.map.call(null, function(a) {
+    return cljs.core.conj.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:div.row"], !0), cljs.core.map.call(null, function(a) {
+      return cljs.core.PersistentVector.fromArray([cljs.core.keyword.call(null, [cljs.core.str("div"), cljs.core.str(b.call(null, a))].join(""))], !0)
+    }, (new cljs.core.Keyword("\ufdd0:cols")).call(null, a)))
+  }, a)
+};
 shoelace.client.draw_workspace = function() {
   var a = document.createElement("div");
   a.className = "workspace";
@@ -15417,7 +15433,7 @@ shoelace.client.draw_workspace = function() {
     return a
   }());
   var h = document.createElement("pre");
-  h.className = "output prettyprint lang-html";
+  h.className = "output prettyprint linenums lang-html";
   var i = document.createElement("div");
   i.className = "container";
   var j = document.createElement("div");
@@ -15435,20 +15451,11 @@ shoelace.client.draw_workspace = function() {
   var l = document.createElement("div");
   l.className = "row new-row";
   cljs.core.add_watch.call(null, shoelace.client.layout, "\ufdd0:update-output", function(a, b, c, d) {
-    return dommy.core.set_text_BANG_.call(null, h, function() {
+    dommy.core.remove_class_BANG_.call(null, h, "\ufdd0:prettyprinted");
+    dommy.core.set_text_BANG_.call(null, h, function() {
       var a = cljs.core._EQ_, b = (new cljs.core.Keyword("\ufdd0:output-mode")).call(null, cljs.core.deref.call(null, shoelace.client.settings));
       if(a.call(null, "\ufdd0:html", b)) {
-        return html_beautify(hiccups.runtime.render_html.call(null, cljs.core.conj.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:div.container"], !0), cljs.core.map.call(null, function(a) {
-          return cljs.core.conj.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:div.row"], !0), cljs.core.map.call(null, function(a) {
-            return cljs.core.PersistentVector.fromArray([cljs.core.keyword.call(null, [cljs.core.str("div"), cljs.core.str(cljs.core.apply.call(null, cljs.core.str, cljs.core.flatten.call(null, cljs.core.map.call(null, function(b) {
-              if(cljs.core.truth_(b.call(null, a))) {
-                var c = b.call(null, a), d = cljs.core.nth.call(null, c, 0, null), c = cljs.core.nth.call(null, c, 1, null);
-                return cljs.core.PersistentVector.fromArray([0 < d ? [cljs.core.str(".col-"), cljs.core.str(cljs.core.name.call(null, b)), cljs.core.str("-offset-"), cljs.core.str(d)].join("") : null, [cljs.core.str(".col-"), cljs.core.str(cljs.core.name.call(null, b)), cljs.core.str("-"), cljs.core.str(c)].join("")], !0)
-              }
-              return null
-            }, shoelace.client.sizes))))].join(""))], !0)
-          }, (new cljs.core.Keyword("\ufdd0:cols")).call(null, a)))
-        }, d))))
+        return html_beautify(hiccups.runtime.render_html.call(null, cljs.core.conj.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:div.container"], !0), shoelace.client.layout__GT_html.call(null, d))))
       }
       if(a.call(null, "\ufdd0:edn", b)) {
         return"" + cljs.core.str(cljs.core.mapv.call(null, function(a) {
@@ -15458,7 +15465,8 @@ shoelace.client.draw_workspace = function() {
         }, d))
       }
       throw Error([cljs.core.str("No matching clause: "), cljs.core.str(b)].join(""));
-    }())
+    }());
+    return PR.prettyPrint()
   });
   dommy.core.listen_BANG_.call(null, l, "\ufdd0:click", shoelace.client.add_row_BANG_);
   dommy.core.append_BANG_.call(null, i, k);
