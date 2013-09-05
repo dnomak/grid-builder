@@ -16,7 +16,7 @@
           [:link {:rel "stylesheet" :href "css/shoelace.css"}]
           [:link {:rel "stylesheet" :href "css/bigsky.aui.css"}]]
         [:body]
-        [:script {:src "https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"}]
+        [:script {:src "http://jsbeautifier.org/js/lib/beautify-html.js"}]
         [:script {:src "js/cljs.js"}]]))})
 
 (defn handler [request]

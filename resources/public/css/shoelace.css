@@ -184,9 +184,9 @@ body {
     right: 0;
     bottom: 0;
     background: #e3e3e3;
-    width: 300px;
+    width: 400px;
     font-family: monospace;
     padding: 1em;
-    font-size: 10pt;
+    font-size: 8pt;
     word-wrap: break-word;
 }

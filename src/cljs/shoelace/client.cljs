@@ -218,21 +218,23 @@
                (fn [k r os ns]
                  (dom/set-text! output
                   (condp = (:output-mode @settings)
-                    :html (hrt/render-html (conj [:div.container]
-                                                 (map (fn [r]
-                                                        (conj [:div.row]
-                                                              (map (fn [c]
-                                                                     [(keyword (str "div"
-                                                                                    (apply str (flatten (map (fn [s]
-                                                                                                               (if (s c)
-                                                                                                                 (let [[offset width] (s c)]
-                                                                                                                   [(when (> offset 0)
-                                                                                                                      (str ".col-" (name s) "-offset-" offset))
-                                                                                                                    (str ".col-" (name s) "-" width)]
-                                                                                                                   )))
-                                                                                                             sizes))))) :div.col])
-                                                                   (:cols r))))
-                                                      ns)))
+                    :html (js/html_beautify
+                           (hrt/render-html
+                            (conj [:div.container]
+                                  (map (fn [r]
+                                         (conj [:div.row]
+                                               (map (fn [c]
+                                                      [(keyword (str "div"
+                                                                     (apply str (flatten (map (fn [s]
+                                                                                                (if (s c)
+                                                                                                  (let [[offset width] (s c)]
+                                                                                                    [(when (> offset 0)
+                                                                                                       (str ".col-" (name s) "-offset-" offset))
+                                                                                                     (str ".col-" (name s) "-" width)]
+                                                                                                    )))
+                                                                                              sizes)))))])
+                                                    (:cols r))))
+                                       ns))))
 
                     :edn (str (mapv (fn [r] (mapv (fn [c] (dissoc c :id :pos)) (:cols r))) ns))))))
 

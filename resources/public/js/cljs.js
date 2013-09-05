@@ -15438,7 +15438,7 @@ shoelace.client.draw_workspace = function() {
     return dommy.core.set_text_BANG_.call(null, h, function() {
       var a = cljs.core._EQ_, b = (new cljs.core.Keyword("\ufdd0:output-mode")).call(null, cljs.core.deref.call(null, shoelace.client.settings));
       if(a.call(null, "\ufdd0:html", b)) {
-        return hiccups.runtime.render_html.call(null, cljs.core.conj.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:div.container"], !0), cljs.core.map.call(null, function(a) {
+        return html_beautify(hiccups.runtime.render_html.call(null, cljs.core.conj.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:div.container"], !0), cljs.core.map.call(null, function(a) {
           return cljs.core.conj.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:div.row"], !0), cljs.core.map.call(null, function(a) {
             return cljs.core.PersistentVector.fromArray([cljs.core.keyword.call(null, [cljs.core.str("div"), cljs.core.str(cljs.core.apply.call(null, cljs.core.str, cljs.core.flatten.call(null, cljs.core.map.call(null, function(b) {
               if(cljs.core.truth_(b.call(null, a))) {
@@ -15446,9 +15446,9 @@ shoelace.client.draw_workspace = function() {
                 return cljs.core.PersistentVector.fromArray([0 < d ? [cljs.core.str(".col-"), cljs.core.str(cljs.core.name.call(null, b)), cljs.core.str("-offset-"), cljs.core.str(d)].join("") : null, [cljs.core.str(".col-"), cljs.core.str(cljs.core.name.call(null, b)), cljs.core.str("-"), cljs.core.str(c)].join("")], !0)
               }
               return null
-            }, shoelace.client.sizes))))].join("")), "\ufdd0:div.col"], !0)
+            }, shoelace.client.sizes))))].join(""))], !0)
           }, (new cljs.core.Keyword("\ufdd0:cols")).call(null, a)))
-        }, d)))
+        }, d))))
       }
       if(a.call(null, "\ufdd0:edn", b)) {
         return"" + cljs.core.str(cljs.core.mapv.call(null, function(a) {
