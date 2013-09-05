@@ -15,7 +15,11 @@ html(lang="en")
       .logo
       .lace-url
         |http://shoelace.io/lace/2k3j 
-        i.icon-copy
+        span.icon-stack
+          i.icon-sign-blank.icon-stack-base
+          i.icon-copy
+      
+
       .menu
         ul.modify
           li
@@ -54,11 +58,29 @@ html(lang="en")
                 i.icon-fire 
                 |fire
 
+
     .application-frame
       .panels-wrapper
         .navigator
           .collapse-panel.left
             i.icon-caret-left
+          
+          .preview.xs
+            .title-bar
+              .size-icon: i.icon-mobile-phone  
+              .title Phone
+          .preview.sm.active
+            .title-bar.active
+              .size-icon: i.icon-tablet  
+              .title Tablet
+          .preview.md
+            .title-bar
+              .size-icon: i.icon-laptop  
+              .title Desktop
+          .preview.lg
+            .title-bar
+              .size-icon: i.icon-desktop   
+              .title Large Desktop
           
         .section-border.left
         .workspace
@@ -68,6 +90,29 @@ html(lang="en")
         .html
           .collapse-panel.right 
             i.icon-caret-right
+          .copy-code
+            |Copy
+          .options
+            ul
+              li.active HTML
+              li Jade
+              li HAML
+              li Other?
+            .container-check
+              label
+                input(type='checkbox')
+                |  Include Container
+
           
     footer
-      |footme
+      ul
+        li
+         a(href="#") About Shoelace
+        li
+         a(href="#") Design by Erik
+        li
+         a(href="#") Code by Shaun
+        li
+         a(href="#") Get Bootstrap
+        
+ 

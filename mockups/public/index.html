@@ -13,7 +13,7 @@
   <body>
     <header>
       <div class="logo"></div>
-      <div class="lace-url">http://shoelace.io/lace/2k3j <i class="icon-copy"></i></div>
+      <div class="lace-url">http://shoelace.io/lace/2k3j <span class="icon-stack"><i class="icon-sign-blank icon-stack-base"></i><i class="icon-copy"></i></span></div>
       <div class="menu">
         <ul class="modify">
           <li><a class="btn active"><i class="icon-cloud-download"> </i>Save</a></li>
@@ -37,15 +37,60 @@
       <div class="panels-wrapper">
         <div class="navigator">
           <div class="collapse-panel left"><i class="icon-caret-left"></i></div>
+          <div class="preview xs">
+            <div class="title-bar">
+              <div class="size-icon"><i class="icon-mobile-phone"> </i></div>
+              <div class="title">Phone</div>
+            </div>
+          </div>
+          <div class="preview sm active">
+            <div class="title-bar active">
+              <div class="size-icon"><i class="icon-tablet"> </i></div>
+              <div class="title">Tablet</div>
+            </div>
+          </div>
+          <div class="preview md">
+            <div class="title-bar">
+              <div class="size-icon"><i class="icon-laptop"> </i></div>
+              <div class="title">Desktop</div>
+            </div>
+          </div>
+          <div class="preview lg">
+            <div class="title-bar">
+              <div class="size-icon"><i class="icon-desktop">  </i></div>
+              <div class="title">Large Desktop</div>
+            </div>
+          </div>
         </div>
         <div class="section-border left"></div>
         <div class="workspace"></div>
         <div class="section-border right"></div>
         <div class="html">
           <div class="collapse-panel right"> <i class="icon-caret-right"></i></div>
+          <div class="copy-code">Copy</div>
+          <div class="options">
+            <ul>
+              <li class="active">HTML</li>
+              <li>Jade</li>
+              <li>HAML</li>
+              <li>Other?</li>
+            </ul>
+            <div class="container-check">
+              <label>
+                <input type="checkbox"> Include Container
+              </label>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <footer>footme</footer>
+    <footer>
+      <ul>
+        <li><a href="#">About Shoelace</a></li>
+        <li><a href="#">Design by Erik</a></li>
+        <li><a href="#">Code by Shaun</a></li>
+        <li><a href="#">Get Bootstrap</a></li>
+      </ul>
+    </footer>
   </body>
 </html>
