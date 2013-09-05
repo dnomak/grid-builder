@@ -204,7 +204,7 @@
         media-tablet (node [:.media.media-tablet [:h4 "sm - @media-tablet"]])
         media-desktop (node [:.media.media-desktop [:h4 "md - @media-desktop"]])
         media-lg-desktop (node [:.media.media-lg-desktop [:h4 "lg - @media-lg-desktop"]])
-        output (node [:pre.output])
+        output (node [:pre.output.prettyprint.lang-html])
         container (node [:.container])
         rows (node [:.rows])
         columns (node [:.columns])
@@ -227,7 +227,7 @@
                                                                                                                (if (s c)
                                                                                                                  (let [[offset width] (s c)]
                                                                                                                    [(when (> offset 0)
-                                                                                                                      (str ".offset-" offset))
+                                                                                                                      (str ".col-" (name s) "-offset-" offset))
                                                                                                                     (str ".col-" (name s) "-" width)]
                                                                                                                    )))
                                                                                                              sizes))))) :div.col])

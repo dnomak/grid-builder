@@ -15417,7 +15417,7 @@ shoelace.client.draw_workspace = function() {
     return a
   }());
   var h = document.createElement("pre");
-  h.className = "output";
+  h.className = "output prettyprint lang-html";
   var i = document.createElement("div");
   i.className = "container";
   var j = document.createElement("div");
@@ -15443,7 +15443,7 @@ shoelace.client.draw_workspace = function() {
             return cljs.core.PersistentVector.fromArray([cljs.core.keyword.call(null, [cljs.core.str("div"), cljs.core.str(cljs.core.apply.call(null, cljs.core.str, cljs.core.flatten.call(null, cljs.core.map.call(null, function(b) {
               if(cljs.core.truth_(b.call(null, a))) {
                 var c = b.call(null, a), d = cljs.core.nth.call(null, c, 0, null), c = cljs.core.nth.call(null, c, 1, null);
-                return cljs.core.PersistentVector.fromArray([0 < d ? [cljs.core.str(".offset-"), cljs.core.str(d)].join("") : null, [cljs.core.str(".col-"), cljs.core.str(cljs.core.name.call(null, b)), cljs.core.str("-"), cljs.core.str(c)].join("")], !0)
+                return cljs.core.PersistentVector.fromArray([0 < d ? [cljs.core.str(".col-"), cljs.core.str(cljs.core.name.call(null, b)), cljs.core.str("-offset-"), cljs.core.str(d)].join("") : null, [cljs.core.str(".col-"), cljs.core.str(cljs.core.name.call(null, b)), cljs.core.str("-"), cljs.core.str(c)].join("")], !0)
               }
               return null
             }, shoelace.client.sizes))))].join("")), "\ufdd0:div.col"], !0)
