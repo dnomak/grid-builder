@@ -158,8 +158,9 @@ body {
     margin-left: 4px;
 }
 
-.output {
+pre.output {
     font-family: monospace;
     padding: 1em;
     font-size: 8pt;
+    border: none;
 }
