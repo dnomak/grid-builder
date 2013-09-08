@@ -164,3 +164,9 @@ pre.output {
     font-size: 8pt;
     border: none;
 }
+
+
+/* It needs this added somewhere */
+.workspace {
+    overflow-y: scroll;
+}
