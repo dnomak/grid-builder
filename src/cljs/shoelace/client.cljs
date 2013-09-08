@@ -19,11 +19,11 @@
 
 (def col-width-pos 1)
 
-(def col-width 60)
-
 (def col-height 150)
 
-(def col-margin-width 10)
+(def col-width 60)
+
+(def col-margin-width 15)
 
 (def snap-threshold 20)
 
@@ -37,8 +37,9 @@
   (swap! id inc)
   (keyword (str prefix "-" @id)))
 
-(def settings (atom {:media-mode :md
+(def settings (atom {:media-mode :sm
                      :active-col :none
+                     :include-container true
                      :output-mode :html}))
 
 (def layout (atom []))
@@ -63,6 +64,13 @@
 
 (def sizes-index {:xs 0 :sm 1 :md 2 :lg 3})
 
+(def size-labels
+  {:xs "xs"
+   :sm "sm - @media-tablet"
+   :md "md - @media-desktop"
+   :lg "lg - @media-lg-desktop"})
+
+
 (defn sizes-up-to
   [max]
   (reverse (subvec sizes 0 (inc (sizes-index max)))))
@@ -83,6 +91,22 @@
 
 (defn get-el [id]
   (sel1 (keyword (str "#" (name id)))))
+
+(defn calc-col-unit []
+  (+ col-margin-width col-width))
+
+(defn draw-rows []
+  (let [col-unit (calc-col-unit)
+        media (:media-mode @settings)]
+    (doseq [row @layout]
+      (spy col-unit)
+      (doseq [col (:cols row)]
+        (spy col)
+        (spy (col-for-media col media))
+        (let [col-el (get-el (:id col))
+              [offset width] (spy (col-for-media col media))]
+          (dom/set-px! (sel1 [col-el :.offset]) :width (* offset col-unit))
+          (dom/set-px! (sel1 [col-el :.width]) :width (* width col-unit)))))))
 
 (defn add-col!
   [e cols-el new-col-el row-id]
@@ -124,14 +148,14 @@
           (let [start-x (aget e "x")
                 start-w (dom/px (els type) "width")
                 media (@settings :media-mode)
-                col-unit (+ col-margin-width col-width)
+                col-unit (calc-col-unit)
                 row (get-row row-id)
                 col (get-col row-id col-id)
                 cur-cols-used (col-for-media col media)
                 max-cols (- grid-cols (total-cols-used row media))
-                max-width (- (* (+ (cur-cols-used (type-pos type)) max-cols) col-unit) 10)
+                max-width (- (* (+ (cur-cols-used (type-pos type)) max-cols) col-unit) col-margin-width)
                 snap! (fn []
-                        (let [w (+ (if (= type :offset) 10 0)
+                        (let [w (+ (if (= type :offset) col-margin-width 0)
                                    (dom/px (els type) "width"))
                               c (quot w col-unit)
                               r (mod w col-unit)
@@ -141,7 +165,7 @@
                           (swap! layout assoc-in
                                  [(:pos row) :cols (:pos col) media (type-pos type)]
                                  new-width)
-                          (dom/set-px! (els type) :width (- (* new-width col-unit) (if (= type :width) 10 0)))))
+                          (dom/set-px! (els type) :width (- (* new-width col-unit) (if (= type :width) col-margin-width 0)))))
                 valid-step (fn [width]
                              (let [c (quot width col-unit)]
                                (or
@@ -178,13 +202,12 @@
     (dom/listen! offset-handle-el :mousedown #(handle-drag :offset %))
     (dom/listen! offset-el :mousedown #(handle-drag :offset %))
     (dom/listen! width-el :mousedown #(handle-drag :width %))
-
     (handle-drag :width e)))
 
 (defn add-row! []
   (this-as new-row-el
            (let [row-id (new-id! "row")
-                 row (node [:.row])
+                 row (node [:.sl-row])
                  cols (node [:.cols])
                  new-col (node [:.new-col.no-cols])]
              (swap! layout conj {:id row-id :pos (count @layout) :cols []})
@@ -194,7 +217,6 @@
              (dom/listen! new-col
                           :mousedown (fn [e]
                                        (add-col! e cols new-col row-id))))))
-
 
 (defn layout->html
   [rows]
@@ -217,23 +239,32 @@
      rows)))
 
 (defn draw-workspace []
-  (let [workspace (node [:.workspace])
-        toolbar (node [:.toolbar [:.title "shoelace"]])
-        medias (node [:.medias])
-        media-xs (node [:.media.media-xs [:h4 "xs"]])
-        media-tablet (node [:.media.media-tablet [:h4 "sm - @media-tablet"]])
-        media-desktop (node [:.media.media-desktop [:h4 "md - @media-desktop"]])
-        media-lg-desktop (node [:.media.media-lg-desktop [:h4 "lg - @media-lg-desktop"]])
-        output (node [:pre.output.prettyprint.linenums.lang-html])
+  (let [workspace (sel1 :.workspace)
+        output (sel1 :pre.output)
         container (node [:.container])
         rows (node [:.rows])
         columns (node [:.columns])
-        cols (doall (map (fn [i]
-                           (let [col (node [:.col])]
-                             (dom/append! columns col)
-                             col))
-                         (range grid-cols)))
-        new-row (node [:.row.new-row])]
+        new-row (node [:.sl-row.new-row])
+        media-mode (:media-mode @settings)]
+    (dom/add-class! container media-mode)
+
+    (doseq [i (range grid-cols)]
+      (let [col (node [:.col])]
+        (dom/append! columns col)))
+
+    (doseq [[size label] size-labels]
+      (let [media (sel1 (str ".preview." (name size)))]
+        (when (= size media-mode) (dom/add-class! media :active))
+        (dom/listen! media :mouseup #(swap! settings assoc :media-mode size))))
+
+    (add-watch settings :update-media
+               (fn [k r os ns]
+                 (when (not (= (:media-mode os) (:media-mode ns)))
+                   (dom/remove-class! container (:media-mode os))
+                   (dom/remove-class! (sel1 :.preview.active) :active)
+                   (dom/add-class! (sel1 (str  ".preview." (name (:media-mode ns)))) :active)
+                   (dom/add-class! container (:media-mode ns)))))
+
     (add-watch layout :update-output
                (fn [k r os ns]
                  (dom/remove-class! output :prettyprinted)
@@ -246,22 +277,18 @@
                     :edn (str (mapv (fn [r] (mapv (fn [c] (dissoc c :id :pos)) (:cols r))) ns))))
                  (js/PR.prettyPrint)))
 
+
     (dom/listen! new-row :click add-row!)
     (dom/append! container columns)
     (dom/append! container rows)
     (dom/append! rows new-row)
-    (dom/append! medias media-xs)
-    (dom/append! medias media-tablet)
-    (dom/append! medias media-desktop)
-    (dom/append! medias media-lg-desktop)
-    (dom/append! workspace medias)
-    (dom/append! workspace container)
-    (dom/append! workspace output)
-    (dom/append! body workspace)
-    (dom/append! body toolbar)))
+    (dom/append! workspace container)))
 
-(dom/listen! js/document :mousedown (fn []
-                           (when (not (= (:active-col @settings) :none))
-                             (dom/remove-class! (get-el (:active-col @settings)) :active))
-                           (swap! settings assoc :active-col :none)))
+(dom/listen! js/document
+             :mousedown
+             (fn []
+               (when (not (= (:active-col @settings) :none))
+                 (dom/remove-class! (get-el (:active-col @settings)) :active))
+               (swap! settings assoc :active-col :none)))
+
 (draw-workspace)

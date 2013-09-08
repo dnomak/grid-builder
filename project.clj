@@ -1,7 +1,7 @@
 (defproject shoelace "0.1.0-SNAPSHOT"
   :description "FIXME: write this!"
   :dependencies [[org.clojure/clojure "1.5.1"]
-                 [ring "1.1.8"]
+                 [ring "1.2.0"]
                  [hiccup "1.0.4"]
                  [hiccups "0.2.0"]
                  [prismatic/dommy "0.1.1"]

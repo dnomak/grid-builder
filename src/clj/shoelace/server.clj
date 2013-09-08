@@ -2,28 +2,11 @@
   (:require [ring.adapter.jetty :as jetty]
             [ring.middleware.resource :as resources]
             [ring.util.response :as response])
-  (:use hiccup.core)
-  (:gen-class))
-
-(defn render-app []
-  {:status 200
-   :headers {"Content-Type" "text/html"}
-   :body (str "<!DOCTYPE html>"
-     (html
-       [:html
-         [:head
-          [:title "shoelace"]
-          [:link {:rel "stylesheet" :href "css/shoelace.css"}]
-          [:link {:rel "stylesheet" :href "css/bigsky.aui.css"}]
-          [:link {:rel "stylesheet" :href "css/prettyprint.css"}]]
-        [:body]
-        [:script {:src "https://google-code-prettify.googlecode.com/svn/loader/prettify.js"}]
-        [:script {:src "http://jsbeautifier.org/js/lib/beautify-html.js"}]
-        [:script {:src "js/cljs.js"}]]))})
+  (:use hiccup.core))
 
 (defn handler [request]
-  (when (= "/" (:uri request)))
-      (render-app))
+  (when (= "/" (:uri request))
+    (response/resource-response "index.html" {:root "public"})))
 
 (def app
   (-> handler
