@@ -108,13 +108,23 @@
           (dom/set-px! (sel1 [col-el :.offset]) :width (* offset col-unit))
           (dom/set-px! (sel1 [col-el :.width]) :width (* width col-unit)))))))
 
+(defn  get-class-el
+  [col-id size type]
+  (sel1 (str "#" (name col-id) " ." (name size) "-" (name type))))
+
 (defn add-col!
   [e cols-el new-col-el row-id]
   (let [col-id (new-id! 'col)
         col-el (node [:.col {:id (name col-id)}])
         offset-el (node [:.offset])
-        remove-el (node [:.remove "remove"])
+        remove-el (node [:.remove "x"])
         width-el (node [:.width])
+        classes-el (node [:.classes
+                          [:.xs-width] [:.xs-offset]
+                          [:.sm-width] [:.sm-offset]
+                          [:.md-width] [:.md-offset]
+                          [:.lg-width] [:.lg-offset]])
+        name-el (node [:input.col-name {:placeholder "col"}])
         els {:width width-el
              :offset offset-el}
         type-pos {:offset 0
@@ -165,7 +175,14 @@
                           (swap! layout assoc-in
                                  [(:pos row) :cols (:pos col) media (type-pos type)]
                                  new-width)
-                          (dom/set-px! (els type) :width (- (* new-width col-unit) (if (= type :width) col-margin-width 0)))))
+                          (dom/set-text! (get-class-el col-id media type)
+                                         (str (name media) "-"
+                                              (when (= type :offset) "offset-")
+                                              new-width))
+                          (dom/set-px! (els type)
+                                       :width
+                                       (- (* new-width col-unit)
+                                          (if (= type :width) col-margin-width 0)))))
                 valid-step (fn [width]
                              (let [c (quot width col-unit)]
                                (or
@@ -191,6 +208,8 @@
     (swap! layout update-in [(:pos row) :cols] conj {:id col-id
                                                      :pos (count (:cols row))
                                                      (@settings :media-mode) [0 1]})
+    (dom/append! width-el name-el)
+    (dom/append! width-el classes-el)
     (dom/append! width-el offset-handle-el)
     (dom/append! col-el offset-el)
     (dom/append! col-el width-el)
@@ -209,8 +228,12 @@
            (let [row-id (new-id! "row")
                  row (node [:.sl-row])
                  cols (node [:.cols])
+                 name-el (node [:input.row-name {:placeholder "Name Row"}])
+                 tools-el (node [:.tools [:span "d"] [:span "r"] [:span "x"]])
                  new-col (node [:.new-col.no-cols])]
              (swap! layout conj {:id row-id :pos (count @layout) :cols []})
+             (dom/append! row name-el)
+             (dom/append! row tools-el)
              (dom/insert-before! row new-row-el)
              (dom/append! row cols)
              (dom/append! row new-col)
