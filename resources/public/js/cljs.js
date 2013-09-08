@@ -15460,8 +15460,10 @@ shoelace.client.add_col_BANG_ = function(a, b, c, d) {
       var b = (cljs.core._EQ_.call(null, a, "\ufdd0:offset") ? shoelace.client.col_margin_width : 0) + dommy.core.px.call(null, l.call(null, a), "width"), c = cljs.core.quot.call(null, b, i), b = cljs.core.mod.call(null, b, i), c = cljs.core._EQ_.call(null, a, "\ufdd0:offset") ? 0 < c ? c : 0 : (b > shoelace.client.snap_threshold ? cljs.core._PLUS_ : cljs.core.max).call(null, c, 1);
       cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, j), "\ufdd0:cols", (new cljs.core.Keyword("\ufdd0:pos")).call(null, k), h, m.call(null, a)], !0), c);
       dommy.core.set_text_BANG_.call(null, shoelace.client.get_class_el.call(null, e, h, a), [cljs.core.str(cljs.core.name.call(null, h)), cljs.core.str("-"), cljs.core.str(cljs.core._EQ_.call(null, a, "\ufdd0:offset") ? "offset-" : null), cljs.core.str(c)].join(""));
+      dommy.core.add_class_BANG_.call(null, l.call(null, a), "\ufdd0:easing");
       return dommy.core.set_px_BANG_.call(null, l.call(null, a), "\ufdd0:width", c * i - (cljs.core._EQ_.call(null, a, "\ufdd0:width") ? shoelace.client.col_margin_width : 0))
     };
+    dommy.core.remove_class_BANG_.call(null, l.call(null, a), "\ufdd0:easing");
     dommy.core.add_class_BANG_.call(null, c, "hidden");
     dommy.core.listen_BANG_.call(null, document, "\ufdd0:mousemove", t);
     return dommy.core.listen_once_BANG_.call(null, document, "\ufdd0:mouseup", function() {
@@ -15506,17 +15508,29 @@ shoelace.client.add_row_BANG_ = function() {
   e.className = "tools";
   e.appendChild(function() {
     var a = document.createElement("span");
-    a.appendChild(document.createTextNode("d"));
+    a.appendChild(function() {
+      var a = document.createElement("i");
+      a.className = "icon-double-angle-down";
+      return a
+    }());
     return a
   }());
   e.appendChild(function() {
     var a = document.createElement("span");
-    a.appendChild(document.createTextNode("r"));
+    a.appendChild(function() {
+      var a = document.createElement("i");
+      a.className = "icon-level-down";
+      return a
+    }());
     return a
   }());
   e.appendChild(function() {
     var a = document.createElement("span");
-    a.appendChild(document.createTextNode("x"));
+    a.appendChild(function() {
+      var a = document.createElement("i");
+      a.className = "icon-remove";
+      return a
+    }());
     return a
   }());
   var f = document.createElement("div");

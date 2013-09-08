@@ -45,6 +45,10 @@ body {
     overflow: hidden;
 }
 
+.easing {
+    transition: width 0.5s;
+}
+
 .width .col-name {
     position: absolute;
     left: 15px;
@@ -111,20 +115,6 @@ body {
     top: 0;
 }
 
-.toolbar {
-    height: 3em;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: #333;
-}
-
-.toolbar .title {
-    color: white;
-    padding: 5px;
-}
-
 .rows {
     min-width: 885px;
     position: absolute;
@@ -166,7 +156,7 @@ input { outline: none; }
 .sl-row .tools {
     position: absolute;
     top: 2px;
-    right: 10px;
+    right: 5px;
     color: white;
 }
 .sl-row .tools span {

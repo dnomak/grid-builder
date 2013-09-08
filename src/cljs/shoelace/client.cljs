@@ -179,6 +179,7 @@
                                          (str (name media) "-"
                                               (when (= type :offset) "offset-")
                                               new-width))
+                          (dom/add-class! (els type) :easing)
                           (dom/set-px! (els type)
                                        :width
                                        (- (* new-width col-unit)
@@ -201,6 +202,7 @@
                                (dom/unlisten! js/document :mousemove move-handler)
                                (snap!)
                                (check-to-hide-new-col))]
+            (dom/remove-class! (els type) :easing)
             (dom/add-class! new-col-el "hidden")
             (dom/listen! js/document :mousemove move-handler)
             (dom/listen-once! js/document :mouseup stop-handler)))]
@@ -229,7 +231,10 @@
                  row (node [:.sl-row])
                  cols (node [:.cols])
                  name-el (node [:input.row-name {:placeholder "Name Row"}])
-                 tools-el (node [:.tools [:span "d"] [:span "r"] [:span "x"]])
+                 tools-el (node [:.tools
+                                 [:span [:i.icon-double-angle-down]]
+                                 [:span [:i.icon-level-down]]
+                                 [:span [:i.icon-remove]]])
                  new-col (node [:.new-col.no-cols])]
              (swap! layout conj {:id row-id :pos (count @layout) :cols []})
              (dom/append! row name-el)
