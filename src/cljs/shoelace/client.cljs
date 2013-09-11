@@ -38,8 +38,8 @@
   (keyword (str prefix "-" @id)))
 
 (def settings (atom {:media-mode :sm
-                     :active-col :none
                      :include-container true
+                     :active-row :none
                      :output-mode :html}))
 
 (def layout (atom []))
@@ -58,18 +58,11 @@
 
 (defn get-col
   [row-id col-id]
-  (get-by-id ((get-row row-id) :cols) col-id))
+  (get-by-id (:cols (get-row row-id)) col-id))
 
 (def sizes [:xs :sm :md :lg])
 
 (def sizes-index {:xs 0 :sm 1 :md 2 :lg 3})
-
-(def size-labels
-  {:xs "xs"
-   :sm "sm - @media-tablet"
-   :md "md - @media-desktop"
-   :lg "lg - @media-lg-desktop"})
-
 
 (defn sizes-up-to
   [max]
@@ -95,20 +88,7 @@
 (defn calc-col-unit []
   (+ col-margin-width col-width))
 
-(defn draw-rows []
-  (let [col-unit (calc-col-unit)
-        media (:media-mode @settings)]
-    (doseq [row @layout]
-      (spy col-unit)
-      (doseq [col (:cols row)]
-        (spy col)
-        (spy (col-for-media col media))
-        (let [col-el (get-el (:id col))
-              [offset width] (spy (col-for-media col media))]
-          (dom/set-px! (sel1 [col-el :.offset]) :width (* offset col-unit))
-          (dom/set-px! (sel1 [col-el :.width]) :width (* width col-unit)))))))
-
-(defn  get-class-el
+(defn get-class-el
   [col-id size type]
   (sel1 (str "#" (name col-id) " ." (name size) "-" (name type))))
 
@@ -116,9 +96,11 @@
   [e cols-el new-col-el row-id]
   (let [col-id (new-id! 'col)
         col-el (node [:.col {:id (name col-id)}])
+        grow-row-el (sel1 (str "#" (name row-id) " .grow-row"))
         offset-el (node [:.offset])
-        remove-el (node [:.remove "x"])
+        remove-el (node [:.remove [:i.icon-remove]])
         width-el (node [:.width])
+        nested-el (node [:.nested [:i.icon-th]])
         classes-el (node [:.classes
                           [:.xs-width] [:.xs-offset]
                           [:.sm-width] [:.sm-offset]
@@ -135,26 +117,25 @@
         check-to-hide-new-col (fn [] (if (= grid-cols (total-cols))
                                       (dom/add-class! new-col-el :hidden)
                                       (dom/remove-class! new-col-el :hidden)))
-        active-col (fn [e]
-                     (.stopPropagation e)
-                     (when (not (= (:active-col @settings) :none))
-                       (dom/remove-class! (get-el (:active-col @settings)) :active))
-                     (swap! settings assoc :active-col col-id)
-                     (dom/add-class! col-el :active))
+        check-to-allow-grow (fn [] (if (= grid-cols (total-cols))
+                                   (dom/add-class! grow-row-el :active)
+                                   (dom/remove-class! grow-row-el :active)))
         handle-remove (fn [e]
                         (.stopPropagation e)
-                        (let [row (get-row row-id)]
-                          (swap! settings assoc :active-col :none)
-                          (swap! layout assoc-in
-                                 [(:pos row) :cols]
-                                 (into [] (map-indexed (fn [i c] (assoc c :pos i))
-                                                       (filter (fn [c] (not (= (:id c) col-id)))
-                                                               (get-in @layout [(:pos row) :cols])))))
+                        (let [row (get-row row-id)
+                              path [(:pos row) :cols]]
+                          (swap! layout assoc-in path
+                                 (into []
+                                       (map-indexed (fn [i c] (assoc c :pos i))
+                                                    (filter (fn [c] (not (= (:id c) col-id)))
+                                                            (get-in @layout path)))))
                           (dom/remove! col-el)
-                          (check-to-hide-new-col)))
+                          (check-to-hide-new-col)
+                          (check-to-allow-grow)
+                          (when (zero? (count (get-in @layout path)))
+                            (dom/add-class! new-col-el :no-cols))))
         handle-drag (fn [type e]
           (.stopPropagation e)
-          (active-col e)
           (let [start-x (aget e "x")
                 start-w (dom/px (els type) "width")
                 media (@settings :media-mode)
@@ -162,7 +143,7 @@
                 row (get-row row-id)
                 col (get-col row-id col-id)
                 cur-cols-used (col-for-media col media)
-                max-cols (- grid-cols (total-cols-used row media))
+                max-cols (- (* grid-cols (media (:height row))) (total-cols-used row media))
                 max-width (- (* (+ (cur-cols-used (type-pos type)) max-cols) col-unit) col-margin-width)
                 snap! (fn []
                         (let [w (+ (if (= type :offset) col-margin-width 0)
@@ -176,9 +157,11 @@
                                  [(:pos row) :cols (:pos col) media (type-pos type)]
                                  new-width)
                           (dom/set-text! (get-class-el col-id media type)
-                                         (str (name media) "-"
-                                              (when (= type :offset) "offset-")
-                                              new-width))
+                                         (if (and (= type :offset) (zero? new-width))
+                                           ""
+                                           (str (name media) "-"
+                                                (when (= type :offset) "offset-")
+                                                new-width)))
                           (dom/add-class! (els type) :easing)
                           (dom/set-px! (els type)
                                        :width
@@ -191,6 +174,11 @@
                                 (and (= max-cols 0)
                                      (< c (cur-cols-used (type-pos type))))
                                 (and (or (= type :offset) (> c 0))
+                                     (< (+ c (cur-cols-used
+                                              (type-pos (if (= type :offset)
+                                                          :width
+                                                          :offset))))
+                                        grid-cols)
                                      (< c (+ max-cols (cur-cols-used (type-pos type))))))))
                 move-handler (fn [e]
                                (let [dx (- (aget e "x") start-x)
@@ -201,24 +189,28 @@
                 stop-handler (fn [e]
                                (dom/unlisten! js/document :mousemove move-handler)
                                (snap!)
-                               (check-to-hide-new-col))]
+                               (check-to-allow-grow)
+                               (js/setTimeout
+                                #(do (check-to-hide-new-col)
+                                     (dom/remove-class! col-el :dragging))
+                                300))]
+            (dom/add-class! col-el :dragging)
             (dom/remove-class! (els type) :easing)
-            (dom/add-class! new-col-el "hidden")
+            (dom/add-class! new-col-el :hidden)
             (dom/listen! js/document :mousemove move-handler)
             (dom/listen-once! js/document :mouseup stop-handler)))]
 
-    (swap! layout update-in [(:pos row) :cols] conj {:id col-id
-                                                     :pos (count (:cols row))
-                                                     (@settings :media-mode) [0 1]})
-    (dom/append! width-el name-el)
-    (dom/append! width-el classes-el)
-    (dom/append! width-el offset-handle-el)
-    (dom/append! col-el offset-el)
-    (dom/append! col-el width-el)
-    (dom/append! col-el remove-el)
+    (swap! layout update-in [(:pos row) :cols] conj
+           {:id col-id
+            :pos (count (:cols row))
+            (@settings :media-mode) [0 1]})
+    (dom/append! width-el nested-el name-el classes-el offset-handle-el)
+    (dom/append! col-el offset-el width-el remove-el)
     (dom/append! cols-el col-el)
     (check-to-hide-new-col)
-    (dom/remove-class! new-col-el "no-cols")
+    (check-to-allow-grow)
+    (dom/insert-before! col-el new-col-el)
+    (dom/remove-class! new-col-el :no-cols)
     (dom/listen! remove-el :mousedown #(handle-remove %))
     (dom/listen! offset-handle-el :mousedown #(handle-drag :offset %))
     (dom/listen! offset-el :mousedown #(handle-drag :offset %))
@@ -228,23 +220,28 @@
 (defn add-row! []
   (this-as new-row-el
            (let [row-id (new-id! "row")
-                 row (node [:.sl-row])
-                 cols (node [:.cols])
+                 row-el (node [:.sl-row {:id (name row-id)}])
+                 cols-el (node [:.cols])
                  name-el (node [:input.row-name {:placeholder "Name Row"}])
-                 tools-el (node [:.tools
-                                 [:span [:i.icon-double-angle-down]]
-                                 [:span [:i.icon-level-down]]
-                                 [:span [:i.icon-remove]]])
-                 new-col (node [:.new-col.no-cols])]
-             (swap! layout conj {:id row-id :pos (count @layout) :cols []})
-             (dom/append! row name-el)
-             (dom/append! row tools-el)
-             (dom/insert-before! row new-row-el)
-             (dom/append! row cols)
-             (dom/append! row new-col)
-             (dom/listen! new-col
-                          :mousedown (fn [e]
-                                       (add-col! e cols new-col row-id))))))
+                 tools-el (node [:.tools])
+                 dupe-row-el (node [:span.dupe-row [:i.icon-double-angle-down]])
+                 grow-row-el (node [:span.grow-row [:i.icon-level-down]])
+                 remv-row-el (node [:span.remv-row [:i.icon-remove]])
+                 new-col-el (node [:.new-col.no-cols])
+                 clear-el (node [:.clear])]
+             (swap! layout conj {:id row-id :pos (count @layout) :cols [] :height {(:media-mode @settings) 1}})
+             (dom/append! cols-el new-col-el)
+             (dom/append! tools-el dupe-row-el grow-row-el remv-row-el)
+             (dom/append! row-el cols-el name-el tools-el clear-el)
+             (dom/insert-before! row-el new-row-el)
+             (dom/listen! new-col-el :mousedown (fn [e] (add-col! e cols-el new-col-el row-id)))
+             (dom/listen! grow-row-el :mousedown (fn [e]
+                                                   (let [row (get-row row-id)
+                                                         media-mode (:media-mode @settings)]
+                                                     (swap! layout assoc-in [(:pos row) :height media-mode]
+                                                            (inc (media-mode (:height row))))
+                                                     (dom/remove-class! new-col-el :hidden)
+                                                     (dom/set-px! row-el :height (+ 160 (dom/px row-el :height)))))))))
 
 (defn layout->html
   [rows]
@@ -280,7 +277,7 @@
       (let [col (node [:.col])]
         (dom/append! columns col)))
 
-    (doseq [[size label] size-labels]
+    (doseq [size sizes]
       (let [media (sel1 (str ".preview." (name size)))]
         (when (= size media-mode) (dom/add-class! media :active))
         (dom/listen! media :mouseup #(swap! settings assoc :media-mode size))))
@@ -307,16 +304,8 @@
 
 
     (dom/listen! new-row :click add-row!)
-    (dom/append! container columns)
-    (dom/append! container rows)
+    (dom/append! container columns rows)
     (dom/append! rows new-row)
     (dom/append! workspace container)))
-
-(dom/listen! js/document
-             :mousedown
-             (fn []
-               (when (not (= (:active-col @settings) :none))
-                 (dom/remove-class! (get-el (:active-col @settings)) :active))
-               (swap! settings assoc :active-col :none)))
 
 (draw-workspace)

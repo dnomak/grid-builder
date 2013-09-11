@@ -1649,126 +1649,126 @@ cljs.core._invoke = function() {
     }
     return q.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n)
   }, r = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q) {
-    var p;
-    p = a ? a.cljs$core$IFn$_invoke$arity$15 : a;
-    if(p) {
-      return a.cljs$core$IFn$_invoke$arity$15(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q)
-    }
-    p = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
-    if(!p && (p = cljs.core._invoke._, !p)) {
-      throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
-    }
-    return p.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, q)
-  }, q = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, p) {
     var s;
-    s = a ? a.cljs$core$IFn$_invoke$arity$16 : a;
+    s = a ? a.cljs$core$IFn$_invoke$arity$15 : a;
     if(s) {
-      return a.cljs$core$IFn$_invoke$arity$16(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, p)
+      return a.cljs$core$IFn$_invoke$arity$15(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q)
     }
     s = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
     if(!s && (s = cljs.core._invoke._, !s)) {
       throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
     }
-    return s.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, p)
-  }, s = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, p, s) {
+    return s.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, q)
+  }, q = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s) {
+    var p;
+    p = a ? a.cljs$core$IFn$_invoke$arity$16 : a;
+    if(p) {
+      return a.cljs$core$IFn$_invoke$arity$16(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s)
+    }
+    p = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
+    if(!p && (p = cljs.core._invoke._, !p)) {
+      throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
+    }
+    return p.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s)
+  }, s = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p) {
     var r;
     r = a ? a.cljs$core$IFn$_invoke$arity$17 : a;
     if(r) {
-      return a.cljs$core$IFn$_invoke$arity$17(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, p, s)
+      return a.cljs$core$IFn$_invoke$arity$17(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p)
     }
     r = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
     if(!r && (r = cljs.core._invoke._, !r)) {
       throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
     }
-    return r.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, p, s)
-  }, t = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, p, s, r) {
+    return r.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p)
+  }, t = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p, r) {
     var t;
     t = a ? a.cljs$core$IFn$_invoke$arity$18 : a;
     if(t) {
-      return a.cljs$core$IFn$_invoke$arity$18(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, p, s, r)
+      return a.cljs$core$IFn$_invoke$arity$18(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p, r)
     }
     t = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
     if(!t && (t = cljs.core._invoke._, !t)) {
       throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
     }
-    return t.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, p, s, r)
-  }, u = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, p, s, r, t) {
-    var v;
-    v = a ? a.cljs$core$IFn$_invoke$arity$19 : a;
-    if(v) {
-      return a.cljs$core$IFn$_invoke$arity$19(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, p, s, r, t)
-    }
-    v = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
-    if(!v && (v = cljs.core._invoke._, !v)) {
-      throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
-    }
-    return v.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, p, s, r, t)
-  }, v = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, p, s, r, t, v) {
+    return t.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p, r)
+  }, u = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p, r, t) {
     var u;
-    u = a ? a.cljs$core$IFn$_invoke$arity$20 : a;
+    u = a ? a.cljs$core$IFn$_invoke$arity$19 : a;
     if(u) {
-      return a.cljs$core$IFn$_invoke$arity$20(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, p, s, r, t, v)
+      return a.cljs$core$IFn$_invoke$arity$19(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p, r, t)
     }
     u = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
     if(!u && (u = cljs.core._invoke._, !u)) {
       throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
     }
-    return u.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, p, s, r, t, v)
-  }, A = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, p, s, r, t, v, u) {
-    var A;
-    A = a ? a.cljs$core$IFn$_invoke$arity$21 : a;
-    if(A) {
-      return a.cljs$core$IFn$_invoke$arity$21(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, p, s, r, t, v, u)
+    return u.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p, r, t)
+  }, v = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p, r, t, u) {
+    var v;
+    v = a ? a.cljs$core$IFn$_invoke$arity$20 : a;
+    if(v) {
+      return a.cljs$core$IFn$_invoke$arity$20(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p, r, t, u)
     }
-    A = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
-    if(!A && (A = cljs.core._invoke._, !A)) {
+    v = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
+    if(!v && (v = cljs.core._invoke._, !v)) {
       throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
     }
-    return A.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, p, s, r, t, v, u)
-  }, a = function(a, w, x, y, z, B, C, D, E, F, H, G, I, J, K, L, M, N, O, P, Q) {
+    return v.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p, r, t, u)
+  }, w = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p, r, t, u, v) {
+    var w;
+    w = a ? a.cljs$core$IFn$_invoke$arity$21 : a;
+    if(w) {
+      return a.cljs$core$IFn$_invoke$arity$21(a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p, r, t, u, v)
+    }
+    w = cljs.core._invoke[goog.typeOf(null == a ? null : a)];
+    if(!w && (w = cljs.core._invoke._, !w)) {
+      throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
+    }
+    return w.call(null, a, b, c, d, e, f, g, h, i, j, k, l, m, n, q, s, p, r, t, u, v)
+  }, a = function(a, x, y, z, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q) {
     switch(arguments.length) {
       case 1:
         return b.call(this, a);
       case 2:
-        return c.call(this, a, w);
+        return c.call(this, a, x);
       case 3:
-        return d.call(this, a, w, x);
+        return d.call(this, a, x, y);
       case 4:
-        return e.call(this, a, w, x, y);
+        return e.call(this, a, x, y, z);
       case 5:
-        return f.call(this, a, w, x, y, z);
+        return f.call(this, a, x, y, z, A);
       case 6:
-        return g.call(this, a, w, x, y, z, B);
+        return g.call(this, a, x, y, z, A, B);
       case 7:
-        return h.call(this, a, w, x, y, z, B, C);
+        return h.call(this, a, x, y, z, A, B, C);
       case 8:
-        return i.call(this, a, w, x, y, z, B, C, D);
+        return i.call(this, a, x, y, z, A, B, C, D);
       case 9:
-        return j.call(this, a, w, x, y, z, B, C, D, E);
+        return j.call(this, a, x, y, z, A, B, C, D, E);
       case 10:
-        return k.call(this, a, w, x, y, z, B, C, D, E, F);
+        return k.call(this, a, x, y, z, A, B, C, D, E, F);
       case 11:
-        return l.call(this, a, w, x, y, z, B, C, D, E, F, H);
+        return l.call(this, a, x, y, z, A, B, C, D, E, F, G);
       case 12:
-        return m.call(this, a, w, x, y, z, B, C, D, E, F, H, G);
+        return m.call(this, a, x, y, z, A, B, C, D, E, F, G, H);
       case 13:
-        return n.call(this, a, w, x, y, z, B, C, D, E, F, H, G, I);
+        return n.call(this, a, x, y, z, A, B, C, D, E, F, G, H, I);
       case 14:
-        return p.call(this, a, w, x, y, z, B, C, D, E, F, H, G, I, J);
+        return p.call(this, a, x, y, z, A, B, C, D, E, F, G, H, I, J);
       case 15:
-        return r.call(this, a, w, x, y, z, B, C, D, E, F, H, G, I, J, K);
+        return r.call(this, a, x, y, z, A, B, C, D, E, F, G, H, I, J, K);
       case 16:
-        return q.call(this, a, w, x, y, z, B, C, D, E, F, H, G, I, J, K, L);
+        return q.call(this, a, x, y, z, A, B, C, D, E, F, G, H, I, J, K, L);
       case 17:
-        return s.call(this, a, w, x, y, z, B, C, D, E, F, H, G, I, J, K, L, M);
+        return s.call(this, a, x, y, z, A, B, C, D, E, F, G, H, I, J, K, L, M);
       case 18:
-        return t.call(this, a, w, x, y, z, B, C, D, E, F, H, G, I, J, K, L, M, N);
+        return t.call(this, a, x, y, z, A, B, C, D, E, F, G, H, I, J, K, L, M, N);
       case 19:
-        return u.call(this, a, w, x, y, z, B, C, D, E, F, H, G, I, J, K, L, M, N, O);
+        return u.call(this, a, x, y, z, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O);
       case 20:
-        return v.call(this, a, w, x, y, z, B, C, D, E, F, H, G, I, J, K, L, M, N, O, P);
+        return v.call(this, a, x, y, z, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P);
       case 21:
-        return A.call(this, a, w, x, y, z, B, C, D, E, F, H, G, I, J, K, L, M, N, O, P, Q)
+        return w.call(this, a, x, y, z, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q)
     }
     throw Error("Invalid arity: " + arguments.length);
   };
@@ -1792,7 +1792,7 @@ cljs.core._invoke = function() {
   a.cljs$core$IFn$_invoke$arity$18 = t;
   a.cljs$core$IFn$_invoke$arity$19 = u;
   a.cljs$core$IFn$_invoke$arity$20 = v;
-  a.cljs$core$IFn$_invoke$arity$21 = A;
+  a.cljs$core$IFn$_invoke$arity$21 = w;
   return a
 }();
 cljs.core.ICounted = {};
@@ -3389,22 +3389,22 @@ cljs.core.with_meta = function with_meta(b, c) {
   var d = cljs.core.fn_QMARK_.call(null, b);
   d && (d = b ? ((d = b.cljs$lang$protocol_mask$partition0$ & 262144) ? d : b.cljs$core$IWithMeta$) || (b.cljs$lang$protocol_mask$partition0$ ? 0 : cljs.core.type_satisfies_.call(null, cljs.core.IWithMeta, b)) : cljs.core.type_satisfies_.call(null, cljs.core.IWithMeta, b), d = !d);
   return d ? with_meta.call(null, function() {
-    if(void 0 === cljs.core.t5233) {
-      cljs.core.t5233 = {};
-      cljs.core.t5233 = function(b, c, d, e) {
+    if(void 0 === cljs.core.t5757) {
+      cljs.core.t5757 = {};
+      cljs.core.t5757 = function(b, c, d, e) {
         this.meta = b;
         this.o = c;
         this.with_meta = d;
-        this.meta5234 = e;
+        this.meta5758 = e;
         this.cljs$lang$protocol_mask$partition1$ = 0;
         this.cljs$lang$protocol_mask$partition0$ = 393217
       };
-      cljs.core.t5233.cljs$lang$type = !0;
-      cljs.core.t5233.cljs$lang$ctorStr = "cljs.core/t5233";
-      cljs.core.t5233.cljs$lang$ctorPrWriter = function(b, c) {
-        return cljs.core._write.call(null, c, "cljs.core/t5233")
+      cljs.core.t5757.cljs$lang$type = !0;
+      cljs.core.t5757.cljs$lang$ctorStr = "cljs.core/t5757";
+      cljs.core.t5757.cljs$lang$ctorPrWriter = function(b, c) {
+        return cljs.core._write.call(null, c, "cljs.core/t5757")
       };
-      var d = cljs.core.t5233.prototype, f = function(b, c) {
+      var d = cljs.core.t5757.prototype, f = function(b, c) {
         return cljs.core.apply.call(null, b.o, c)
       }, g = function(b, c) {
         var b = this, d = null;
@@ -3418,19 +3418,19 @@ cljs.core.with_meta = function with_meta(b, c) {
       };
       g.cljs$core$IFn$_invoke$arity$variadic = f;
       d.call = g;
-      cljs.core.t5233.prototype.apply = function(b, c) {
+      cljs.core.t5757.prototype.apply = function(b, c) {
         b = this;
         return b.call.apply(b, [b].concat(c.slice()))
       };
-      cljs.core.t5233.prototype.cljs$core$Fn$ = !0;
-      cljs.core.t5233.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
-        return this.meta5234
+      cljs.core.t5757.prototype.cljs$core$Fn$ = !0;
+      cljs.core.t5757.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
+        return this.meta5758
       };
-      cljs.core.t5233.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, c) {
-        return new cljs.core.t5233(this.meta, this.o, this.with_meta, c)
+      cljs.core.t5757.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, c) {
+        return new cljs.core.t5757(this.meta, this.o, this.with_meta, c)
       }
     }
-    return new cljs.core.t5233(c, b, with_meta, null)
+    return new cljs.core.t5757(c, b, with_meta, null)
   }(), c) : cljs.core._with_meta.call(null, b, c)
 };
 cljs.core.meta = function(a) {
@@ -5959,10 +5959,10 @@ cljs.core.apply_to = function(a, b, c) {
   if(19 === b) {
     return a.cljs$core$IFn$_invoke$arity$19 ? a.cljs$core$IFn$_invoke$arity$19(c, d, e, f, g, a, h, i, j, k, l, m, n, p, r, q, s, t, u) : a.call(null, c, d, e, f, g, a, h, i, j, k, l, m, n, p, r, q, s, t, u)
   }
-  var A = cljs.core._first.call(null, v);
+  var w = cljs.core._first.call(null, v);
   cljs.core._rest.call(null, v);
   if(20 === b) {
-    return a.cljs$core$IFn$_invoke$arity$20 ? a.cljs$core$IFn$_invoke$arity$20(c, d, e, f, g, a, h, i, j, k, l, m, n, p, r, q, s, t, u, A) : a.call(null, c, d, e, f, g, a, h, i, j, k, l, m, n, p, r, q, s, t, u, A)
+    return a.cljs$core$IFn$_invoke$arity$20 ? a.cljs$core$IFn$_invoke$arity$20(c, d, e, f, g, a, h, i, j, k, l, m, n, p, r, q, s, t, u, w) : a.call(null, c, d, e, f, g, a, h, i, j, k, l, m, n, p, r, q, s, t, u, w)
   }
   throw Error("Only up to 20 arguments supported on functions");
 };
@@ -12837,24 +12837,24 @@ cljs.core.async.impl.ioc_helpers.finished_QMARK_ = function(a) {
   return"\ufdd0:finished" === a[cljs.core.async.impl.ioc_helpers.STATE_IDX]
 };
 cljs.core.async.impl.ioc_helpers.fn_handler = function fn_handler(b) {
-  void 0 === cljs.core.async.impl.ioc_helpers.t6071 && (cljs.core.async.impl.ioc_helpers.t6071 = {}, cljs.core.async.impl.ioc_helpers.t6071 = function(b, d, e) {
+  void 0 === cljs.core.async.impl.ioc_helpers.t6595 && (cljs.core.async.impl.ioc_helpers.t6595 = {}, cljs.core.async.impl.ioc_helpers.t6595 = function(b, d, e) {
     this.f = b;
     this.fn_handler = d;
-    this.meta6072 = e;
+    this.meta6596 = e;
     this.cljs$lang$protocol_mask$partition1$ = 0;
     this.cljs$lang$protocol_mask$partition0$ = 393216
-  }, cljs.core.async.impl.ioc_helpers.t6071.cljs$lang$type = !0, cljs.core.async.impl.ioc_helpers.t6071.cljs$lang$ctorStr = "cljs.core.async.impl.ioc-helpers/t6071", cljs.core.async.impl.ioc_helpers.t6071.cljs$lang$ctorPrWriter = function(b, d) {
-    return cljs.core._write.call(null, d, "cljs.core.async.impl.ioc-helpers/t6071")
-  }, cljs.core.async.impl.ioc_helpers.t6071.prototype.cljs$core$async$impl$protocols$Handler$ = !0, cljs.core.async.impl.ioc_helpers.t6071.prototype.cljs$core$async$impl$protocols$Handler$active_QMARK_$arity$1 = function() {
+  }, cljs.core.async.impl.ioc_helpers.t6595.cljs$lang$type = !0, cljs.core.async.impl.ioc_helpers.t6595.cljs$lang$ctorStr = "cljs.core.async.impl.ioc-helpers/t6595", cljs.core.async.impl.ioc_helpers.t6595.cljs$lang$ctorPrWriter = function(b, d) {
+    return cljs.core._write.call(null, d, "cljs.core.async.impl.ioc-helpers/t6595")
+  }, cljs.core.async.impl.ioc_helpers.t6595.prototype.cljs$core$async$impl$protocols$Handler$ = !0, cljs.core.async.impl.ioc_helpers.t6595.prototype.cljs$core$async$impl$protocols$Handler$active_QMARK_$arity$1 = function() {
     return!0
-  }, cljs.core.async.impl.ioc_helpers.t6071.prototype.cljs$core$async$impl$protocols$Handler$commit$arity$1 = function() {
+  }, cljs.core.async.impl.ioc_helpers.t6595.prototype.cljs$core$async$impl$protocols$Handler$commit$arity$1 = function() {
     return this.f
-  }, cljs.core.async.impl.ioc_helpers.t6071.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
-    return this.meta6072
-  }, cljs.core.async.impl.ioc_helpers.t6071.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, d) {
-    return new cljs.core.async.impl.ioc_helpers.t6071(this.f, this.fn_handler, d)
+  }, cljs.core.async.impl.ioc_helpers.t6595.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
+    return this.meta6596
+  }, cljs.core.async.impl.ioc_helpers.t6595.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, d) {
+    return new cljs.core.async.impl.ioc_helpers.t6595(this.f, this.fn_handler, d)
   });
-  return new cljs.core.async.impl.ioc_helpers.t6071(b, fn_handler, null)
+  return new cljs.core.async.impl.ioc_helpers.t6595(b, fn_handler, null)
 };
 cljs.core.async.impl.ioc_helpers.run_state_machine = function(a) {
   return cljs.core.async.impl.ioc_helpers.aget_object.call(null, a, cljs.core.async.impl.ioc_helpers.FN_IDX).call(null, a)
@@ -13103,22 +13103,22 @@ cljs.core.async.impl.dispatch.queue_delay = function(a, b) {
 };
 cljs.core.async.impl.channels = {};
 cljs.core.async.impl.channels.box = function box(b) {
-  void 0 === cljs.core.async.impl.channels.t6060 && (cljs.core.async.impl.channels.t6060 = {}, cljs.core.async.impl.channels.t6060 = function(b, d, e) {
+  void 0 === cljs.core.async.impl.channels.t6584 && (cljs.core.async.impl.channels.t6584 = {}, cljs.core.async.impl.channels.t6584 = function(b, d, e) {
     this.val = b;
     this.box = d;
-    this.meta6061 = e;
+    this.meta6585 = e;
     this.cljs$lang$protocol_mask$partition1$ = 0;
     this.cljs$lang$protocol_mask$partition0$ = 425984
-  }, cljs.core.async.impl.channels.t6060.cljs$lang$type = !0, cljs.core.async.impl.channels.t6060.cljs$lang$ctorStr = "cljs.core.async.impl.channels/t6060", cljs.core.async.impl.channels.t6060.cljs$lang$ctorPrWriter = function(b, d) {
-    return cljs.core._write.call(null, d, "cljs.core.async.impl.channels/t6060")
-  }, cljs.core.async.impl.channels.t6060.prototype.cljs$core$IDeref$_deref$arity$1 = function() {
+  }, cljs.core.async.impl.channels.t6584.cljs$lang$type = !0, cljs.core.async.impl.channels.t6584.cljs$lang$ctorStr = "cljs.core.async.impl.channels/t6584", cljs.core.async.impl.channels.t6584.cljs$lang$ctorPrWriter = function(b, d) {
+    return cljs.core._write.call(null, d, "cljs.core.async.impl.channels/t6584")
+  }, cljs.core.async.impl.channels.t6584.prototype.cljs$core$IDeref$_deref$arity$1 = function() {
     return this.val
-  }, cljs.core.async.impl.channels.t6060.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
-    return this.meta6061
-  }, cljs.core.async.impl.channels.t6060.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, d) {
-    return new cljs.core.async.impl.channels.t6060(this.val, this.box, d)
+  }, cljs.core.async.impl.channels.t6584.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
+    return this.meta6585
+  }, cljs.core.async.impl.channels.t6584.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, d) {
+    return new cljs.core.async.impl.channels.t6584(this.val, this.box, d)
   });
-  return new cljs.core.async.impl.channels.t6060(b, box, null)
+  return new cljs.core.async.impl.channels.t6584(b, box, null)
 };
 cljs.core.async.impl.channels.PutBox = function(a, b) {
   this.handler = a;
@@ -13481,24 +13481,24 @@ cljs.core.async.impl.timers.timeout = function(a) {
   return d
 };
 cljs.core.async.fn_handler = function fn_handler$$0(b) {
-  void 0 === cljs.core.async.t6004 && (cljs.core.async.t6004 = {}, cljs.core.async.t6004 = function(b, d, e) {
+  void 0 === cljs.core.async.t6528 && (cljs.core.async.t6528 = {}, cljs.core.async.t6528 = function(b, d, e) {
     this.f = b;
     this.fn_handler = d;
-    this.meta6005 = e;
+    this.meta6529 = e;
     this.cljs$lang$protocol_mask$partition1$ = 0;
     this.cljs$lang$protocol_mask$partition0$ = 393216
-  }, cljs.core.async.t6004.cljs$lang$type = !0, cljs.core.async.t6004.cljs$lang$ctorStr = "cljs.core.async/t6004", cljs.core.async.t6004.cljs$lang$ctorPrWriter = function(b, d) {
-    return cljs.core._write.call(null, d, "cljs.core.async/t6004")
-  }, cljs.core.async.t6004.prototype.cljs$core$async$impl$protocols$Handler$ = !0, cljs.core.async.t6004.prototype.cljs$core$async$impl$protocols$Handler$active_QMARK_$arity$1 = function() {
+  }, cljs.core.async.t6528.cljs$lang$type = !0, cljs.core.async.t6528.cljs$lang$ctorStr = "cljs.core.async/t6528", cljs.core.async.t6528.cljs$lang$ctorPrWriter = function(b, d) {
+    return cljs.core._write.call(null, d, "cljs.core.async/t6528")
+  }, cljs.core.async.t6528.prototype.cljs$core$async$impl$protocols$Handler$ = !0, cljs.core.async.t6528.prototype.cljs$core$async$impl$protocols$Handler$active_QMARK_$arity$1 = function() {
     return!0
-  }, cljs.core.async.t6004.prototype.cljs$core$async$impl$protocols$Handler$commit$arity$1 = function() {
+  }, cljs.core.async.t6528.prototype.cljs$core$async$impl$protocols$Handler$commit$arity$1 = function() {
     return this.f
-  }, cljs.core.async.t6004.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
-    return this.meta6005
-  }, cljs.core.async.t6004.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, d) {
-    return new cljs.core.async.t6004(this.f, this.fn_handler, d)
+  }, cljs.core.async.t6528.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
+    return this.meta6529
+  }, cljs.core.async.t6528.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, d) {
+    return new cljs.core.async.t6528(this.f, this.fn_handler, d)
   });
-  return new cljs.core.async.t6004(b, fn_handler$$0, null)
+  return new cljs.core.async.t6528(b, fn_handler$$0, null)
 };
 cljs.core.async.buffer = function(a) {
   return cljs.core.async.impl.buffers.fixed_buffer.call(null, a)
@@ -13612,47 +13612,47 @@ cljs.core.async.random_array = function(a) {
 };
 cljs.core.async.alt_flag = function alt_flag() {
   var b = cljs.core.atom.call(null, !0);
-  void 0 === cljs.core.async.t6015 && (cljs.core.async.t6015 = {}, cljs.core.async.t6015 = function(b, d, e) {
+  void 0 === cljs.core.async.t6539 && (cljs.core.async.t6539 = {}, cljs.core.async.t6539 = function(b, d, e) {
     this.flag = b;
     this.alt_flag = d;
-    this.meta6016 = e;
+    this.meta6540 = e;
     this.cljs$lang$protocol_mask$partition1$ = 0;
     this.cljs$lang$protocol_mask$partition0$ = 393216
-  }, cljs.core.async.t6015.cljs$lang$type = !0, cljs.core.async.t6015.cljs$lang$ctorStr = "cljs.core.async/t6015", cljs.core.async.t6015.cljs$lang$ctorPrWriter = function(b, d) {
-    return cljs.core._write.call(null, d, "cljs.core.async/t6015")
-  }, cljs.core.async.t6015.prototype.cljs$core$async$impl$protocols$Handler$ = !0, cljs.core.async.t6015.prototype.cljs$core$async$impl$protocols$Handler$active_QMARK_$arity$1 = function() {
+  }, cljs.core.async.t6539.cljs$lang$type = !0, cljs.core.async.t6539.cljs$lang$ctorStr = "cljs.core.async/t6539", cljs.core.async.t6539.cljs$lang$ctorPrWriter = function(b, d) {
+    return cljs.core._write.call(null, d, "cljs.core.async/t6539")
+  }, cljs.core.async.t6539.prototype.cljs$core$async$impl$protocols$Handler$ = !0, cljs.core.async.t6539.prototype.cljs$core$async$impl$protocols$Handler$active_QMARK_$arity$1 = function() {
     return cljs.core.deref.call(null, this.flag)
-  }, cljs.core.async.t6015.prototype.cljs$core$async$impl$protocols$Handler$commit$arity$1 = function() {
+  }, cljs.core.async.t6539.prototype.cljs$core$async$impl$protocols$Handler$commit$arity$1 = function() {
     cljs.core.reset_BANG_.call(null, this.flag, null);
     return!0
-  }, cljs.core.async.t6015.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
-    return this.meta6016
-  }, cljs.core.async.t6015.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, d) {
-    return new cljs.core.async.t6015(this.flag, this.alt_flag, d)
+  }, cljs.core.async.t6539.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
+    return this.meta6540
+  }, cljs.core.async.t6539.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, d) {
+    return new cljs.core.async.t6539(this.flag, this.alt_flag, d)
   });
-  return new cljs.core.async.t6015(b, alt_flag, null)
+  return new cljs.core.async.t6539(b, alt_flag, null)
 };
 cljs.core.async.alt_handler = function alt_handler(b, c) {
-  void 0 === cljs.core.async.t6022 && (cljs.core.async.t6022 = {}, cljs.core.async.t6022 = function(b, c, f, g) {
+  void 0 === cljs.core.async.t6546 && (cljs.core.async.t6546 = {}, cljs.core.async.t6546 = function(b, c, f, g) {
     this.cb = b;
     this.flag = c;
     this.alt_handler = f;
-    this.meta6023 = g;
+    this.meta6547 = g;
     this.cljs$lang$protocol_mask$partition1$ = 0;
     this.cljs$lang$protocol_mask$partition0$ = 393216
-  }, cljs.core.async.t6022.cljs$lang$type = !0, cljs.core.async.t6022.cljs$lang$ctorStr = "cljs.core.async/t6022", cljs.core.async.t6022.cljs$lang$ctorPrWriter = function(b, c) {
-    return cljs.core._write.call(null, c, "cljs.core.async/t6022")
-  }, cljs.core.async.t6022.prototype.cljs$core$async$impl$protocols$Handler$ = !0, cljs.core.async.t6022.prototype.cljs$core$async$impl$protocols$Handler$active_QMARK_$arity$1 = function() {
+  }, cljs.core.async.t6546.cljs$lang$type = !0, cljs.core.async.t6546.cljs$lang$ctorStr = "cljs.core.async/t6546", cljs.core.async.t6546.cljs$lang$ctorPrWriter = function(b, c) {
+    return cljs.core._write.call(null, c, "cljs.core.async/t6546")
+  }, cljs.core.async.t6546.prototype.cljs$core$async$impl$protocols$Handler$ = !0, cljs.core.async.t6546.prototype.cljs$core$async$impl$protocols$Handler$active_QMARK_$arity$1 = function() {
     return cljs.core.async.impl.protocols.active_QMARK_.call(null, this.flag)
-  }, cljs.core.async.t6022.prototype.cljs$core$async$impl$protocols$Handler$commit$arity$1 = function() {
+  }, cljs.core.async.t6546.prototype.cljs$core$async$impl$protocols$Handler$commit$arity$1 = function() {
     cljs.core.async.impl.protocols.commit.call(null, this.flag);
     return this.cb
-  }, cljs.core.async.t6022.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
-    return this.meta6023
-  }, cljs.core.async.t6022.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, c) {
-    return new cljs.core.async.t6022(this.cb, this.flag, this.alt_handler, c)
+  }, cljs.core.async.t6546.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
+    return this.meta6547
+  }, cljs.core.async.t6546.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, c) {
+    return new cljs.core.async.t6546(this.cb, this.flag, this.alt_handler, c)
   });
-  return new cljs.core.async.t6022(c, b, alt_handler, null)
+  return new cljs.core.async.t6546(c, b, alt_handler, null)
 };
 cljs.core.async.do_alts = function(a, b, c) {
   var d = cljs.core.async.alt_flag.call(null), e = cljs.core.count.call(null, b), f = cljs.core.async.random_array.call(null, e), g = (new cljs.core.Keyword("\ufdd0:priority")).call(null, c);
@@ -14417,12 +14417,12 @@ try {
   Window.prototype.dommy$template$PElement$ = !0, Window.prototype.dommy$template$PElement$_elem$arity$1 = function(a) {
     return a
   }
-}catch(e6634) {
-  if(e6634 instanceof ReferenceError) {
-    var __6635 = e6634;
+}catch(e7158) {
+  if(e7158 instanceof ReferenceError) {
+    var __7159 = e7158;
     console.log("PElement: js/Window not defined by browser, skipping it... (running on phantomjs?)")
   }else {
-    throw e6634;
+    throw e7158;
   }
 }
 dommy.template.node = function(a) {
@@ -14874,8 +14874,8 @@ dommy.core.listen_once_BANG_ = function() {
       if(h < g) {
         var i = cljs.core._nth.call(null, f, h), j = cljs.core.nth.call(null, i, 0, null), k = cljs.core.nth.call(null, i, 1, null);
         dommy.core.listen_BANG_.call(null, a, j, function(b, d, e, f, g, h, i) {
-          return function A(b) {
-            dommy.core.unlisten_BANG_.call(null, a, h, A);
+          return function w(b) {
+            dommy.core.unlisten_BANG_.call(null, a, h, w);
             return i.call(null, b)
           }
         }(e, f, g, h, i, j, k));
@@ -14888,8 +14888,8 @@ dommy.core.listen_once_BANG_ = function() {
           }else {
             var k = cljs.core.first.call(null, i), l = cljs.core.nth.call(null, k, 0, null), m = cljs.core.nth.call(null, k, 1, null);
             dommy.core.listen_BANG_.call(null, a, l, function(b, d, e, f, g, h, i) {
-              return function A(b) {
-                dommy.core.unlisten_BANG_.call(null, a, h, A);
+              return function w(b) {
+                dommy.core.unlisten_BANG_.call(null, a, h, w);
                 return i.call(null, b)
               }
             }(e, f, g, h, k, l, m, i, j));
@@ -15244,7 +15244,7 @@ shoelace.client.new_id_BANG_ = function(a) {
   cljs.core.swap_BANG_.call(null, shoelace.client.id, cljs.core.inc);
   return cljs.core.keyword.call(null, [cljs.core.str(a), cljs.core.str("-"), cljs.core.str(cljs.core.deref.call(null, shoelace.client.id))].join(""))
 };
-shoelace.client.settings = cljs.core.atom.call(null, cljs.core.PersistentArrayMap.fromArray(["\ufdd0:media-mode", "\ufdd0:sm", "\ufdd0:active-col", "\ufdd0:none", "\ufdd0:include-container", !0, "\ufdd0:output-mode", "\ufdd0:html"], !0));
+shoelace.client.settings = cljs.core.atom.call(null, cljs.core.PersistentArrayMap.fromArray(["\ufdd0:media-mode", "\ufdd0:sm", "\ufdd0:include-container", !0, "\ufdd0:active-row", "\ufdd0:none", "\ufdd0:output-mode", "\ufdd0:html"], !0));
 shoelace.client.layout = cljs.core.atom.call(null, cljs.core.PersistentVector.EMPTY);
 shoelace.client.get_by_key = function(a, b, c) {
   return cljs.core.first.call(null, cljs.core.filter.call(null, function(a) {
@@ -15258,11 +15258,10 @@ shoelace.client.get_row = function(a) {
   return shoelace.client.get_by_id.call(null, cljs.core.deref.call(null, shoelace.client.layout), a)
 };
 shoelace.client.get_col = function(a, b) {
-  return shoelace.client.get_by_id.call(null, shoelace.client.get_row.call(null, a).call(null, "\ufdd0:cols"), b)
+  return shoelace.client.get_by_id.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, shoelace.client.get_row.call(null, a)), b)
 };
 shoelace.client.sizes = cljs.core.PersistentVector.fromArray(["\ufdd0:xs", "\ufdd0:sm", "\ufdd0:md", "\ufdd0:lg"], !0);
 shoelace.client.sizes_index = cljs.core.PersistentArrayMap.fromArray(["\ufdd0:xs", 0, "\ufdd0:sm", 1, "\ufdd0:md", 2, "\ufdd0:lg", 3], !0);
-shoelace.client.size_labels = cljs.core.PersistentArrayMap.fromArray("\ufdd0:xs;xs;\ufdd0:sm;sm - @media-tablet;\ufdd0:md;md - @media-desktop;\ufdd0:lg;lg - @media-lg-desktop".split(";"), !0);
 shoelace.client.sizes_up_to = function(a) {
   return cljs.core.reverse.call(null, cljs.core.subvec.call(null, shoelace.client.sizes, 0, shoelace.client.sizes_index.call(null, a) + 1))
 };
@@ -15286,65 +15285,6 @@ shoelace.client.get_el = function(a) {
 shoelace.client.calc_col_unit = function() {
   return shoelace.client.col_margin_width + shoelace.client.col_width
 };
-shoelace.client.draw_rows = function() {
-  for(var a = shoelace.client.calc_col_unit.call(null), b = (new cljs.core.Keyword("\ufdd0:media-mode")).call(null, cljs.core.deref.call(null, shoelace.client.settings)), c = cljs.core.seq.call(null, cljs.core.deref.call(null, shoelace.client.layout)), d = null, e = 0, f = 0;;) {
-    if(f < e) {
-      var g = cljs.core._nth.call(null, d, f);
-      shoelace.client.spy.call(null, a);
-      for(var g = cljs.core.seq.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, g)), h = null, i = 0, j = 0;;) {
-        if(j < i) {
-          var k = cljs.core._nth.call(null, h, j);
-          shoelace.client.spy.call(null, k);
-          shoelace.client.spy.call(null, shoelace.client.col_for_media.call(null, k, b));
-          var l = shoelace.client.get_el.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, k)), m = shoelace.client.spy.call(null, shoelace.client.col_for_media.call(null, k, b)), k = cljs.core.nth.call(null, m, 0, null), m = cljs.core.nth.call(null, m, 1, null);
-          dommy.core.set_px_BANG_.call(null, document.querySelector(dommy.core.selector.call(null, cljs.core.PersistentVector.fromArray([l, "\ufdd0:.offset"], !0))), "\ufdd0:width", k * a);
-          dommy.core.set_px_BANG_.call(null, document.querySelector(dommy.core.selector.call(null, cljs.core.PersistentVector.fromArray([l, "\ufdd0:.width"], !0))), "\ufdd0:width", m * a);
-          j += 1
-        }else {
-          if(g = cljs.core.seq.call(null, g)) {
-            cljs.core.chunked_seq_QMARK_.call(null, g) ? (i = cljs.core.chunk_first.call(null, g), g = cljs.core.chunk_rest.call(null, g), h = i, i = cljs.core.count.call(null, i)) : (i = cljs.core.first.call(null, g), shoelace.client.spy.call(null, i), shoelace.client.spy.call(null, shoelace.client.col_for_media.call(null, i, b)), h = shoelace.client.get_el.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, i)), j = shoelace.client.spy.call(null, shoelace.client.col_for_media.call(null, 
-            i, b)), i = cljs.core.nth.call(null, j, 0, null), j = cljs.core.nth.call(null, j, 1, null), dommy.core.set_px_BANG_.call(null, document.querySelector(dommy.core.selector.call(null, cljs.core.PersistentVector.fromArray([h, "\ufdd0:.offset"], !0))), "\ufdd0:width", i * a), dommy.core.set_px_BANG_.call(null, document.querySelector(dommy.core.selector.call(null, cljs.core.PersistentVector.fromArray([h, "\ufdd0:.width"], !0))), "\ufdd0:width", j * a), g = cljs.core.next.call(null, g), h = 
-            null, i = 0), j = 0
-          }else {
-            break
-          }
-        }
-      }
-      f += 1
-    }else {
-      if(c = cljs.core.seq.call(null, c)) {
-        if(cljs.core.chunked_seq_QMARK_.call(null, c)) {
-          e = cljs.core.chunk_first.call(null, c), c = cljs.core.chunk_rest.call(null, c), d = e, e = cljs.core.count.call(null, e)
-        }else {
-          g = cljs.core.first.call(null, c);
-          shoelace.client.spy.call(null, a);
-          d = cljs.core.seq.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, g));
-          e = null;
-          for(g = f = 0;;) {
-            if(g < f) {
-              i = cljs.core._nth.call(null, e, g), shoelace.client.spy.call(null, i), shoelace.client.spy.call(null, shoelace.client.col_for_media.call(null, i, b)), h = shoelace.client.get_el.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, i)), j = shoelace.client.spy.call(null, shoelace.client.col_for_media.call(null, i, b)), i = cljs.core.nth.call(null, j, 0, null), j = cljs.core.nth.call(null, j, 1, null), dommy.core.set_px_BANG_.call(null, document.querySelector(dommy.core.selector.call(null, 
-              cljs.core.PersistentVector.fromArray([h, "\ufdd0:.offset"], !0))), "\ufdd0:width", i * a), dommy.core.set_px_BANG_.call(null, document.querySelector(dommy.core.selector.call(null, cljs.core.PersistentVector.fromArray([h, "\ufdd0:.width"], !0))), "\ufdd0:width", j * a), g += 1
-            }else {
-              if(d = cljs.core.seq.call(null, d)) {
-                cljs.core.chunked_seq_QMARK_.call(null, d) ? (f = cljs.core.chunk_first.call(null, d), d = cljs.core.chunk_rest.call(null, d), e = f, f = cljs.core.count.call(null, f)) : (f = cljs.core.first.call(null, d), shoelace.client.spy.call(null, f), shoelace.client.spy.call(null, shoelace.client.col_for_media.call(null, f, b)), e = shoelace.client.get_el.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, f)), g = shoelace.client.spy.call(null, shoelace.client.col_for_media.call(null, 
-                f, b)), f = cljs.core.nth.call(null, g, 0, null), g = cljs.core.nth.call(null, g, 1, null), dommy.core.set_px_BANG_.call(null, document.querySelector(dommy.core.selector.call(null, cljs.core.PersistentVector.fromArray([e, "\ufdd0:.offset"], !0))), "\ufdd0:width", f * a), dommy.core.set_px_BANG_.call(null, document.querySelector(dommy.core.selector.call(null, cljs.core.PersistentVector.fromArray([e, "\ufdd0:.width"], !0))), "\ufdd0:width", g * a), d = cljs.core.next.call(null, d), 
-                e = null, f = 0), g = 0
-              }else {
-                break
-              }
-            }
-          }
-          c = cljs.core.next.call(null, c);
-          d = null;
-          e = 0
-        }
-        f = 0
-      }else {
-        return null
-      }
-    }
-  }
-};
 shoelace.client.get_class_el = function(a, b, c) {
   return document.querySelector(dommy.core.selector.call(null, [cljs.core.str("#"), cljs.core.str(cljs.core.name.call(null, a)), cljs.core.str(" ."), cljs.core.str(cljs.core.name.call(null, b)), cljs.core.str("-"), cljs.core.str(cljs.core.name.call(null, c))].join("")))
 };
@@ -15352,153 +15292,170 @@ shoelace.client.add_col_BANG_ = function(a, b, c, d) {
   var e = shoelace.client.new_id_BANG_.call(null, new cljs.core.Symbol(null, "col", "col", -1640432839, null)), f = document.createElement("div");
   f.className = "col";
   cljs.core.truth_(cljs.core.name.call(null, e)) && f.setAttribute("id", cljs.core.name.call(null, e));
-  var g = document.createElement("div");
-  g.className = "offset";
-  var h = document.createElement("div");
-  h.className = "remove";
-  h.appendChild(document.createTextNode("x"));
+  var g = document.querySelector(dommy.core.selector.call(null, [cljs.core.str("#"), cljs.core.str(cljs.core.name.call(null, d)), cljs.core.str(" .grow-row")].join(""))), h = document.createElement("div");
+  h.className = "offset";
   var i = document.createElement("div");
-  i.className = "width";
+  i.className = "remove";
+  i.appendChild(function() {
+    var a = document.createElement("i");
+    a.className = "icon-remove";
+    return a
+  }());
   var j = document.createElement("div");
-  j.className = "classes";
-  j.appendChild(function() {
+  j.className = "width";
+  var k = document.createElement("div");
+  k.className = "nested";
+  k.appendChild(function() {
+    var a = document.createElement("i");
+    a.className = "icon-th";
+    return a
+  }());
+  var l = document.createElement("div");
+  l.className = "classes";
+  l.appendChild(function() {
     var a = document.createElement("div");
     a.className = "xs-width";
     return a
   }());
-  j.appendChild(function() {
+  l.appendChild(function() {
     var a = document.createElement("div");
     a.className = "xs-offset";
     return a
   }());
-  j.appendChild(function() {
+  l.appendChild(function() {
     var a = document.createElement("div");
     a.className = "sm-width";
     return a
   }());
-  j.appendChild(function() {
+  l.appendChild(function() {
     var a = document.createElement("div");
     a.className = "sm-offset";
     return a
   }());
-  j.appendChild(function() {
+  l.appendChild(function() {
     var a = document.createElement("div");
     a.className = "md-width";
     return a
   }());
-  j.appendChild(function() {
+  l.appendChild(function() {
     var a = document.createElement("div");
     a.className = "md-offset";
     return a
   }());
-  j.appendChild(function() {
+  l.appendChild(function() {
     var a = document.createElement("div");
     a.className = "lg-width";
     return a
   }());
-  j.appendChild(function() {
+  l.appendChild(function() {
     var a = document.createElement("div");
     a.className = "lg-offset";
     return a
   }());
-  var k = document.createElement("input");
-  k.className = "col-name";
-  k.setAttribute("placeholder", "col");
-  var l = cljs.core.PersistentArrayMap.fromArray(["\ufdd0:width", i, "\ufdd0:offset", g], !0), m = cljs.core.PersistentArrayMap.fromArray(["\ufdd0:offset", 0, "\ufdd0:width", 1], !0), n = document.createElement("div");
-  n.className = "offset-handle";
-  var p = shoelace.client.get_row.call(null, d), r = function() {
+  var m = document.createElement("input");
+  m.className = "col-name";
+  m.setAttribute("placeholder", "col");
+  var n = cljs.core.PersistentArrayMap.fromArray(["\ufdd0:width", j, "\ufdd0:offset", h], !0), p = cljs.core.PersistentArrayMap.fromArray(["\ufdd0:offset", 0, "\ufdd0:width", 1], !0), r = document.createElement("div");
+  r.className = "offset-handle";
+  var q = shoelace.client.get_row.call(null, d), s = function() {
     return shoelace.client.total_cols_used.call(null, shoelace.client.get_row.call(null, d), cljs.core.deref.call(null, shoelace.client.settings).call(null, "\ufdd0:media-mode"))
-  }, q;
-  q = function() {
-    return cljs.core._EQ_.call(null, shoelace.client.grid_cols, r.call(null)) ? dommy.core.add_class_BANG_.call(null, c, "\ufdd0:hidden") : dommy.core.remove_class_BANG_.call(null, c, "\ufdd0:hidden")
-  };
-  var s;
-  s = function(a) {
-    a.stopPropagation();
-    cljs.core._EQ_.call(null, (new cljs.core.Keyword("\ufdd0:active-col")).call(null, cljs.core.deref.call(null, shoelace.client.settings)), "\ufdd0:none") || dommy.core.remove_class_BANG_.call(null, shoelace.client.get_el.call(null, (new cljs.core.Keyword("\ufdd0:active-col")).call(null, cljs.core.deref.call(null, shoelace.client.settings))), "\ufdd0:active");
-    cljs.core.swap_BANG_.call(null, shoelace.client.settings, cljs.core.assoc, "\ufdd0:active-col", e);
-    return dommy.core.add_class_BANG_.call(null, f, "\ufdd0:active")
-  };
-  var t;
-  t = function(a) {
-    a.stopPropagation();
-    a = shoelace.client.get_row.call(null, d);
-    cljs.core.swap_BANG_.call(null, shoelace.client.settings, cljs.core.assoc, "\ufdd0:active-col", "\ufdd0:none");
-    cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, a), "\ufdd0:cols"], !0), cljs.core.into.call(null, cljs.core.PersistentVector.EMPTY, cljs.core.map_indexed.call(null, function(a, b) {
-      return cljs.core.assoc.call(null, b, "\ufdd0:pos", a)
-    }, cljs.core.filter.call(null, function(a, b) {
-      return function(a) {
-        return!cljs.core._EQ_.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, a), b)
-      }
-    }(a, e, f, g, h, i, j, k, l, m, n, p, r, q, s), cljs.core.get_in.call(null, cljs.core.deref.call(null, shoelace.client.layout), cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, a), "\ufdd0:cols"], !0))))));
-    dommy.core.remove_BANG_.call(null, f);
-    return q.call(null)
+  }, t;
+  t = function() {
+    return cljs.core._EQ_.call(null, shoelace.client.grid_cols, s.call(null)) ? dommy.core.add_class_BANG_.call(null, c, "\ufdd0:hidden") : dommy.core.remove_class_BANG_.call(null, c, "\ufdd0:hidden")
   };
   var u;
-  u = function(a, b) {
+  u = function() {
+    return cljs.core._EQ_.call(null, shoelace.client.grid_cols, s.call(null)) ? dommy.core.add_class_BANG_.call(null, g, "\ufdd0:active") : dommy.core.remove_class_BANG_.call(null, g, "\ufdd0:active")
+  };
+  var v;
+  v = function(a) {
+    a.stopPropagation();
+    var a = shoelace.client.get_row.call(null, d), b = cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, a), "\ufdd0:cols"], !0);
+    cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, b, cljs.core.into.call(null, cljs.core.PersistentVector.EMPTY, cljs.core.map_indexed.call(null, function(a, b) {
+      return cljs.core.assoc.call(null, b, "\ufdd0:pos", a)
+    }, cljs.core.filter.call(null, function(a, b, c) {
+      return function(a) {
+        return!cljs.core._EQ_.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, a), c)
+      }
+    }(a, b, e, f, g, h, i, j, k, l, m, n, p, r, q, s, t, u), cljs.core.get_in.call(null, cljs.core.deref.call(null, shoelace.client.layout), b)))));
+    dommy.core.remove_BANG_.call(null, f);
+    t.call(null);
+    u.call(null);
+    return 0 === cljs.core.count.call(null, cljs.core.get_in.call(null, cljs.core.deref.call(null, shoelace.client.layout), b)) ? dommy.core.add_class_BANG_.call(null, c, "\ufdd0:no-cols") : null
+  };
+  var w;
+  w = function(a, b) {
     b.stopPropagation();
-    s.call(null, b);
-    var f = b.x, g = dommy.core.px.call(null, l.call(null, a), "width"), h = cljs.core.deref.call(null, shoelace.client.settings).call(null, "\ufdd0:media-mode"), i = shoelace.client.calc_col_unit.call(null), j = shoelace.client.get_row.call(null, d), k = shoelace.client.get_col.call(null, d, e), n = shoelace.client.col_for_media.call(null, k, h), p = shoelace.client.grid_cols - shoelace.client.total_cols_used.call(null, j, h), r = (n.call(null, m.call(null, a)) + p) * i - shoelace.client.col_margin_width, 
-    t, u = function(b) {
-      var b = cljs.core.quot.call(null, b, i), c = b < n.call(null, m.call(null, a));
+    var g = b.x, h = dommy.core.px.call(null, n.call(null, a), "width"), i = cljs.core.deref.call(null, shoelace.client.settings).call(null, "\ufdd0:media-mode"), j = shoelace.client.calc_col_unit.call(null), k = shoelace.client.get_row.call(null, d), l = shoelace.client.get_col.call(null, d, e), m = shoelace.client.col_for_media.call(null, l, i), q = shoelace.client.grid_cols * i.call(null, (new cljs.core.Keyword("\ufdd0:height")).call(null, k)) - shoelace.client.total_cols_used.call(null, k, i), 
+    s = (m.call(null, p.call(null, a)) + q) * j - shoelace.client.col_margin_width, r;
+    r = function(b) {
+      var b = cljs.core.quot.call(null, b, j), c = b < m.call(null, p.call(null, a));
       if(c) {
         return c
       }
-      c = (c = cljs.core._EQ_.call(null, p, 0)) ? b < n.call(null, m.call(null, a)) : c;
+      c = (c = cljs.core._EQ_.call(null, q, 0)) ? b < m.call(null, p.call(null, a)) : c;
       if(cljs.core.truth_(c)) {
         return c
       }
       c = (c = cljs.core._EQ_.call(null, a, "\ufdd0:offset")) ? c : 0 < b;
-      return cljs.core.truth_(c) ? b < p + n.call(null, m.call(null, a)) : c
+      return cljs.core.truth_(c) ? (c = b + m.call(null, p.call(null, cljs.core._EQ_.call(null, a, "\ufdd0:offset") ? "\ufdd0:width" : "\ufdd0:offset")) < shoelace.client.grid_cols) ? b < q + m.call(null, p.call(null, a)) : c : c
     };
-    t = function(b) {
-      b = g + (b.x - f);
-      b = b > r ? r : b;
-      return cljs.core.truth_(u.call(null, b)) ? dommy.core.set_px_BANG_.call(null, l.call(null, a), "\ufdd0:width", b) : null
+    var v;
+    v = function(b) {
+      b = h + (b.x - g);
+      b = b > s ? s : b;
+      return cljs.core.truth_(r.call(null, b)) ? dommy.core.set_px_BANG_.call(null, n.call(null, a), "\ufdd0:width", b) : null
     };
-    var G = function() {
-      var b = (cljs.core._EQ_.call(null, a, "\ufdd0:offset") ? shoelace.client.col_margin_width : 0) + dommy.core.px.call(null, l.call(null, a), "width"), c = cljs.core.quot.call(null, b, i), b = cljs.core.mod.call(null, b, i), c = cljs.core._EQ_.call(null, a, "\ufdd0:offset") ? 0 < c ? c : 0 : (b > shoelace.client.snap_threshold ? cljs.core._PLUS_ : cljs.core.max).call(null, c, 1);
-      cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, j), "\ufdd0:cols", (new cljs.core.Keyword("\ufdd0:pos")).call(null, k), h, m.call(null, a)], !0), c);
-      dommy.core.set_text_BANG_.call(null, shoelace.client.get_class_el.call(null, e, h, a), [cljs.core.str(cljs.core.name.call(null, h)), cljs.core.str("-"), cljs.core.str(cljs.core._EQ_.call(null, a, "\ufdd0:offset") ? "offset-" : null), cljs.core.str(c)].join(""));
-      dommy.core.add_class_BANG_.call(null, l.call(null, a), "\ufdd0:easing");
-      return dommy.core.set_px_BANG_.call(null, l.call(null, a), "\ufdd0:width", c * i - (cljs.core._EQ_.call(null, a, "\ufdd0:width") ? shoelace.client.col_margin_width : 0))
+    var w = function() {
+      var b = (cljs.core._EQ_.call(null, a, "\ufdd0:offset") ? shoelace.client.col_margin_width : 0) + dommy.core.px.call(null, n.call(null, a), "width"), c = cljs.core.quot.call(null, b, j), b = cljs.core.mod.call(null, b, j), d = cljs.core._EQ_.call(null, a, "\ufdd0:offset") ? 0 < c ? c : 0 : (b > shoelace.client.snap_threshold ? cljs.core._PLUS_ : cljs.core.max).call(null, c, 1);
+      cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, k), "\ufdd0:cols", (new cljs.core.Keyword("\ufdd0:pos")).call(null, l), i, p.call(null, a)], !0), d);
+      dommy.core.set_text_BANG_.call(null, shoelace.client.get_class_el.call(null, e, i, a), function() {
+        var b = cljs.core._EQ_.call(null, a, "\ufdd0:offset");
+        return b ? 0 === d : b
+      }() ? "" : [cljs.core.str(cljs.core.name.call(null, i)), cljs.core.str("-"), cljs.core.str(cljs.core._EQ_.call(null, a, "\ufdd0:offset") ? "offset-" : null), cljs.core.str(d)].join(""));
+      dommy.core.add_class_BANG_.call(null, n.call(null, a), "\ufdd0:easing");
+      return dommy.core.set_px_BANG_.call(null, n.call(null, a), "\ufdd0:width", d * j - (cljs.core._EQ_.call(null, a, "\ufdd0:width") ? shoelace.client.col_margin_width : 0))
     };
-    dommy.core.remove_class_BANG_.call(null, l.call(null, a), "\ufdd0:easing");
-    dommy.core.add_class_BANG_.call(null, c, "hidden");
-    dommy.core.listen_BANG_.call(null, document, "\ufdd0:mousemove", t);
+    dommy.core.add_class_BANG_.call(null, f, "\ufdd0:dragging");
+    dommy.core.remove_class_BANG_.call(null, n.call(null, a), "\ufdd0:easing");
+    dommy.core.add_class_BANG_.call(null, c, "\ufdd0:hidden");
+    dommy.core.listen_BANG_.call(null, document, "\ufdd0:mousemove", v);
     return dommy.core.listen_once_BANG_.call(null, document, "\ufdd0:mouseup", function() {
-      dommy.core.unlisten_BANG_.call(null, document, "\ufdd0:mousemove", t);
-      G.call(null);
-      return q.call(null)
+      dommy.core.unlisten_BANG_.call(null, document, "\ufdd0:mousemove", v);
+      w.call(null);
+      u.call(null);
+      return setTimeout(function() {
+        t.call(null);
+        return dommy.core.remove_class_BANG_.call(null, f, "\ufdd0:dragging")
+      }, 300)
     })
   };
-  cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.update_in, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, p), "\ufdd0:cols"], !0), cljs.core.conj, cljs.core.PersistentArrayMap.fromArray(["\ufdd0:id", e, "\ufdd0:pos", cljs.core.count.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, p)), cljs.core.deref.call(null, shoelace.client.settings).call(null, "\ufdd0:media-mode"), cljs.core.PersistentVector.fromArray([0, 1], !0)], !0));
-  dommy.core.append_BANG_.call(null, i, k);
-  dommy.core.append_BANG_.call(null, i, j);
-  dommy.core.append_BANG_.call(null, i, n);
-  dommy.core.append_BANG_.call(null, f, g);
-  dommy.core.append_BANG_.call(null, f, i);
-  dommy.core.append_BANG_.call(null, f, h);
+  cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.update_in, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, q), "\ufdd0:cols"], !0), cljs.core.conj, cljs.core.PersistentArrayMap.fromArray(["\ufdd0:id", e, "\ufdd0:pos", cljs.core.count.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, q)), cljs.core.deref.call(null, shoelace.client.settings).call(null, "\ufdd0:media-mode"), cljs.core.PersistentVector.fromArray([0, 1], !0)], !0));
+  dommy.core.append_BANG_.call(null, j, k, m, l, r);
+  dommy.core.append_BANG_.call(null, f, h, j, i);
   dommy.core.append_BANG_.call(null, b, f);
-  q.call(null);
-  dommy.core.remove_class_BANG_.call(null, c, "no-cols");
-  dommy.core.listen_BANG_.call(null, h, "\ufdd0:mousedown", function(a) {
-    return t.call(null, a)
-  });
-  dommy.core.listen_BANG_.call(null, n, "\ufdd0:mousedown", function(a) {
-    return u.call(null, "\ufdd0:offset", a)
-  });
-  dommy.core.listen_BANG_.call(null, g, "\ufdd0:mousedown", function(a) {
-    return u.call(null, "\ufdd0:offset", a)
-  });
+  t.call(null);
+  u.call(null);
+  dommy.core.insert_before_BANG_.call(null, f, c);
+  dommy.core.remove_class_BANG_.call(null, c, "\ufdd0:no-cols");
   dommy.core.listen_BANG_.call(null, i, "\ufdd0:mousedown", function(a) {
-    return u.call(null, "\ufdd0:width", a)
+    return v.call(null, a)
   });
-  return u.call(null, "\ufdd0:width", a)
+  dommy.core.listen_BANG_.call(null, r, "\ufdd0:mousedown", function(a) {
+    return w.call(null, "\ufdd0:offset", a)
+  });
+  dommy.core.listen_BANG_.call(null, h, "\ufdd0:mousedown", function(a) {
+    return w.call(null, "\ufdd0:offset", a)
+  });
+  dommy.core.listen_BANG_.call(null, j, "\ufdd0:mousedown", function(a) {
+    return w.call(null, "\ufdd0:width", a)
+  });
+  return w.call(null, "\ufdd0:width", a)
 };
 shoelace.client.add_row_BANG_ = function() {
   var a = shoelace.client.new_id_BANG_.call(null, "row"), b = document.createElement("div");
   b.className = "sl-row";
+  cljs.core.truth_(cljs.core.name.call(null, a)) && b.setAttribute("id", cljs.core.name.call(null, a));
   var c = document.createElement("div");
   c.className = "cols";
   var d = document.createElement("input");
@@ -15506,43 +15463,44 @@ shoelace.client.add_row_BANG_ = function() {
   d.setAttribute("placeholder", "Name Row");
   var e = document.createElement("div");
   e.className = "tools";
-  e.appendChild(function() {
-    var a = document.createElement("span");
-    a.appendChild(function() {
-      var a = document.createElement("i");
-      a.className = "icon-double-angle-down";
-      return a
-    }());
+  var f = document.createElement("span");
+  f.className = "dupe-row";
+  f.appendChild(function() {
+    var a = document.createElement("i");
+    a.className = "icon-double-angle-down";
     return a
   }());
-  e.appendChild(function() {
-    var a = document.createElement("span");
-    a.appendChild(function() {
-      var a = document.createElement("i");
-      a.className = "icon-level-down";
-      return a
-    }());
+  var g = document.createElement("span");
+  g.className = "grow-row";
+  g.appendChild(function() {
+    var a = document.createElement("i");
+    a.className = "icon-level-down";
     return a
   }());
-  e.appendChild(function() {
-    var a = document.createElement("span");
-    a.appendChild(function() {
-      var a = document.createElement("i");
-      a.className = "icon-remove";
-      return a
-    }());
+  var h = document.createElement("span");
+  h.className = "remv-row";
+  h.appendChild(function() {
+    var a = document.createElement("i");
+    a.className = "icon-remove";
     return a
   }());
-  var f = document.createElement("div");
-  f.className = "new-col no-cols";
-  cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.conj, cljs.core.PersistentArrayMap.fromArray(["\ufdd0:id", a, "\ufdd0:pos", cljs.core.count.call(null, cljs.core.deref.call(null, shoelace.client.layout)), "\ufdd0:cols", cljs.core.PersistentVector.EMPTY], !0));
-  dommy.core.append_BANG_.call(null, b, d);
-  dommy.core.append_BANG_.call(null, b, e);
+  var i = document.createElement("div");
+  i.className = "new-col no-cols";
+  var j = document.createElement("div");
+  j.className = "clear";
+  cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.conj, cljs.core.PersistentArrayMap.fromArray(["\ufdd0:id", a, "\ufdd0:pos", cljs.core.count.call(null, cljs.core.deref.call(null, shoelace.client.layout)), "\ufdd0:cols", cljs.core.PersistentVector.EMPTY, "\ufdd0:height", cljs.core.PersistentArrayMap.fromArray([(new cljs.core.Keyword("\ufdd0:media-mode")).call(null, cljs.core.deref.call(null, shoelace.client.settings)), 1], !0)], !0));
+  dommy.core.append_BANG_.call(null, c, i);
+  dommy.core.append_BANG_.call(null, e, f, g, h);
+  dommy.core.append_BANG_.call(null, b, c, d, e, j);
   dommy.core.insert_before_BANG_.call(null, b, this);
-  dommy.core.append_BANG_.call(null, b, c);
-  dommy.core.append_BANG_.call(null, b, f);
-  return dommy.core.listen_BANG_.call(null, f, "\ufdd0:mousedown", function(b) {
-    return shoelace.client.add_col_BANG_.call(null, b, c, f, a)
+  dommy.core.listen_BANG_.call(null, i, "\ufdd0:mousedown", function(b) {
+    return shoelace.client.add_col_BANG_.call(null, b, c, i, a)
+  });
+  return dommy.core.listen_BANG_.call(null, g, "\ufdd0:mousedown", function() {
+    var c = shoelace.client.get_row.call(null, a), d = (new cljs.core.Keyword("\ufdd0:media-mode")).call(null, cljs.core.deref.call(null, shoelace.client.settings));
+    cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, c), "\ufdd0:height", d], !0), d.call(null, (new cljs.core.Keyword("\ufdd0:height")).call(null, c)) + 1);
+    dommy.core.remove_class_BANG_.call(null, i, "\ufdd0:hidden");
+    return dommy.core.set_px_BANG_.call(null, b, "\ufdd0:height", 160 + dommy.core.px.call(null, b, "\ufdd0:height"))
   })
 };
 shoelace.client.layout__GT_html = function(a) {
@@ -15587,17 +15545,17 @@ shoelace.client.draw_workspace = function() {
       }
     }
   }
-  h = cljs.core.seq.call(null, shoelace.client.size_labels);
+  h = cljs.core.seq.call(null, shoelace.client.sizes);
   i = null;
   for(k = j = 0;;) {
     if(k < j) {
-      var l = cljs.core._nth.call(null, i, k), m = cljs.core.nth.call(null, l, 0, null), n = cljs.core.nth.call(null, l, 1, null), p = document.querySelector(dommy.core.selector.call(null, [cljs.core.str(".preview."), cljs.core.str(cljs.core.name.call(null, m))].join("")));
-      cljs.core._EQ_.call(null, m, g) && dommy.core.add_class_BANG_.call(null, p, "\ufdd0:active");
-      dommy.core.listen_BANG_.call(null, p, "\ufdd0:mouseup", function(a, b, c, d, e, f, g) {
+      var l = cljs.core._nth.call(null, i, k), m = document.querySelector(dommy.core.selector.call(null, [cljs.core.str(".preview."), cljs.core.str(cljs.core.name.call(null, l))].join("")));
+      cljs.core._EQ_.call(null, l, g) && dommy.core.add_class_BANG_.call(null, m, "\ufdd0:active");
+      dommy.core.listen_BANG_.call(null, m, "\ufdd0:mouseup", function(a, b, c, d, e, f) {
         return function() {
-          return cljs.core.swap_BANG_.call(null, shoelace.client.settings, cljs.core.assoc, "\ufdd0:media-mode", g)
+          return cljs.core.swap_BANG_.call(null, shoelace.client.settings, cljs.core.assoc, "\ufdd0:media-mode", f)
         }
-      }(h, i, j, k, p, l, m, n));
+      }(h, i, j, k, m, l));
       k += 1
     }else {
       if(m = cljs.core.seq.call(null, h)) {
@@ -15605,13 +15563,13 @@ shoelace.client.draw_workspace = function() {
         if(cljs.core.chunked_seq_QMARK_.call(null, l)) {
           h = cljs.core.chunk_first.call(null, l), k = cljs.core.chunk_rest.call(null, l), i = h, j = cljs.core.count.call(null, h), h = k
         }else {
-          var n = cljs.core.first.call(null, l), p = cljs.core.nth.call(null, n, 0, null), r = cljs.core.nth.call(null, n, 1, null), q = document.querySelector(dommy.core.selector.call(null, [cljs.core.str(".preview."), cljs.core.str(cljs.core.name.call(null, p))].join("")));
-          cljs.core._EQ_.call(null, p, g) && dommy.core.add_class_BANG_.call(null, q, "\ufdd0:active");
-          dommy.core.listen_BANG_.call(null, q, "\ufdd0:mouseup", function(a, b, c, d, e, f, g) {
+          var n = cljs.core.first.call(null, l), p = document.querySelector(dommy.core.selector.call(null, [cljs.core.str(".preview."), cljs.core.str(cljs.core.name.call(null, n))].join("")));
+          cljs.core._EQ_.call(null, n, g) && dommy.core.add_class_BANG_.call(null, p, "\ufdd0:active");
+          dommy.core.listen_BANG_.call(null, p, "\ufdd0:mouseup", function(a, b, c, d, e, f) {
             return function() {
-              return cljs.core.swap_BANG_.call(null, shoelace.client.settings, cljs.core.assoc, "\ufdd0:media-mode", g)
+              return cljs.core.swap_BANG_.call(null, shoelace.client.settings, cljs.core.assoc, "\ufdd0:media-mode", f)
             }
-          }(h, i, j, k, q, n, p, r, l, m));
+          }(h, i, j, k, p, n, l, m));
           h = cljs.core.next.call(null, l);
           i = null;
           j = 0
@@ -15650,15 +15608,10 @@ shoelace.client.draw_workspace = function() {
     return PR.prettyPrint()
   });
   dommy.core.listen_BANG_.call(null, f, "\ufdd0:click", shoelace.client.add_row_BANG_);
-  dommy.core.append_BANG_.call(null, c, e);
-  dommy.core.append_BANG_.call(null, c, d);
+  dommy.core.append_BANG_.call(null, c, e, d);
   dommy.core.append_BANG_.call(null, d, f);
   return dommy.core.append_BANG_.call(null, a, c)
 };
-dommy.core.listen_BANG_.call(null, document, "\ufdd0:mousedown", function() {
-  cljs.core._EQ_.call(null, (new cljs.core.Keyword("\ufdd0:active-col")).call(null, cljs.core.deref.call(null, shoelace.client.settings)), "\ufdd0:none") || dommy.core.remove_class_BANG_.call(null, shoelace.client.get_el.call(null, (new cljs.core.Keyword("\ufdd0:active-col")).call(null, cljs.core.deref.call(null, shoelace.client.settings))), "\ufdd0:active");
-  return cljs.core.swap_BANG_.call(null, shoelace.client.settings, cljs.core.assoc, "\ufdd0:active-col", "\ufdd0:none")
-});
 shoelace.client.draw_workspace.call(null);
 bigsky.aui.resizable = {};
 bigsky.aui.resizable.body = document.body;

@@ -11,15 +11,28 @@ body {
 }
 
 .col {
+    height: 150px;
     background: #ccc;
-    height: 100%;
     float: left;
     position: relative;
     margin-right: 15px;
 }
 
+.cols .col {
+    margin-bottom: 10px;
+}
+
+.cols .col.dragging {
+    margin-right: 0;
+}
+
+.cols .col:first-child {
+    margin-left: 0;
+}
+
 .columns .col {
     width: 60px;
+    height: 100%;
     background: #282728;
 }
 
@@ -71,6 +84,14 @@ body {
     line-height: 1em;
 }
 
+.width .nested {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    line-height: 1em;
+    font-size: 13pt;
+    color: #477dcc;
+}
 
 .offset {
     height: 100%;
@@ -116,7 +137,7 @@ body {
 }
 
 .rows {
-    min-width: 885px;
+    min-width: 900px;
     position: absolute;
     left: 0;
     top: 0;
@@ -129,9 +150,7 @@ body {
 .sl-row {
     padding-top: 25px;
     padding-bottom: 10px;
-    height: 150px;
     width: 100%;
-    height: 185px;
     background: rgba(89, 156, 255, 0.3);
     margin-top: 10px;
     position: relative;
@@ -159,29 +178,42 @@ input { outline: none; }
     right: 5px;
     color: white;
 }
+
+.sl-row .tools .grow-row {
+    color:  #477dcc;
+}
+
+.sl-row .tools .grow-row.active {
+    color: white;
+}
+
 .sl-row .tools span {
     display: inline-block;
     padding-left: 10px;
     cursor: pointer;
 }
 
+.sl-row .clear {
+    clear: both;
+}
 
 .new-row {
-    width: 98%;
-    margin-left: 1%;
+    width: 875px;
+    height: 150px;
+    margin-left: 5px;
     border: 1px dashed white;
     background: transparent;
     cursor: pointer;
 }
 
 .new-col {
+    float: left;
     width: 50px;
     cursor: pointer;
-    margin-left: 20px;
+    margin-left: 5px;
     height: 150px;
     border: 1px dashed white;
     background: transparent;
-    display: inline-block;
 }
 
 .new-col.no-cols {
