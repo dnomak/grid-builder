@@ -62,6 +62,39 @@ body {
     transition: width 0.5s;
 }
 
+.collapse-panel {
+    cursor: pointer;
+}
+
+.navigator.collapsed {
+    width: 40px;
+}
+
+.navigator.collapsed .title {
+    display: none;
+}
+
+.navigator.collapsed .preview .title-bar {
+    padding: 0px;
+}
+
+.navigator.collapsed .preview {
+    height: 20px;
+}
+
+.navigator.collapsed .size-icon {
+    float: none;
+    width: auto;
+}
+
+.section-border.collapsed {
+    display: none;
+}
+
+.workspace.left-collapsed {
+    left: 50px;
+}
+
 .width .col-name {
     position: absolute;
     left: 15px;

@@ -276,7 +276,10 @@
         rows (node [:.rows])
         columns (node [:.columns])
         new-row (node [:.sl-row.new-row])
-        media-mode (:media-mode @settings)]
+        media-mode (:media-mode @settings)
+        navigator-el (sel1 :.navigator)
+        section-border-left-el (sel1 :.section-border.left)
+        navigator-collapse-el (sel1 [navigator-el :.collapse-panel])]
     (dom/add-class! container media-mode)
 
     (doseq [i (range grid-cols)]
@@ -309,6 +312,11 @@
                  (js/PR.prettyPrint)))
 
 
+    (spy [navigator-el navigator-collapse-el section-border-left-el])
+    (dom/listen! navigator-collapse-el :click (fn []
+                                                (dom/add-class! workspace :left-collapsed)
+                                                (dom/add-class! section-border-left-el :collapsed)
+                                                (dom/add-class! navigator-el :easing :collapsed)))
     (dom/listen! new-row :click add-row!)
     (dom/append! container columns rows)
     (dom/append! rows new-row)
