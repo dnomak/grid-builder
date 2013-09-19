@@ -143,8 +143,12 @@
                 row (get-row row-id)
                 col (get-col row-id col-id)
                 cur-cols-used (col-for-media col media)
-                max-cols (- (* grid-cols (media (:height row))) (total-cols-used row media))
-                max-width (- (* (+ (cur-cols-used (type-pos type)) max-cols) col-unit) col-margin-width)
+                max-cols (- grid-cols (total-cols-used row media))
+                max-width (- (* (if (:wrap row)
+                                  grid-cols
+                                  (+ (cur-cols-used (type-pos type)) max-cols))
+                                col-unit)
+                             col-margin-width)
                 snap! (fn []
                         (let [w (+ (if (= type :offset) col-margin-width 0)
                                    (dom/px (els type) "width"))
@@ -170,6 +174,10 @@
                 valid-step (fn [width]
                              (let [c (quot width col-unit)]
                                (or
+                                ;;if they are wrapping we stop constraining
+                                (spy  (and (:wrap row) (< (spy  (+ c (cur-cols-used
+                                                                      (type-pos (if (= type :offset) :width :offset)))))
+                                                          grid-cols)))
                                 (< c (cur-cols-used (type-pos type)))
                                 (and (= max-cols 0)
                                      (< c (cur-cols-used (type-pos type))))
@@ -185,6 +193,7 @@
                                      sdx (+ start-w dx)
                                      nw (if (> sdx  max-width) max-width sdx)]
                                  (when (valid-step nw)
+                                   (spy [:VALID max-width dx sdx nw])
                                    (dom/set-px! (els type) :width nw))))
                 stop-handler (fn [e]
                                (dom/unlisten! js/document :mousemove move-handler)
@@ -229,19 +238,16 @@
                  remv-row-el (node [:span.remv-row [:i.icon-remove]])
                  new-col-el (node [:.new-col.no-cols])
                  clear-el (node [:.clear])]
-             (swap! layout conj {:id row-id :pos (count @layout) :cols [] :height {(:media-mode @settings) 1}})
+             (swap! layout conj {:id row-id :pos (count @layout) :cols [] :wrap false})
              (dom/append! cols-el new-col-el)
              (dom/append! tools-el dupe-row-el grow-row-el remv-row-el)
              (dom/append! row-el cols-el name-el tools-el clear-el)
              (dom/insert-before! row-el new-row-el)
              (dom/listen! new-col-el :mousedown (fn [e] (add-col! e cols-el new-col-el row-id)))
              (dom/listen! grow-row-el :mousedown (fn [e]
-                                                   (let [row (get-row row-id)
-                                                         media-mode (:media-mode @settings)]
-                                                     (swap! layout assoc-in [(:pos row) :height media-mode]
-                                                            (inc (media-mode (:height row))))
-                                                     (dom/remove-class! new-col-el :hidden)
-                                                     (dom/set-px! row-el :height (+ 160 (dom/px row-el :height)))))))))
+                                                   (let [row (get-row row-id)]
+                                                     (swap! layout assoc-in [(:pos row) :wrap] true)
+                                                     (dom/remove-class! new-col-el :hidden)))))))
 
 (defn layout->html
   [rows]

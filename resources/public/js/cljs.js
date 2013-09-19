@@ -15386,25 +15386,27 @@ shoelace.client.add_col_BANG_ = function(a, b, c, d) {
   var w;
   w = function(a, b) {
     b.stopPropagation();
-    var g = b.x, h = dommy.core.px.call(null, n.call(null, a), "width"), i = cljs.core.deref.call(null, shoelace.client.settings).call(null, "\ufdd0:media-mode"), j = shoelace.client.calc_col_unit.call(null), k = shoelace.client.get_row.call(null, d), l = shoelace.client.get_col.call(null, d, e), m = shoelace.client.col_for_media.call(null, l, i), q = shoelace.client.grid_cols * i.call(null, (new cljs.core.Keyword("\ufdd0:height")).call(null, k)) - shoelace.client.total_cols_used.call(null, k, i), 
-    s = (m.call(null, p.call(null, a)) + q) * j - shoelace.client.col_margin_width, r;
+    var g = b.x, h = dommy.core.px.call(null, n.call(null, a), "width"), i = cljs.core.deref.call(null, shoelace.client.settings).call(null, "\ufdd0:media-mode"), j = shoelace.client.calc_col_unit.call(null), k = shoelace.client.get_row.call(null, d), l = shoelace.client.get_col.call(null, d, e), m = shoelace.client.col_for_media.call(null, l, i), q = shoelace.client.grid_cols - shoelace.client.total_cols_used.call(null, k, i), s = (cljs.core.truth_((new cljs.core.Keyword("\ufdd0:wrap")).call(null, 
+    k)) ? shoelace.client.grid_cols : m.call(null, p.call(null, a)) + q) * j - shoelace.client.col_margin_width, r;
     r = function(b) {
-      var b = cljs.core.quot.call(null, b, j), c = b < m.call(null, p.call(null, a));
-      if(c) {
-        return c
+      var c = cljs.core.quot.call(null, b, j), b = shoelace.client.spy.call(null, function() {
+        var b = (new cljs.core.Keyword("\ufdd0:wrap")).call(null, k);
+        return cljs.core.truth_(b) ? shoelace.client.spy.call(null, c + m.call(null, p.call(null, cljs.core._EQ_.call(null, a, "\ufdd0:offset") ? "\ufdd0:width" : "\ufdd0:offset"))) < shoelace.client.grid_cols : b
+      }());
+      if(cljs.core.truth_(b) || (b = c < m.call(null, p.call(null, a)))) {
+        return b
       }
-      c = (c = cljs.core._EQ_.call(null, q, 0)) ? b < m.call(null, p.call(null, a)) : c;
-      if(cljs.core.truth_(c)) {
-        return c
+      b = (b = cljs.core._EQ_.call(null, q, 0)) ? c < m.call(null, p.call(null, a)) : b;
+      if(cljs.core.truth_(b)) {
+        return b
       }
-      c = (c = cljs.core._EQ_.call(null, a, "\ufdd0:offset")) ? c : 0 < b;
-      return cljs.core.truth_(c) ? (c = b + m.call(null, p.call(null, cljs.core._EQ_.call(null, a, "\ufdd0:offset") ? "\ufdd0:width" : "\ufdd0:offset")) < shoelace.client.grid_cols) ? b < q + m.call(null, p.call(null, a)) : c : c
+      b = (b = cljs.core._EQ_.call(null, a, "\ufdd0:offset")) ? b : 0 < c;
+      return cljs.core.truth_(b) ? (b = c + m.call(null, p.call(null, cljs.core._EQ_.call(null, a, "\ufdd0:offset") ? "\ufdd0:width" : "\ufdd0:offset")) < shoelace.client.grid_cols) ? c < q + m.call(null, p.call(null, a)) : b : b
     };
     var v;
     v = function(b) {
-      b = h + (b.x - g);
-      b = b > s ? s : b;
-      return cljs.core.truth_(r.call(null, b)) ? dommy.core.set_px_BANG_.call(null, n.call(null, a), "\ufdd0:width", b) : null
+      var b = b.x - g, c = h + b, d = c > s ? s : c;
+      return cljs.core.truth_(r.call(null, d)) ? (shoelace.client.spy.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:VALID", s, b, c, d], !0)), dommy.core.set_px_BANG_.call(null, n.call(null, a), "\ufdd0:width", d)) : null
     };
     var w = function() {
       var b = (cljs.core._EQ_.call(null, a, "\ufdd0:offset") ? shoelace.client.col_margin_width : 0) + dommy.core.px.call(null, n.call(null, a), "width"), c = cljs.core.quot.call(null, b, j), b = cljs.core.mod.call(null, b, j), d = cljs.core._EQ_.call(null, a, "\ufdd0:offset") ? 0 < c ? c : 0 : (b > shoelace.client.snap_threshold ? cljs.core._PLUS_ : cljs.core.max).call(null, c, 1);
@@ -15488,7 +15490,7 @@ shoelace.client.add_row_BANG_ = function() {
   i.className = "new-col no-cols";
   var j = document.createElement("div");
   j.className = "clear";
-  cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.conj, cljs.core.PersistentArrayMap.fromArray(["\ufdd0:id", a, "\ufdd0:pos", cljs.core.count.call(null, cljs.core.deref.call(null, shoelace.client.layout)), "\ufdd0:cols", cljs.core.PersistentVector.EMPTY, "\ufdd0:height", cljs.core.PersistentArrayMap.fromArray([(new cljs.core.Keyword("\ufdd0:media-mode")).call(null, cljs.core.deref.call(null, shoelace.client.settings)), 1], !0)], !0));
+  cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.conj, cljs.core.PersistentArrayMap.fromArray(["\ufdd0:id", a, "\ufdd0:pos", cljs.core.count.call(null, cljs.core.deref.call(null, shoelace.client.layout)), "\ufdd0:cols", cljs.core.PersistentVector.EMPTY, "\ufdd0:wrap", !1], !0));
   dommy.core.append_BANG_.call(null, c, i);
   dommy.core.append_BANG_.call(null, e, f, g, h);
   dommy.core.append_BANG_.call(null, b, c, d, e, j);
@@ -15497,10 +15499,9 @@ shoelace.client.add_row_BANG_ = function() {
     return shoelace.client.add_col_BANG_.call(null, b, c, i, a)
   });
   return dommy.core.listen_BANG_.call(null, g, "\ufdd0:mousedown", function() {
-    var c = shoelace.client.get_row.call(null, a), d = (new cljs.core.Keyword("\ufdd0:media-mode")).call(null, cljs.core.deref.call(null, shoelace.client.settings));
-    cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, c), "\ufdd0:height", d], !0), d.call(null, (new cljs.core.Keyword("\ufdd0:height")).call(null, c)) + 1);
-    dommy.core.remove_class_BANG_.call(null, i, "\ufdd0:hidden");
-    return dommy.core.set_px_BANG_.call(null, b, "\ufdd0:height", 160 + dommy.core.px.call(null, b, "\ufdd0:height"))
+    var b = shoelace.client.get_row.call(null, a);
+    cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, b), "\ufdd0:wrap"], !0), !0);
+    return dommy.core.remove_class_BANG_.call(null, i, "\ufdd0:hidden")
   })
 };
 shoelace.client.layout__GT_html = function(a) {
