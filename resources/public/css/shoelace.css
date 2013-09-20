@@ -59,41 +59,51 @@ body {
 }
 
 .easing {
-    transition: width 0.5s;
+    transition: width 0.5s, margin 0.5s, height 0.5s, top 0.5s, left 0.5s, right 0.5s;
 }
+
 
 .collapse-panel {
     cursor: pointer;
 }
 
 .navigator.collapsed {
-    width: 40px;
-}
-
-.navigator.collapsed .title {
-    display: none;
-}
-
-.navigator.collapsed .preview .title-bar {
-    padding: 0px;
+    margin-left: -180px;
 }
 
 .navigator.collapsed .preview {
-    height: 20px;
+    height: 30px;
 }
 
-.navigator.collapsed .size-icon {
-    float: none;
-    width: auto;
+.section-border.collapsed.left {
+    left: 40px;
 }
 
-.section-border.collapsed {
-    display: none;
-}
 
 .workspace.left-collapsed {
     left: 50px;
 }
+
+.workspace.right-collapsed {
+    right: 75px;
+}
+
+.html.collapsed {
+    margin-right: -350px;
+}
+
+.html.collapsed .options li {
+    display: block;
+}
+
+.html.collapsed .output {
+    display: none;
+}
+
+.section-border.collapsed.right {
+    right: 72px;
+}
+
 
 .width .col-name {
     position: absolute;

@@ -175,9 +175,9 @@
                              (let [c (quot width col-unit)]
                                (or
                                 ;;if they are wrapping we stop constraining
-                                (spy  (and (:wrap row) (< (spy  (+ c (cur-cols-used
-                                                                      (type-pos (if (= type :offset) :width :offset)))))
-                                                          grid-cols)))
+                                (and (:wrap row) (< (+ c (cur-cols-used
+                                                          (type-pos (if (= type :offset) :width :offset))))
+                                                    grid-cols))
                                 (< c (cur-cols-used (type-pos type)))
                                 (and (= max-cols 0)
                                      (< c (cur-cols-used (type-pos type))))
@@ -193,7 +193,6 @@
                                      sdx (+ start-w dx)
                                      nw (if (> sdx  max-width) max-width sdx)]
                                  (when (valid-step nw)
-                                   (spy [:VALID max-width dx sdx nw])
                                    (dom/set-px! (els type) :width nw))))
                 stop-handler (fn [e]
                                (dom/unlisten! js/document :mousemove move-handler)
@@ -279,7 +278,10 @@
         media-mode (:media-mode @settings)
         navigator-el (sel1 :.navigator)
         section-border-left-el (sel1 :.section-border.left)
-        navigator-collapse-el (sel1 [navigator-el :.collapse-panel])]
+        navigator-collapse-el (sel1 [navigator-el :.collapse-panel])
+        output-el (sel1 :.html)
+        section-border-right-el (sel1 :.section-border.right)
+        output-collapse-el (sel1 [output-el :.collapse-panel.right])]
     (dom/add-class! container media-mode)
 
     (doseq [i (range grid-cols)]
@@ -311,12 +313,26 @@
                     :edn (str (mapv (fn [r] (mapv (fn [c] (dissoc c :id :pos)) (:cols r))) ns))))
                  (js/PR.prettyPrint)))
 
+    (dom/listen! navigator-collapse-el
+                 :click (fn []
+                          (let [medias-collapsed (@settings :medias-collapsed)
+                                f (if medias-collapsed dom/remove-class! dom/add-class!)]
+                            (f navigator-collapse-el :collapsed)
+                            (f workspace :left-collapsed)
+                            (f section-border-left-el :collapsed)
+                            (f navigator-el :collapsed)
+                            (swap! settings assoc :medias-collapsed (not medias-collapsed)))))
 
-    (spy [navigator-el navigator-collapse-el section-border-left-el])
-    (dom/listen! navigator-collapse-el :click (fn []
-                                                (dom/add-class! workspace :left-collapsed)
-                                                (dom/add-class! section-border-left-el :collapsed)
-                                                (dom/add-class! navigator-el :easing :collapsed)))
+    (dom/listen! output-collapse-el
+                 :click (fn []
+                          (let [output-collapsed (@settings :output-collapsed)
+                                f (if output-collapsed dom/remove-class! dom/add-class!)]
+                            (f output-el :collapsed)
+                            (f output-collapse-el :collapsed)
+                            (f workspace :right-collapsed)
+                            (f section-border-right-el :collapsed)
+                            (swap! settings assoc :output-collapsed (not output-collapsed)))))
+
     (dom/listen! new-row :click add-row!)
     (dom/append! container columns rows)
     (dom/append! rows new-row)
