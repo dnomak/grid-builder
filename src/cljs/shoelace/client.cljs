@@ -239,7 +239,7 @@
 (defn add-row! []
   (this-as new-row-el
            (let [row-id (new-id! "row")
-                 row-el (node [:.sl-row {:id (name row-id)}])
+                 row-el (node [:.sl-row.easing {:id (name row-id)}])
                  cols-el (node [:.cols])
                  name-el (node [:input.row-name {:placeholder "Name Row"}])
                  tools-el (node [:.tools])
@@ -261,14 +261,18 @@
                                                   (swap! layout assoc-in [(:pos row) :wrap] true)
                                                   (dom/remove-class! new-col-el :hidden)))]
                       [remv-row-el :mousedown (fn [e]
-                        (let [row (get-row row-id)
-                              path [(:pos row)]]
-                          (reset! layout
-                                  (into []
-                                        (map-indexed (fn [i r] (assoc r :pos i))
-                                                    (filter (fn [r] (not (= (:id r) row-id)))
-                                                            @layout))))
-                          (dom/remove! row-el)))]))))
+                        (let [row (get-row row-id)]
+                          (dom/add-class! row-el :removing)
+                          (dom/listen-once! row-el :transitionend
+                            (fn [] (reset! layout
+                                          (into []
+                                                (map-indexed (fn [i r] (assoc r :pos i))
+                                                             (filter (fn [r] (not (= (:id r) row-id)))
+                                                                     @layout))))
+                              (dom/remove! row-el)))))]
+                      [dupe-row-el :mouseodown (fn [e]
+                        (let [row (get-row row-id)]
+                          (spy [:DUPLICATE row])))]))))
 
 (defn size-classes [c]
   (apply str

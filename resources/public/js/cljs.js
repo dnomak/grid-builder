@@ -15493,7 +15493,7 @@ shoelace.client.add_col_BANG_ = function(a, b, c, d) {
 };
 shoelace.client.add_row_BANG_ = function() {
   var a = shoelace.client.new_id_BANG_.call(null, "row"), b = document.createElement("div");
-  b.className = "sl-row";
+  b.className = "sl-row easing";
   cljs.core.truth_(cljs.core.name.call(null, a)) && b.setAttribute("id", cljs.core.name.call(null, a));
   var c = document.createElement("div");
   c.className = "cols";
@@ -15537,14 +15537,19 @@ shoelace.client.add_row_BANG_ = function() {
     cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, b), "\ufdd0:wrap"], !0), !0);
     return dommy.core.remove_class_BANG_.call(null, i, "\ufdd0:hidden")
   }], !0), cljs.core.PersistentVector.fromArray([h, "\ufdd0:mousedown", function() {
-    var c = shoelace.client.get_row.call(null, a);
-    cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, c)], !0);
-    cljs.core.reset_BANG_.call(null, shoelace.client.layout, cljs.core.into.call(null, cljs.core.PersistentVector.EMPTY, cljs.core.map_indexed.call(null, function(a, b) {
-      return cljs.core.assoc.call(null, b, "\ufdd0:pos", a)
-    }, cljs.core.filter.call(null, function(b) {
-      return!cljs.core._EQ_.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, b), a)
-    }, cljs.core.deref.call(null, shoelace.client.layout)))));
-    return dommy.core.remove_BANG_.call(null, b)
+    shoelace.client.get_row.call(null, a);
+    dommy.core.add_class_BANG_.call(null, b, "\ufdd0:removing");
+    return dommy.core.listen_once_BANG_.call(null, b, "\ufdd0:transitionend", function() {
+      cljs.core.reset_BANG_.call(null, shoelace.client.layout, cljs.core.into.call(null, cljs.core.PersistentVector.EMPTY, cljs.core.map_indexed.call(null, function(a, b) {
+        return cljs.core.assoc.call(null, b, "\ufdd0:pos", a)
+      }, cljs.core.filter.call(null, function(b) {
+        return!cljs.core._EQ_.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, b), a)
+      }, cljs.core.deref.call(null, shoelace.client.layout)))));
+      return dommy.core.remove_BANG_.call(null, b)
+    })
+  }], !0), cljs.core.PersistentVector.fromArray([f, "\ufdd0:mouseodown", function() {
+    var b = shoelace.client.get_row.call(null, a);
+    return shoelace.client.spy.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:DUPLICATE", b], !0))
   }], !0))
 };
 shoelace.client.size_classes = function(a) {

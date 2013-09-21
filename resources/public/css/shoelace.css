@@ -59,7 +59,7 @@ body {
 }
 
 .easing {
-    transition: width 0.5s, margin 0.5s, height 0.5s, top 0.5s, left 0.5s, right 0.5s, background 0.5s;
+    transition: width 0.5s, margin 0.5s, height 0.5s, top 0.5s, left 0.5s, right 0.5s, background 0.5s, opacity 0.5s;
 }
 
 
@@ -205,6 +205,10 @@ body {
     background: rgba(89, 156, 255, 0.3);
     margin-top: 10px;
     position: relative;
+}
+
+.sl-row.removing {
+    opacity: 0;
 }
 
 input { outline: none; }
