@@ -1,6 +1,6 @@
 (ns shoelace.client
   (:require
-   [clojure.string :refer [join]]
+   [clojure.string :refer [join split]]
    [hiccups.runtime :as hrt]
    [dommy.core :as dom]
    [dommy.utils :refer [dissoc-in]]
@@ -12,13 +12,14 @@
    [dommy.macros :refer [node sel sel1]]))
 
 (defn watch-change
-  [data prop handler]
-  (let [watch-name (keyword (str "watch-change" (name prop)))]
-    (add-watch data watch-name
-               (fn [k r os ns]
-                 (when (not (= (prop os) (prop ns)))
-                   (handler (prop os) (prop ns)))))
-    watch-name))
+  ([data prop watch-name handler]
+     (add-watch data watch-name
+                (fn [k r os ns]
+                  (when (not (= (prop os) (prop ns)))
+                    (handler (prop os) (prop ns)))))
+    watch-name)
+  ([data prop handler]
+     (watch-change data prop (keyword (str "watch-change" (name prop))) handler)))
 
 (defn spy [x]
   (js/console.log (str x))
@@ -219,6 +220,7 @@
 
     (swap! layout update-in [(:pos row) :cols] conj
            {:id col-id
+            :name false
             :pos (count (:cols row))
             (@settings :media-mode) [0 1]})
     (applies dom/append!
@@ -234,6 +236,15 @@
              [offset-handle-el #(handle-drag :offset %)]
              [offset-el        #(handle-drag :offset %)]
              [width-el         #(handle-drag :width %)])
+    (dom/listen! name-el :change
+      (fn [e]
+        (let [row (get-row row-id)
+              col (get-col row-id col-id)
+              new-name (.-value name-el)]
+          (swap! layout assoc-in [(:pos row) :cols (:pos col) :name]
+                 (if (zero? (count new-name))
+                   false
+                   new-name)))))
     (handle-drag :width e)))
 
 (defn add-row! []
@@ -248,13 +259,19 @@
                  remv-row-el (node [:span.remv-row [:i.icon-remove]])
                  new-col-el (node [:.new-col.no-cols])
                  clear-el (node [:.clear])]
-             (swap! layout conj {:id row-id :pos (count @layout) :cols [] :wrap false})
+             (swap! layout conj {:id row-id :pos (count @layout) :cols [] :wrap false :name false})
              (applies dom/append!
                       [cols-el new-col-el]
                       [tools-el dupe-row-el grow-row-el remv-row-el]
                       [row-el cols-el name-el tools-el clear-el])
              (dom/insert-before! row-el new-row-el)
              (applies dom/listen!
+                      [name-el :change (fn [e] (let [row (get-row row-id)
+                                                    new-name (.-value name-el)]
+                                                (swap! layout assoc-in [(:pos row) :name]
+                                                       (if (zero? (count new-name))
+                                                         false
+                                                         new-name))))]
                       [new-col-el :mousedown (fn [e] (add-col! e cols-el new-col-el row-id))]
                       [grow-row-el :mousedown (fn [e]
                                                 (let [row (get-row row-id)]
@@ -275,23 +292,27 @@
                           (spy [:DUPLICATE row])))]))))
 
 (defn size-classes [c]
-  (apply str
-         (flatten
-          (map (fn [s]
-                 (if (s c)
-                   (let [[offset width] (s c)]
-                     [(when (> offset 0)
-                        (str ".col-" (name s) "-offset-" offset))
-                      (str ".col-" (name s) "-" width)])))
-               sizes))))
+  (remove nil?
+          (flatten
+           (concat
+            (if (:name c) [(split (:name c) #"\s+")] [])
+            (map (fn [s]
+                   (if (s c)
+                     (let [[offset width] (s c)]
+                       [(when (> offset 0)
+                          (str "col-" (name s) "-offset-" offset))
+                        (str "col-" (name s) "-" width)])))
+                 sizes)))))
 
 (defn layout->html
   [rows]
   (map
    (fn [r]
-     (conj [:div.row]
+     (conj (if (:name r)
+             [:div.row {:class (str "row " (:name r))}]
+             [:div.row])
            (map (fn [c]
-                  [(keyword (str "div" (size-classes c)))])
+                  [:div {:class (join " " (size-classes c))}])
                 (:cols r))))
    rows))
 
@@ -309,7 +330,7 @@
                       (->> (:cols row)
                            (map
                             (fn [col]
-                              (size-classes col)))
+                              (str "." (join "." (size-classes col)))))
                            (join (str "\n" col-prefix))))))
               (join "\n")))))
 
@@ -337,15 +358,20 @@
                          :top (+ offset-top top))))
         move-planchette (fn
           [selected-el]
-          (dom/remove-class! (output-els (:output-mode @settings)) :active)
-          (dom/remove-class! planchette-el :vanished)
-          (position-planchette selected-el)
-          (dom/listen-once! planchette-el :transitionend
-                            (fn []
-                              (dom/add-class! planchette-el :vanished)
-                              (dom/add-class! selected-el :active)
-                              (swap! settings assoc :output-mode (els-to-mode selected-el)))))
+          (when (not (= (:output-mode @settings) (els-to-mode selected-el)))
+            (dom/remove-class! (output-els (:output-mode @settings)) :active)
+            (dom/remove-class! planchette-el :vanished)
+            (position-planchette selected-el)
+            (dom/listen-once! planchette-el :transitionend
+                              (fn []
+                                (dom/add-class! planchette-el :vanished)
+                                (swap! settings assoc :output-mode (els-to-mode selected-el))))))
         include-container-el (sel1 :.include-container)]
+
+    (watch-change settings :output-mode :output-mode-done
+                  (fn [old new]
+                    (dom/remove-class! (output-els old) :active)
+                    (dom/add-class! (output-els new) :active)))
 
     (watch-change settings :output-collapsed
                   (fn [_ collapsed]
