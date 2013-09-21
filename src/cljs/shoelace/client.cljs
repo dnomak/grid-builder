@@ -259,7 +259,16 @@
                       [grow-row-el :mousedown (fn [e]
                                                 (let [row (get-row row-id)]
                                                   (swap! layout assoc-in [(:pos row) :wrap] true)
-                                                  (dom/remove-class! new-col-el :hidden)))]))))
+                                                  (dom/remove-class! new-col-el :hidden)))]
+                      [remv-row-el :mousedown (fn [e]
+                        (let [row (get-row row-id)
+                              path [(:pos row)]]
+                          (reset! layout
+                                  (into []
+                                        (map-indexed (fn [i r] (assoc r :pos i))
+                                                    (filter (fn [r] (not (= (:id r) row-id)))
+                                                            @layout))))
+                          (dom/remove! row-el)))]))))
 
 (defn size-classes [c]
   (apply str

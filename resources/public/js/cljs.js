@@ -15536,6 +15536,15 @@ shoelace.client.add_row_BANG_ = function() {
     var b = shoelace.client.get_row.call(null, a);
     cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, b), "\ufdd0:wrap"], !0), !0);
     return dommy.core.remove_class_BANG_.call(null, i, "\ufdd0:hidden")
+  }], !0), cljs.core.PersistentVector.fromArray([h, "\ufdd0:mousedown", function() {
+    var c = shoelace.client.get_row.call(null, a);
+    cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, c)], !0);
+    cljs.core.reset_BANG_.call(null, shoelace.client.layout, cljs.core.into.call(null, cljs.core.PersistentVector.EMPTY, cljs.core.map_indexed.call(null, function(a, b) {
+      return cljs.core.assoc.call(null, b, "\ufdd0:pos", a)
+    }, cljs.core.filter.call(null, function(b) {
+      return!cljs.core._EQ_.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, b), a)
+    }, cljs.core.deref.call(null, shoelace.client.layout)))));
+    return dommy.core.remove_BANG_.call(null, b)
   }], !0))
 };
 shoelace.client.size_classes = function(a) {
