@@ -372,26 +372,28 @@
 (defn draw-workspace []
   (let [workspace (sel1 :.workspace)
         output (sel1 :pre.output)
+        copy-output-el (sel1 :.copy-output)
         container (node [:.container])
         rows (node [:.rows])
         columns (node [:.columns])
         new-row (node [:.sl-row.new-row])
         media-mode (:media-mode @settings)
+        copy-code-el (sel1 :.copy-code)
         update-output (fn []
-          (dom/remove-class! output :prettyprinted)
-          (dom/set-text!
-           output
-           (condp = (:output-mode @settings)
-             :html (let [layout-html (layout->html @layout)]
-                     (js/html_beautify
-                      (hrt/render-html
-                       (if (:include-container @settings)
-                         (conj [:div.container] layout-html)
-                         layout-html))))
-             :jade (layout->jade @layout)
-             :haml (layout->jade @layout)
-             :edn (str (mapv (fn [r] (mapv (fn [c] (dissoc c :id :pos)) (:cols r))) @layout))))
-          (js/PR.prettyPrint))]
+          (let [code (condp = (:output-mode @settings)
+                       :html (let [layout-html (layout->html @layout)]
+                               (js/html_beautify
+                                (hrt/render-html
+                                 (if (:include-container @settings)
+                                   (conj [:div.container] layout-html)
+                                   layout-html))))
+                       :jade (layout->jade @layout)
+                       :haml (layout->jade @layout)
+                       :edn (str (mapv (fn [r] (mapv (fn [c] (dissoc c :id :pos)) (:cols r))) @layout)))]
+            (dom/remove-class! output :prettyprinted)
+            (dom/set-text! output code)
+            (aset copy-output-el "value" code)
+            (js/PR.prettyPrint)))]
 
     (make-options)
 
@@ -442,10 +444,16 @@
                     (update-output)))
 
     (update-output)
+
+    (dom/listen! copy-code-el :click (fn []
+                                       (.select copy-output-el)
+                                       (dom/listen-once! body :keyup
+                                                         (fn [] (spy [:KEYUP :now-hide-popover])))))
     (dom/listen! new-row :click add-row!)
-    (dom/append! container columns rows)
-    (dom/append! rows new-row)
-    (dom/append! workspace container)))
+    (applies dom/append!
+             [container columns rows]
+             [rows new-row]
+             [workspace container])))
 
 
 (draw-workspace)

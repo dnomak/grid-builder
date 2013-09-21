@@ -321,8 +321,19 @@ pre.output {
     visibility: hidden;
 }
 
+.copy-code {
+    cursor: pointer;
+}
+
 .html.collapsed .copy-code {
     left: 7px;
     top: 93px;
     right: auto;
+}
+
+.copy-output {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    right: -10px;
 }
