@@ -5,11 +5,20 @@
    [dommy.core :as dom]
    [dommy.utils :refer [dissoc-in]]
    [cljs.core.async :refer [>! <! chan sliding-buffer]]
-   [bigsky.aui.util :refer [event-chan]]
+   [bigsky.aui.util :refer [event-chan applies]]
    [bigsky.aui.draggable :refer [draggable]])
   (:require-macros
    [cljs.core.async.macros :refer [go]]
    [dommy.macros :refer [node sel1]]))
+
+(defn watch-change
+  [data prop handler]
+  (let [watch-name (keyword (str "watch-change" (name prop)))]
+    (add-watch data watch-name
+               (fn [k r os ns]
+                 (when (not (= (prop os) (prop ns)))
+                   (handler (prop os) (prop ns)))))
+    watch-name))
 
 (defn spy [x]
   (js/console.log (str x))
@@ -212,17 +221,19 @@
            {:id col-id
             :pos (count (:cols row))
             (@settings :media-mode) [0 1]})
-    (dom/append! width-el nested-el name-el classes-el offset-handle-el)
-    (dom/append! col-el offset-el width-el remove-el)
-    (dom/append! cols-el col-el)
+    (applies dom/append!
+             [width-el nested-el name-el classes-el offset-handle-el]
+             [col-el offset-el width-el remove-el]
+             [cols-el col-el])
     (check-to-hide-new-col)
     (check-to-allow-grow)
     (dom/insert-before! col-el new-col-el)
     (dom/remove-class! new-col-el :no-cols)
-    (dom/listen! remove-el :mousedown #(handle-remove %))
-    (dom/listen! offset-handle-el :mousedown #(handle-drag :offset %))
-    (dom/listen! offset-el :mousedown #(handle-drag :offset %))
-    (dom/listen! width-el :mousedown #(handle-drag :width %))
+    (applies #(dom/listen! %1 :mousedown %2)
+             [remove-el        #(handle-remove %)]
+             [offset-handle-el #(handle-drag :offset %)]
+             [offset-el        #(handle-drag :offset %)]
+             [width-el         #(handle-drag :width %)])
     (handle-drag :width e)))
 
 (defn add-row! []
@@ -238,35 +249,119 @@
                  new-col-el (node [:.new-col.no-cols])
                  clear-el (node [:.clear])]
              (swap! layout conj {:id row-id :pos (count @layout) :cols [] :wrap false})
-             (dom/append! cols-el new-col-el)
-             (dom/append! tools-el dupe-row-el grow-row-el remv-row-el)
-             (dom/append! row-el cols-el name-el tools-el clear-el)
+             (applies dom/append!
+                      [cols-el new-col-el]
+                      [tools-el dupe-row-el grow-row-el remv-row-el]
+                      [row-el cols-el name-el tools-el clear-el])
              (dom/insert-before! row-el new-row-el)
-             (dom/listen! new-col-el :mousedown (fn [e] (add-col! e cols-el new-col-el row-id)))
-             (dom/listen! grow-row-el :mousedown (fn [e]
-                                                   (let [row (get-row row-id)]
-                                                     (swap! layout assoc-in [(:pos row) :wrap] true)
-                                                     (dom/remove-class! new-col-el :hidden)))))))
+             (applies dom/listen!
+                      [new-col-el :mousedown (fn [e] (add-col! e cols-el new-col-el row-id))]
+                      [grow-row-el :mousedown (fn [e]
+                                                (let [row (get-row row-id)]
+                                                  (swap! layout assoc-in [(:pos row) :wrap] true)
+                                                  (dom/remove-class! new-col-el :hidden)))]))))
+
+(defn size-classes [c]
+  (apply str
+         (flatten
+          (map (fn [s]
+                 (if (s c)
+                   (let [[offset width] (s c)]
+                     [(when (> offset 0)
+                        (str ".col-" (name s) "-offset-" offset))
+                      (str ".col-" (name s) "-" width)])))
+               sizes))))
 
 (defn layout->html
   [rows]
-  (letfn [(size-classes [c]
-            (apply str
-             (flatten
-              (map (fn [s]
-                     (if (s c)
-                       (let [[offset width] (s c)]
-                         [(when (> offset 0)
-                            (str ".col-" (name s) "-offset-" offset))
-                          (str ".col-" (name s) "-" width)])))
-                   sizes))))]
-    (map
-     (fn [r]
-       (conj [:div.row]
-             (map (fn [c]
-                    [(keyword (str "div" (size-classes c)))])
-                  (:cols r))))
-     rows)))
+  (map
+   (fn [r]
+     (conj [:div.row]
+           (map (fn [c]
+                  [(keyword (str "div" (size-classes c)))])
+                (:cols r))))
+   rows))
+
+(defn layout->jade
+  [rows]
+  (let [include-container (:include-container @settings)
+        container (if include-container ".container\n" "")
+        row-prefix (if include-container "  " "")
+        col-prefix (if include-container "    " "  ")]
+    (str container
+         (->> rows
+              (map
+               (fn [row]
+                 (str row-prefix ".row\n" col-prefix
+                      (->> (:cols row)
+                           (map
+                            (fn [col]
+                              (size-classes col)))
+                           (join (str "\n" col-prefix))))))
+              (join "\n")))))
+
+(defn make-options []
+  (let [options-el (sel1 [:.options])
+        ul (sel1 [:.options :ul])
+        planchette-el (node [:.planchette.easing])
+        output-els {:html (sel1 :.output-html)
+                    :jade (sel1 :.output-jade)
+                    :haml (sel1 :.output-haml)
+                    :edn  (sel1 :.output-edn)}
+        els-to-mode (zipmap (vals output-els) (keys output-els))
+        move-planchette (fn
+          [selected-el]
+          (let [left        (aget selected-el "offsetLeft")
+                top         (aget selected-el "offsetTop")
+                width       (aget selected-el "offsetWidth")
+                height      (aget selected-el "offsetHeight")
+                offset-left (aget ul "offsetLeft")
+                offset-top  (aget ul "offsetTop")]
+            (dom/set-px! planchette-el
+                         :width width
+                         :height height
+                         :left (+ offset-left left)
+                         :top (+ offset-top top))
+            (dom/listen-once! planchette-el :transitionend
+                              #(swap! settings assoc :output-mode (els-to-mode selected-el)))))
+        include-container-el (sel1 :.include-container)]
+
+    (watch-change settings :output-collapsed
+                  (fn [_ collapsed]
+                    (dom/remove-class! planchette-el :easing)
+                    (move-planchette (output-els (@settings :output-mode)))
+                    (dom/add-class! planchette-el :easing)))
+
+    (dom/prepend! options-el planchette-el)
+
+    (dom/listen! [options-el :li]
+                 :click
+                 #(move-planchette (aget % "selectedTarget")))
+
+    (dom/set-attr! include-container-el
+                   :checked
+                   (@settings :include-container))
+
+    (dom/listen! include-container-el
+                 :change
+                 #(swap! settings assoc :include-container (aget include-container-el "checked")))
+
+    (move-planchette (output-els (@settings :output-mode)))))
+
+(defn make-collapse-pane
+  [state workspace pane-el border-el collapse-el]
+  (dom/listen!
+   collapse-el
+   :click (fn []
+            (let [collapsed (@settings state)
+                  toggle-class! (if collapsed dom/remove-class! dom/add-class!)]
+              (applies toggle-class!
+                       [pane-el :collapsed]
+                       [collapse-el :collapsed]
+                       [workspace state]
+                       [border-el :collapsed])
+              (dom/listen-once! pane-el :transitionend
+                                #(swap! settings assoc state (not collapsed)))))))
 
 (defn draw-workspace []
   (let [workspace (sel1 :.workspace)
@@ -276,12 +371,38 @@
         columns (node [:.columns])
         new-row (node [:.sl-row.new-row])
         media-mode (:media-mode @settings)
-        navigator-el (sel1 :.navigator)
-        section-border-left-el (sel1 :.section-border.left)
-        navigator-collapse-el (sel1 [navigator-el :.collapse-panel])
-        output-el (sel1 :.html)
-        section-border-right-el (sel1 :.section-border.right)
-        output-collapse-el (sel1 [output-el :.collapse-panel.right])]
+        update-output (fn []
+          (dom/remove-class! output :prettyprinted)
+          (dom/set-text!
+           output
+           (condp = (:output-mode @settings)
+             :html (let [layout-html (layout->html @layout)]
+                     (js/html_beautify
+                      (hrt/render-html
+                       (if (:include-container @settings)
+                         (conj [:div.container] layout-html)
+                         layout-html))))
+             :jade (layout->jade @layout)
+             :haml (layout->jade @layout)
+             :edn (str (mapv (fn [r] (mapv (fn [c] (dissoc c :id :pos)) (:cols r))) @layout))))
+          (js/PR.prettyPrint))]
+
+    (make-options)
+
+    (make-collapse-pane
+     :medias-collapsed
+     workspace
+     (sel1 :.navigator)
+     (sel1 :.section-border.left)
+     (sel1 [:.navigator :.collapse-panel]))
+
+    (make-collapse-pane
+     :output-collapsed
+     workspace
+     (sel1 :.html)
+     (sel1 :.section-border.right)
+     (sel1 [:.html :.collapse-panel.right]))
+
     (dom/add-class! container media-mode)
 
     (doseq [i (range grid-cols)]
@@ -293,49 +414,32 @@
         (when (= size media-mode) (dom/add-class! media :active))
         (dom/listen! media :mouseup #(swap! settings assoc :media-mode size))))
 
-    (add-watch settings :update-media
-               (fn [k r os ns]
-                 (when (not (= (:media-mode os) (:media-mode ns)))
-                   (dom/remove-class! container (:media-mode os))
-                   (dom/remove-class! (sel1 :.preview.active) :active)
-                   (dom/add-class! (sel1 (str  ".preview." (name (:media-mode ns)))) :active)
-                   (dom/add-class! container (:media-mode ns)))))
+    (watch-change settings :media-mode
+                  (fn [old-mode new-mode]
+                    (applies dom/remove-class!
+                             [container old-mode]
+                             [(sel1 :.preview.active) :active])
+                    (applies dom/add-class!
+                             [(sel1 (str ".preview." (name new-mode))) :active]
+                             [container new-mode])))
 
     (add-watch layout :update-output
                (fn [k r os ns]
-                 (dom/remove-class! output :prettyprinted)
-                 (dom/set-text! output
-                  (condp = (:output-mode @settings)
-                    :html (js/html_beautify
-                           (hrt/render-html
-                            (conj [:div.container] (layout->html ns))))
+                 (update-output)))
 
-                    :edn (str (mapv (fn [r] (mapv (fn [c] (dissoc c :id :pos)) (:cols r))) ns))))
-                 (js/PR.prettyPrint)))
+    (watch-change settings :output-mode
+                  (fn [ov nv]
+                    (update-output)))
 
-    (dom/listen! navigator-collapse-el
-                 :click (fn []
-                          (let [medias-collapsed (@settings :medias-collapsed)
-                                f (if medias-collapsed dom/remove-class! dom/add-class!)]
-                            (f navigator-collapse-el :collapsed)
-                            (f workspace :left-collapsed)
-                            (f section-border-left-el :collapsed)
-                            (f navigator-el :collapsed)
-                            (swap! settings assoc :medias-collapsed (not medias-collapsed)))))
+    (watch-change settings :include-container
+                  (fn [ov nv]
+                    (update-output)))
 
-    (dom/listen! output-collapse-el
-                 :click (fn []
-                          (let [output-collapsed (@settings :output-collapsed)
-                                f (if output-collapsed dom/remove-class! dom/add-class!)]
-                            (f output-el :collapsed)
-                            (f output-collapse-el :collapsed)
-                            (f workspace :right-collapsed)
-                            (f section-border-right-el :collapsed)
-                            (swap! settings assoc :output-collapsed (not output-collapsed)))))
-
+    (update-output)
     (dom/listen! new-row :click add-row!)
     (dom/append! container columns rows)
     (dom/append! rows new-row)
     (dom/append! workspace container)))
+
 
 (draw-workspace)

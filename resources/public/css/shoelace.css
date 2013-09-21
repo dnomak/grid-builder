@@ -80,11 +80,11 @@ body {
 }
 
 
-.workspace.left-collapsed {
+.workspace.medias-collapsed {
     left: 50px;
 }
 
-.workspace.right-collapsed {
+.workspace.output-collapsed {
     right: 75px;
 }
 
@@ -98,6 +98,14 @@ body {
 
 .html.collapsed .output {
     display: none;
+}
+
+.html.collapsed .planchette {
+    display: none;
+}
+
+.html.collapsed .planchette.easing {
+    display: block;
 }
 
 .section-border.collapsed.right {
@@ -282,4 +290,24 @@ pre.output {
 /* It needs this added somewhere */
 .workspace {
     overflow-y: scroll;
+}
+
+.options {
+  position: relative;
+}
+
+.options ul {
+  position: absolute;
+}
+
+.html .options ul li {
+    cursor: pointer;
+    color: white;
+}
+
+.planchette {
+    position: absolute;
+    background-image: linear-gradient(to bottom, #3188bf 0, #0a598a 100%);
+    background-repeat: repeat-x;
+    border-radius: 4px;
 }
