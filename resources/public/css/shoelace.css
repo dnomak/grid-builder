@@ -311,3 +311,7 @@ pre.output {
     background-repeat: repeat-x;
     border-radius: 4px;
 }
+
+.planchette.vanished {
+    visibility: hidden;
+}

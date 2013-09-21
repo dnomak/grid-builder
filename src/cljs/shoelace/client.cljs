@@ -9,7 +9,7 @@
    [bigsky.aui.draggable :refer [draggable]])
   (:require-macros
    [cljs.core.async.macros :refer [go]]
-   [dommy.macros :refer [node sel1]]))
+   [dommy.macros :refer [node sel sel1]]))
 
 (defn watch-change
   [data prop handler]
@@ -309,7 +309,7 @@
                     :haml (sel1 :.output-haml)
                     :edn  (sel1 :.output-edn)}
         els-to-mode (zipmap (vals output-els) (keys output-els))
-        move-planchette (fn
+        position-planchette (fn
           [selected-el]
           (let [left        (aget selected-el "offsetLeft")
                 top         (aget selected-el "offsetTop")
@@ -321,16 +321,22 @@
                          :width width
                          :height height
                          :left (+ offset-left left)
-                         :top (+ offset-top top))
-            (dom/listen-once! planchette-el :transitionend
-                              #(swap! settings assoc :output-mode (els-to-mode selected-el)))))
+                         :top (+ offset-top top))))
+        move-planchette (fn
+          [selected-el]
+          (dom/remove-class! (output-els (:output-mode @settings)) :active)
+          (dom/remove-class! planchette-el :vanished)
+          (position-planchette selected-el)
+          (dom/listen-once! planchette-el :transitionend
+                            (fn []
+                              (dom/add-class! planchette-el :vanished)
+                              (dom/add-class! selected-el :active)
+                              (swap! settings assoc :output-mode (els-to-mode selected-el)))))
         include-container-el (sel1 :.include-container)]
 
     (watch-change settings :output-collapsed
                   (fn [_ collapsed]
-                    (dom/remove-class! planchette-el :easing)
-                    (move-planchette (output-els (@settings :output-mode)))
-                    (dom/add-class! planchette-el :easing)))
+                    (position-planchette (output-els (@settings :output-mode)))))
 
     (dom/prepend! options-el planchette-el)
 

@@ -15565,32 +15565,37 @@ shoelace.client.layout__GT_jade = function(a) {
 shoelace.client.make_options = function() {
   var a = document.querySelector(dommy.core.selector.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:.options"], !0))), b = document.querySelector(dommy.core.selector.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:.options", "\ufdd0:ul"], !0))), c = document.createElement("div");
   c.className = "planchette easing";
-  var d = cljs.core.PersistentArrayMap.fromArray(["\ufdd0:html", dommy.utils.__GT_Array.call(null, document.getElementsByClassName("output-html"))[0], "\ufdd0:jade", dommy.utils.__GT_Array.call(null, document.getElementsByClassName("output-jade"))[0], "\ufdd0:haml", dommy.utils.__GT_Array.call(null, document.getElementsByClassName("output-haml"))[0], "\ufdd0:edn", dommy.utils.__GT_Array.call(null, document.getElementsByClassName("output-edn"))[0]], !0), e, f = cljs.core.zipmap.call(null, cljs.core.vals.call(null, 
-  d), cljs.core.keys.call(null, d));
-  e = function(e) {
-    var g = e.offsetLeft, j = e.offsetTop, k = e.offsetWidth, l = e.offsetHeight, m = b.offsetLeft, n = b.offsetTop;
-    dommy.core.set_px_BANG_.call(null, c, "\ufdd0:width", k, "\ufdd0:height", l, "\ufdd0:left", m + g, "\ufdd0:top", n + j);
-    return dommy.core.listen_once_BANG_.call(null, c, "\ufdd0:transitionend", function(a, b, c, d, f, g, i, j, k, l, m) {
-      return function() {
-        return cljs.core.swap_BANG_.call(null, shoelace.client.settings, cljs.core.assoc, "\ufdd0:output-mode", m.call(null, e))
-      }
-    }(g, j, k, l, m, n, a, b, c, d, f))
+  var d = cljs.core.PersistentArrayMap.fromArray(["\ufdd0:html", dommy.utils.__GT_Array.call(null, document.getElementsByClassName("output-html"))[0], "\ufdd0:jade", dommy.utils.__GT_Array.call(null, document.getElementsByClassName("output-jade"))[0], "\ufdd0:haml", dommy.utils.__GT_Array.call(null, document.getElementsByClassName("output-haml"))[0], "\ufdd0:edn", dommy.utils.__GT_Array.call(null, document.getElementsByClassName("output-edn"))[0]], !0), e = cljs.core.zipmap.call(null, cljs.core.vals.call(null, 
+  d), cljs.core.keys.call(null, d)), f;
+  f = function(a) {
+    return dommy.core.set_px_BANG_.call(null, c, "\ufdd0:width", a.offsetWidth, "\ufdd0:height", a.offsetHeight, "\ufdd0:left", b.offsetLeft + a.offsetLeft, "\ufdd0:top", b.offsetTop + a.offsetTop)
   };
-  var g = dommy.utils.__GT_Array.call(null, document.getElementsByClassName("include-container"))[0];
+  var g;
+  g = function(g) {
+    dommy.core.remove_class_BANG_.call(null, d.call(null, (new cljs.core.Keyword("\ufdd0:output-mode")).call(null, cljs.core.deref.call(null, shoelace.client.settings))), "\ufdd0:active");
+    dommy.core.remove_class_BANG_.call(null, c, "\ufdd0:vanished");
+    f.call(null, g);
+    return dommy.core.listen_once_BANG_.call(null, c, "\ufdd0:transitionend", function(a, b, c, d, e) {
+      return function() {
+        dommy.core.add_class_BANG_.call(null, c, "\ufdd0:vanished");
+        dommy.core.add_class_BANG_.call(null, g, "\ufdd0:active");
+        return cljs.core.swap_BANG_.call(null, shoelace.client.settings, cljs.core.assoc, "\ufdd0:output-mode", e.call(null, g))
+      }
+    }(a, b, c, d, e, f))
+  };
+  var h = dommy.utils.__GT_Array.call(null, document.getElementsByClassName("include-container"))[0];
   shoelace.client.watch_change.call(null, shoelace.client.settings, "\ufdd0:output-collapsed", function() {
-    dommy.core.remove_class_BANG_.call(null, c, "\ufdd0:easing");
-    e.call(null, d.call(null, cljs.core.deref.call(null, shoelace.client.settings).call(null, "\ufdd0:output-mode")));
-    return dommy.core.add_class_BANG_.call(null, c, "\ufdd0:easing")
+    return f.call(null, d.call(null, cljs.core.deref.call(null, shoelace.client.settings).call(null, "\ufdd0:output-mode")))
   });
   dommy.core.prepend_BANG_.call(null, a, c);
   dommy.core.listen_BANG_.call(null, cljs.core.PersistentVector.fromArray([a, "\ufdd0:li"], !0), "\ufdd0:click", function(a) {
-    return e.call(null, a.selectedTarget)
+    return g.call(null, a.selectedTarget)
   });
-  dommy.core.set_attr_BANG_.call(null, g, "\ufdd0:checked", cljs.core.deref.call(null, shoelace.client.settings).call(null, "\ufdd0:include-container"));
-  dommy.core.listen_BANG_.call(null, g, "\ufdd0:change", function() {
-    return cljs.core.swap_BANG_.call(null, shoelace.client.settings, cljs.core.assoc, "\ufdd0:include-container", g.checked)
+  dommy.core.set_attr_BANG_.call(null, h, "\ufdd0:checked", cljs.core.deref.call(null, shoelace.client.settings).call(null, "\ufdd0:include-container"));
+  dommy.core.listen_BANG_.call(null, h, "\ufdd0:change", function() {
+    return cljs.core.swap_BANG_.call(null, shoelace.client.settings, cljs.core.assoc, "\ufdd0:include-container", h.checked)
   });
-  return e.call(null, d.call(null, cljs.core.deref.call(null, shoelace.client.settings).call(null, "\ufdd0:output-mode")))
+  return g.call(null, d.call(null, cljs.core.deref.call(null, shoelace.client.settings).call(null, "\ufdd0:output-mode")))
 };
 shoelace.client.make_collapse_pane = function(a, b, c, d, e) {
   return dommy.core.listen_BANG_.call(null, e, "\ufdd0:click", function() {
