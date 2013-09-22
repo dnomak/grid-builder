@@ -4,12 +4,18 @@
    [hiccups.runtime :as hrt]
    [dommy.core :as dom]
    [dommy.utils :refer [dissoc-in]]
-   [cljs.core.async :refer [>! <! chan sliding-buffer]]
+   [cljs.core.async :refer [>! <! put! chan sliding-buffer]]
    [bigsky.aui.util :refer [event-chan applies]]
    [bigsky.aui.draggable :refer [draggable]])
   (:require-macros
    [cljs.core.async.macros :refer [go]]
    [dommy.macros :refer [node sel sel1]]))
+
+(defn insert-after
+  [data after val]
+  (concat (subvec data 0 after)
+          [val]
+          (subvec data after)))
 
 (defn watch-change
   ([data prop watch-name handler]
@@ -106,6 +112,7 @@
   [e cols-el new-col-el row-id]
   (let [col-id (new-id! 'col)
         col-el (node [:.col {:id (name col-id)}])
+        in-chan (chan)
         grow-row-el (sel1 (str "#" (name row-id) " .grow-row"))
         offset-el (node [:.offset])
         remove-el (node [:.remove [:i.icon-remove]])
@@ -144,6 +151,21 @@
                           (check-to-allow-grow)
                           (when (zero? (count (get-in @layout path)))
                             (dom/add-class! new-col-el :no-cols))))
+        draw-class-type (fn [media type size]
+                          (dom/set-text! (get-class-el col-id media type)
+                                         (if (and (= type :offset) (zero? size))
+                                           ""
+                                           (str (name media) "-"
+                                                (when (= type :offset) "offset-")
+                                                size))))
+        draw-classes (fn []
+                       (let [col (get-col row-id col-id)]
+                         (doseq [media sizes]
+                           (when (media col)
+                             (let [[offset width] (media col)]
+                               (when offset (draw-class-type media :offset offset))
+                               (when width (draw-class-type media :width width)))))))
+
         handle-drag (fn [type e]
           (.stopPropagation e)
           (let [start-x (aget e "x")
@@ -170,12 +192,7 @@
                           (swap! layout assoc-in
                                  [(:pos row) :cols (:pos col) media (type-pos type)]
                                  new-width)
-                          (dom/set-text! (get-class-el col-id media type)
-                                         (if (and (= type :offset) (zero? new-width))
-                                           ""
-                                           (str (name media) "-"
-                                                (when (= type :offset) "offset-")
-                                                new-width)))
+                          (draw-class-type media type new-width)
                           (dom/add-class! (els type) :easing)
                           (dom/set-px! (els type)
                                        :width
@@ -223,19 +240,23 @@
             :name false
             :pos (count (:cols row))
             (@settings :media-mode) [0 1]})
+
     (applies dom/append!
              [width-el nested-el name-el classes-el offset-handle-el]
              [col-el offset-el width-el remove-el]
              [cols-el col-el])
+
     (check-to-hide-new-col)
     (check-to-allow-grow)
     (dom/insert-before! col-el new-col-el)
     (dom/remove-class! new-col-el :no-cols)
+
     (applies #(dom/listen! %1 :mousedown %2)
              [remove-el        #(handle-remove %)]
              [offset-handle-el #(handle-drag :offset %)]
              [offset-el        #(handle-drag :offset %)]
              [width-el         #(handle-drag :width %)])
+
     (dom/listen! name-el :change
       (fn [e]
         (let [row (get-row row-id)
@@ -245,51 +266,107 @@
                  (if (zero? (count new-name))
                    false
                    new-name)))))
-    (handle-drag :width e)))
+
+    (when e (handle-drag :width e))
+
+    ;;message listening
+    (go (loop []
+          (let [[msg] (<! in-chan)]
+            (condp = msg
+              :draw-classes (draw-classes))
+            (recur))))
+
+    [col-id col-el in-chan els name-el]))
+
+(defn create-row []
+  (let [row-id (new-id! "row")
+        row-el (node [:.sl-row.easing {:id (name row-id)}])
+        cols-el (node [:.cols])
+        name-el (node [:input.row-name {:placeholder "Name Row"}])
+        tools-el (node [:.tools])
+        dupe-row-el (node [:span.dupe-row [:i.icon-double-angle-down]])
+        grow-row-el (node [:span.grow-row [:i.icon-level-down]])
+        remv-row-el (node [:span.remv-row [:i.icon-remove]])
+        new-col-el (node [:.new-col.no-cols])
+        clear-el (node [:.clear])]
+
+    (applies dom/append!
+             [cols-el new-col-el]
+             [tools-el dupe-row-el grow-row-el remv-row-el]
+             [row-el cols-el name-el tools-el clear-el])
+
+    (applies dom/listen!
+             [name-el :change (fn [e] (let [row (get-row row-id)
+                                           new-name (.-value name-el)]
+                                       (swap! layout assoc-in [(:pos row) :name]
+                                              (if (zero? (count new-name))
+                                                false
+                                                new-name))))]
+             [new-col-el :mousedown (fn [e] (add-col! e cols-el new-col-el row-id))]
+             [grow-row-el :mousedown (fn [e]
+                                       (let [row (get-row row-id)]
+                                         (swap! layout assoc-in [(:pos row) :wrap] true)
+                                         (dom/remove-class! new-col-el :hidden)))]
+             [remv-row-el :mousedown (fn [e]
+               (let [row (get-row row-id)]
+                 (dom/add-class! row-el :removing)
+                 (dom/listen-once! row-el :transitionend
+                   (fn [] (reset! layout
+                                 (into []
+                                       (map-indexed (fn [i r] (assoc r :pos i))
+                                                    (filter (fn [r] (not (= (:id r) row-id)))
+                                                            @layout))))
+                     (dom/remove! row-el)))))]
+             [dupe-row-el :mousedown (fn [e]
+               (let [row (get-row row-id)
+                     [duped-row-id duped-row-el duped-cols-el duped-new-col-el duped-name-el] (create-row)]
+                 (dom/insert-after! duped-row-el row-el)
+                 (reset! layout
+                         (into [] (map-indexed
+                                   (fn [i r] (assoc r :pos i))
+                                   (insert-after @layout (inc (:pos row))
+                                                 {:id duped-row-id
+                                                  :pos 0
+                                                  :cols []
+                                                  :wrap false
+                                                  :name false}))))
+                 (when (:name row)
+                   (let [duped-row (get-row duped-row-id)]
+                     (swap! layout assoc-in [(:pos duped-row) :name] (:name row))
+                     (aset duped-name-el "value" (:name row))))
+
+                 (when (:wrap row)
+                   (let [duped-row (get-row duped-row-id)]
+                     (swap! layout assoc-in [(:pos duped-row) :wrap] (:wrap row))))
+
+                 (let [new-row (get-row duped-row-id)
+                       col-unit (calc-col-unit)]
+                   (doseq [col (:cols row)]
+                     (let [[new-col-id new-col-el new-col-in-chan els col-name-el]
+                           (add-col! false duped-cols-el duped-new-col-el duped-row-id)
+                           path [(:pos new-row) :cols (:pos col)]]
+                       (swap! layout assoc-in (conj path :name) (:name col))
+                       (when (:name col)
+                         (aset col-name-el "value" (:name col)))
+                       (doseq [size sizes]
+                         (when (size col)
+                           (applies dom/set-px!
+                                    [(:offset els) :width (- (* col-unit ((size col) 0))
+                                                             col-margin-width)]
+                                    [(:width els)  :width (- (* col-unit ((size col) 1))
+                                                             col-margin-width)])
+                           (swap! layout assoc-in (conj path size) (size col))))
+                       (when (= grid-cols (total-cols-used (get-row duped-row-id)
+                                                           (@settings :media-mode)))
+                         (dom/add-class! duped-new-col-el :hidden))
+                       (put! new-col-in-chan [:draw-classes]))))))])
+    [row-id row-el cols-el new-col-el name-el]))
 
 (defn add-row! []
   (this-as new-row-el
-           (let [row-id (new-id! "row")
-                 row-el (node [:.sl-row.easing {:id (name row-id)}])
-                 cols-el (node [:.cols])
-                 name-el (node [:input.row-name {:placeholder "Name Row"}])
-                 tools-el (node [:.tools])
-                 dupe-row-el (node [:span.dupe-row [:i.icon-double-angle-down]])
-                 grow-row-el (node [:span.grow-row [:i.icon-level-down]])
-                 remv-row-el (node [:span.remv-row [:i.icon-remove]])
-                 new-col-el (node [:.new-col.no-cols])
-                 clear-el (node [:.clear])]
-             (swap! layout conj {:id row-id :pos (count @layout) :cols [] :wrap false :name false})
-             (applies dom/append!
-                      [cols-el new-col-el]
-                      [tools-el dupe-row-el grow-row-el remv-row-el]
-                      [row-el cols-el name-el tools-el clear-el])
-             (dom/insert-before! row-el new-row-el)
-             (applies dom/listen!
-                      [name-el :change (fn [e] (let [row (get-row row-id)
-                                                    new-name (.-value name-el)]
-                                                (swap! layout assoc-in [(:pos row) :name]
-                                                       (if (zero? (count new-name))
-                                                         false
-                                                         new-name))))]
-                      [new-col-el :mousedown (fn [e] (add-col! e cols-el new-col-el row-id))]
-                      [grow-row-el :mousedown (fn [e]
-                                                (let [row (get-row row-id)]
-                                                  (swap! layout assoc-in [(:pos row) :wrap] true)
-                                                  (dom/remove-class! new-col-el :hidden)))]
-                      [remv-row-el :mousedown (fn [e]
-                        (let [row (get-row row-id)]
-                          (dom/add-class! row-el :removing)
-                          (dom/listen-once! row-el :transitionend
-                            (fn [] (reset! layout
-                                          (into []
-                                                (map-indexed (fn [i r] (assoc r :pos i))
-                                                             (filter (fn [r] (not (= (:id r) row-id)))
-                                                                     @layout))))
-                              (dom/remove! row-el)))))]
-                      [dupe-row-el :mouseodown (fn [e]
-                        (let [row (get-row row-id)]
-                          (spy [:DUPLICATE row])))]))))
+    (let [[row-id row-el] (create-row)]
+      (swap! layout conj {:id row-id :pos (count @layout) :cols [] :wrap false :name false})
+      (dom/insert-before! row-el new-row-el))))
 
 (defn size-classes [c]
   (remove nil?
