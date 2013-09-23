@@ -11,6 +11,22 @@
    [cljs.core.async.macros :refer [go]]
    [dommy.macros :refer [node sel sel1]]))
 
+(defn sels
+  [names selectors]
+  (zipmap names (for [s selectors] (sel1 s))))
+
+(defn go-alphabet
+  [& args]
+  (let [actions (apply hash-map args)
+        in-chan (chan)]
+    (go (loop []
+          (let [msg (<! in-chan)
+                action (actions (first msg))]
+            (when action
+              (apply action (rest msg)))
+            (recur))))
+    in-chan))
+
 (defn insert-after
   [data after val]
   (concat (subvec data 0 after)
@@ -346,13 +362,13 @@
                            (add-col! false duped-cols-el duped-new-col-el duped-row-id)
                            path [(:pos new-row) :cols (:pos col)]]
                        (swap! layout assoc-in (conj path :name) (:name col))
+                       (dom/add-class! (:width els) :easing)
                        (when (:name col)
                          (aset col-name-el "value" (:name col)))
                        (doseq [size sizes]
                          (when (size col)
                            (applies dom/set-px!
-                                    [(:offset els) :width (- (* col-unit ((size col) 0))
-                                                             col-margin-width)]
+                                    [(:offset els) :width (* col-unit ((size col) 0))]
                                     [(:width els)  :width (- (* col-unit ((size col) 1))
                                                              col-margin-width)])
                            (swap! layout assoc-in (conj path size) (size col))))
@@ -485,6 +501,32 @@
               (dom/listen-once! pane-el :transitionend
                                 #(swap! settings assoc state (not collapsed)))))))
 
+
+(def media-factor
+  {:xs 0.2
+   :sm 0.12
+   :md 0.17
+   :lg 0.19})
+
+(defn make-media-previews []
+  (let [preview-els (sels sizes (for [size sizes] (str ".preview." (name size) " .preview-rows")))]
+    (spy preview-els)
+    (go-alphabet
+     :update #(do
+                (doseq [[_ el] preview-els] (dom/set-text! el ""))
+                (doseq [row @layout]
+                  (doseq [[size el] preview-els]
+                    (let [row-el (node [:.preview-row.easing])
+                          col-unit (* col-width (media-factor size))]
+                      (dom/append! el row-el)
+                      (doseq [col (:cols row)]
+                        (let [col-el (node [:.preview-col.easing])
+                              widths (col-for-media col size)]
+                          (when widths
+                            (dom/set-px! col-el :width 1)
+                            (dom/append! row-el col-el)
+                            (dom/set-px! col-el :width (* (apply + widths) col-unit))))))))))))
+
 (defn draw-workspace []
   (let [workspace (sel1 :.workspace)
         output (sel1 :pre.output)
@@ -494,6 +536,8 @@
         columns (node [:.columns])
         new-row (node [:.sl-row.new-row])
         media-mode (:media-mode @settings)
+        media-previews-chan (make-media-previews)
+        update-media-previews (fn [])
         copy-code-el (sel1 :.copy-code)
         update-output (fn []
           (let [code (condp = (:output-mode @settings)
@@ -549,7 +593,9 @@
 
     (add-watch layout :update-output
                (fn [k r os ns]
-                 (update-output)))
+                 (update-output)
+                 (update-media-previews)
+                 (put! media-previews-chan [:update])))
 
     (watch-change settings :output-mode
                   (fn [ov nv]

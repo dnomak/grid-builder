@@ -339,5 +339,47 @@ pre.output {
     position: absolute;
     width: 1px;
     height: 1px;
-    right: -10px;
+    bottom: -10px;
+}
+
+header .logo {
+    margin-right: 20px;
+}
+
+.preview-rows {
+    padding-top: 20px;
+    width: 180px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: auto;
+    height: 162px;
+}
+
+.preview-rows .preview-row {
+    margin-bottom: 3px;
+    overflow: hidden;
+    clear: both;
+}
+
+.preview-rows .preview-col {
+    float: left;
+    display: inline-block;
+    height: 30px;
+    margin-right: 3px;
+}
+
+.xs .preview-col {
+    background: c72818
+}
+
+.sm .preview-col {
+    background: #1583df;
+}
+
+.md .preview-col {
+    background: #1da83f;
+}
+
+.lg .preview-col {
+    background: #c6861a;
 }
