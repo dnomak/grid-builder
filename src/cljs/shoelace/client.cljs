@@ -504,9 +504,9 @@
 
 (def media-factor
   {:xs 0.2
-   :sm 0.12
-   :md 0.17
-   :lg 0.19})
+   :sm 0.08
+   :md 0.11
+   :lg 0.14})
 
 (defn make-media-previews []
   (let [preview-els (sels sizes (for [size sizes] (str ".preview." (name size) " .preview-rows")))]
@@ -518,6 +518,8 @@
                   (doseq [[size el] preview-els]
                     (let [row-el (node [:.preview-row.easing])
                           col-unit (* col-width (media-factor size))]
+                      (dom/set-px! el :width (+ (* 3 (dec grid-cols))
+                                                (* grid-cols col-unit)))
                       (dom/append! el row-el)
                       (doseq [col (:cols row)]
                         (let [col-el (node [:.preview-col.easing])
@@ -525,7 +527,8 @@
                           (when widths
                             (dom/set-px! col-el :width 1)
                             (dom/append! row-el col-el)
-                            (dom/set-px! col-el :width (* (apply + widths) col-unit))))))))))))
+                            (dom/set-px! col-el :width (+ (* 3 (dec (apply + widths)))
+                                                          (* (apply + widths) col-unit)))))))))))))
 
 (defn draw-workspace []
   (let [workspace (sel1 :.workspace)

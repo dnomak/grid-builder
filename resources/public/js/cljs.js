@@ -1725,7 +1725,7 @@ cljs.core._invoke = function() {
       throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
     }
     return z.call(null, a, b, c, d, e, f, g, h, i, j, l, k, m, n, q, p, t, r, v, u, w)
-  }, a = function(a, x, s, y, D, B, C, E, F, G, H, J, I, L, K, M, O, P, N, Q, ka) {
+  }, a = function(a, x, s, y, D, B, C, E, F, G, H, J, I, L, K, M, N, P, O, Q, ka) {
     switch(arguments.length) {
       case 1:
         return b.call(this, a);
@@ -1760,15 +1760,15 @@ cljs.core._invoke = function() {
       case 16:
         return q.call(this, a, x, s, y, D, B, C, E, F, G, H, J, I, L, K, M);
       case 17:
-        return t.call(this, a, x, s, y, D, B, C, E, F, G, H, J, I, L, K, M, O);
+        return t.call(this, a, x, s, y, D, B, C, E, F, G, H, J, I, L, K, M, N);
       case 18:
-        return v.call(this, a, x, s, y, D, B, C, E, F, G, H, J, I, L, K, M, O, P);
+        return v.call(this, a, x, s, y, D, B, C, E, F, G, H, J, I, L, K, M, N, P);
       case 19:
-        return u.call(this, a, x, s, y, D, B, C, E, F, G, H, J, I, L, K, M, O, P, N);
+        return u.call(this, a, x, s, y, D, B, C, E, F, G, H, J, I, L, K, M, N, P, O);
       case 20:
-        return w.call(this, a, x, s, y, D, B, C, E, F, G, H, J, I, L, K, M, O, P, N, Q);
+        return w.call(this, a, x, s, y, D, B, C, E, F, G, H, J, I, L, K, M, N, P, O, Q);
       case 21:
-        return z.call(this, a, x, s, y, D, B, C, E, F, G, H, J, I, L, K, M, O, P, N, Q, ka)
+        return z.call(this, a, x, s, y, D, B, C, E, F, G, H, J, I, L, K, M, N, P, O, Q, ka)
     }
     throw Error("Invalid arity: " + arguments.length);
   };
@@ -15304,12 +15304,12 @@ shoelace.client.go_alphabet = function() {
           return a[2] = null, a[1] = 7, "\ufdd0:recur"
         }
         if(5 === c) {
-          var c = a[6], f = cljs.core.rest.call(null, a[7]), c = cljs.core.apply.call(null, c, f);
+          var c = a[7], f = cljs.core.rest.call(null, a[6]), c = cljs.core.apply.call(null, c, f);
           a[2] = c;
           a[1] = 7;
           return"\ufdd0:recur"
         }
-        return 4 === c ? (c = a[2], f = cljs.core.first.call(null, c), f = b.call(null, f), a[6] = f, a[7] = c, a[1] = cljs.core.truth_(f) ? 5 : 6, "\ufdd0:recur") : 3 === c ? (c = a[2], cljs.core.async.impl.ioc_helpers.return_chan.call(null, a, c)) : 2 === c ? cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, a, 4, e) : 1 === c ? (a[2] = null, a[1] = 2, "\ufdd0:recur") : null
+        return 4 === c ? (c = a[2], f = cljs.core.first.call(null, c), f = b.call(null, f), a[6] = c, a[7] = f, a[1] = cljs.core.truth_(f) ? 5 : 6, "\ufdd0:recur") : 3 === c ? (c = a[2], cljs.core.async.impl.ioc_helpers.return_chan.call(null, a, c)) : 2 === c ? cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, a, 4, e) : 1 === c ? (a[2] = null, a[1] = 2, "\ufdd0:recur") : null
       }, c = null, i = function() {
         var a = Array(8);
         a[0] = c;
@@ -15895,7 +15895,7 @@ shoelace.client.make_collapse_pane = function(a, b, c, d, e) {
     })
   })
 };
-shoelace.client.media_factor = cljs.core.PersistentArrayMap.fromArray(["\ufdd0:xs", 0.2, "\ufdd0:sm", 0.12, "\ufdd0:md", 0.17, "\ufdd0:lg", 0.19], !0);
+shoelace.client.media_factor = cljs.core.PersistentArrayMap.fromArray(["\ufdd0:xs", 0.2, "\ufdd0:sm", 0.08, "\ufdd0:md", 0.11, "\ufdd0:lg", 0.14], !0);
 shoelace.client.make_media_previews = function() {
   var a = shoelace.client.sels.call(null, shoelace.client.sizes, function c(a) {
     return new cljs.core.LazySeq(null, !1, function() {
@@ -15964,28 +15964,29 @@ shoelace.client.make_media_previews = function() {
             E.className = "preview-row easing";
             C = E;
             var F = shoelace.client.col_width * shoelace.client.media_factor.call(null, D);
+            dommy.core.set_px_BANG_.call(null, B, "\ufdd0:width", 3 * (shoelace.client.grid_cols - 1) + shoelace.client.grid_cols * F);
             dommy.core.append_BANG_.call(null, B, C);
             for(var G = cljs.core.seq.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, w)), H = null, J = 0, I = 0;;) {
               if(I < J) {
                 var L = cljs.core._nth.call(null, H, I), K, M = document.createElement("div");
                 M.className = "preview-col easing";
                 K = M;
-                var O = shoelace.client.col_for_media.call(null, L, D);
-                cljs.core.truth_(O) && (dommy.core.set_px_BANG_.call(null, K, "\ufdd0:width", 1), dommy.core.append_BANG_.call(null, C, K), dommy.core.set_px_BANG_.call(null, K, "\ufdd0:width", cljs.core.apply.call(null, cljs.core._PLUS_, O) * F));
+                var N = shoelace.client.col_for_media.call(null, L, D);
+                cljs.core.truth_(N) && (dommy.core.set_px_BANG_.call(null, K, "\ufdd0:width", 1), dommy.core.append_BANG_.call(null, C, K), dommy.core.set_px_BANG_.call(null, K, "\ufdd0:width", 3 * (cljs.core.apply.call(null, cljs.core._PLUS_, N) - 1) + cljs.core.apply.call(null, cljs.core._PLUS_, N) * F));
                 I += 1
               }else {
                 var P = cljs.core.seq.call(null, G);
                 if(P) {
-                  var N = P;
-                  if(cljs.core.chunked_seq_QMARK_.call(null, N)) {
-                    var Q = cljs.core.chunk_first.call(null, N), ka = cljs.core.chunk_rest.call(null, N), ib = Q, jb = cljs.core.count.call(null, Q), G = ka, H = ib, J = jb
+                  var O = P;
+                  if(cljs.core.chunked_seq_QMARK_.call(null, O)) {
+                    var Q = cljs.core.chunk_first.call(null, O), ka = cljs.core.chunk_rest.call(null, O), lb = Q, mb = cljs.core.count.call(null, Q), G = ka, H = lb, J = mb
                   }else {
-                    var kb = cljs.core.first.call(null, N), aa, Aa = document.createElement("div");
-                    Aa.className = "preview-col easing";
-                    aa = Aa;
-                    var Ba = shoelace.client.col_for_media.call(null, kb, D);
-                    cljs.core.truth_(Ba) && (dommy.core.set_px_BANG_.call(null, aa, "\ufdd0:width", 1), dommy.core.append_BANG_.call(null, C, aa), dommy.core.set_px_BANG_.call(null, aa, "\ufdd0:width", cljs.core.apply.call(null, cljs.core._PLUS_, Ba) * F));
-                    G = cljs.core.next.call(null, N);
+                    var nb = cljs.core.first.call(null, O), aa, Ka = document.createElement("div");
+                    Ka.className = "preview-col easing";
+                    aa = Ka;
+                    var la = shoelace.client.col_for_media.call(null, nb, D);
+                    cljs.core.truth_(la) && (dommy.core.set_px_BANG_.call(null, aa, "\ufdd0:width", 1), dommy.core.append_BANG_.call(null, C, aa), dommy.core.set_px_BANG_.call(null, aa, "\ufdd0:width", 3 * (cljs.core.apply.call(null, cljs.core._PLUS_, la) - 1) + cljs.core.apply.call(null, cljs.core._PLUS_, la) * F));
+                    G = cljs.core.next.call(null, O);
                     H = null;
                     J = 0
                   }
@@ -15997,40 +15998,41 @@ shoelace.client.make_media_previews = function() {
             }
             s += 1
           }else {
-            var Ca = cljs.core.seq.call(null, z);
-            if(Ca) {
-              var R = Ca;
+            var La = cljs.core.seq.call(null, z);
+            if(La) {
+              var R = La;
               if(cljs.core.chunked_seq_QMARK_.call(null, R)) {
-                var Da = cljs.core.chunk_first.call(null, R), lb = cljs.core.chunk_rest.call(null, R), mb = Da, nb = cljs.core.count.call(null, Da), z = lb, A = mb, x = nb
+                var Ma = cljs.core.chunk_first.call(null, R), ob = cljs.core.chunk_rest.call(null, R), pb = Ma, qb = cljs.core.count.call(null, Ma), z = ob, A = pb, x = qb
               }else {
-                var Ea = cljs.core.first.call(null, R), la = cljs.core.nth.call(null, Ea, 0, null), ob = cljs.core.nth.call(null, Ea, 1, null), ba, Fa = document.createElement("div");
-                Fa.className = "preview-row easing";
-                ba = Fa;
-                var Ga = shoelace.client.col_width * shoelace.client.media_factor.call(null, la);
-                dommy.core.append_BANG_.call(null, ob, ba);
-                for(var ma = cljs.core.seq.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, w)), na = null, oa = 0, S = 0;;) {
-                  if(S < oa) {
-                    var pb = cljs.core._nth.call(null, na, S), ca, Ha = document.createElement("div");
-                    Ha.className = "preview-col easing";
-                    ca = Ha;
-                    var Ia = shoelace.client.col_for_media.call(null, pb, la);
-                    cljs.core.truth_(Ia) && (dommy.core.set_px_BANG_.call(null, ca, "\ufdd0:width", 1), dommy.core.append_BANG_.call(null, ba, ca), dommy.core.set_px_BANG_.call(null, ca, "\ufdd0:width", cljs.core.apply.call(null, cljs.core._PLUS_, Ia) * Ga));
+                var Na = cljs.core.first.call(null, R), ma = cljs.core.nth.call(null, Na, 0, null), Oa = cljs.core.nth.call(null, Na, 1, null), ba, Pa = document.createElement("div");
+                Pa.className = "preview-row easing";
+                ba = Pa;
+                var na = shoelace.client.col_width * shoelace.client.media_factor.call(null, ma);
+                dommy.core.set_px_BANG_.call(null, Oa, "\ufdd0:width", 3 * (shoelace.client.grid_cols - 1) + shoelace.client.grid_cols * na);
+                dommy.core.append_BANG_.call(null, Oa, ba);
+                for(var oa = cljs.core.seq.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, w)), pa = null, qa = 0, S = 0;;) {
+                  if(S < qa) {
+                    var rb = cljs.core._nth.call(null, pa, S), ca, Qa = document.createElement("div");
+                    Qa.className = "preview-col easing";
+                    ca = Qa;
+                    var ra = shoelace.client.col_for_media.call(null, rb, ma);
+                    cljs.core.truth_(ra) && (dommy.core.set_px_BANG_.call(null, ca, "\ufdd0:width", 1), dommy.core.append_BANG_.call(null, ba, ca), dommy.core.set_px_BANG_.call(null, ca, "\ufdd0:width", 3 * (cljs.core.apply.call(null, cljs.core._PLUS_, ra) - 1) + cljs.core.apply.call(null, cljs.core._PLUS_, ra) * na));
                     S += 1
                   }else {
-                    var Ja = cljs.core.seq.call(null, ma);
-                    if(Ja) {
-                      var T = Ja;
+                    var Ra = cljs.core.seq.call(null, oa);
+                    if(Ra) {
+                      var T = Ra;
                       if(cljs.core.chunked_seq_QMARK_.call(null, T)) {
-                        var Ka = cljs.core.chunk_first.call(null, T), qb = cljs.core.chunk_rest.call(null, T), rb = Ka, sb = cljs.core.count.call(null, Ka), ma = qb, na = rb, oa = sb
+                        var Sa = cljs.core.chunk_first.call(null, T), sb = cljs.core.chunk_rest.call(null, T), tb = Sa, ub = cljs.core.count.call(null, Sa), oa = sb, pa = tb, qa = ub
                       }else {
-                        var tb = cljs.core.first.call(null, T), da, La = document.createElement("div");
-                        La.className = "preview-col easing";
-                        da = La;
-                        var Ma = shoelace.client.col_for_media.call(null, tb, la);
-                        cljs.core.truth_(Ma) && (dommy.core.set_px_BANG_.call(null, da, "\ufdd0:width", 1), dommy.core.append_BANG_.call(null, ba, da), dommy.core.set_px_BANG_.call(null, da, "\ufdd0:width", cljs.core.apply.call(null, cljs.core._PLUS_, Ma) * Ga));
-                        ma = cljs.core.next.call(null, T);
-                        na = null;
-                        oa = 0
+                        var vb = cljs.core.first.call(null, T), da, Ta = document.createElement("div");
+                        Ta.className = "preview-col easing";
+                        da = Ta;
+                        var sa = shoelace.client.col_for_media.call(null, vb, ma);
+                        cljs.core.truth_(sa) && (dommy.core.set_px_BANG_.call(null, da, "\ufdd0:width", 1), dommy.core.append_BANG_.call(null, ba, da), dommy.core.set_px_BANG_.call(null, da, "\ufdd0:width", 3 * (cljs.core.apply.call(null, cljs.core._PLUS_, sa) - 1) + cljs.core.apply.call(null, cljs.core._PLUS_, sa) * na));
+                        oa = cljs.core.next.call(null, T);
+                        pa = null;
+                        qa = 0
                       }
                       S = 0
                     }else {
@@ -16050,42 +16052,43 @@ shoelace.client.make_media_previews = function() {
         }
         u += 1
       }else {
-        var Na = cljs.core.seq.call(null, q);
-        if(Na) {
-          var U = Na;
+        var Ua = cljs.core.seq.call(null, q);
+        if(Ua) {
+          var U = Ua;
           if(cljs.core.chunked_seq_QMARK_.call(null, U)) {
-            var Oa = cljs.core.chunk_first.call(null, U), ub = cljs.core.chunk_rest.call(null, U), vb = Oa, wb = cljs.core.count.call(null, Oa), q = ub, t = vb, v = wb
+            var Va = cljs.core.chunk_first.call(null, U), wb = cljs.core.chunk_rest.call(null, U), xb = Va, yb = cljs.core.count.call(null, Va), q = wb, t = xb, v = yb
           }else {
-            for(var w = cljs.core.first.call(null, U), pa = cljs.core.seq.call(null, a), qa = null, ra = 0, V = 0;;) {
-              if(V < ra) {
-                var Pa = cljs.core._nth.call(null, qa, V), sa = cljs.core.nth.call(null, Pa, 0, null), xb = cljs.core.nth.call(null, Pa, 1, null), ea, Qa = document.createElement("div");
-                Qa.className = "preview-row easing";
-                ea = Qa;
-                var Ra = shoelace.client.col_width * shoelace.client.media_factor.call(null, sa);
-                dommy.core.append_BANG_.call(null, xb, ea);
-                for(var ta = cljs.core.seq.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, w)), ua = null, va = 0, W = 0;;) {
-                  if(W < va) {
-                    var yb = cljs.core._nth.call(null, ua, W), fa, Sa = document.createElement("div");
-                    Sa.className = "preview-col easing";
-                    fa = Sa;
-                    var Ta = shoelace.client.col_for_media.call(null, yb, sa);
-                    cljs.core.truth_(Ta) && (dommy.core.set_px_BANG_.call(null, fa, "\ufdd0:width", 1), dommy.core.append_BANG_.call(null, ea, fa), dommy.core.set_px_BANG_.call(null, fa, "\ufdd0:width", cljs.core.apply.call(null, cljs.core._PLUS_, Ta) * Ra));
+            for(var w = cljs.core.first.call(null, U), ta = cljs.core.seq.call(null, a), ua = null, va = 0, V = 0;;) {
+              if(V < va) {
+                var Wa = cljs.core._nth.call(null, ua, V), wa = cljs.core.nth.call(null, Wa, 0, null), Xa = cljs.core.nth.call(null, Wa, 1, null), ea, Ya = document.createElement("div");
+                Ya.className = "preview-row easing";
+                ea = Ya;
+                var xa = shoelace.client.col_width * shoelace.client.media_factor.call(null, wa);
+                dommy.core.set_px_BANG_.call(null, Xa, "\ufdd0:width", 3 * (shoelace.client.grid_cols - 1) + shoelace.client.grid_cols * xa);
+                dommy.core.append_BANG_.call(null, Xa, ea);
+                for(var ya = cljs.core.seq.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, w)), za = null, Aa = 0, W = 0;;) {
+                  if(W < Aa) {
+                    var zb = cljs.core._nth.call(null, za, W), fa, Za = document.createElement("div");
+                    Za.className = "preview-col easing";
+                    fa = Za;
+                    var Ba = shoelace.client.col_for_media.call(null, zb, wa);
+                    cljs.core.truth_(Ba) && (dommy.core.set_px_BANG_.call(null, fa, "\ufdd0:width", 1), dommy.core.append_BANG_.call(null, ea, fa), dommy.core.set_px_BANG_.call(null, fa, "\ufdd0:width", 3 * (cljs.core.apply.call(null, cljs.core._PLUS_, Ba) - 1) + cljs.core.apply.call(null, cljs.core._PLUS_, Ba) * xa));
                     W += 1
                   }else {
-                    var Ua = cljs.core.seq.call(null, ta);
-                    if(Ua) {
-                      var X = Ua;
+                    var $a = cljs.core.seq.call(null, ya);
+                    if($a) {
+                      var X = $a;
                       if(cljs.core.chunked_seq_QMARK_.call(null, X)) {
-                        var Va = cljs.core.chunk_first.call(null, X), zb = cljs.core.chunk_rest.call(null, X), Ab = Va, Bb = cljs.core.count.call(null, Va), ta = zb, ua = Ab, va = Bb
+                        var ab = cljs.core.chunk_first.call(null, X), Ab = cljs.core.chunk_rest.call(null, X), Bb = ab, Cb = cljs.core.count.call(null, ab), ya = Ab, za = Bb, Aa = Cb
                       }else {
-                        var Cb = cljs.core.first.call(null, X), ga, Wa = document.createElement("div");
-                        Wa.className = "preview-col easing";
-                        ga = Wa;
-                        var Xa = shoelace.client.col_for_media.call(null, Cb, sa);
-                        cljs.core.truth_(Xa) && (dommy.core.set_px_BANG_.call(null, ga, "\ufdd0:width", 1), dommy.core.append_BANG_.call(null, ea, ga), dommy.core.set_px_BANG_.call(null, ga, "\ufdd0:width", cljs.core.apply.call(null, cljs.core._PLUS_, Xa) * Ra));
-                        ta = cljs.core.next.call(null, X);
-                        ua = null;
-                        va = 0
+                        var Db = cljs.core.first.call(null, X), ga, bb = document.createElement("div");
+                        bb.className = "preview-col easing";
+                        ga = bb;
+                        var Ca = shoelace.client.col_for_media.call(null, Db, wa);
+                        cljs.core.truth_(Ca) && (dommy.core.set_px_BANG_.call(null, ga, "\ufdd0:width", 1), dommy.core.append_BANG_.call(null, ea, ga), dommy.core.set_px_BANG_.call(null, ga, "\ufdd0:width", 3 * (cljs.core.apply.call(null, cljs.core._PLUS_, Ca) - 1) + cljs.core.apply.call(null, cljs.core._PLUS_, Ca) * xa));
+                        ya = cljs.core.next.call(null, X);
+                        za = null;
+                        Aa = 0
                       }
                       W = 0
                     }else {
@@ -16095,40 +16098,41 @@ shoelace.client.make_media_previews = function() {
                 }
                 V += 1
               }else {
-                var Ya = cljs.core.seq.call(null, pa);
-                if(Ya) {
-                  var Y = Ya;
+                var cb = cljs.core.seq.call(null, ta);
+                if(cb) {
+                  var Y = cb;
                   if(cljs.core.chunked_seq_QMARK_.call(null, Y)) {
-                    var Za = cljs.core.chunk_first.call(null, Y), Db = cljs.core.chunk_rest.call(null, Y), Eb = Za, Fb = cljs.core.count.call(null, Za), pa = Db, qa = Eb, ra = Fb
+                    var db = cljs.core.chunk_first.call(null, Y), Eb = cljs.core.chunk_rest.call(null, Y), Fb = db, Gb = cljs.core.count.call(null, db), ta = Eb, ua = Fb, va = Gb
                   }else {
-                    var $a = cljs.core.first.call(null, Y), wa = cljs.core.nth.call(null, $a, 0, null), Gb = cljs.core.nth.call(null, $a, 1, null), ha, ab = document.createElement("div");
-                    ab.className = "preview-row easing";
-                    ha = ab;
-                    var bb = shoelace.client.col_width * shoelace.client.media_factor.call(null, wa);
-                    dommy.core.append_BANG_.call(null, Gb, ha);
-                    for(var xa = cljs.core.seq.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, w)), ya = null, za = 0, Z = 0;;) {
-                      if(Z < za) {
-                        var Hb = cljs.core._nth.call(null, ya, Z), ia, cb = document.createElement("div");
-                        cb.className = "preview-col easing";
-                        ia = cb;
-                        var db = shoelace.client.col_for_media.call(null, Hb, wa);
-                        cljs.core.truth_(db) && (dommy.core.set_px_BANG_.call(null, ia, "\ufdd0:width", 1), dommy.core.append_BANG_.call(null, ha, ia), dommy.core.set_px_BANG_.call(null, ia, "\ufdd0:width", cljs.core.apply.call(null, cljs.core._PLUS_, db) * bb));
+                    var eb = cljs.core.first.call(null, Y), Da = cljs.core.nth.call(null, eb, 0, null), fb = cljs.core.nth.call(null, eb, 1, null), ha, gb = document.createElement("div");
+                    gb.className = "preview-row easing";
+                    ha = gb;
+                    var Ea = shoelace.client.col_width * shoelace.client.media_factor.call(null, Da);
+                    dommy.core.set_px_BANG_.call(null, fb, "\ufdd0:width", 3 * (shoelace.client.grid_cols - 1) + shoelace.client.grid_cols * Ea);
+                    dommy.core.append_BANG_.call(null, fb, ha);
+                    for(var Fa = cljs.core.seq.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, w)), Ga = null, Ha = 0, Z = 0;;) {
+                      if(Z < Ha) {
+                        var Hb = cljs.core._nth.call(null, Ga, Z), ia, hb = document.createElement("div");
+                        hb.className = "preview-col easing";
+                        ia = hb;
+                        var Ia = shoelace.client.col_for_media.call(null, Hb, Da);
+                        cljs.core.truth_(Ia) && (dommy.core.set_px_BANG_.call(null, ia, "\ufdd0:width", 1), dommy.core.append_BANG_.call(null, ha, ia), dommy.core.set_px_BANG_.call(null, ia, "\ufdd0:width", 3 * (cljs.core.apply.call(null, cljs.core._PLUS_, Ia) - 1) + cljs.core.apply.call(null, cljs.core._PLUS_, Ia) * Ea));
                         Z += 1
                       }else {
-                        var eb = cljs.core.seq.call(null, xa);
-                        if(eb) {
-                          var $ = eb;
+                        var ib = cljs.core.seq.call(null, Fa);
+                        if(ib) {
+                          var $ = ib;
                           if(cljs.core.chunked_seq_QMARK_.call(null, $)) {
-                            var fb = cljs.core.chunk_first.call(null, $), Ib = cljs.core.chunk_rest.call(null, $), Jb = fb, Kb = cljs.core.count.call(null, fb), xa = Ib, ya = Jb, za = Kb
+                            var jb = cljs.core.chunk_first.call(null, $), Ib = cljs.core.chunk_rest.call(null, $), Jb = jb, Kb = cljs.core.count.call(null, jb), Fa = Ib, Ga = Jb, Ha = Kb
                           }else {
-                            var Lb = cljs.core.first.call(null, $), ja, gb = document.createElement("div");
-                            gb.className = "preview-col easing";
-                            ja = gb;
-                            var hb = shoelace.client.col_for_media.call(null, Lb, wa);
-                            cljs.core.truth_(hb) && (dommy.core.set_px_BANG_.call(null, ja, "\ufdd0:width", 1), dommy.core.append_BANG_.call(null, ha, ja), dommy.core.set_px_BANG_.call(null, ja, "\ufdd0:width", cljs.core.apply.call(null, cljs.core._PLUS_, hb) * bb));
-                            xa = cljs.core.next.call(null, $);
-                            ya = null;
-                            za = 0
+                            var Lb = cljs.core.first.call(null, $), ja, kb = document.createElement("div");
+                            kb.className = "preview-col easing";
+                            ja = kb;
+                            var Ja = shoelace.client.col_for_media.call(null, Lb, Da);
+                            cljs.core.truth_(Ja) && (dommy.core.set_px_BANG_.call(null, ja, "\ufdd0:width", 1), dommy.core.append_BANG_.call(null, ha, ja), dommy.core.set_px_BANG_.call(null, ja, "\ufdd0:width", 3 * (cljs.core.apply.call(null, cljs.core._PLUS_, Ja) - 1) + cljs.core.apply.call(null, cljs.core._PLUS_, Ja) * Ea));
+                            Fa = cljs.core.next.call(null, $);
+                            Ga = null;
+                            Ha = 0
                           }
                           Z = 0
                         }else {
@@ -16136,9 +16140,9 @@ shoelace.client.make_media_previews = function() {
                         }
                       }
                     }
-                    pa = cljs.core.next.call(null, Y);
-                    qa = null;
-                    ra = 0
+                    ta = cljs.core.next.call(null, Y);
+                    ua = null;
+                    va = 0
                   }
                   V = 0
                 }else {

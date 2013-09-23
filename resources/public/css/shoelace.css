@@ -348,7 +348,6 @@ header .logo {
 
 .preview-rows {
     padding-top: 20px;
-    width: 180px;
     margin-left: auto;
     margin-right: auto;
     overflow: auto;
@@ -366,6 +365,10 @@ header .logo {
     display: inline-block;
     height: 30px;
     margin-right: 3px;
+}
+
+.preview-rows .preview-col:last-child {
+    margin-right: 0;
 }
 
 .xs .preview-col {
