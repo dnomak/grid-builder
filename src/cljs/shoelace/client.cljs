@@ -503,7 +503,7 @@
 
 
 (def media-factor
-  {:xs 0.2
+  {:xs 0.02
    :sm 0.08
    :md 0.11
    :lg 0.14})
@@ -523,7 +523,7 @@
                       (dom/append! el row-el)
                       (doseq [col (:cols row)]
                         (let [col-el (node [:.preview-col.easing])
-                              widths (col-for-media col size)]
+                              widths (if (= size :xs) [0 12] (col-for-media col size))]
                           (when widths
                             (dom/set-px! col-el :width 1)
                             (dom/append! row-el col-el)

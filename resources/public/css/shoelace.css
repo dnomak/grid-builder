@@ -346,12 +346,16 @@ header .logo {
     margin-right: 20px;
 }
 
+.preview-container {
+    height: 162px;
+    overflow: auto;
+}
+
 .preview-rows {
     padding-top: 20px;
     margin-left: auto;
     margin-right: auto;
     overflow: auto;
-    height: 162px;
 }
 
 .preview-rows .preview-row {
@@ -372,7 +376,15 @@ header .logo {
 }
 
 .xs .preview-col {
-    background: c72818
+    margin-bottom: 3px;
+}
+
+.xs .preview-col:last-child {
+    margin-bottom: 0;
+}
+
+.xs .preview-col {
+    background: #c72818;
 }
 
 .sm .preview-col {
