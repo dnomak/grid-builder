@@ -141,7 +141,7 @@ body {
     right: 5px;
     line-height: 1em;
     font-size: 13pt;
-    color: #477dcc;
+    color: rgba(0, 0, 0, 0.3);
 }
 
 .offset {
@@ -158,7 +158,7 @@ body {
     top: 0;
     width: 15px;
     height: 100%;
-    background: #477dcc;
+    background: rgba(0, 0, 0, 0.3);
 }
 
 
@@ -358,8 +358,12 @@ header .logo {
     overflow: auto;
 }
 
+.preview.active .title-bar {
+    background: linear-gradient(to bottom, #3188bf 0, #0a598a 100%);
+    background-repeat: repeat-x;
+}
+
 .preview-rows .preview-row {
-    margin-bottom: 3px;
     overflow: hidden;
     clear: both;
 }
@@ -367,7 +371,7 @@ header .logo {
 .preview-rows .preview-col {
     float: left;
     display: inline-block;
-    height: 30px;
+    height: 20px;
     margin-right: 3px;
 }
 
@@ -375,16 +379,20 @@ header .logo {
     margin-right: 0;
 }
 
-.xs .preview-col {
+.preview-col {
     margin-bottom: 3px;
 }
 
-.xs .preview-col:last-child {
+.preview-col:last-child {
     margin-bottom: 0;
 }
 
 .xs .preview-col {
     background: #c72818;
+}
+
+.xs .preview-rows .preview-row {
+    margin-bottom: 3px;
 }
 
 .sm .preview-col {
@@ -397,4 +405,33 @@ header .logo {
 
 .lg .preview-col {
     background: #c6861a;
+}
+
+.container.xs .sl-row {
+    background: rgba(116, 27, 31, 0.3);
+}
+
+.container.xs .col .width {
+    background: #e05050;
+
+}
+
+.container.md .sl-row {
+    background: rgba(88, 164, 99, 0.3);
+}
+
+.container.md .col .width {
+    background:  #58a463;
+}
+
+.container.lg .sl-row {
+    background: rgba(210, 150, 62, 0.3);
+}
+
+.container.lg .col .width {
+    background: #d2963e;
+}
+
+.container.md .sl-row.new-row, .container.lg .sl-row.new-row, .container.xs .sl-row.new-row {
+    background: transparent;
 }
