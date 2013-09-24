@@ -135,6 +135,10 @@ body {
     line-height: 1em;
 }
 
+.width .classes {
+
+}
+
 .width .nested {
     position: absolute;
     bottom: 5px;
@@ -331,7 +335,6 @@ pre.output {
 
 .html.collapsed .copy-code {
     left: 7px;
-    top: 93px;
     right: auto;
 }
 
@@ -434,4 +437,63 @@ header .logo {
 
 .container.md .sl-row.new-row, .container.lg .sl-row.new-row, .container.xs .sl-row.new-row {
     background: transparent;
+}
+
+.html .copy-code {
+    top: auto;
+    bottom: 5px;
+}
+
+.html ul {
+    list-style-type: none;
+}
+
+.edn-bracket-open {
+    float: left;
+}
+
+.edn-bracket-close {
+    display: inline-block;
+}
+
+ul.edn-rows {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+ul.edn-rows > li {
+    margin-left: 0.6em;
+}
+
+ul.edn-rows >li:first-child {
+    margin-left: 0;
+}
+
+ul.edn-cols {
+    position: relative;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+ }
+
+.edn-name {
+    float: left;
+    margin-right: 0.5em;
+}
+
+ul.edn-media {
+    position: relative;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+ }
+
+.edn-kw {
+    display: inline-block;
+    margin-right: 0.5em;
+}
+
+.edn-kw.edn-width {
+    margin-right: 0;
 }

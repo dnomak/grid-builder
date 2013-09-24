@@ -427,12 +427,12 @@
 
 (defn layout->edn
   [rows]
-  (str (vec (for [row rows]
-              (vcat (if (:name row) [(:name row)] [])
-                    (for [col (:cols row)]
-                      (vcat (if (:name col) [(:name col)] [])
-                            (for [size sizes :when (size col)]
-                              (vcat [size] (size col))))))))))
+  (vec (for [row rows]
+         (vcat (if (:name row) [(:name row)] [])
+               (for [col (:cols row)]
+                 (vcat (if (:name col) [(:name col)] [])
+                       (for [size sizes :when (size col)]
+                         (vcat [size] (size col)))))))))
 
 (defn make-options []
   (let [options-el (sel1 [:.options])
@@ -518,6 +518,46 @@
                    [offset-el :width (* col-unit (widths 0))]
                    [width-el :width (- (* col-unit (widths 1)) col-margin-width)]))))))
 
+(def ebo [:.edn-bracket-open.tag "["])
+(def ebc [:.edn-bracket-close.tag "]"])
+
+(defn sizes->html
+  [sizes]
+  (vcat  [:ul.edn-media]
+         (vec (for [[size offset width] sizes]
+                [:li ebo
+                 [:span.edn-kw.atn (str size)]
+                 [:span.edn-kw.atv offset]
+                 [:span.edn-kw.atv.edn-width width] ebc]))))
+
+(defn cols->html
+  [cols]
+  (let [els (vcat [:ul.edn-cols]
+                  (vec (for [col cols]
+                         (if (string? (first col))
+                           [:li ebo [:.edn-name.atv (str \" (first col) \")] (sizes->html (rest col)) ebc]
+                           [:li ebo (sizes->html col) ebc]))))]
+    (if (> (count els) 1)
+      (assoc els
+        (dec (count els))
+        (conj (last els) ebc))
+      (conj els ebc))))
+
+(defn rows->html
+  [rows]
+  (vcat [:.all-edn ebo
+         (vcat [:ul.edn-rows]
+               (let [els
+                     (vec (for [row rows]
+                            (if (string? (first row))
+                              [:li ebo [:.edn-name.atv (str \" (first row) \")] (cols->html (rest row))]
+                              [:li ebo (cols->html row)])))]
+                 (if (> (count els) 0)
+                   (assoc els
+                     (dec (count els))
+                     (conj (last els) ebc))
+                   (conj els ebc))))]))
+
 (defn draw-workspace []
   (let [workspace (sel1 :.workspace)
         output (sel1 :pre.output)
@@ -530,7 +570,8 @@
         media-previews-chan (make-media-previews)
         copy-code-el (sel1 :.copy-code)
         update-output (fn []
-          (let [code (condp = (:output-mode @settings)
+          (let [mode (:output-mode @settings)
+                code (condp = mode
                        :html (let [layout-html (layout->html @layout)]
                                (js/html_beautify
                                 (hrt/render-html
@@ -540,9 +581,13 @@
                        :jade (layout->jade @layout)
                        :edn  (layout->edn @layout))]
             (dom/remove-class! output :prettyprinted)
-            (dom/set-text! output code)
-            (aset copy-output-el "value" code)
-            (js/PR.prettyPrint)))]
+            (if (= mode :edn)
+              (do
+                (dom/set-html! output "")
+                (dom/append! output (node (rows->html code))))
+              (do (dom/set-text! output (str code))
+                  (js/PR.prettyPrint)))
+            (aset copy-output-el "value" code)))]
 
     (make-options)
 
