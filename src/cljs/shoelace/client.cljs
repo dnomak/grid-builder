@@ -555,7 +555,16 @@
                  (if (> (count els) 0)
                    (assoc els
                      (dec (count els))
-                     (conj (last els) ebc))
+                     (let [last-row (last els)
+                           path [(dec (count last-row))
+                                 (dec (count (last last-row)))
+                                 (dec (count (last (last last-row))))]
+                           last-col (get-in last-row path)]
+                       (if (vector? last-col)
+                         (assoc-in last-row
+                                   path
+                                   (conj last-col ebc))
+                         (conj last-row ebc))))
                    (conj els ebc))))]))
 
 (defn draw-workspace []

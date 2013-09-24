@@ -16467,7 +16467,10 @@ shoelace.client.rows__GT_html = function(a) {
         }
       }, null)
     }.call(null, a));
-    return 0 < cljs.core.count.call(null, b) ? cljs.core.assoc.call(null, b, cljs.core.count.call(null, b) - 1, cljs.core.conj.call(null, cljs.core.last.call(null, b), shoelace.client.ebc)) : cljs.core.conj.call(null, b, shoelace.client.ebc)
+    return 0 < cljs.core.count.call(null, b) ? cljs.core.assoc.call(null, b, cljs.core.count.call(null, b) - 1, function() {
+      var a = cljs.core.last.call(null, b), e = cljs.core.PersistentVector.fromArray([cljs.core.count.call(null, a) - 1, cljs.core.count.call(null, cljs.core.last.call(null, a)) - 1, cljs.core.count.call(null, cljs.core.last.call(null, cljs.core.last.call(null, a))) - 1], !0), f = cljs.core.get_in.call(null, a, e);
+      return cljs.core.vector_QMARK_.call(null, f) ? cljs.core.assoc_in.call(null, a, e, cljs.core.conj.call(null, f, shoelace.client.ebc)) : cljs.core.conj.call(null, a, shoelace.client.ebc)
+    }()) : cljs.core.conj.call(null, b, shoelace.client.ebc)
   }())], !0))
 };
 shoelace.client.draw_workspace = function() {
