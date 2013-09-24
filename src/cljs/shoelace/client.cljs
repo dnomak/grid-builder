@@ -130,6 +130,11 @@
   [col-id size type]
   (sel1 (str "#" (name col-id) " ." (name size) "-" (name type))))
 
+(defn row-wraps-for-media?
+  [row media]
+  (or (:wrap row)
+      (> (total-cols-used row media) grid-cols)))
+
 (defn add-col!
   [e cols-el new-col-el row-id]
   (let [col-id (new-id! 'col)
@@ -192,7 +197,7 @@
                 col (get-col row-id col-id)
                 cur-cols-used (col-for-media col media)
                 max-cols (- grid-cols (total-cols-used row media))
-                max-width (- (* (if (:wrap row)
+                max-width (- (* (if (row-wraps-for-media? row media)
                                   grid-cols
                                   (+ (cur-cols-used (type-pos type)) max-cols))
                                 col-unit)
@@ -221,7 +226,7 @@
                              (let [c (quot width col-unit)]
                                (or
                                 ;;if they are wrapping we stop constraining
-                                (and (:wrap row) (< (+ c (cur-cols-used
+                                (and (row-wraps-for-media? row media) (< (+ c (cur-cols-used
                                                           (type-pos (if (= type :offset) :width :offset))))
                                                     grid-cols))
                                 (< c (cur-cols-used (type-pos type)))
@@ -243,9 +248,9 @@
                 stop-handler (fn [e]
                                (dom/unlisten! js/document :mousemove move-handler)
                                (snap!)
-                               (dom/listen-once! (els type) :transitionend
-                                                 #(do (check-to-hide-new-col)
-                                                      (dom/remove-class! col-el :dragging))))]
+                               (js/setTimeout #(do (check-to-hide-new-col)
+                                                   (dom/remove-class! col-el :dragging))
+                                              300))]
             (dom/add-class! col-el :dragging)
             (dom/remove-class! (els type) :easing)
             (dom/add-class! new-col-el :hidden)
