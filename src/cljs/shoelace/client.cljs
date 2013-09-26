@@ -6,7 +6,9 @@
    [dommy.utils :refer [dissoc-in]]
    [cljs.core.async :refer [>! <! put! chan sliding-buffer]]
    [bigsky.aui.util :refer [event-chan applies]]
-   [bigsky.aui.draggable :refer [draggable]])
+   [bigsky.aui.draggable :refer [draggable]]
+   [ajax.core :refer [GET POST]]
+   [ednio.core :as ednio])
   (:require-macros
    [cljs.core.async.macros :refer [go]]
    [dommy.macros :refer [node sel sel1]]))
@@ -80,15 +82,6 @@
   [x]
   (not (= :none x)))
 
-(defn set-active-row!
-  [row-id]
-  (let [cur (:active-row @settings)]
-    (when (not-none? cur)
-      (dom/remove-class! (get-el cur) :active)))
-  (swap! settings assoc :active-row row-id)
-  (when (not-none? row-id)
-    (dom/add-class! (get-el row-id) :active)))
-
 (defn get-by-key
   [col attr val]
   (first (filter (fn [i] (= (attr i) val)) col)))
@@ -135,6 +128,15 @@
 
 (defn get-el [id]
   (sel1 (id->sel id)))
+
+(defn set-active-row!
+  [row-id]
+  (let [cur (:active-row @settings)]
+    (when (not-none? cur)
+      (dom/remove-class! (get-el cur) :active)))
+  (swap! settings assoc :active-row row-id)
+  (when (not-none? row-id)
+    (dom/add-class! (get-el row-id) :active)))
 
 (defn calc-col-unit []
   (+ col-margin-width col-width))
@@ -205,7 +207,8 @@
                                (when width (draw-class-type media :width width)))))))
 
         handle-drag (fn [type e]
-
+          (stop-propagation e)
+          (set-active-row! row-id)
           (let [start-x (aget e "x")
                 start-w (dom/px (els type) "width")
                 media (@settings :media-mode)

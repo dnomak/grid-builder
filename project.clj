@@ -5,7 +5,7 @@
                  [hiccup "1.0.4"]
                  [hiccups "0.2.0"]
                  [prismatic/dommy "0.1.1"]
-                 [cljs-ajax "0.1.6"]
+                 [cljs-ajax "0.2.0"]
                  [org.clojure/core.async "0.1.0-SNAPSHOT"]]
   :plugins [[lein-cljsbuild "0.3.2"]
             [lein-ring "0.8.5"]]
