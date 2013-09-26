@@ -331,17 +331,6 @@ pre.output {
     color: white;
 }
 
-.planchette {
-    position: absolute;
-    background-image: linear-gradient(to bottom, #3188bf 0, #0a598a 100%);
-    background-repeat: repeat-x;
-    border-radius: 4px;
-}
-
-.planchette.vanished {
-    visibility: hidden;
-}
-
 .copy-code {
     cursor: pointer;
 }
@@ -427,6 +416,10 @@ header .logo {
     background: rgba(116, 27, 31, 0.3);
 }
 
+.container.xs .sl-row.active {
+    background: rgba(116, 27, 31, 0.7);
+}
+
 .container.xs .col .width {
     background: #e05050;
 
@@ -436,12 +429,20 @@ header .logo {
     background: rgba(88, 164, 99, 0.3);
 }
 
+.container.md .sl-row.active {
+    background: rgba(88, 164, 99, 0.5);
+}
+
 .container.md .col .width {
     background:  #58a463;
 }
 
 .container.lg .sl-row {
     background: rgba(210, 150, 62, 0.3);
+}
+
+.container.lg .sl-row.active {
+    background: rgba(210, 150, 62, 0.5);
 }
 
 .container.lg .col .width {
