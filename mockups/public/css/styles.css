@@ -7821,6 +7821,9 @@ header .menu ul {
 header .menu ul.modify {
   margin-right: 30px;
 }
+header .menu ul.modify i {
+  color: #55ff00;
+}
 header .menu ul li {
   display: inline-block;
 }
@@ -7873,6 +7876,12 @@ header .menu .meta {
 header .menu .share {
   float: right;
   margin-right: 8px;
+}
+header .menu .share .icon-twitter {
+  color: #00a6ff;
+}
+header .menu .share .icon-github {
+  color: #cfcfcf;
 }
 body {
   background-color: black;
