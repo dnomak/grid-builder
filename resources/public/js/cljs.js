@@ -15304,12 +15304,12 @@ shoelace.client.go_alphabet = function() {
           return a[2] = null, a[1] = 7, "\ufdd0:recur"
         }
         if(5 === c) {
-          var c = a[6], f = cljs.core.rest.call(null, a[7]), c = cljs.core.apply.call(null, c, f);
+          var c = a[7], f = cljs.core.rest.call(null, a[6]), c = cljs.core.apply.call(null, c, f);
           a[2] = c;
           a[1] = 7;
           return"\ufdd0:recur"
         }
-        return 4 === c ? (c = a[2], f = cljs.core.first.call(null, c), f = b.call(null, f), a[6] = f, a[7] = c, a[1] = cljs.core.truth_(f) ? 5 : 6, "\ufdd0:recur") : 3 === c ? (c = a[2], cljs.core.async.impl.ioc_helpers.return_chan.call(null, a, c)) : 2 === c ? cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, a, 4, e) : 1 === c ? (a[2] = null, a[1] = 2, "\ufdd0:recur") : null
+        return 4 === c ? (c = a[2], f = cljs.core.first.call(null, c), f = b.call(null, f), a[6] = c, a[7] = f, a[1] = cljs.core.truth_(f) ? 5 : 6, "\ufdd0:recur") : 3 === c ? (c = a[2], cljs.core.async.impl.ioc_helpers.return_chan.call(null, a, c)) : 2 === c ? cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, a, 4, e) : 1 === c ? (a[2] = null, a[1] = 2, "\ufdd0:recur") : null
       }, c = null, i = function() {
         var a = Array(8);
         a[0] = c;
@@ -15394,6 +15394,15 @@ shoelace.client.new_id_BANG_ = function(a) {
 };
 shoelace.client.settings = cljs.core.atom.call(null, cljs.core.PersistentArrayMap.fromArray(["\ufdd0:media-mode", "\ufdd0:sm", "\ufdd0:include-container", !0, "\ufdd0:active-row", "\ufdd0:none", "\ufdd0:output-mode", "\ufdd0:html"], !0));
 shoelace.client.layout = cljs.core.atom.call(null, cljs.core.PersistentVector.EMPTY);
+shoelace.client.not_none_QMARK_ = function(a) {
+  return!cljs.core._EQ_.call(null, "\ufdd0:none", a)
+};
+shoelace.client.set_active_row_BANG_ = function(a) {
+  var b = (new cljs.core.Keyword("\ufdd0:active-row")).call(null, cljs.core.deref.call(null, shoelace.client.settings));
+  cljs.core.truth_(shoelace.client.not_none_QMARK_.call(null, b)) && dommy.core.remove_class_BANG_.call(null, shoelace.client.get_el.call(null, b), "\ufdd0:active");
+  cljs.core.swap_BANG_.call(null, shoelace.client.settings, cljs.core.assoc, "\ufdd0:active-row", a);
+  return cljs.core.truth_(shoelace.client.not_none_QMARK_.call(null, a)) ? dommy.core.add_class_BANG_.call(null, shoelace.client.get_el.call(null, a), "\ufdd0:active") : null
+};
 shoelace.client.get_by_key = function(a, b, c) {
   return cljs.core.first.call(null, cljs.core.filter.call(null, function(a) {
     return cljs.core._EQ_.call(null, b.call(null, a), c)
@@ -15443,6 +15452,9 @@ shoelace.client.get_class_el = function(a, b, c) {
 shoelace.client.row_wraps_for_media_QMARK_ = function(a, b) {
   var c = (new cljs.core.Keyword("\ufdd0:wrap")).call(null, a);
   return cljs.core.truth_(c) ? c : shoelace.client.total_cols_used.call(null, a, b) > shoelace.client.grid_cols
+};
+shoelace.client.stop_propagation = function(a) {
+  return a.stopPropagation()
 };
 shoelace.client.add_col_BANG_ = function(a, b, c, d) {
   var e = shoelace.client.new_id_BANG_.call(null, new cljs.core.Symbol(null, "col", "col", -1640432839, null)), f = document.createElement("div");
@@ -15521,7 +15533,7 @@ shoelace.client.add_col_BANG_ = function(a, b, c, d) {
   };
   var y;
   y = function(a) {
-    a.stopPropagation();
+    shoelace.client.stop_propagation.call(null, a);
     var a = shoelace.client.get_row.call(null, d), b = cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, a), "\ufdd0:cols"], !0);
     cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, b, cljs.core.into.call(null, cljs.core.PersistentVector.EMPTY, cljs.core.map_indexed.call(null, function(a, b) {
       return cljs.core.assoc.call(null, b, "\ufdd0:pos", a)
@@ -15543,7 +15555,6 @@ shoelace.client.add_col_BANG_ = function(a, b, c, d) {
   };
   var v;
   v = function(a, b) {
-    b.stopPropagation();
     var g = b.x, h = dommy.core.px.call(null, m.call(null, a), "width"), i = cljs.core.deref.call(null, shoelace.client.settings).call(null, "\ufdd0:media-mode"), j = shoelace.client.calc_col_unit.call(null), l = shoelace.client.get_row.call(null, d), k = shoelace.client.get_col.call(null, d, e), q = shoelace.client.col_for_media.call(null, k, i), p = shoelace.client.grid_cols - shoelace.client.total_cols_used.call(null, l, i), r = (cljs.core.truth_(shoelace.client.row_wraps_for_media_QMARK_.call(null, 
     l, i)) ? shoelace.client.grid_cols : q.call(null, n.call(null, a)) + p) * j - shoelace.client.col_margin_width, y;
     y = function(b) {
@@ -15670,7 +15681,10 @@ shoelace.client.create_row = function create_row() {
   var k = document.createElement("div");
   k.className = "clear";
   bigsky.aui.util.applies.call(null, dommy.core.append_BANG_, cljs.core.PersistentVector.fromArray([d, j], !0), cljs.core.PersistentVector.fromArray([f, g, h, i], !0), cljs.core.PersistentVector.fromArray([c, d, e, f, k], !0));
-  bigsky.aui.util.applies.call(null, dommy.core.listen_BANG_, cljs.core.PersistentVector.fromArray([e, "\ufdd0:change", function() {
+  bigsky.aui.util.applies.call(null, dommy.core.listen_BANG_, cljs.core.PersistentVector.fromArray([c, "\ufdd0:mousedown", function(c) {
+    shoelace.client.stop_propagation.call(null, c);
+    return shoelace.client.set_active_row_BANG_.call(null, b)
+  }], !0), cljs.core.PersistentVector.fromArray([e, "\ufdd0:change", function() {
     var c = shoelace.client.get_row.call(null, b), d = e.value;
     return cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, c), "\ufdd0:name"], !0), 0 === cljs.core.count.call(null, d) ? !1 : d)
   }], !0), cljs.core.PersistentVector.fromArray([j, "\ufdd0:mousedown", function(c) {
@@ -15775,7 +15789,8 @@ shoelace.client.create_row = function create_row() {
 shoelace.client.add_row_BANG_ = function() {
   var a = shoelace.client.create_row.call(null), b = cljs.core.nth.call(null, a, 0, null), a = cljs.core.nth.call(null, a, 1, null);
   cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.conj, cljs.core.PersistentArrayMap.fromArray(["\ufdd0:id", b, "\ufdd0:pos", cljs.core.count.call(null, cljs.core.deref.call(null, shoelace.client.layout)), "\ufdd0:cols", cljs.core.PersistentVector.EMPTY, "\ufdd0:wrap", !1, "\ufdd0:name", !1], !0));
-  return dommy.core.insert_before_BANG_.call(null, a, this)
+  dommy.core.insert_before_BANG_.call(null, a, this);
+  return shoelace.client.set_active_row_BANG_.call(null, b)
 };
 shoelace.client.size_classes = function(a) {
   return cljs.core.remove.call(null, cljs.core.nil_QMARK_, cljs.core.flatten.call(null, cljs.core.concat.call(null, cljs.core.truth_((new cljs.core.Keyword("\ufdd0:name")).call(null, a)) ? cljs.core.PersistentVector.fromArray([clojure.string.split.call(null, (new cljs.core.Keyword("\ufdd0:name")).call(null, a), /\s+/)], !0) : cljs.core.PersistentVector.EMPTY, cljs.core.map.call(null, function(b) {
@@ -16579,6 +16594,9 @@ shoelace.client.draw_workspace = function() {
     })
   });
   dommy.core.listen_BANG_.call(null, g, "\ufdd0:click", shoelace.client.add_row_BANG_);
+  dommy.core.listen_BANG_.call(null, shoelace.client.body, "\ufdd0:mousedown", function() {
+    return shoelace.client.set_active_row_BANG_.call(null, "\ufdd0:none")
+  });
   return bigsky.aui.util.applies.call(null, dommy.core.append_BANG_, cljs.core.PersistentVector.fromArray([d, f, e], !0), cljs.core.PersistentVector.fromArray([e, g], !0), cljs.core.PersistentVector.fromArray([a, d], !0))
 };
 shoelace.client.draw_workspace.call(null);

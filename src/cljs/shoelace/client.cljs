@@ -76,6 +76,19 @@
 
 (def layout (atom []))
 
+(defn not-none?
+  [x]
+  (not (= :none x)))
+
+(defn set-active-row!
+  [row-id]
+  (let [cur (:active-row @settings)]
+    (when (not-none? cur)
+      (dom/remove-class! (get-el cur) :active)))
+  (swap! settings assoc :active-row row-id)
+  (when (not-none? row-id)
+    (dom/add-class! (get-el row-id) :active)))
+
 (defn get-by-key
   [col attr val]
   (first (filter (fn [i] (= (attr i) val)) col)))
@@ -135,6 +148,10 @@
   (or (:wrap row)
       (> (total-cols-used row media) grid-cols)))
 
+(defn stop-propagation
+  [e]
+  (.stopPropagation e))
+
 (defn add-col!
   [e cols-el new-col-el row-id]
   (let [col-id (new-id! 'col)
@@ -160,7 +177,7 @@
                                       (dom/add-class! new-col-el :hidden)
                                       (dom/remove-class! new-col-el :hidden)))
         handle-remove (fn [e]
-                        (.stopPropagation e)
+                        (stop-propagation e)
                         (let [row (get-row row-id)
                               path [(:pos row) :cols]]
                           (swap! layout assoc-in path
@@ -188,7 +205,7 @@
                                (when width (draw-class-type media :width width)))))))
 
         handle-drag (fn [type e]
-          (.stopPropagation e)
+
           (let [start-x (aget e "x")
                 start-w (dom/px (els type) "width")
                 media (@settings :media-mode)
@@ -310,6 +327,9 @@
              [row-el cols-el name-el tools-el clear-el])
 
     (applies dom/listen!
+             [row-el :mousedown (fn [e]
+                                  (stop-propagation e)
+                                  (set-active-row! row-id))]
              [name-el :change (fn [e] (let [row (get-row row-id)
                                            new-name (.-value name-el)]
                                        (swap! layout assoc-in [(:pos row) :name]
@@ -374,13 +394,15 @@
                                                            (@settings :media-mode)))
                          (dom/add-class! duped-new-col-el :hidden))
                        (put! new-col-in-chan [:draw-classes]))))))])
+
     [row-id row-el cols-el new-col-el name-el]))
 
 (defn add-row! []
   (this-as new-row-el
     (let [[row-id row-el] (create-row)]
       (swap! layout conj {:id row-id :pos (count @layout) :cols [] :wrap false :name false})
-      (dom/insert-before! row-el new-row-el))))
+      (dom/insert-before! row-el new-row-el)
+      (set-active-row! row-id))))
 
 (defn size-classes [c]
   (remove nil?
@@ -661,6 +683,8 @@
                                        (dom/listen-once! body :keyup
                                                          (fn [] (spy [:KEYUP :now-hide-popover])))))
     (dom/listen! new-row :click add-row!)
+    (dom/listen! body :mousedown (fn [e]
+                                   (set-active-row! :none)))
     (applies dom/append!
              [container columns rows]
              [rows new-row]

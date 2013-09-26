@@ -148,12 +148,16 @@ body {
     color: rgba(0, 0, 0, 0.3);
 }
 
+.cols .col {
+    background: transparent;
+}
+
 .offset {
     height: 100%;
     display: inline-block;
     float: left;
-    background: #13695b;
-    opacity: 0.8;
+    background: #fff;
+    opacity: 0.2;
 }
 
 .offset-handle {
@@ -211,6 +215,10 @@ body {
     position: relative;
 }
 
+.sl-row.active {
+    background: rgba(89, 156, 255, 0.5);
+}
+
 .sl-row.removing {
     opacity: 0;
 }
@@ -265,7 +273,16 @@ input { outline: none; }
     cursor: pointer;
 }
 
+.sl-row.active .new-col {
+    display:inline-block;
+}
+
+.sl-row {
+    min-height: 195px;
+}
+
 .new-col {
+    display: none;
     float: left;
     width: 50px;
     cursor: pointer;
@@ -277,10 +294,6 @@ input { outline: none; }
 
 .new-col.no-cols {
     margin-left: 5px;
-}
-
-.new-col.hidden {
-    display: none;
 }
 
 .new-col:first-child {
