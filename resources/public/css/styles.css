@@ -8006,7 +8006,7 @@ footer ul.meta {
   background: rgba(116, 27, 31, 0.7);
 }
 .workspace .container.xs .col .width {
-  background: #e05050;
+  background-color: #e05050;
 }
 .workspace .container.md .sl-row {
   background: rgba(88, 164, 99, 0.3);
@@ -8018,7 +8018,7 @@ footer ul.meta {
   background: rgba(88, 164, 99, 0.5);
 }
 .workspace .container.md .col .width {
-  background: #58a463;
+  background-color: #58a463;
 }
 .workspace .container.lg .sl-row {
   background: rgba(210, 150, 62, 0.3);
@@ -8030,7 +8030,7 @@ footer ul.meta {
   background: rgba(210, 150, 62, 0.5);
 }
 .workspace .container.lg .col .width {
-  background: #d2963e;
+  background-color: #d2963e;
 }
 .workspace .columns {
   height: 100%;
@@ -8075,7 +8075,7 @@ footer ul.meta {
   width: 60px;
   height: 100%;
   display: inline-block;
-  background: #599cff;
+  background-color: #599cff;
   position: relative;
   float: left;
   overflow: hidden;
@@ -8086,7 +8086,7 @@ footer ul.meta {
   top: 0;
   width: 15px;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 .col .width .col-name {
   position: absolute;

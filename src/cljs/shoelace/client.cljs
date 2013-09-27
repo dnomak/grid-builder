@@ -154,6 +154,36 @@
   [e]
   (.stopPropagation e))
 
+(defn update-col-for-media
+  [row-id col-id media]
+  (let [col (get-col row-id col-id)
+        has-sizes (media col)
+        id (id->sel col-id)
+        width-el (sel1 (str id " .width"))
+        offset-el (sel1 (str id " .offset"))]
+    (applies (if has-sizes dom/remove-class! dom/add-class!)
+             [width-el :no-changes]
+             [offset-el :no-changes])))
+
+(defn update-cols-for-media
+  [media]
+  (let [col-unit (calc-col-unit)]
+    (doseq [row @layout]
+      (doseq [col (:cols row)]
+        (let [widths (col-for-media col media)
+              id (id->sel (:id col))
+              width-el (sel1 (str id " .width"))
+              offset-el (sel1 (str id " .offset"))
+              has-sizes (not (nil? (media col)))]
+          (applies (if has-sizes
+                     dom/remove-class!
+                     dom/add-class!)
+                   [offset-el :no-changes]
+                   [width-el :no-changes])
+          (applies dom/set-px!
+                   [offset-el :width (* col-unit (widths 0))]
+                   [width-el :width (- (* col-unit (widths 1)) col-margin-width)]))))))
+
 (defn add-col!
   [e cols-el new-col-el row-id]
   (let [col-id (new-id! 'col)
@@ -236,6 +266,7 @@
                                                  [(type-pos type)]
                                                  new-width)]
                           (swap! layout assoc-in path new-dims)
+                          (update-col-for-media row-id col-id media)
                           (draw-class-type media type new-width)
                           (dom/add-class! (els type) :easing)
                           (dom/set-px! (els type)
@@ -271,11 +302,12 @@
                                (js/setTimeout #(do (check-to-hide-new-col)
                                                    (dom/remove-class! col-el :dragging))
                                               300))]
-            (dom/add-class! col-el :dragging)
-            (dom/remove-class! (els type) :easing)
-            (dom/add-class! new-col-el :hidden)
-            (dom/listen! js/document :mousemove move-handler)
-            (dom/listen-once! js/document :mouseup stop-handler)))]
+            (when (or (not= media :xs) (= type :width))
+              (dom/add-class! col-el :dragging)
+              (dom/remove-class! (els type) :easing)
+              (dom/add-class! new-col-el :hidden)
+              (dom/listen! js/document :mousemove move-handler)
+              (dom/listen-once! js/document :mouseup stop-handler))))]
 
     (swap! layout update-in [(:pos row) :cols] conj
            {:id col-id
@@ -535,19 +567,6 @@
                             (dom/set-px! col-el :width (+ (* 3 (dec (apply + widths)))
                                                           (* (apply + widths) col-unit)))))))))))))
 
-(defn update-cols-for-media
-  [media]
-  (let [col-unit (calc-col-unit)]
-    (doseq [row @layout]
-      (doseq [col (:cols row)]
-        (let [widths (col-for-media col media)
-              id (id->sel (:id col))
-              width-el (sel1 (str id " .width"))
-              offset-el (sel1 (str id " .offset"))]
-          (applies dom/set-px!
-                   [offset-el :width (* col-unit (widths 0))]
-                   [width-el :width (- (* col-unit (widths 1)) col-margin-width)]))))))
-
 (def ebo [:.edn-bracket-open.tag "["])
 (def ebc [:.edn-bracket-close.tag "]"])
 
@@ -655,39 +674,47 @@
         (when (= size media-mode) (dom/add-class! media :active))
         (dom/listen! media :mouseup #(swap! settings assoc :media-mode size))))
 
-    (watch-change settings :media-mode
-                  (fn [old-mode new-mode]
-                    (applies dom/remove-class!
-                             [container old-mode]
-                             [(sel1 :.preview.active) :active])
-                    (applies dom/add-class!
-                             [(sel1 (str ".preview." (name new-mode))) :active]
-                             [container new-mode])
-                    (update-cols-for-media new-mode)
-                    (aset workspace "scrollTop" 0)))
 
     (add-watch layout :update-output
                (fn [k r os ns]
                  (update-output)
                  (put! media-previews-chan [:update])))
 
-    (watch-change settings :output-mode
-                  (fn [ov nv]
-                    (update-output)))
+    (applies watch-change
+             [settings :media-mode
+              (fn [old-mode new-mode]
+                (applies dom/remove-class!
+                         [container old-mode]
+                         [(sel1 :.preview.active) :active])
+                (applies dom/add-class!
+                         [(sel1 (str ".preview." (name new-mode))) :active]
+                         [container new-mode])
+                (update-cols-for-media new-mode)
+                (aset workspace "scrollTop" 0))]
 
-    (watch-change settings :include-container
-                  (fn [ov nv]
-                    (update-output)))
+             [settings :output-mode
+              (fn [ov nv]
+                (update-output))]
+
+             [settings :include-container
+              (fn [ov nv]
+                (update-output))])
 
     (update-output)
 
-    (dom/listen! copy-code-el :click (fn []
-                                       (.select copy-output-el)
-                                       (dom/listen-once! body :keyup
-                                                         (fn [] (spy [:KEYUP :now-hide-popover])))))
-    (dom/listen! new-row :click add-row!)
-    (dom/listen! body :mousedown (fn [e]
-                                   (set-active-row! :none)))
+    (applies dom/listen!
+             [copy-code-el :click
+              (fn []
+                (.select copy-output-el)
+                (dom/listen-once! body :keyup
+                                  (fn [] (spy [:KEYUP :now-hide-popover]))))]
+
+             [new-row :click add-row!]
+
+             [body :mousedown
+              (fn [e]
+                (set-active-row! :none))])
+
     (applies dom/append!
              [container columns rows]
              [rows new-row]
