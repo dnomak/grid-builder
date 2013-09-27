@@ -11,3 +11,4 @@ pom.xml.asc
 .lein-plugins
 .lein-repl-history
 mockups/shoelace-mockups.sublime-workspace
+mockups/shoelace-mockups.sublime-project

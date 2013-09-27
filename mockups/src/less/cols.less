@@ -1,0 +1,95 @@
+/// These are the actual col's you draw
+.cols {
+  .col {
+    height: 150px;
+    background: #ccc;
+    float: left;
+    position: relative;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    background: transparent;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+    &.active {
+      .remove {
+        display: block;
+        position: absolute;
+        top: 2px;
+        right: 5px;
+        color: white;
+        cursor: pointer;
+      }
+    }
+    .width {
+      width: 60px;
+      height: 100%;
+      display: inline-block;
+      background: #599cff;
+      position: relative;
+      float: left;
+      overflow: hidden;
+      .offset-handle {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 15px;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+      }
+      .col-name {
+        position: absolute;
+        left: 15px;
+        top: 0;
+        font-size: 10pt;
+        padding: 0;
+        border: 0;
+        color: white;
+        padding-left: 2px;
+        background: transparent;
+      }
+      &.classes {
+        position: absolute;
+        bottom: 3px;
+        left: 19px;
+        font-size: 10pt;
+        color: white;
+        line-height: 1em;
+      }
+      .nested {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        line-height: 1em;
+        font-size: 13pt;
+        color: rgba(0, 0, 0, 0.3);
+      }
+    }
+  }
+  .offset {
+    height: 100%;
+    display: inline-block;
+    float: left;
+    background: #fff;
+    opacity: 0.2;
+  }
+  .new-col {
+    display: none;
+    float: left;
+    width: 50px;
+    cursor: pointer;
+    margin-left: 5px;
+    height: 150px;
+    border: 1px dashed white;
+    background: transparent;
+    &.no-cols {
+      margin-left: 5px;
+    }
+    &:first-child {
+      margin-left: 4px;
+    }
+  }
+}

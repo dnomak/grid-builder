@@ -2,10 +2,16 @@ html, body {
   height: 100%;
 }
 
-pre {
-white-space: pre;
+html {
+  // I don't know why these are in here yet... will see if I can move later.
+  .copy-code {
+    top: auto;
+    bottom: 5px;
+  }
+  ul {
+    list-style-type: none;
+  }
 }
-
 
 body {
   background-color: hsl(195, 6%, 13%);
@@ -14,229 +20,33 @@ body {
   font-size: 16px;
   line-height: 1.6em;
   color: hsl(0, 0%, 45%);
-
+  margin: 0;
+  padding: 0;
 }
 
-// Basic appliaction frame
-header {
-  background-color: hsl(0, 0%, 0%);
-  position: fixed;
-  height: @header-height;
-  width: 100%;
-  z-index: 999;
-  min-width: 1170px;
-  border-bottom: 1px solid hsl(0, 0%, 22%);
-}
-
-footer {
-  background-color: hsl(200, 100%, 30%);
-  position: fixed;
-  bottom: 0px;
-  height: @footer-height;
-  width: 100%;
-  z-index: 999;
-  min-width: 1000px;
-  border-top: 1px solid hsl(0, 0%, 22%);
-  font-weight: @semibold;
-  padding: 8px 10px 10px 10px;
-  #gradient > .striped(@white, 45deg);
-
-  background-size: 30px 30px;
-
-
-  .clearfix;
-  ul {
-    .list-unstyled;
-    margin: 0px;
-    padding: 0px;
-    float: left;
-    li {
-      display: inline-block;
-      margin-right: 20px;
-      a {
-        color: hsl(0, 0%, 100%);
-        font-size: 14px;
-        &:hover {
-          color: hsl(200, 0%, 85%);
-          text-decoration: none;
-        }
-      }
-    }
-    &.meta {
-      float:right;
-    }
+pre {
+white-space: pre;
+  &.output {
+    font-family: monospace;
+    padding: 1em;
+    font-size: 8pt;
+    border: none;
   }
 }
 
-.application-frame {
-  height: 100%;
-  width: 100%;
-  min-width: 1170px;
-  min-height: 500px;
-  position: relative;
-  overflow-y: hidden;
-  //overflow-x: hidden;
-  border-top: @header-height solid hsla(0, 0%, 100%, 0);
+input {
+  outline: none;
 }
 
-.panels-wrapper {
-  position: absolute;
-  height: 100%;
-  left:0px;
-  right:0px;
+.easing {
+  transition: width 0.5s,
+  margin 0.5s,
+  height 0.5s,
+  top 0.5s,
+  left 0.5s,
+  right 0.5s,
+  background 0.5s,
+  opacity 0.5s;
 }
 
-.navigator {
-  width: 220px;
-  //height: 100%;
-  position: absolute !important;
-  left: 0px;
-  top: 0px;
-  bottom: @footer-height;
-  white-space: nowrap;
-  //overflow-x: hidden;
-  //overflow-y: hidden;
-  z-index: 1;
-  background-color: hsl(0, 0%, 17%);
-  .preview {
-    background-color: ;
-    height: 200px;
-    &.active {
-      background-color: hsl(202, 33%, 21%);
-    }
-    .title-bar {
-      border-top: 1px solid hsl(200, 5%, 11%);
-      border-bottom: 1px solid hsl(200, 5%, 11%);
-      color: hsl(0, 0%, 100%);
-      font-size: 18px;
-      padding: 5px 0px 5px 10px;
-      font-weight: @semibold;
-      font-family: @condensed;
-      #gradient > .vertical(hsl(180, 3%, 14%), hsl(0, 5%, 8%), 0%, 100%);
-      .clearfix;
-      &.active {
-        #gradient > .vertical(hsl(203, 59%, 47%), hsl(203, 87%, 29%), 0%, 100%);
-      }
-    }
-    .size-icon {
-      float: right;
-      text-align: center;
-      width: 30px;
-      i {
-        font-size: 20px;
-        line-height: 10px;
-      }
-    }
 
-    .title {
-      float: left;
-    }
-  }  
-}
-
-.workspace {
-  position: absolute;
-  top: 0px;
-  bottom: @footer-height;
-  right: @html-width;
-  left: 220px;
-}
-
-.html {
-  width: @html-width;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: @footer-height;
-  background-color: hsl(0, 0%, 0%);
-  .options {
-    color: hsl(0, 0%, 100%);
-    padding: 4px 10px 4px 10px;
-    background-color: hsl(195, 12%, 13%);
-    border-top: 1px solid hsl(0, 0%, 22%);
-    border-bottom: 1px solid hsl(0, 0%, 22%);
-    .clearfix;
-    ul {
-      float: left;
-      margin: 0px;
-      padding: 0px;
-      .list-unstyled;
-      li {
-        padding: 0px 6px;
-        .border-radius(4px);
-        display: inline-block;
-        font-size: 14px;
-        color: hsl(0, 0%, 40%);
-        font-weight: bold;
-        font-family: @condensed;
-        line-height: 1.5em;
-        &.active {
-          color: hsl(0, 0%, 100%);
-          #gradient > .vertical(hsl(203, 59%, 47%), hsl(203, 87%, 29%), 0%, 100%);
-        }
-      }
-    }
-    .container-check {
-      padding: 0px 0px 0px 0px;
-      float: right;
-      font-size: 14px;
-      font-weight: @normal;
-      color: hsl(0, 0%, 40%);
-      label {
-        margin-bottom: 0px;
-      }
-    }
-  }
-  .copy-code {
-    #gradient > .vertical(hsl(0, 0%, 26%), hsl(0, 0%, 19%), 0%, 100%);
-    border: 1px solid hsl(200, 5%, 11%);
-    position: absolute;
-    z-index: 999;
-    top: 43px;
-    right: 7px;
-    color: hsl(0, 0%, 50%);
-    padding: 3px 8px;
-    font-weight: @semibold;
-    font-family: @condensed;
-    .border-radius(4px);
-  }
-}
-
-.section-border {
-  width: 5px;
-  border-left: 1px solid hsl(0, 0%, 22%);
-  border-right: 1px solid hsl(0, 0%, 22%);
-  background-color: hsl(0, 0%, 17%);
-  position: absolute;
-  top: 0px;
-  bottom: @footer-height;
-  &.left {
-    left: 220px;
-  }
-  &.right {
-    right: @html-width;
-  }
-}
-
-.collapse-panel {
-  #gradient > .vertical(hsl(0, 0%, 26%), hsl(0, 0%, 19%), 0%, 100%);
-  border: 1px solid hsl(200, 5%, 11%);
-  position: absolute;
-  z-index: 999;
-  top: 3px;
-  width: 30px;
-  height: 30px;
-  color: hsl(0, 0%, 50%);
-  &.left {
-    .border-radius(0px 3px 3px 0px);
-    right: -35px;
-    padding-left: 10px;
-    border-left: none;
-  }
-  &.right {
-    .border-radius(3px 0px 0px 3px);
-    left: -35px;
-    padding-left: 10px;
-    border-right: none;
-  }
-}
