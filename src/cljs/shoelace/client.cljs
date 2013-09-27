@@ -695,3 +695,4 @@
 
 
 (draw-workspace)
+(spy [:TEST :x :y])
