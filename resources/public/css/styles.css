@@ -7960,9 +7960,12 @@ footer ul.meta {
 }
 .workspace .rows .sl-row .tools {
   position: absolute;
-  top: 2px;
+  top: 0px;
   right: 5px;
-  color: white;
+  color: rgba(255, 255, 255, 0.6);
+}
+.workspace .rows .sl-row .tools:hover {
+  color: #ffffff;
 }
 .workspace .rows .sl-row .tools .grow-row {
   color: #477dcc;
