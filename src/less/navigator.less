@@ -1,0 +1,108 @@
+.navigator {
+  width: 220px;
+  position: absolute !important;
+  left: 0px;
+  top: 0px;
+  bottom: @footer-height;
+  white-space: nowrap;
+  z-index: 1;
+  background-color: hsl(0, 0%, 17%);
+  .preview {
+    #gradient > .radial(hsl(0, 0%, 19%), hsl(0, 0%, 9%));
+    height: 25%;
+    position: relative;
+    &.active {
+      background-color: hsl(202, 33%, 21%);
+      #gradient > .radial(hsl(202, 33%, 21%), hsl(202, 33%, 15%));
+      .title-bar {
+        #gradient > .vertical(hsl(203, 59%, 37%), hsl(203, 87%, 29%), 0%, 100%);
+      }
+    }
+    .title-bar {
+      border-top: 1px solid hsl(200, 5%, 11%);
+      border-bottom: 1px solid hsl(200, 5%, 20%);
+      color: hsl(0, 0%, 100%);
+      font-size: 18px;
+      padding: 5px 0px 5px 10px;
+      font-weight: @semibold;
+      font-family: @condensed;
+      #gradient > .vertical(hsl(180, 3%, 11%), hsl(0, 5%, 8%), 0%, 100%);
+      .clearfix;
+    }
+    .size-icon {
+      float: right;
+      text-align: center;
+      width: 30px;
+      i {
+        font-size: 20px;
+        line-height: 10px;
+      }
+    }
+
+    .title {
+      float: left;
+    }
+  }
+  &.collapsed {
+    margin-left: -180px;
+    .preview {
+      height: 30px;
+    }
+  }  
+  .preview-container {
+    position: absolute;
+    overflow: auto;
+    top: 37px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    .preview-rows {
+      padding-top: 8px;
+      margin-left: auto;
+      margin-right: auto;
+      overflow: auto;
+      .preview-row {
+        overflow: hidden;
+        clear: both;
+      }
+      .preview-col {
+        float: left;
+        display: inline-block;
+        height: 20px;
+        margin-right: 3px;
+        margin-bottom: 3px;
+        border-left: 3px solid hsla(0, 0%, 0%, .2);
+        .box-shadow(0px 2px 2px hsla(0, 0%, 0%, .3));
+        &:last-child {
+           margin-right: 0;
+           margin-bottom: 0;
+        }
+      }
+    }
+  }
+  .preview-rows {
+    .preview-row {
+      margin-bottom: 3px;
+    }
+  }
+  .xs {
+    .preview-col {
+     background: #c72818;
+    }
+  }
+  .sm {
+    .preview-col {
+      background: #1583df;
+    }
+  }
+  .md {
+    .preview-col {
+      background: #1da83f;
+    }
+  }
+  .lg {
+    .preview-col {
+      background: #c6861a;
+    }
+  }
+}

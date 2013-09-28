@@ -1,0 +1,81 @@
+body {
+  background-color: black;
+}
+
+.mixin-examples {
+
+div {
+  background-color: hsl(0, 0%, 97%);
+  min-height: 150px !important;
+  border :4px solid red;
+}
+
+.headlines, .stories, .comics {
+  border:10px solid hsl(200, 100%, 50%);
+  background-color: hsl(200, 50%, 80%);
+}
+
+
+
+.headlines {
+  .make-row();
+  .local {
+    .make-sm-column(4);
+    .make-md-column(3);
+  }
+  .global {
+    .make-sm-column(4);
+    .make-md-column(3);
+  }
+  .online {
+    .make-sm-column(4);
+    .make-md-column(6);
+  }
+}
+
+.stories {
+  .make-row();
+  .human-interest {
+    .make-sm-column(12);
+    .make-lg-column(6);
+  }
+  .politics {
+    .make-sm-column(12);
+    .make-lg-column(6);
+  }
+}
+
+.comics {
+  .make-row();
+  .garfield {
+    .make-xs-column(12);
+    .make-sm-column(3);
+    .make-sm-column-offset(3);
+  }
+  .marmaduke {
+    .make-xs-column(6);
+    .make-sm-column(3);
+  }
+  .wizard-of-id {
+    .make-xs-column(6);
+    .make-sm-column(3);
+  }
+}
+
+
+}
+
+
+.code {
+  div {
+    background-color: hsl(0, 0%, 20%);
+    min-height: 500px;
+    border: 1px solid hsl(0, 0%, 50%);
+  }
+
+
+
+
+
+
+}

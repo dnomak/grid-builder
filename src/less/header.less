@@ -1,0 +1,86 @@
+header {
+  background-color: hsl(0, 0%, 0%);
+  position: fixed;
+  height: @header-height;
+  width: 100%;
+  z-index: 999;
+  min-width: 1170px;
+  border-bottom: 1px solid hsl(0, 0%, 22%);
+  .logo {
+    float: left;
+    margin-top: 8px;
+    margin-left: 8px;
+    margin-right: 20px;
+    width: 200px;
+    height: 50px;
+    background: url('img/shoelace-logo.png') top left no-repeat scroll;
+  }
+  .lace-url {
+    float: left;
+    color: hsl(0, 0%, 100%);
+    margin-top: 16px;
+    margin-right: 15px;
+    .icon-copy {
+      color: hsl(0, 0%, 50%);
+    }
+    .icon-stack-base {
+      color: hsl(0, 0%, 20%);
+    }
+  }
+  .menu {
+    margin-top: 10px;
+    .clearfix;
+    ul {
+      .list-unstyled;
+      float: left;
+      &.modify {
+        margin-right: 30px;
+      }
+      li {
+        display: inline-block;
+        .btn {
+          .btn-shoelace();
+        }
+        a {
+          color: hsl(0, 0%, 100%);
+          font-weight: @semibold;
+          font-size: 16px;
+          &:hover {
+            color: hsl(0, 0%, 100%);
+            i {
+              color: hsl(100, 100%, 50%);
+            }
+          }
+        }
+      }
+    }
+    .meta {
+      float: right;
+      margin-right: 8px;
+      a {
+        color: hsl(0, 0%, 100%);
+        font-weight: @semibold;
+        font-size: 16px;
+        &:hover {
+          color: hsl(0, 0%, 100%);
+          i {
+            color: hsl(200, 100%, 50%);
+          }
+        }
+      }
+    }
+    .share {
+      float: right;
+      margin-right: 8px;
+      .icon-twitter {
+        color: hsl(201, 100%, 50%);
+      }
+      .icon-github {
+        color: hsl(326, 0%, 81%);
+      }
+      .icon-envelope {
+        color: hsl(0, 0%, 81%);
+      }
+    }
+  }
+}

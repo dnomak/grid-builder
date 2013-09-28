@@ -1,0 +1,67 @@
+.application-frame {
+  height: 100%;
+  width: 100%;
+  min-width: 1170px;
+  min-height: 500px;
+  position: relative;
+  overflow-y: hidden;
+  border-top: @header-height solid hsla(0, 0%, 100%, 0);
+}
+
+.panels-wrapper {
+  position: absolute;
+  height: 100%;
+  left:0px;
+  right:0px;
+}
+
+.section-border {
+  width: 5px;
+  border-left: 1px solid hsl(0, 0%, 22%);
+  border-right: 1px solid hsl(0, 0%, 22%);
+  background-color: hsl(0, 0%, 17%);
+  position: absolute;
+  top: 0px;
+  bottom: @footer-height;
+  z-index: 999;
+  &.left {
+    left: 220px;
+  }
+  &.right {
+    right: @html-width;
+  }
+  &.collapsed {
+    &.left {
+      left: 40px;
+    }
+  }
+  &.collapsed {
+    &.right {
+      right: 72px;
+    }
+  }
+}
+
+.collapse-panel {
+  #gradient > .vertical(hsl(0, 0%, 26%), hsl(0, 0%, 19%), 0%, 100%);
+  border: 1px solid hsl(200, 5%, 11%);
+  position: absolute;
+  z-index: 999;
+  top: 3px;
+  width: 30px;
+  height: 30px;
+  color: hsl(0, 0%, 50%);
+  cursor: pointer;
+  &.left {
+    .border-radius(0px 3px 3px 0px);
+    right: -35px;
+    padding-left: 10px;
+    border-left: none;
+  }
+  &.right {
+    .border-radius(3px 0px 0px 3px);
+    left: -35px;
+    padding-left: 10px;
+    border-right: none;
+  }
+}

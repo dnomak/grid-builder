@@ -7511,13 +7511,6 @@ html,
 body {
   height: 100%;
 }
-html .copy-code {
-  top: auto;
-  bottom: 5px;
-}
-html ul {
-  list-style-type: none;
-}
 body {
   background-color: #1f2223;
   font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -7527,17 +7520,6 @@ body {
   color: #737373;
   margin: 0;
   padding: 0;
-}
-pre {
-  white-space: pre;
-}
-pre.output {
-  font-family: monospace;
-  padding: 1em;
-  font-size: 8pt;
-  border: none;
-  overflow-x: auto;
-  word-wrap: normal;
 }
 input {
   outline: none;
@@ -8146,6 +8128,18 @@ footer ul.meta {
   bottom: 45px;
   background-color: #000000;
 }
+.html pre {
+  white-space: pre;
+}
+.html pre.output {
+  font-family: monospace;
+  padding: 1em;
+  font-size: 12px;
+  min-height: 300px;
+  border: none;
+  overflow-x: auto;
+  word-wrap: normal;
+}
 .html .options {
   color: #ffffff;
   padding: 4px 10px 4px 10px;
@@ -8229,6 +8223,8 @@ footer ul.meta {
   position: absolute;
   z-index: 999;
   right: 7px;
+  top: auto;
+  bottom: 5px;
   color: #808080;
   padding: 3px 8px;
   font-weight: 600;
@@ -8262,6 +8258,63 @@ footer ul.meta {
   width: 1px;
   height: 1px;
   bottom: -10px;
+}
+pre.prettyprint {
+  background-color: transparent;
+  font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  border: 1px solid #cccccc;
+  padding: 10px;
+}
+.dec {
+  color: white;
+}
+.opn {
+  color: white;
+}
+.lit {
+  color: #445588;
+}
+.atv {
+  color: #86e9fd;
+}
+.kwd {
+  color: #ff6600;
+}
+.tag {
+  color: #ffa629;
+}
+.atn {
+  color: #ffdd9e;
+}
+.clo {
+  color: white;
+}
+.var {
+  color: white;
+}
+.str {
+  color: #66ff00;
+}
+.pln {
+  color: white;
+}
+.pun {
+  color: white;
+}
+.fun {
+  color: #ffcc00;
+}
+.typ {
+  color: #445588;
+}
+.com {
+  color: #9933cc;
+}
+ol.linenums {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 .edn-name {
   float: left;
