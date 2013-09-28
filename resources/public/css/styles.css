@@ -7752,10 +7752,10 @@ footer ul.meta {
   background-color: #2b2b2b;
 }
 .navigator .preview {
-  background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(#303030), to(#171717));
-  background-image: -webkit-radial-gradient(circle, #303030, #171717);
-  background-image: -moz-radial-gradient(circle, #303030, #171717);
-  background-image: radial-gradient(circle, #303030, #171717);
+  background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(#292929), to(#1c1c1c));
+  background-image: -webkit-radial-gradient(circle, #292929, #1c1c1c);
+  background-image: -moz-radial-gradient(circle, #292929, #1c1c1c);
+  background-image: radial-gradient(circle, #292929, #1c1c1c);
   background-repeat: no-repeat;
   height: 25%;
   position: relative;
@@ -7777,8 +7777,7 @@ footer ul.meta {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff276b96', endColorstr='#ff0a598a', GradientType=0);
 }
 .navigator .preview .title-bar {
-  border-top: 1px solid #1b1d1d;
-  border-bottom: 1px solid #303436;
+  border-bottom: 2px solid #303436;
   color: #ffffff;
   font-size: 18px;
   padding: 5px 0px 5px 10px;
@@ -8127,6 +8126,9 @@ footer ul.meta {
   right: 0px;
   bottom: 45px;
   background-color: #000000;
+}
+.html ul {
+  list-style: none;
 }
 .html pre {
   white-space: pre;
