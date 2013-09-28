@@ -60,8 +60,20 @@
   }
   &.right {
     .border-radius(3px 0px 0px 3px);
-    left: -35px;
+    left: -30px;
     padding-left: 10px;
     border-right: none;
+    display: inline;
+    .closed {
+      display: none;
+    }
+  }
+  &.collapsed {
+    .closed {
+      display: inline;
+    }
+    .open {
+      display: none;
+    }
   }
 }

@@ -4,7 +4,7 @@
   top: 0px;
   right: 0px;
   bottom: @footer-height;
-  background-color: hsl(0, 0%, 0%);
+  background-color: hsl(0, 0%, 16%);
   ul {
     list-style: none;
   }
@@ -12,6 +12,7 @@
     white-space: pre;
     &.output {
       font-family: monospace;
+      text-shadow: 0 2px 2px hsla(0,0%,0%,.8);
       padding: 1em;
       font-size: 12px;
       min-height: 300px;
@@ -35,18 +36,19 @@
       .list-unstyled;
       li {
         padding: 0px 6px;
-        .border-radius(4px);
+        .border-radius(2px);
         display: inline-block;
         font-size: 14px;
         color: hsl(0, 0%, 40%);
-        font-weight: bold;
+        font-weight: @semibold;
         font-family: @condensed;
         line-height: 1.5em;
         cursor: pointer;
         color: white;
         &.active {
           color: hsl(0, 0%, 100%);
-          #gradient > .vertical(hsl(203, 59%, 47%), hsl(203, 87%, 29%), 0%, 100%);
+          text-shadow:0px 1px 1px hsla(0, 0%, 0%, 1.0);
+          #gradient > .vertical(hsl(203, 59%, 37%), hsl(203, 87%, 29%), 0%, 100%);
         }
       }
     }
@@ -97,10 +99,11 @@
       right: auto;
     }
   }
-  .copy-output {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    bottom: -10px;
-  }
+}
+.copy-output {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  bottom: -10px;
+  visibility: hidden;
 }
