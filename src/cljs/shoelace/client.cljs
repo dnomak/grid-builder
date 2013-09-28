@@ -8,6 +8,7 @@
    [bigsky.aui.util :refer [event-chan applies]]
    [bigsky.aui.draggable :refer [draggable]]
    [ajax.core :refer [GET POST]]
+   [gist.core :as gist]
    [ednio.core :as ednio])
   (:require-macros
    [cljs.core.async.macros :refer [go]]
@@ -265,6 +266,7 @@
                                                      [0 1])
                                                  [(type-pos type)]
                                                  new-width)]
+
                           (swap! layout assoc-in path new-dims)
                           (update-col-for-media row-id col-id media)
                           (draw-class-type media type new-width)
@@ -713,7 +715,18 @@
 
              [body :mousedown
               (fn [e]
-                (set-active-row! :none))])
+                (set-active-row! :none))]
+
+             [(sel1 :.btn-update) :click
+              #(gist/create "shoelace grid"
+                            (str (layout->edn @layout))
+                            (fn [r]
+                              (let [new-id (aget r "id")]
+                                (aset js/window.location "hash" new-id))))]
+
+             [(sel1 :.btn-gist) :click
+              (fn [e]
+                (gist/create "shoelace layout" (str (layout->edn @layout)) (fn [r] (js/console.log r))))])
 
     (applies dom/append!
              [container columns rows]
