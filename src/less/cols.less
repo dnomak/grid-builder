@@ -1,5 +1,77 @@
 /// These are the actual col's you draw
-
+.container {
+  width: 900px;
+  overflow: hidden;
+  position: relative;
+  min-height: 3200px;
+  height: 100%;
+  &.xs {
+    .sl-row {
+      background: fadeout(@xs-color, @morefaded);
+      &.active {
+        background: fadeout(@xs-color, @lessfaded);
+      }
+    }
+    .col {
+      .width {
+        background-color: @xs-color;
+        .col-name {
+          left: 7px;
+        }
+        .classes {
+          left: 7px;
+        }
+      }
+    }
+    .offset-handle {
+      display: none;
+    }
+  }
+  &.sm {
+    .sl-row {
+      background: fadeout(@sm-color, @morefaded);
+      &.active {
+        background: fadeout(@sm-color, @lessfaded);
+      }
+    }
+    .col {
+      .width {
+        background-color: @sm-color;
+        .col-name {
+          left: 7px;
+        }
+        .classes {
+          left: 7px;
+        }
+      }
+    }
+  }
+  &.md {
+    .sl-row {
+      background: fadeout(@md-color, @morefaded);
+      &.active {
+        background: fadeout(@md-color, @lessfaded);
+      }
+    }
+    .col {
+      .width {
+        background-color:  @md-color;
+      }
+    }
+  }
+  &.lg {
+    .sl-row {
+      background: fadeout(@lg-color, @morefaded);
+      &.active {
+        background: fadeout(@lg-color, @lessfaded);
+      }
+    }
+    .col {
+      .width {
+        background-color: @lg-color;
+      }
+    }
+  }
   .col {
     height: 150px;
     background: #ccc;
@@ -34,7 +106,6 @@
       min-width: 60px;
       height: 100%;
       display: inline-block;
-      background-color: #599cff;
       position: relative;
       float: left;
       overflow: hidden;
@@ -111,7 +182,7 @@
     cursor: pointer;
     margin-left: 5px;
     height: 150px;
-    border: 1px dashed white;
+    border: 1px dashed hsla(0, 0%, 100%, .5);
     background: transparent;
     &.no-cols {
       margin-left: 5px;
@@ -120,3 +191,4 @@
       margin-left: 4px;
     }
   }
+}
