@@ -38,7 +38,7 @@
       position: relative;
       float: left;
       overflow: hidden;
-      cursor: col-resize;
+      cursor: col-resize !important;
       -webkit-touch-callout: none;
       -webkit-user-select: none;
       -khtml-user-select: none;
@@ -58,6 +58,14 @@
         width: 8px;
         .border-radius(3px);
         background-color: rgba(0, 0, 0, 0.2);
+        cursor: -webkit-grab !important;
+        cursor: -moz-grab !important;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
       }
       .col-name {
         position: absolute;
