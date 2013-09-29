@@ -45,17 +45,20 @@
     background-color: hsl(195, 12%, 13%);
     border-top: 1px solid hsl(0, 0%, 22%);
     border-bottom: 1px solid hsl(0, 0%, 22%);
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     .clearfix;
     ul {
-      float: left;
       margin: 0px;
       padding: 0px;
       .list-unstyled;
       li {
         padding: 0px 6px;
         .border-radius(2px);
-        display: inline-block;
+        display: block;
+        float: left;
         font-size: 14px;
         color: hsl(0, 0%, 40%);
         font-weight: @semibold;
@@ -97,7 +100,7 @@
     .border-radius(4px);
   }
   &.collapsed {
-    margin-right: -350px;
+    margin-right: -@html-width;
     .options {
       li {
         display: block;

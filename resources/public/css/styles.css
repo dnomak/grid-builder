@@ -7453,28 +7453,6 @@ a .icon-flip-vertical:before {
   left: 0px;
   right: 0px;
 }
-.section-border {
-  width: 5px;
-  border-left: 1px solid #383838;
-  border-right: 1px solid #383838;
-  background-color: #2b2b2b;
-  position: absolute;
-  top: 0px;
-  bottom: 45px;
-  z-index: 999;
-}
-.section-border.left {
-  left: 220px;
-}
-.section-border.right {
-  right: 420px;
-}
-.section-border.collapsed.left {
-  left: 40px;
-}
-.section-border.collapsed.right {
-  right: 72px;
-}
 .collapse-panel {
   background-image: -webkit-gradient(linear, left 0%, left 100%, from(#424242), to(#303030));
   background-image: -webkit-linear-gradient(top, #424242, 0%, #303030, 100%);
@@ -7909,7 +7887,7 @@ footer ul.meta {
   position: absolute;
   top: 0px;
   bottom: 45px;
-  right: 420px;
+  right: 320px;
   left: 176px;
   overflow-y: scroll;
   background-color: #1a1a1a;
@@ -7918,7 +7896,7 @@ footer ul.meta {
   left: 50px;
 }
 .workspace.output-collapsed {
-  right: 75px;
+  right: 0px;
 }
 .workspace .columns {
   height: 100%;
@@ -8202,7 +8180,7 @@ footer ul.meta {
   margin-left: 4px;
 }
 .html {
-  width: 420px;
+  width: 320px;
   position: absolute;
   top: 0px;
   right: 0px;
@@ -8248,7 +8226,10 @@ footer ul.meta {
   background-color: #1d2325;
   border-top: 1px solid #383838;
   border-bottom: 1px solid #383838;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 .html .options:before,
 .html .options:after {
@@ -8275,7 +8256,6 @@ footer ul.meta {
   clear: both;
 }
 .html .options ul {
-  float: left;
   margin: 0px;
   padding: 0px;
   padding-left: 0;
@@ -8286,7 +8266,8 @@ footer ul.meta {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
-  display: inline-block;
+  display: block;
+  float: left;
   font-size: 14px;
   color: #666666;
   font-weight: 600;
@@ -8338,7 +8319,7 @@ footer ul.meta {
   border-radius: 4px;
 }
 .html.collapsed {
-  margin-right: -350px;
+  margin-right: -320px;
 }
 .html.collapsed .options li {
   display: block;

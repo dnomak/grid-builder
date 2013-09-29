@@ -15,33 +15,6 @@
   right:0px;
 }
 
-.section-border {
-  width: 5px;
-  border-left: 1px solid hsl(0, 0%, 22%);
-  border-right: 1px solid hsl(0, 0%, 22%);
-  background-color: hsl(0, 0%, 17%);
-  position: absolute;
-  top: 0px;
-  bottom: @footer-height;
-  z-index: 999;
-  &.left {
-    left: 220px;
-  }
-  &.right {
-    right: @html-width;
-  }
-  &.collapsed {
-    &.left {
-      left: 40px;
-    }
-  }
-  &.collapsed {
-    &.right {
-      right: 72px;
-    }
-  }
-}
-
 .collapse-panel {
   #gradient > .vertical(hsl(0, 0%, 26%), hsl(0, 0%, 19%), 0%, 100%);
   border: 1px solid hsl(200, 5%, 11%);
