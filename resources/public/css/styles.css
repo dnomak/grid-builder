@@ -8134,13 +8134,13 @@ footer ul.meta {
 .container .col .width .offset-handle {
   position: absolute;
   left: 4px;
-  top: 4px;
-  bottom: 4px;
+  top: 5px;
+  bottom: 5px;
+  background-color: rgba(0, 0, 0, 0.13);
   width: 8px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  background-color: rgba(0, 0, 0, 0.2);
   cursor: -webkit-grab !important;
   cursor: -moz-grab !important;
   -webkit-touch-callout: none;
@@ -8212,18 +8212,35 @@ footer ul.meta {
 .html ul {
   list-style: none;
 }
-.html pre {
+.html .output_container {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+.html .output_container pre {
   white-space: pre;
 }
-.html pre.output {
+.html .output_container pre.prettyprint {
+  margin-bottom: 0px;
+}
+.html .output_container pre.output {
   font-family: monospace;
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.8);
   padding: 1em;
   font-size: 12px;
-  min-height: 300px;
+  height: 100%;
   border: none;
   overflow-x: auto;
   word-wrap: normal;
+}
+.html .output_container pre.markup {
+  height: 50%;
+}
+.html .output_container pre.mixins {
+  border-top: 4px solid #333333;
+  height: 50%;
 }
 .html .options {
   color: #ffffff;

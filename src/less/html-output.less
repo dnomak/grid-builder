@@ -8,19 +8,37 @@
   ul {
     list-style: none;
   }
-  pre {
-    white-space: pre;
-    &.output {
-      font-family: monospace;
-      text-shadow: 0 2px 2px hsla(0,0%,0%,.8);
-      padding: 1em;
-      font-size: 12px;
-      min-height: 300px;
-      border: none;
-      overflow-x:auto;
-      word-wrap: normal;
+  .output_container {
+    position: absolute;
+    top: 35px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    pre {
+      white-space: pre;
+      &.prettyprint {
+        margin-bottom: 0px;
+      }
+      &.output {
+        font-family: monospace;
+        text-shadow: 0 2px 2px hsla(0,0%,0%,.8);
+        padding: 1em;
+        font-size: 12px;
+        height: 100%;
+        border: none;
+        overflow-x:auto;
+        word-wrap: normal;
+      }
+      &.markup {
+        height: 50%;
+      }
+      &.mixins {
+        border-top: 4px solid hsl(0, 0%, 20%);
+        height: 50%;
+      }
     }
   }
+
   .options {
     color: hsl(0, 0%, 100%);
     padding: 4px 10px 4px 10px;

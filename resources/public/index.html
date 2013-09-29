@@ -78,7 +78,6 @@
             <span class="open"><i class="icon-caret-right"></i></span>
             <span class="closed"><i class="icon-caret-left"></i></span>
           </div>
-          <div class="copy-code">Copy</div>
           <div class="options easing">
             <ul>
               <li class="output-html easing active">HTML</li>
@@ -92,7 +91,39 @@
             </div>
             <div class="clear"></div>
           </div>
-          <pre class="output prettyprint lang-html"></pre>
+          <div class="output_container">
+          <div class="copy-code">Copy</div>
+            <pre class="output prettyprint lang-html markup"></pre>
+            <pre class="output prettyprint lang-text mixins">.left-and-right {
+  .make-row();
+  .left {
+    .make-sm-column(1);
+    .make-md-column(7);
+    .make-lg-column(4);
+  }
+  .right {
+    .make-sm-column(11);
+    .make-md-column(5);
+    .make-lg-column(8);
+  }
+  .right {
+    .make-sm-column(11);
+    .make-md-column(5);
+    .make-lg-column(8);
+  }
+}
+  .right {
+    .make-sm-column(11);
+    .make-md-column(5);
+    .make-lg-column(8);
+  }
+  .right {
+    .make-sm-column(11);
+    .make-md-column(5);
+    .make-lg-column(8);
+  }
+}
+                    </pre></div>
           <textarea class="copy-output"></textarea>
         </div>
       </div>
