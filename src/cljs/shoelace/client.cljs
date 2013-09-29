@@ -132,9 +132,10 @@
 
 (defn set-active-row!
   [row-id]
-  (let [cur (:active-row @settings)]
-    (when (not-none? cur)
-      (dom/remove-class! (get-el cur) :active)))
+  (let [cur (:active-row @settings)
+        cur-el (get-el cur)]
+    (when cur-el
+      (dom/remove-class! cur-el :active)))
   (swap! settings assoc :active-row row-id)
   (when (not-none? row-id)
     (dom/add-class! (get-el row-id) :active)))
@@ -239,6 +240,7 @@
 
         handle-drag (fn [type e]
           (stop-propagation e)
+          (.preventDefault e)
           (set-active-row! row-id)
           (let [start-x (aget e "x")
                 start-w (dom/px (els type) "width")
@@ -330,7 +332,8 @@
              [remove-el        #(handle-remove %)]
              [offset-handle-el #(handle-drag :offset %)]
              [offset-el        #(handle-drag :offset %)]
-             [width-el         #(handle-drag :width %)])
+             [width-el         #(handle-drag :width %)]
+             [name-el          (fn [e] (stop-propagation e))])
 
     (dom/listen! name-el :change
       (fn [e]
@@ -528,7 +531,7 @@
                  #(swap! settings assoc :include-container (aget include-container-el "checked")))))
 
 (defn make-collapse-pane
-  [state workspace pane-el border-el collapse-el]
+  [state workspace pane-el collapse-el]
   (dom/listen!
    collapse-el
    :click (fn []
@@ -537,8 +540,7 @@
               (applies toggle-class!
                        [pane-el :collapsed]
                        [collapse-el :collapsed]
-                       [workspace state]
-                       [border-el :collapsed])
+                       [workspace state])
               (dom/listen-once! pane-el :transitionend
                                 #(swap! settings assoc state (not collapsed)))))))
 
@@ -655,14 +657,12 @@
      :medias-collapsed
      workspace
      (sel1 :.navigator)
-     (sel1 :.section-border.left)
      (sel1 [:.navigator :.collapse-panel]))
 
     (make-collapse-pane
      :output-collapsed
      workspace
      (sel1 :.html)
-     (sel1 :.section-border.right)
      (sel1 [:.html :.collapse-panel.right]))
 
     (dom/add-class! container media-mode)
@@ -722,7 +722,7 @@
                             (str (layout->edn @layout))
                             (fn [r]
                               (let [new-id (aget r "id")]
-                                (aset js/window.location "hash" new-id))))]
+                                (aset js/window.location "hash" (gist/encode-id new-id)))))]
 
              [(sel1 :.btn-gist) :click
               (fn [e]
@@ -734,5 +734,12 @@
              [workspace container])))
 
 
+(defn load-workspace []
+  (let [gist-id (aget js/window.location "hash")]
+    (spy gist-id)
+    (spy (count gist-id))
+    (when (> (count gist-id) 0)
+      (spy [:ID (gist/decode-id (subs gist-id 1))]))))
+
 (draw-workspace)
-(spy [:TEST :x :y])
+(load-workspace)
