@@ -4518,10 +4518,6 @@ a.thumbnail:focus {
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, #428bca), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, #428bca), color-stop(0.75, #428bca), color-stop(0.75, transparent), to(transparent));
-  background-image: -webkit-linear-gradient(45deg, #428bca 25%, transparent 25%, transparent 50%, #428bca 50%, #428bca 75%, transparent 75%, transparent);
-  background-image: -moz-linear-gradient(45deg, #428bca 25%, transparent 25%, transparent 50%, #428bca 50%, #428bca 75%, transparent 75%, transparent);
-  background-image: linear-gradient(45deg, #428bca 25%, transparent 25%, transparent 50%, #428bca 50%, #428bca 75%, transparent 75%, transparent);
   background-size: 40px 40px;
 }
 .progress.active .progress-bar {
@@ -4539,10 +4535,6 @@ a.thumbnail:focus {
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, #5cb85c), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, #5cb85c), color-stop(0.75, #5cb85c), color-stop(0.75, transparent), to(transparent));
-  background-image: -webkit-linear-gradient(45deg, #5cb85c 25%, transparent 25%, transparent 50%, #5cb85c 50%, #5cb85c 75%, transparent 75%, transparent);
-  background-image: -moz-linear-gradient(45deg, #5cb85c 25%, transparent 25%, transparent 50%, #5cb85c 50%, #5cb85c 75%, transparent 75%, transparent);
-  background-image: linear-gradient(45deg, #5cb85c 25%, transparent 25%, transparent 50%, #5cb85c 50%, #5cb85c 75%, transparent 75%, transparent);
 }
 .progress-bar-info {
   background-color: #5bc0de;
@@ -4552,10 +4544,6 @@ a.thumbnail:focus {
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, #5bc0de), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, #5bc0de), color-stop(0.75, #5bc0de), color-stop(0.75, transparent), to(transparent));
-  background-image: -webkit-linear-gradient(45deg, #5bc0de 25%, transparent 25%, transparent 50%, #5bc0de 50%, #5bc0de 75%, transparent 75%, transparent);
-  background-image: -moz-linear-gradient(45deg, #5bc0de 25%, transparent 25%, transparent 50%, #5bc0de 50%, #5bc0de 75%, transparent 75%, transparent);
-  background-image: linear-gradient(45deg, #5bc0de 25%, transparent 25%, transparent 50%, #5bc0de 50%, #5bc0de 75%, transparent 75%, transparent);
 }
 .progress-bar-warning {
   background-color: #f0ad4e;
@@ -4565,10 +4553,6 @@ a.thumbnail:focus {
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, #f0ad4e), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, #f0ad4e), color-stop(0.75, #f0ad4e), color-stop(0.75, transparent), to(transparent));
-  background-image: -webkit-linear-gradient(45deg, #f0ad4e 25%, transparent 25%, transparent 50%, #f0ad4e 50%, #f0ad4e 75%, transparent 75%, transparent);
-  background-image: -moz-linear-gradient(45deg, #f0ad4e 25%, transparent 25%, transparent 50%, #f0ad4e 50%, #f0ad4e 75%, transparent 75%, transparent);
-  background-image: linear-gradient(45deg, #f0ad4e 25%, transparent 25%, transparent 50%, #f0ad4e 50%, #f0ad4e 75%, transparent 75%, transparent);
 }
 .progress-bar-danger {
   background-color: #d9534f;
@@ -4578,10 +4562,6 @@ a.thumbnail:focus {
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, #d9534f), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, #d9534f), color-stop(0.75, #d9534f), color-stop(0.75, transparent), to(transparent));
-  background-image: -webkit-linear-gradient(45deg, #d9534f 25%, transparent 25%, transparent 50%, #d9534f 50%, #d9534f 75%, transparent 75%, transparent);
-  background-image: -moz-linear-gradient(45deg, #d9534f 25%, transparent 25%, transparent 50%, #d9534f 50%, #d9534f 75%, transparent 75%, transparent);
-  background-image: linear-gradient(45deg, #d9534f 25%, transparent 25%, transparent 50%, #d9534f 50%, #d9534f 75%, transparent 75%, transparent);
 }
 .media,
 .media-body {
@@ -7569,10 +7549,6 @@ input {
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, 45deg), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, 45deg), color-stop(0.75, 45deg), color-stop(0.75, transparent), to(transparent));
-  background-image: -webkit-linear-gradient(45deg, 45deg 25%, transparent 25%, transparent 50%, 45deg 50%, 45deg 75%, transparent 75%, transparent);
-  background-image: -moz-linear-gradient(45deg, 45deg 25%, transparent 25%, transparent 50%, 45deg 50%, 45deg 75%, transparent 75%, transparent);
-  background-image: linear-gradient(45deg, 45deg 25%, transparent 25%, transparent 50%, 45deg 50%, 45deg 75%, transparent 75%, transparent);
   background-size: 20px 20px;
 }
 header {
@@ -7936,11 +7912,7 @@ footer ul.meta {
   right: 420px;
   left: 176px;
   overflow-y: scroll;
-  background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(#262626), to(#0d0d0d));
-  background-image: -webkit-radial-gradient(circle, #262626, #0d0d0d);
-  background-image: -moz-radial-gradient(circle, #262626, #0d0d0d);
-  background-image: radial-gradient(circle, #262626, #0d0d0d);
-  background-repeat: no-repeat;
+  background-color: #1a1a1a;
 }
 .workspace.medias-collapsed {
   left: 50px;
@@ -7951,13 +7923,13 @@ footer ul.meta {
 .workspace .columns {
   height: 100%;
   position: absolute;
-  left: 0;
+  left: 15px;
   top: 0;
 }
 .workspace .columns .col {
   width: 60px;
   height: 100%;
-  background: #282728;
+  background-color: #1f1f1f;
 }
 .row .col {
   width: auto;
@@ -7965,7 +7937,7 @@ footer ul.meta {
   background: transparent;
 }
 .rows {
-  min-width: 900px;
+  min-width: 915px;
   position: absolute;
   left: 0;
   top: 0;
@@ -7974,34 +7946,17 @@ footer ul.meta {
   -ms-user-select: none;
   user-select: none;
 }
-.rows ::-webkit-input-placeholder {
-  /* WebKit browsers */
-
-  color: rgba(255, 255, 255, 0.4);
-}
-.rows :-moz-placeholder {
-  /* Mozilla Firefox 4 to 18 */
-
-  color: rgba(255, 255, 255, 0.4);
-}
-.rows ::-moz-placeholder {
-  /* Mozilla Firefox 19+ */
-
-  color: rgba(255, 255, 255, 0.4);
-}
-.rows :-ms-input-placeholder {
-  /* Internet Explorer 10+ */
-
-  color: rgba(255, 255, 255, 0.4);
-}
 .rows .sl-row {
   padding-top: 25px;
-  padding-bottom: 10px;
+  padding-left: 15px;
   width: 100%;
   background: rgba(89, 156, 255, 0.3);
   margin-top: 10px;
   position: relative;
-  min-height: 195px;
+  min-height: 185px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
 }
 .rows .sl-row.active {
   background: rgba(89, 156, 255, 0.5);
@@ -8049,16 +8004,36 @@ footer ul.meta {
 .rows .new-row {
   width: 875px;
   height: 150px;
-  margin-left: 5px;
+  margin-left: 20px;
   border: 1px dashed rgba(255, 255, 255, 0.3);
   background: transparent !important;
   cursor: pointer;
 }
+.rows ::-webkit-input-placeholder {
+  /* WebKit browsers */
+
+  color: rgba(255, 255, 255, 0.4);
+}
+.rows :-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+
+  color: rgba(255, 255, 255, 0.4);
+}
+.rows ::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+
+  color: rgba(255, 255, 255, 0.4);
+}
+.rows :-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+
+  color: rgba(255, 255, 255, 0.4);
+}
 .container {
-  width: 900px;
+  width: 915px;
   overflow: hidden;
   position: relative;
-  min-height: 3200px;
+  min-height: 3000px;
   height: 100%;
 }
 .container.xs .sl-row {
@@ -8212,6 +8187,7 @@ footer ul.meta {
 .container .new-col {
   display: none;
   float: left;
+  margin-bottom: 10px;
   width: 50px;
   cursor: pointer;
   margin-left: 5px;
@@ -8231,7 +8207,7 @@ footer ul.meta {
   top: 0px;
   right: 0px;
   bottom: 45px;
-  background-color: #292929;
+  background-color: #242424;
 }
 .html ul {
   list-style: none;

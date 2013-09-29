@@ -1,5 +1,5 @@
 .rows {
-  min-width: 900px;
+  min-width: 915px;
   position: absolute;
   left: 0;
   top: 0;
@@ -7,29 +7,15 @@
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  //
-  @placeholder: hsla(0, 0%, 100%, .4);
-  ::-webkit-input-placeholder { /* WebKit browsers */
-    color: @placeholder;
-  }
-  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: @placeholder;
-  }
-  ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: @placeholder;
-  }
-  :-ms-input-placeholder { /* Internet Explorer 10+ */
-    color: @placeholder;
-  }
-  //
   .sl-row {
     padding-top: 25px;
-    padding-bottom: 10px;
+    padding-left: 15px;
     width: 100%;
     background: rgba(89, 156, 255, 0.3);
     margin-top: 10px;
     position: relative;
-    min-height: 195px;
+    min-height: 185px;
+    .border-radius(3px);
     &.active {
       background: rgba(89, 156, 255, 0.5);
       .new-col {
@@ -81,9 +67,22 @@
   .new-row {
     width: 875px;
     height: 150px;
-    margin-left: 5px;
+    margin-left: 20px;
     border: 1px dashed hsla(0, 0%, 100%, .3);
     background: transparent !important;
     cursor: pointer;
+  }
+  @placeholder: hsla(0, 0%, 100%, .4);
+  ::-webkit-input-placeholder { /* WebKit browsers */
+    color: @placeholder;
+  }
+  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: @placeholder;
+  }
+  ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: @placeholder;
+  }
+  :-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: @placeholder;
   }
 }

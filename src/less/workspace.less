@@ -5,23 +5,22 @@
   right: @html-width;
   left: 176px;
   overflow-y: scroll;
-  #gradient > .radial(hsl(0, 0%, 15%), hsl(0, 0%, 5%));
+  background-color: hsl(0, 0%, 10%);
   &.medias-collapsed {
     left: 50px;
   }
   &.output-collapsed {
     right: 75px;
   }
-  /// These are the background col markers
   .columns {
       height: 100%;
       position: absolute;
-      left: 0;
+      left: 15px;
       top: 0;
     .col {
       width: 60px;
       height: 100%;
-      background: #282728;
+      background-color: hsl(0, 0%, 12%);
     }
   }
 }
