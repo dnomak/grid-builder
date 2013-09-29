@@ -8230,6 +8230,7 @@ footer ul.meta {
   top: 0;
   left: 0;
   right: 0;
+  width: 320px;
 }
 .html .options:before,
 .html .options:after {
@@ -8320,6 +8321,7 @@ footer ul.meta {
 }
 .html.collapsed {
   margin-right: -320px;
+  bottom: inherit;
 }
 .html.collapsed .options li {
   display: block;
