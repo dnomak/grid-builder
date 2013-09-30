@@ -19123,12 +19123,12 @@ shoelace.client.go_alphabet = function() {
           return a[2] = null, a[1] = 7, "\ufdd0:recur"
         }
         if(5 === c) {
-          var c = a[7], f = cljs.core.rest.call(null, a[6]), c = cljs.core.apply.call(null, c, f);
+          var c = a[6], f = cljs.core.rest.call(null, a[7]), c = cljs.core.apply.call(null, c, f);
           a[2] = c;
           a[1] = 7;
           return"\ufdd0:recur"
         }
-        return 4 === c ? (c = a[2], f = cljs.core.first.call(null, c), f = b.call(null, f), a[6] = c, a[7] = f, a[1] = cljs.core.truth_(f) ? 5 : 6, "\ufdd0:recur") : 3 === c ? (c = a[2], cljs.core.async.impl.ioc_helpers.return_chan.call(null, a, c)) : 2 === c ? cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, a, 4, e) : 1 === c ? (a[2] = null, a[1] = 2, "\ufdd0:recur") : null
+        return 4 === c ? (c = a[2], f = cljs.core.first.call(null, c), f = b.call(null, f), a[6] = f, a[7] = c, a[1] = cljs.core.truth_(f) ? 5 : 6, "\ufdd0:recur") : 3 === c ? (c = a[2], cljs.core.async.impl.ioc_helpers.return_chan.call(null, a, c)) : 2 === c ? cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, a, 4, e) : 1 === c ? (a[2] = null, a[1] = 2, "\ufdd0:recur") : null
       }, c = null, i = function() {
         var a = Array(8);
         a[0] = c;
@@ -20319,14 +20319,21 @@ shoelace.client.rows__GT_html = function(a) {
     }()) : cljs.core.conj.call(null, b, shoelace.client.ebc)
   }())], !0))
 };
-shoelace.client.show_save_button = function() {
-  return dommy.core.remove_class_BANG_.call(null, dommy.utils.__GT_Array.call(null, document.getElementsByClassName("btn-save"))[0], "\ufdd0:hidden")
+shoelace.client.show = function(a) {
+  return dommy.core.remove_class_BANG_.call(null, document.querySelector(dommy.core.selector.call(null, a)), "\ufdd0:hidden")
 };
-shoelace.client.hide_save_button = function() {
-  return dommy.core.add_class_BANG_.call(null, dommy.utils.__GT_Array.call(null, document.getElementsByClassName("btn-save"))[0], "\ufdd0:hidden")
+shoelace.client.hide = function(a) {
+  return dommy.core.add_class_BANG_.call(null, document.querySelector(dommy.core.selector.call(null, a)), "\ufdd0:hidden")
 };
-shoelace.client.show_update_button = function() {
-  return dommy.core.remove_class_BANG_.call(null, dommy.utils.__GT_Array.call(null, document.getElementsByClassName("btn-update"))[0], "\ufdd0:hidden")
+shoelace.client.show_edit_buttons = function() {
+  shoelace.client.hide.call(null, "\ufdd0:.btn-save");
+  return bigsky.aui.util.applies.call(null, shoelace.client.show, cljs.core.PersistentVector.fromArray(["\ufdd0:.btn-update"], !0), cljs.core.PersistentVector.fromArray(["\ufdd0:.btn-fork"], !0), cljs.core.PersistentVector.fromArray(["\ufdd0:.btn-preview"], !0))
+};
+shoelace.client.show_loading = function() {
+  return shoelace.client.show.call(null, "\ufdd0:.blackout-overlay")
+};
+shoelace.client.hide_loading = function() {
+  return shoelace.client.hide.call(null, "\ufdd0:.blackout-overlay")
 };
 shoelace.client.draw_workspace = function() {
   var a = dommy.utils.__GT_Array.call(null, document.getElementsByClassName("workspace"))[0], b = document.querySelector("pre.output"), c = dommy.utils.__GT_Array.call(null, document.getElementsByClassName("copy-output"))[0], d = document.createElement("div");
@@ -20433,15 +20440,19 @@ shoelace.client.draw_workspace = function() {
   }], !0), cljs.core.PersistentVector.fromArray([g, "\ufdd0:click", shoelace.client.add_row_BANG_], !0), cljs.core.PersistentVector.fromArray([shoelace.client.body, "\ufdd0:mousedown", function() {
     return shoelace.client.set_active_row_BANG_.call(null, "\ufdd0:none")
   }], !0), cljs.core.PersistentVector.fromArray([dommy.utils.__GT_Array.call(null, document.getElementsByClassName("btn-save"))[0], "\ufdd0:click", function() {
+    shoelace.client.show_loading.call(null);
     return gist.core.create.call(null, "shoelace grid", "" + cljs.core.str(shoelace.client.layout__GT_edn.call(null, cljs.core.deref.call(null, shoelace.client.layout))), function(a) {
       cljs.core.swap_BANG_.call(null, shoelace.client.settings, cljs.core.assoc, "\ufdd0:gist-id", gist.core.encode_id.call(null, a.id));
       window.location.hash = (new cljs.core.Keyword("\ufdd0:gist-id")).call(null, cljs.core.deref.call(null, shoelace.client.settings));
-      shoelace.client.hide_save_button.call(null);
-      return shoelace.client.show_update_button.call(null)
+      shoelace.client.hide_loading.call(null);
+      return shoelace.client.show_edit_buttons.call(null)
     })
   }], !0), cljs.core.PersistentVector.fromArray([dommy.utils.__GT_Array.call(null, document.getElementsByClassName("btn-update"))[0], "\ufdd0:click", function() {
+    shoelace.client.show_loading.call(null);
     return gist.core.update.call(null, (new cljs.core.Keyword("\ufdd0:gist-id")).call(null, cljs.core.deref.call(null, shoelace.client.settings)), "shoelace grid", "" + cljs.core.str(shoelace.client.layout__GT_edn.call(null, cljs.core.deref.call(null, shoelace.client.layout))), function(a) {
-      return window.location.hash = gist.core.encode_id.call(null, a.id)
+      a = a.id;
+      shoelace.client.hide_loading.call(null);
+      return window.location.hash = gist.core.encode_id.call(null, a)
     })
   }], !0), cljs.core.PersistentVector.fromArray([dommy.utils.__GT_Array.call(null, document.getElementsByClassName("btn-gist"))[0], "\ufdd0:click", function() {
     return gist.core.create.call(null, "shoelace layout", "" + cljs.core.str(shoelace.client.layout__GT_edn.call(null, cljs.core.deref.call(null, shoelace.client.layout))), function(a) {
@@ -20689,8 +20700,9 @@ shoelace.client.import_layout = function(a) {
 };
 shoelace.client.load_workspace = function() {
   var a = window.location.hash;
-  return 0 < cljs.core.count.call(null, a) ? (a = gist.core.decode_id.call(null, cljs.core.subs.call(null, a, 1)), shoelace.client.hide_save_button.call(null), shoelace.client.show_update_button.call(null), cljs.core.swap_BANG_.call(null, shoelace.client.settings, cljs.core.assoc, "\ufdd0:gist-id", a), gist.core.fetch.call(null, a, function(a) {
-    return shoelace.client.import_layout.call(null, a.files["grid.edn"].content)
-  })) : shoelace.client.show_save_button.call(null)
+  return 0 < cljs.core.count.call(null, a) ? (a = gist.core.decode_id.call(null, cljs.core.subs.call(null, a, 1)), shoelace.client.show_edit_buttons.call(null), cljs.core.swap_BANG_.call(null, shoelace.client.settings, cljs.core.assoc, "\ufdd0:gist-id", a), gist.core.fetch.call(null, a, function(a) {
+    shoelace.client.import_layout.call(null, a.files["grid.edn"].content);
+    return shoelace.client.hide_loading.call(null)
+  })) : shoelace.client.hide_loading.call(null)
 };
 shoelace.client.load_workspace.call(null);

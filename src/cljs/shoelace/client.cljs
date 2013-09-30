@@ -618,14 +618,24 @@
                    (conj els ebc))))]))
 
 
-(defn show-save-button []
-  (dom/remove-class! (sel1 :.btn-save) :hidden))
+(defn- show [sel]
+  (dom/remove-class! (sel1 sel) :hidden))
 
-(defn hide-save-button []
-  (dom/add-class! (sel1 :.btn-save) :hidden))
+(defn- hide [sel]
+  (dom/add-class! (sel1 sel) :hidden))
 
-(defn show-update-button []
-  (dom/remove-class! (sel1 :.btn-update) :hidden))
+(defn show-edit-buttons []
+  (hide :.btn-save)
+  (applies show
+           [:.btn-update]
+           [:.btn-fork]
+           [:.btn-preview]))
+
+(defn show-loading []
+  (show :.blackout-overlay))
+
+(defn hide-loading []
+  (hide :.blackout-overlay))
 
 (defn draw-workspace []
   (let [workspace (sel1 :.workspace)
@@ -725,22 +735,27 @@
                 (set-active-row! :none))]
 
              [(sel1 :.btn-save) :click
-              #(gist/create "shoelace grid"
-                            (str (layout->edn @layout))
-                            (fn [r]
-                              (let [new-id (aget r "id")]
-                                (swap! settings assoc :gist-id (gist/encode-id new-id))
-                                (aset js/window.location "hash" (:gist-id @settings))
-                                (hide-save-button)
-                                (show-update-button))))]
+              (fn []
+                (show-loading)
+                (gist/create "shoelace grid"
+                             (str (layout->edn @layout))
+                             (fn [r]
+                               (let [new-id (aget r "id")]
+                                 (swap! settings assoc :gist-id (gist/encode-id new-id))
+                                 (aset js/window.location "hash" (:gist-id @settings))
+                                 (hide-loading)
+                                 (show-edit-buttons)))))]
 
              [(sel1 :.btn-update) :click
-              #(gist/update (:gist-id @settings)
-                            "shoelace grid"
-                            (str (layout->edn @layout))
-                            (fn [r]
-                              (let [new-id (aget r "id")]
-                                (aset js/window.location "hash" (gist/encode-id new-id)))))]
+              (fn []
+                (show-loading)
+                (gist/update (:gist-id @settings)
+                             "shoelace grid"
+                             (str (layout->edn @layout))
+                             (fn [r]
+                               (let [new-id (aget r "id")]
+                                 (hide-loading)
+                                 (aset js/window.location "hash" (gist/encode-id new-id))))))]
 
              [(sel1 :.btn-gist) :click
               (fn [e]
@@ -805,11 +820,11 @@
   (let [gist-id (aget js/window.location "hash")]
     (if (> (count gist-id) 0)
       (let [id (gist/decode-id (subs gist-id 1))]
-        (hide-save-button)
-        (show-update-button)
+        (show-edit-buttons)
         (swap! settings assoc :gist-id id)
         (gist/fetch id (fn [content]
-                         (import-layout (aget content "files" "grid.edn" "content")))))
-      (show-save-button))))
+                         (import-layout (aget content "files" "grid.edn" "content"))
+                         (hide-loading))))
+      (do (hide-loading)))))
 
 (load-workspace)
