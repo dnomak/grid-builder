@@ -77,7 +77,9 @@
 (def settings (atom {:media-mode :sm
                      :include-container true
                      :active-row :none
-                     :output-mode :html}))
+                     :output-mode :html
+                     :gist-id false
+                     :gist-version false}))
 
 (def layout (atom []))
 
@@ -615,6 +617,16 @@
                          (conj last-row ebc))))
                    (conj els ebc))))]))
 
+
+(defn show-save-button []
+  (dom/remove-class! (sel1 :.btn-save) :hidden))
+
+(defn hide-save-button []
+  (dom/add-class! (sel1 :.btn-save) :hidden))
+
+(defn show-update-button []
+  (dom/remove-class! (sel1 :.btn-update) :hidden))
+
 (defn draw-workspace []
   (let [workspace (sel1 :.workspace)
         output (sel1 :pre.output)
@@ -712,8 +724,19 @@
               (fn [e]
                 (set-active-row! :none))]
 
-             [(sel1 :.btn-update) :click
+             [(sel1 :.btn-save) :click
               #(gist/create "shoelace grid"
+                            (str (layout->edn @layout))
+                            (fn [r]
+                              (let [new-id (aget r "id")]
+                                (swap! settings assoc :gist-id (gist/encode-id new-id))
+                                (aset js/window.location "hash" (:gist-id @settings))
+                                (hide-save-button)
+                                (show-update-button))))]
+
+             [(sel1 :.btn-update) :click
+              #(gist/update (:gist-id @settings)
+                            "shoelace grid"
                             (str (layout->edn @layout))
                             (fn [r]
                               (let [new-id (aget r "id")]
@@ -780,9 +803,13 @@
 
 (defn load-workspace []
   (let [gist-id (aget js/window.location "hash")]
-    (when (> (count gist-id) 0)
+    (if (> (count gist-id) 0)
       (let [id (gist/decode-id (subs gist-id 1))]
+        (hide-save-button)
+        (show-update-button)
+        (swap! settings assoc :gist-id id)
         (gist/fetch id (fn [content]
-                         (import-layout (aget content "files" "grid.edn" "content"))))))))
+                         (import-layout (aget content "files" "grid.edn" "content")))))
+      (show-save-button))))
 
 (load-workspace)

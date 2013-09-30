@@ -7,21 +7,25 @@
 (def url "https://api.github.com/")
 
 (defn- crud
-  [path description content handler]
-  (.post js/$
-         (str url path)
-         (.stringify js/JSON (clj->js {"description" description
-                                       "public" true
-                                       "files" {"grid.edn" {"content" content}}}))
-         handler))
+  [verb path description files handler]
+  (.ajax js/$
+         (clj->js
+          {"url" (str url path)
+           "type" verb
+           "data" (.stringify js/JSON
+                              (clj->js {"description" description
+                                        "public" true
+                                        "files" files }))
+           "success" handler})))
 
 (defn create
   [description content handler]
-  (crud "gists" description content handler))
+  (crud "POST" "gists" description {"grid.edn" {"content" content}} handler))
 
 (defn update
   [id description content handler]
-  (crud (str "gists/" id) description content handler))
+  (crud "POST" "gists" description {"grid.edn" {"content" content}
+                                    "prior.edn" {"content" (str [id])}} handler))
 
 (defn fetch
   [id handler]

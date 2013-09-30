@@ -18972,14 +18972,14 @@ ajax.core.POST = function() {
 }();
 var gist = {core:{}};
 gist.core.url = "https://api.github.com/";
-gist.core.crud = function(a, b, c, d) {
-  return $.post([cljs.core.str(gist.core.url), cljs.core.str(a)].join(""), JSON.stringify(cljs.core.clj__GT_js.call(null, cljs.core.PersistentArrayMap.fromArray(["description", b, "public", !0, "files", cljs.core.PersistentArrayMap.fromArray(["grid.edn", cljs.core.PersistentArrayMap.fromArray(["content", c], !0)], !0)], !0))), d)
+gist.core.crud = function(a, b, c, d, e) {
+  return $.ajax(cljs.core.clj__GT_js.call(null, cljs.core.PersistentArrayMap.fromArray(["url", [cljs.core.str(gist.core.url), cljs.core.str(b)].join(""), "type", a, "data", JSON.stringify(cljs.core.clj__GT_js.call(null, cljs.core.PersistentArrayMap.fromArray(["description", c, "public", !0, "files", d], !0))), "success", e], !0)))
 };
 gist.core.create = function(a, b, c) {
-  return gist.core.crud.call(null, "gists", a, b, c)
+  return gist.core.crud.call(null, "POST", "gists", a, cljs.core.PersistentArrayMap.fromArray(["grid.edn", cljs.core.PersistentArrayMap.fromArray(["content", b], !0)], !0), c)
 };
 gist.core.update = function(a, b, c, d) {
-  return gist.core.crud.call(null, [cljs.core.str("gists/"), cljs.core.str(a)].join(""), b, c, d)
+  return gist.core.crud.call(null, "POST", "gists", b, cljs.core.PersistentArrayMap.fromArray(["grid.edn", cljs.core.PersistentArrayMap.fromArray(["content", c], !0), "prior.edn", cljs.core.PersistentArrayMap.fromArray(["content", "" + cljs.core.str(cljs.core.PersistentVector.fromArray([a], !0))], !0)], !0), d)
 };
 gist.core.fetch = function(a, b) {
   return $.get([cljs.core.str(gist.core.url), cljs.core.str("gists/"), cljs.core.str(a)].join(""), b)
@@ -19211,7 +19211,7 @@ shoelace.client.new_id_BANG_ = function(a) {
   cljs.core.swap_BANG_.call(null, shoelace.client.id, cljs.core.inc);
   return cljs.core.keyword.call(null, [cljs.core.str(a), cljs.core.str("-"), cljs.core.str(cljs.core.deref.call(null, shoelace.client.id))].join(""))
 };
-shoelace.client.settings = cljs.core.atom.call(null, cljs.core.PersistentArrayMap.fromArray(["\ufdd0:media-mode", "\ufdd0:sm", "\ufdd0:include-container", !0, "\ufdd0:active-row", "\ufdd0:none", "\ufdd0:output-mode", "\ufdd0:html"], !0));
+shoelace.client.settings = cljs.core.atom.call(null, cljs.core.PersistentArrayMap.fromArray(["\ufdd0:media-mode", "\ufdd0:sm", "\ufdd0:include-container", !0, "\ufdd0:active-row", "\ufdd0:none", "\ufdd0:output-mode", "\ufdd0:html", "\ufdd0:gist-id", !1, "\ufdd0:gist-version", !1], !0));
 shoelace.client.layout = cljs.core.atom.call(null, cljs.core.PersistentVector.EMPTY);
 shoelace.client.not_none_QMARK_ = function(a) {
   return!cljs.core._EQ_.call(null, "\ufdd0:none", a)
@@ -20319,6 +20319,15 @@ shoelace.client.rows__GT_html = function(a) {
     }()) : cljs.core.conj.call(null, b, shoelace.client.ebc)
   }())], !0))
 };
+shoelace.client.show_save_button = function() {
+  return dommy.core.remove_class_BANG_.call(null, dommy.utils.__GT_Array.call(null, document.getElementsByClassName("btn-save"))[0], "\ufdd0:hidden")
+};
+shoelace.client.hide_save_button = function() {
+  return dommy.core.add_class_BANG_.call(null, dommy.utils.__GT_Array.call(null, document.getElementsByClassName("btn-save"))[0], "\ufdd0:hidden")
+};
+shoelace.client.show_update_button = function() {
+  return dommy.core.remove_class_BANG_.call(null, dommy.utils.__GT_Array.call(null, document.getElementsByClassName("btn-update"))[0], "\ufdd0:hidden")
+};
 shoelace.client.draw_workspace = function() {
   var a = dommy.utils.__GT_Array.call(null, document.getElementsByClassName("workspace"))[0], b = document.querySelector("pre.output"), c = dommy.utils.__GT_Array.call(null, document.getElementsByClassName("copy-output"))[0], d = document.createElement("div");
   d.className = "container";
@@ -20423,8 +20432,15 @@ shoelace.client.draw_workspace = function() {
     })
   }], !0), cljs.core.PersistentVector.fromArray([g, "\ufdd0:click", shoelace.client.add_row_BANG_], !0), cljs.core.PersistentVector.fromArray([shoelace.client.body, "\ufdd0:mousedown", function() {
     return shoelace.client.set_active_row_BANG_.call(null, "\ufdd0:none")
-  }], !0), cljs.core.PersistentVector.fromArray([dommy.utils.__GT_Array.call(null, document.getElementsByClassName("btn-update"))[0], "\ufdd0:click", function() {
+  }], !0), cljs.core.PersistentVector.fromArray([dommy.utils.__GT_Array.call(null, document.getElementsByClassName("btn-save"))[0], "\ufdd0:click", function() {
     return gist.core.create.call(null, "shoelace grid", "" + cljs.core.str(shoelace.client.layout__GT_edn.call(null, cljs.core.deref.call(null, shoelace.client.layout))), function(a) {
+      cljs.core.swap_BANG_.call(null, shoelace.client.settings, cljs.core.assoc, "\ufdd0:gist-id", gist.core.encode_id.call(null, a.id));
+      window.location.hash = (new cljs.core.Keyword("\ufdd0:gist-id")).call(null, cljs.core.deref.call(null, shoelace.client.settings));
+      shoelace.client.hide_save_button.call(null);
+      return shoelace.client.show_update_button.call(null)
+    })
+  }], !0), cljs.core.PersistentVector.fromArray([dommy.utils.__GT_Array.call(null, document.getElementsByClassName("btn-update"))[0], "\ufdd0:click", function() {
+    return gist.core.update.call(null, (new cljs.core.Keyword("\ufdd0:gist-id")).call(null, cljs.core.deref.call(null, shoelace.client.settings)), "shoelace grid", "" + cljs.core.str(shoelace.client.layout__GT_edn.call(null, cljs.core.deref.call(null, shoelace.client.layout))), function(a) {
       return window.location.hash = gist.core.encode_id.call(null, a.id)
     })
   }], !0), cljs.core.PersistentVector.fromArray([dommy.utils.__GT_Array.call(null, document.getElementsByClassName("btn-gist"))[0], "\ufdd0:click", function() {
@@ -20673,8 +20689,8 @@ shoelace.client.import_layout = function(a) {
 };
 shoelace.client.load_workspace = function() {
   var a = window.location.hash;
-  return 0 < cljs.core.count.call(null, a) ? (a = gist.core.decode_id.call(null, cljs.core.subs.call(null, a, 1)), gist.core.fetch.call(null, a, function(a) {
+  return 0 < cljs.core.count.call(null, a) ? (a = gist.core.decode_id.call(null, cljs.core.subs.call(null, a, 1)), shoelace.client.hide_save_button.call(null), shoelace.client.show_update_button.call(null), cljs.core.swap_BANG_.call(null, shoelace.client.settings, cljs.core.assoc, "\ufdd0:gist-id", a), gist.core.fetch.call(null, a, function(a) {
     return shoelace.client.import_layout.call(null, a.files["grid.edn"].content)
-  })) : null
+  })) : shoelace.client.show_save_button.call(null)
 };
 shoelace.client.load_workspace.call(null);
