@@ -8187,6 +8187,13 @@ footer ul.meta {
   bottom: 45px;
   background-color: #242424;
 }
+.html .html-wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 .html ul {
   list-style: none;
 }
@@ -8230,6 +8237,7 @@ footer ul.meta {
   top: 0;
   left: 0;
   right: 0;
+  width: 320px;
 }
 .html .options:before,
 .html .options:after {
@@ -8320,6 +8328,7 @@ footer ul.meta {
 }
 .html.collapsed {
   margin-right: -320px;
+  bottom: inherit;
 }
 .html.collapsed .options li {
   display: block;
