@@ -5,8 +5,12 @@
   (:use hiccup.core))
 
 (defn handler [request]
-  (when (= "/" (:uri request))
-    (response/resource-response "index.html" {:root "public"})))
+  (cond
+   (and (> (count (:uri request)) 8)
+        (= "/preview" (subs (:uri request) 0 8)))
+      (response/resource-response "preview.html" {:root "public"})
+    (= "/" (:uri request))
+      (response/resource-response "index.html" {:root "public"})))
 
 (def app
   (-> handler

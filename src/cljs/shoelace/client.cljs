@@ -11,7 +11,7 @@
    [gist.core :as gist]
    [ednio.core :as ednio]
    [cljs.reader :refer [read-string]]
-   [shoelace.layout :refer [sizes sizes-index valid-layout? edn->row]])
+   [grid.core :as grid :refer [sizes sizes-index size-classes valid-layout? edn->row vcat]])
   (:require-macros
    [cljs.core.async.macros :refer [go]]
    [dommy.macros :refer [node sel sel1]]))
@@ -444,31 +444,6 @@
       (dom/insert-before! row-el new-row-el)
       (set-active-row! row-id))))
 
-(defn size-classes [c]
-  (remove nil?
-          (flatten
-           (concat
-            (if (:name c) [(split (:name c) #"\s+")] [])
-            (map (fn [s]
-                   (if (s c)
-                     (let [[offset width] (s c)]
-                       [(when (> offset 0)
-                          (str "col-" (name s) "-offset-" offset))
-                        (str "col-" (name s) "-" width)])))
-                 sizes)))))
-
-(defn layout->html
-  [rows]
-  (map
-   (fn [r]
-     (conj (if (:name r)
-             [:div.row {:class (str "row " (:name r))}]
-             [:div.row])
-           (map (fn [c]
-                  [:div {:class (join " " (size-classes c))}])
-                (:cols r))))
-   rows))
-
 (defn layout->jade
   [rows]
   (let [include-container (:include-container @settings)
@@ -486,8 +461,6 @@
                               (str "." (join "." (size-classes col)))))
                            (join (str "\n" col-prefix))))))
               (join "\n")))))
-
-(def vcat (comp vec concat))
 
 (defn layout->edn
   [rows]
@@ -651,7 +624,7 @@
         update-output (fn []
           (let [mode (:output-mode @settings)
                 code (condp = mode
-                       :html (let [layout-html (layout->html @layout)]
+                       :html (let [layout-html (grid/layout->html @layout)]
                                (js/html_beautify
                                 (hrt/render-html
                                  (if (:include-container @settings)
@@ -734,6 +707,15 @@
               (fn [e]
                 (set-active-row! :none))]
 
+             [(sel1 :.btn-preview) :click
+              (fn []
+                (let [win (.open js/window (str (aget js/window.location "protocol")
+                                                "//"
+                                                (aget js/window.location "host")
+                                                "/preview/#"
+                                                (gist/encode-id (:gist-id @settings))))]
+                  (.focus win)))]
+
              [(sel1 :.btn-save) :click
               (fn []
                 (show-loading)
@@ -741,8 +723,8 @@
                              (str (layout->edn @layout))
                              (fn [r]
                                (let [new-id (aget r "id")]
-                                 (swap! settings assoc :gist-id (gist/encode-id new-id))
-                                 (aset js/window.location "hash" (:gist-id @settings))
+                                 (swap! settings assoc :gist-id new-id)
+                                 (aset js/window.location "hash" (gist/encode-id (:gist-id @settings)))
                                  (hide-loading)
                                  (show-edit-buttons)))))]
 
@@ -765,8 +747,6 @@
              [container columns rows]
              [rows new-row]
              [workspace container])))
-
-(draw-workspace)
 
 (defn import-layout
   [layout-str]
@@ -816,15 +796,25 @@
       (spy [:BAD]))
     (update-cols-for-media :sm)))
 
-(defn load-workspace []
+(defn load-gist [handler]
   (let [gist-id (aget js/window.location "hash")]
     (if (> (count gist-id) 0)
       (let [id (gist/decode-id (subs gist-id 1))]
-        (show-edit-buttons)
-        (swap! settings assoc :gist-id id)
-        (gist/fetch id (fn [content]
-                         (import-layout (aget content "files" "grid.edn" "content"))
-                         (hide-loading))))
-      (do (hide-loading)))))
+        (gist/fetch id #(handler id %)))
+      (hide-loading))))
 
-(load-workspace)
+(defn load-workspace []
+  (load-gist (fn [id content]
+               (show-edit-buttons)
+               (swap! settings assoc :gist-id id)
+               (import-layout (aget content "files" "grid.edn" "content"))
+               (hide-loading))))
+
+(if (= (aget js/window.location "pathname") "/preview/")
+  (do (load-gist (fn [id content]
+                   (js/console.log content)
+                   (dom/set-html! (sel1 ".container")
+                                  (grid/edn-string->html (aget content "files" "grid.edn" "content"))))))
+  (do
+    (draw-workspace)
+    (load-workspace)))

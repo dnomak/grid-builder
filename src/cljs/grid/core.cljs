@@ -1,4 +1,8 @@
-(ns shoelace.layout)
+(ns grid.core
+  (:require
+   [clojure.string :refer [join split]]
+   [cljs.reader :refer [read-string]]
+   [hiccups.runtime :as hrt]))
 
 (def vcat (comp vec concat))
 
@@ -68,3 +72,38 @@
      :cols (map-indexed (fn [i c] (assoc c :pos i))
                         (map edn->col cols))
      :wrap false}))
+
+(defn size-classes [c]
+  (remove nil?
+          (flatten
+           (concat
+            (if (:name c) [(split (:name c) #"\s+")] [])
+            (map (fn [s]
+                   (if (s c)
+                     (let [[offset width] (s c)]
+                       [(when (> offset 0)
+                          (str "col-" (name s) "-offset-" offset))
+                        (str "col-" (name s) "-" width)])))
+                 sizes)))))
+
+(defn layout->html
+  [rows]
+  (map
+   (fn [r]
+     (conj (if (:name r)
+             [:div.row {:class (str "row " (:name r))}]
+             [:div.row])
+           (map (fn [c]
+                  [:div {:class (join " " (size-classes c))}])
+                (:cols r))))
+   rows))
+
+(defn edn-string->layout
+  [edn-string]
+  (let [rows (read-string edn-string)]
+    (when (valid-layout? rows)
+      (map edn->row rows))))
+
+(defn edn-string->html
+  [edn-string]
+  (hrt/render-html (layout->html (edn-string->layout edn-string))))

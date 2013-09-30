@@ -1,0 +1,4 @@
+.row > div {
+	min-height: 100px; 
+	background: blue;
+}
