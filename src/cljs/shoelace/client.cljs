@@ -728,6 +728,8 @@
              [rows new-row]
              [workspace container])))
 
+(draw-workspace)
+
 (defn import-layout
   [layout-str]
   (let [data (read-string layout-str)
@@ -757,10 +759,11 @@
                 col-unit (calc-col-unit)]
             (doseq [col (:cols row)]
               (let [[new-col-id new-col-el new-col-in-chan els col-name-el]
-                    (add-col! false duped-cols-el duped-new-col-el duped-row-id)
+                      (add-col! false duped-cols-el duped-new-col-el duped-row-id)
                     path [(:pos new-row) :cols (:pos col)]]
+                (dom/add-class! (:width  els) :easing)
+                (dom/add-class! (:offset els) :easing)
                 (swap! layout assoc-in (conj path :name) (:name col))
-                (dom/add-class! (:width els) :easing)
                 (when (:name col)
                   (aset col-name-el "value" (:name col)))
                 (doseq [size sizes]
@@ -770,21 +773,16 @@
                              [(:width els)  :width (- (* col-unit ((size col) 1))
                                                       col-margin-width)])
                     (swap! layout assoc-in (conj path size) (size col))))
-                (when (= grid-cols (total-cols-used (get-row duped-row-id)
-                                                    (@settings :media-mode)))
-                  (dom/add-class! duped-new-col-el :hidden))
+                (dom/add-class! duped-new-col-el :hidden)
                 (put! new-col-in-chan [:draw-classes]))))))
-
-      (spy [:BAD]))))
+      (spy [:BAD]))
+    (update-cols-for-media :sm)))
 
 (defn load-workspace []
   (let [gist-id (aget js/window.location "hash")]
-    (spy gist-id)
-    (spy (count gist-id))
     (when (> (count gist-id) 0)
       (let [id (gist/decode-id (subs gist-id 1))]
         (gist/fetch id (fn [content]
                          (import-layout (aget content "files" "grid.edn" "content"))))))))
 
-(draw-workspace)
 (load-workspace)

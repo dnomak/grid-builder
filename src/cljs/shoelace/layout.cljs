@@ -65,5 +65,6 @@
                       [(first data) (rest data)]
                       [false data])]
     {:name name
-     :cols (map edn->col cols)
+     :cols (map-indexed (fn [i c] (assoc c :pos i))
+                        (map edn->col cols))
      :wrap false}))
