@@ -5,11 +5,13 @@
    [dommy.core :as dom]
    [dommy.utils :refer [dissoc-in]]
    [cljs.core.async :refer [>! <! put! chan sliding-buffer]]
-   [bigsky.aui.util :refer [event-chan applies]]
+   [bigsky.aui.util :refer [event-chan applies jget jset]]
    [bigsky.aui.draggable :refer [draggable]]
    [ajax.core :refer [GET POST]]
    [gist.core :as gist]
-   [ednio.core :as ednio])
+   [ednio.core :as ednio]
+   [cljs.reader :refer [read-string]]
+   [shoelace.layout :refer [sizes sizes-index valid-layout? edn->row]])
   (:require-macros
    [cljs.core.async.macros :refer [go]]
    [dommy.macros :refer [node sel sel1]]))
@@ -98,10 +100,6 @@
 (defn get-col
   [row-id col-id]
   (get-by-id (:cols (get-row row-id)) col-id))
-
-(def sizes [:xs :sm :md :lg])
-
-(def sizes-index {:xs 0 :sm 1 :md 2 :lg 3})
 
 (defn sizes-up-to
   [max]
@@ -487,9 +485,6 @@
                            (join (str "\n" col-prefix))))))
               (join "\n")))))
 
-[["some-row" ["cat" [:sm 3 2] [:lg 3 3]]
-             ["cat" [:sm 3 2] [:md 0 1]]]]
-
 (def vcat (comp vec concat))
 
 (defn layout->edn
@@ -733,13 +728,63 @@
              [rows new-row]
              [workspace container])))
 
+(defn import-layout
+  [layout-str]
+  (let [data (read-string layout-str)
+        new-row-el (sel1 :.new-row)]
+    (if (valid-layout? data)
+      (doseq [data-row data]
+        (let [row (edn->row data-row)
+              [duped-row-id duped-row-el duped-cols-el duped-new-col-el duped-name-el] (create-row)]
+          (dom/insert-before! duped-row-el new-row-el)
+          (swap! layout conj
+                 {:id duped-row-id
+                  :pos (count @layout)
+                  :cols []
+                  :wrap false
+                  :name false})
+
+          (when (:name row)
+            (let [duped-row (get-row duped-row-id)]
+              (swap! layout assoc-in [(:pos duped-row) :name] (:name row))
+              (aset duped-name-el "value" (:name row))))
+
+          (when (:wrap row)
+            (let [duped-row (get-row duped-row-id)]
+              (swap! layout assoc-in [(:pos duped-row) :wrap] (:wrap row))))
+
+          (let [new-row (get-row duped-row-id)
+                col-unit (calc-col-unit)]
+            (doseq [col (:cols row)]
+              (let [[new-col-id new-col-el new-col-in-chan els col-name-el]
+                    (add-col! false duped-cols-el duped-new-col-el duped-row-id)
+                    path [(:pos new-row) :cols (:pos col)]]
+                (swap! layout assoc-in (conj path :name) (:name col))
+                (dom/add-class! (:width els) :easing)
+                (when (:name col)
+                  (aset col-name-el "value" (:name col)))
+                (doseq [size sizes]
+                  (when (size col)
+                    (applies dom/set-px!
+                             [(:offset els) :width (* col-unit ((size col) 0))]
+                             [(:width els)  :width (- (* col-unit ((size col) 1))
+                                                      col-margin-width)])
+                    (swap! layout assoc-in (conj path size) (size col))))
+                (when (= grid-cols (total-cols-used (get-row duped-row-id)
+                                                    (@settings :media-mode)))
+                  (dom/add-class! duped-new-col-el :hidden))
+                (put! new-col-in-chan [:draw-classes]))))))
+
+      (spy [:BAD]))))
 
 (defn load-workspace []
   (let [gist-id (aget js/window.location "hash")]
     (spy gist-id)
     (spy (count gist-id))
     (when (> (count gist-id) 0)
-      (spy [:ID (gist/decode-id (subs gist-id 1))]))))
+      (let [id (gist/decode-id (subs gist-id 1))]
+        (gist/fetch id (fn [content]
+                         (import-layout (aget content "files" "grid.edn" "content"))))))))
 
 (draw-workspace)
 (load-workspace)

@@ -16,3 +16,12 @@
 (defn applies
   [f & args]
   (doall (map #(apply f %) args)))
+
+(defn key->path [o k]
+  (apply conj (cons [o] (str/split (name k) #"\."))))
+
+(defn jget [o k]
+  (apply aget (key->path o k)))
+
+(defn jset [o k v]
+  (apply aset (conj (key->path o k) v)))
