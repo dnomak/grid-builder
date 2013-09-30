@@ -34,3 +34,23 @@ input {
   #gradient > .striped(@white, 45deg);
   background-size: 20px 20px;
 }
+
+
+.blackout-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background-color: hsla(0, 0%, 0%, .5);
+  .notification {
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    color: hsl(0, 0%, 100%);
+    font-size: 22px;
+    font-weight: @semibold;
+  }
+}
