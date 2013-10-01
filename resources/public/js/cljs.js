@@ -19042,12 +19042,12 @@ shoelace.client.go_alphabet = function() {
           return a[2] = null, a[1] = 7, "\ufdd0:recur"
         }
         if(5 === c) {
-          var c = a[6], f = cljs.core.rest.call(null, a[7]), c = cljs.core.apply.call(null, c, f);
+          var c = a[7], f = cljs.core.rest.call(null, a[6]), c = cljs.core.apply.call(null, c, f);
           a[2] = c;
           a[1] = 7;
           return"\ufdd0:recur"
         }
-        return 4 === c ? (c = a[2], f = cljs.core.first.call(null, c), f = b.call(null, f), a[6] = f, a[7] = c, a[1] = cljs.core.truth_(f) ? 5 : 6, "\ufdd0:recur") : 3 === c ? (c = a[2], cljs.core.async.impl.ioc_helpers.return_chan.call(null, a, c)) : 2 === c ? cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, a, 4, e) : 1 === c ? (a[2] = null, a[1] = 2, "\ufdd0:recur") : null
+        return 4 === c ? (c = a[2], f = cljs.core.first.call(null, c), f = b.call(null, f), a[6] = c, a[7] = f, a[1] = cljs.core.truth_(f) ? 5 : 6, "\ufdd0:recur") : 3 === c ? (c = a[2], cljs.core.async.impl.ioc_helpers.return_chan.call(null, a, c)) : 2 === c ? cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, a, 4, e) : 1 === c ? (a[2] = null, a[1] = 2, "\ufdd0:recur") : null
       }, c = null, i = function() {
         var a = Array(8);
         a[0] = c;
@@ -20623,8 +20623,29 @@ shoelace.client.load_workspace = function() {
 cljs.core._EQ_.call(null, window.location.pathname, "/preview/") ? shoelace.client.load_gist.call(null, function(a, b, c) {
   console.log(c);
   dommy.core.set_html_BANG_.call(null, dommy.utils.__GT_Array.call(null, document.getElementsByClassName("container"))[0], grid.core.edn_string__GT_html.call(null, c.files["grid.edn"].content));
-  return bigsky.aui.util.applies.call(null, dommy.core.listen_BANG_, cljs.core.PersistentVector.fromArray([dommy.utils.__GT_Array.call(null, document.getElementsByTagName("div")), "\ufdd0:mouseover", function() {
-    return shoelace.client.spy.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:OVER"], !0))
+  var d, e = function() {
+    var a = document.createElement("span");
+    a.appendChild(dommy.template.__GT_node_like.call(null, [cljs.core.str(clojure.string.join.call(null, "", cljs.core.range.call(null, 1, cljs.core.rand.call(null, 8)))), cljs.core.str(" ")].join("")));
+    return a
+  };
+  d = function(a) {
+    var b = window.setInterval(function(b) {
+      return function() {
+        return dommy.core.append_BANG_.call(null, a, b.call(null))
+      }
+    }(e));
+    return dommy.core.listen_once_BANG_.call(null, shoelace.client.body, "\ufdd0:mouseup", function(a) {
+      return function() {
+        return window.clearInterval(a)
+      }
+    }(b, e))
+  };
+  return bigsky.aui.util.applies.call(null, cljs.core.partial.call(null, dommy.core.listen_BANG_, cljs.core.PersistentVector.fromArray([shoelace.client.body, "\ufdd0:.row", "\ufdd0:div"], !0)), cljs.core.PersistentVector.fromArray(["\ufdd0:mousedown", function(a) {
+    return d.call(null, a.target)
+  }], !0), cljs.core.PersistentVector.fromArray(["\ufdd0:mouseenter", function(a) {
+    return shoelace.client.spy.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:enter", a], !0))
+  }], !0), cljs.core.PersistentVector.fromArray(["\ufdd0:mouseleave", function(a) {
+    return shoelace.client.spy.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:leave", a], !0))
   }], !0))
 }) : (shoelace.client.draw_workspace.call(null), shoelace.client.load_workspace.call(null));
 bigsky.aui.resizable = {};

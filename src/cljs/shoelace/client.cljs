@@ -817,10 +817,15 @@
                    (js/console.log content)
                    (dom/set-html! (sel1 ".container")
                                   (grid/edn-string->html (aget content "files" "grid.edn" "content")))
-                   (applies dom/listen!
-                            [(sel :div) :mouseover
-                             (fn [e]
-                               (spy [:OVER]))]))))
+
+                   (let [rand-span #(node [:span (str (join "" (range 1 (rand 8))) " ")])
+                         start-text (fn [el]
+                                      (let [interval (.setInterval js/window #(dom/append! el (rand-span)))]
+                                        (dom/listen-once! body :mouseup #(.clearInterval js/window interval))))]
+                     (applies (partial dom/listen! [body :.row :div])
+                              [:mousedown  (fn [e] (start-text (aget e "target")))]
+                              [:mouseenter (fn [e] (spy [:enter e]))]
+                              [:mouseleave (fn [e] (spy [:leave e]))])))))
   (do
     (draw-workspace)
     (load-workspace)))
