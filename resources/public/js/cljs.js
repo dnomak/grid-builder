@@ -20623,25 +20623,38 @@ shoelace.client.load_workspace = function() {
 cljs.core._EQ_.call(null, window.location.pathname, "/preview/") ? shoelace.client.load_gist.call(null, function(a, b, c) {
   console.log(c);
   dommy.core.set_html_BANG_.call(null, dommy.utils.__GT_Array.call(null, document.getElementsByClassName("container"))[0], grid.core.edn_string__GT_html.call(null, c.files["grid.edn"].content));
-  var d, e = function() {
+  var d = function() {
     var a = document.createElement("span");
     a.appendChild(dommy.template.__GT_node_like.call(null, [cljs.core.str(clojure.string.join.call(null, "", cljs.core.range.call(null, 1, cljs.core.rand.call(null, 8)))), cljs.core.str(" ")].join("")));
     return a
-  };
-  d = function(a) {
+  }, e;
+  e = function(a) {
     var b = window.setInterval(function(b) {
       return function() {
         return dommy.core.append_BANG_.call(null, a, b.call(null))
       }
-    }(e));
+    }(d), 15);
     return dommy.core.listen_once_BANG_.call(null, shoelace.client.body, "\ufdd0:mouseup", function(a) {
       return function() {
         return window.clearInterval(a)
       }
-    }(b, e))
+    }(b, d))
+  };
+  var f;
+  f = function(a) {
+    var b = window.setInterval(function() {
+      var b = dommy.utils.__GT_Array.call(null, dommy.template.__GT_node_like.call(null, a).getElementsByTagName("span"));
+      return 0 < cljs.core.count.call(null, b) ? dommy.core.remove_BANG_.call(null, cljs.core.last.call(null, b)) : null
+    }, 15);
+    return dommy.core.listen_once_BANG_.call(null, shoelace.client.body, "\ufdd0:mouseup", function(a) {
+      return function() {
+        return window.clearInterval(a)
+      }
+    }(b, d, e))
   };
   return bigsky.aui.util.applies.call(null, cljs.core.partial.call(null, dommy.core.listen_BANG_, cljs.core.PersistentVector.fromArray([shoelace.client.body, "\ufdd0:.row", "\ufdd0:div"], !0)), cljs.core.PersistentVector.fromArray(["\ufdd0:mousedown", function(a) {
-    return d.call(null, a.target)
+    var b = a.selectedTarget, c = dommy.core.px.call(null, b, "\ufdd0:width");
+    return a.offsetX > c / 2 ? e.call(null, b) : f.call(null, b)
   }], !0), cljs.core.PersistentVector.fromArray(["\ufdd0:mouseenter", function(a) {
     return shoelace.client.spy.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:enter", a], !0))
   }], !0), cljs.core.PersistentVector.fromArray(["\ufdd0:mouseleave", function(a) {

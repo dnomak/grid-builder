@@ -23,16 +23,24 @@
     url('/blokk/webfonts/BLOKKNeue-Regular.svg#BLOKKNeue-Regular') format('svg');
 }
 
-h1 { font-family: "BLOKKNeue-Regular", serif }
+body, h1, h2, h3, h4, h5, h6 { font-family: "BLOKKNeue-Regular", serif }
 
-h2 { font-family: "BLOKKNeue-Regular", serif }
+.controls {
+   border-top: 1px solid #333;
+   font-family: helvetica;
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   background: rgba(0, 0, 0, 0.5);
+}
 
-h3 { font-family: "BLOKKNeue-Regular", serif }
+.controls > div {
+    float: left;
+    margin-right: 10px;
+    padding: 10px;
+}
 
-h4 { font-family: "BLOKKNeue-Regular", serif }
-
-h5 { font-family: "BLOKKNeue-Regular", serif }
-
-h6 { font-family: "BLOKKNeue-Regular", serif }
-
-body { font-family: "Helvetica", serif }
+.controls > div.active {
+    background: rgba(255, 255, 255, 0.5);
+}

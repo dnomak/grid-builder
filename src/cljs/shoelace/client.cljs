@@ -820,10 +820,24 @@
 
                    (let [rand-span #(node [:span (str (join "" (range 1 (rand 8))) " ")])
                          start-text (fn [el]
-                                      (let [interval (.setInterval js/window #(dom/append! el (rand-span)))]
+                                      (let [interval (.setInterval js/window #(dom/append! el (rand-span)) 15)]
+                                        (dom/listen-once! body :mouseup #(.clearInterval js/window interval))))
+                         start-remv (fn [el]
+                                      (let [interval (.setInterval js/window
+                                                                   (fn []
+                                                                     (let [spans (sel el :span)]
+                                                                       (when (> (count spans) 0)
+                                                                         (dom/remove! (last spans)))))
+                                                                   15)]
                                         (dom/listen-once! body :mouseup #(.clearInterval js/window interval))))]
                      (applies (partial dom/listen! [body :.row :div])
-                              [:mousedown  (fn [e] (start-text (aget e "target")))]
+                              [:mousedown  (fn [e]
+                                             (let [el (aget e "selectedTarget")
+                                                   width (dom/px el :width)
+                                                   left  (aget e "offsetX")]
+                                               (if (> left (/ width 2))
+                                                 (start-text el)
+                                                 (start-remv el))))]
                               [:mouseenter (fn [e] (spy [:enter e]))]
                               [:mouseleave (fn [e] (spy [:leave e]))])))))
   (do
