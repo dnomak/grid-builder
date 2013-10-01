@@ -713,7 +713,7 @@
                                                 "//"
                                                 (aget js/window.location "host")
                                                 "/preview/#"
-                                                (gist/encode-id (:gist-id @settings))))]
+                                                (:gist-id @settings)))]
                   (.focus win)))]
 
              [(sel1 :.btn-save) :click
@@ -723,8 +723,8 @@
                              (str (layout->edn @layout))
                              (fn [r]
                                (let [new-id (aget r "id")]
-                                 (swap! settings assoc :gist-id new-id)
-                                 (aset js/window.location "hash" (gist/encode-id (:gist-id @settings)))
+                                 (swap! settings assoc :gist-id (gist/encode-id new-id))
+                                 (aset js/window.location "hash" (:gist-id @settings))
                                  (hide-loading)
                                  (show-edit-buttons)))))]
 
@@ -737,7 +737,8 @@
                              (fn [r]
                                (let [new-id (aget r "id")]
                                  (hide-loading)
-                                 (aset js/window.location "hash" (gist/encode-id new-id))))))]
+                                 (swap! settings assoc :gist-id (gist/encode-id new-id))
+                                 (aset js/window.location "hash" (:gist-id @settings))))))]
 
              [(sel1 :.btn-gist) :click
               (fn [e]
@@ -799,22 +800,27 @@
 (defn load-gist [handler]
   (let [gist-id (aget js/window.location "hash")]
     (if (> (count gist-id) 0)
-      (let [id (gist/decode-id (subs gist-id 1))]
-        (gist/fetch id #(handler id %)))
+      (let [encoded-id (subs gist-id 1)
+            id (gist/decode-id encoded-id)]
+        (gist/fetch id #(handler encoded-id id %)))
       (hide-loading))))
 
 (defn load-workspace []
-  (load-gist (fn [id content]
+  (load-gist (fn [encoded-id id content]
                (show-edit-buttons)
-               (swap! settings assoc :gist-id id)
+               (swap! settings assoc :gist-id encoded-id)
                (import-layout (aget content "files" "grid.edn" "content"))
                (hide-loading))))
 
 (if (= (aget js/window.location "pathname") "/preview/")
-  (do (load-gist (fn [id content]
+  (do (load-gist (fn [encoded-id id content]
                    (js/console.log content)
                    (dom/set-html! (sel1 ".container")
-                                  (grid/edn-string->html (aget content "files" "grid.edn" "content"))))))
+                                  (grid/edn-string->html (aget content "files" "grid.edn" "content")))
+                   (applies dom/listen!
+                            [(sel :div) :mouseover
+                             (fn [e]
+                               (spy [:OVER]))]))))
   (do
     (draw-workspace)
     (load-workspace)))
