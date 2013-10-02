@@ -1,29 +1,33 @@
 .row > div {
-    min-height: 100px;
+   /* min-height: 100px;*/
     font-family: "BLOKKNeue-Regular", serif;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    background: #efefef;
 }
 
-.row > div:hover {
-    box-shadow: inset 0 0 5px black;
-}
 
 
 @font-face {
     font-family: 'BLOKKNeue-Regular';
-    src: url('/blokk/webfonts/BLOKKNeue-Regular.eot');
+    src: url('../blokk/webfonts/BLOKKNeue-Regular.eot');
+    src: url('../blokk/webfonts/BLOKKNeue-Regular.woff') format('woff'),
+    url('../blokk/webfonts/BLOKKNeue-Regular.svg#BLOKKNeue-Regular') format('svg');
 }
 
-@font-face {
-    font-family: 'BLOKKNeue-Regular';
-    src: url('/blokk/webfonts/BLOKKNeue-Regular.woff') format('woff'),
-    url('/blokk/webfonts/BLOKKNeue-Regular.svg#BLOKKNeue-Regular') format('svg');
+img {
+  max-width: 100%;
 }
 
-body, h1, h2, h3, h4, h5, h6 { font-family: "BLOKKNeue-Regular", serif }
+body {
+  color: hsl(0, 0%, 80%);
+  background-color: hsl(0, 0%, 100%);
+  font-family: "BLOKKNeue-Regular", serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'proxima nova', Helvetica, sans-serif;
+}
 
 .controls {
    border-top: 1px solid #333;
