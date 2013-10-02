@@ -1,0 +1,99 @@
+@font-face {
+    font-family: 'BLOKKNeue-Regular';
+    src: url('../blokk/webfonts/BLOKKNeue-Regular.eot');
+    src: url('../blokk/webfonts/BLOKKNeue-Regular.woff') format('woff'),
+    url('../blokk/webfonts/BLOKKNeue-Regular.svg#BLOKKNeue-Regular') format('svg');
+}
+
+body {
+  &.preview {
+    color: hsl(0, 0%, 80%);
+    background-color: hsl(0, 0%, 100%);
+  }
+}
+
+.container {
+  width: auto;
+  overflow: auto;
+  position: inherit;
+  min-height: inherit;
+  height: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'proxima nova', Helvetica, sans-serif;
+  font-weight: 700;
+  color: hsl(0, 0%, 60%);
+  
+}
+
+.outlines {
+}
+
+.hover-guide {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  li {
+    color: hsl(0, 0%, 0%);
+    display: inline-block;
+    padding: 10px;
+    margin: 5px;
+    &.container-guide {
+      background-color: hsl(37, 23%, 94%);
+    }
+    &.row-guide {
+     background-color: hsl(351, 100%, 92%);
+    }
+    &.col-guide {
+      background-color: hsl(222, 100%, 92%);
+    }
+  }
+}
+
+.container {
+  &.output-preview {
+    font-family: "BLOKKNeue-Regular", serif;
+    margin-bottom: 100px;
+    &:hover {
+      background-color: hsl(0, 0%, 95%);
+      outline: 1px solid hsl(0, 0%, 40%);
+    }
+    .row {
+      &:hover {
+        background-color: hsl(351, 100%, 97%);
+        outline: 1px solid hsl(0, 100%, 50%);
+      }
+    }
+    [class^="col-"] {
+      &:hover {
+        background-color: hsl(222, 100%, 97%);
+        outline: 1px solid hsl(222, 100%, 50%);
+        .wrap {
+          outline: 1px solid hsl(0, 0%, 40%);
+        }
+      }
+    }
+  }
+}
+
+
+.controls {
+   border-top: 1px solid #333;
+   font-family: helvetica;
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   background: rgba(0, 0, 0, 0.5);
+}
+
+.controls > div {
+    float: left;
+    margin-right: 10px;
+    padding: 10px;
+}
+
+.controls > div.active {
+    background: rgba(255, 255, 255, 0.5);
+}
