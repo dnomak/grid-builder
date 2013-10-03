@@ -120,6 +120,15 @@
   [row media]
   (map #(col-for-media % media) (:cols row)))
 
+;;walks up to resolve nils
+(defn final-col-for-media
+  [row-id col-id media]
+  (let [col (get-col row-id col-id)
+        medias (keep #(% col) (sizes-up-to-memo media))
+        offset (first (keep #(% 0) medias))
+        width  (first (keep #(% 1) medias))]
+    [(or offset 0) (or width 12)]))
+
 (defn total-cols-used
   [row media]
   (apply + (flatten (cols-for-media row media))))
@@ -160,12 +169,13 @@
   [row-id col-id media]
   (let [col (get-col row-id col-id)
         has-sizes (media col)
+        has-offset (and has-sizes (has-sizes 0))
+        has-width (and has-sizes (has-sizes 1))
         id (id->sel col-id)
         width-el (sel1 (str id " .width"))
         offset-el (sel1 (str id " .offset"))]
-    (applies (if has-sizes dom/remove-class! dom/add-class!)
-             [width-el :no-changes]
-             [offset-el :no-changes])))
+    ((if has-offset dom/remove-class! dom/add-class!) offset-el :no-changes)
+    ((if has-width  dom/remove-class! dom/add-class!) width-el :no-changes)))
 
 (defn update-cols-for-media
   [media]
@@ -177,11 +187,7 @@
               width-el (sel1 (str id " .width"))
               offset-el (sel1 (str id " .offset"))
               has-sizes (not (nil? (media col)))]
-          (applies (if has-sizes
-                     dom/remove-class!
-                     dom/add-class!)
-                   [offset-el :no-changes]
-                   [width-el :no-changes])
+          (update-col-for-media (:id row) (:id col) media)
           (applies dom/set-px!
                    [offset-el :width (* col-unit (widths 0))]
                    [width-el :width (- (* col-unit (widths 1)) col-margin-width)]))))))
@@ -265,13 +271,15 @@
                                           ((if (> r snap-threshold) + max) c 1))
                               path [(:pos row) :cols (:pos col) media]
                               new-dims (assoc-in (or (get-in @layout path)
-                                                     [0 1])
+                                                     [nil nil])
                                                  [(type-pos type)]
                                                  new-width)]
 
-                          (swap! layout assoc-in path new-dims)
+                          (when (not= cur-cols-used new-dims)
+                            (swap! layout assoc-in path new-dims)
+                            (draw-class-type media type new-width))
+
                           (update-col-for-media row-id col-id media)
-                          (draw-class-type media type new-width)
                           (dom/add-class! (els type) :easing)
                           (dom/set-px! (els type)
                                        :width
@@ -520,6 +528,8 @@
    :md 0.11
    :lg 0.15})
 
+
+
 (defn make-media-previews []
   (let [preview-els (sels sizes (for [size sizes] (str ".preview." (name size) " .preview-rows")))]
     (go-alphabet
@@ -527,19 +537,25 @@
                 (doseq [[_ el] preview-els] (dom/set-text! el ""))
                 (doseq [row @layout]
                   (doseq [[size el] preview-els]
-                    (let [row-el (node [:.preview-row.easing])
+                    (let [row-el (node [:.preview-row])
                           col-unit (* col-width (media-factor size))]
                       (dom/set-px! el :width (+ (* 3 grid-cols)
                                                 (* grid-cols col-unit)))
                       (dom/append! el row-el)
                       (doseq [col (:cols row)]
-                        (let [col-el (node [:.preview-col.easing])
-                              widths (col-for-media col size)]
-                          (when widths
-                            (dom/set-px! col-el :width 1)
-                            (dom/append! row-el col-el)
-                            (dom/set-px! col-el :width (+ (* 3 (dec (apply + widths)))
-                                                          (* (apply + widths) col-unit)))))))))))))
+                        (let [col-el (node [:.preview-col])
+                              offset-el (node [:.preview-col-offset])
+                              width-el (node [:.preview-col-width])
+                              fwidths (final-col-for-media (:id row) (:id col) size)]
+                          (applies dom/append!
+                                   [row-el col-el]
+                                   [col-el offset-el]
+                                   [col-el width-el])
+                          (applies dom/set-px!
+                                   [offset-el :width (+ (* (fwidths 0) 3)
+                                                        (* (fwidths 0) col-unit))]
+                                   [width-el  :width (+ (* (dec (fwidths 1)) 3)
+                                                        (* (fwidths 1)  col-unit))]))))))))))
 
 (def ebo [:.edn-bracket-open.tag "["])
 (def ebc [:.edn-bracket-close.tag "]"])
@@ -550,8 +566,8 @@
          (vec (for [[size offset width] sizes]
                 [:li ebo
                  [:span.edn-kw.atn (str size)]
-                 [:span.edn-kw.atv offset]
-                 [:span.edn-kw.atv.edn-width width] ebc]))))
+                 [:span.edn-kw.atv (or offset "nil")]
+                 [:span.edn-kw.atv.edn-width (or width "nil")] ebc]))))
 
 (defn cols->html
   [cols]
@@ -614,7 +630,7 @@
   (let [workspace (sel1 :.workspace)
         output (sel1 :pre.output)
         copy-output-el (sel1 :.copy-output)
-        container (node [:.container])
+        container (node [:.sl-container])
         rows (node [:.rows])
         columns (node [:.columns])
         new-row (node [:.sl-row.new-row])

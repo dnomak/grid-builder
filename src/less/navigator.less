@@ -57,7 +57,7 @@
     .preview {
       height: 30px;
     }
-  }  
+  }
   .preview-container {
     position: absolute;
     overflow: auto;
@@ -76,15 +76,21 @@
       }
       .preview-col {
         float: left;
-        display: inline-block;
         height: 20px;
+        display: inline-block;
         margin-right: 3px;
         margin-bottom: 3px;
-        border-left: 3px solid hsla(0, 0%, 0%, .2);
         .box-shadow(0px 2px 2px hsla(0, 0%, 0%, .3));
         &:last-child {
            margin-right: 0;
            margin-bottom: 0;
+        }
+        .preview-col-offset, .preview-col-width {
+          display: inline-block;
+          height: 20px;
+        }
+        .preview-col-offset {
+          background: rgba(0, 0, 0, 0.5);
         }
       }
     }
