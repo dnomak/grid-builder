@@ -182,7 +182,7 @@
   (let [col-unit (calc-col-unit)]
     (doseq [row @layout]
       (doseq [col (:cols row)]
-        (let [widths (col-for-media col media)
+        (let [widths (final-col-for-media (:id row) (:id col) media)
               id (id->sel (:id col))
               width-el (sel1 (str id " .width"))
               offset-el (sel1 (str id " .offset"))
@@ -255,6 +255,7 @@
                 row (get-row row-id)
                 col (get-col row-id col-id)
                 cur-cols-used (col-for-media col media)
+                fcols (final-col-for-media row-id col-id media)
                 max-cols (- grid-cols (total-cols-used row media))
                 max-width (- (* (if (row-wraps-for-media? row media)
                                   grid-cols
@@ -275,7 +276,7 @@
                                                  [(type-pos type)]
                                                  new-width)]
 
-                          (when (not= cur-cols-used new-dims)
+                          (when (not= (fcols (type-pos type)) (new-dims (type-pos type)))
                             (swap! layout assoc-in path new-dims)
                             (draw-class-type media type new-width))
 

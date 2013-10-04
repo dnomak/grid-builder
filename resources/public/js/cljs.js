@@ -1725,7 +1725,7 @@ cljs.core._invoke = function() {
       throw cljs.core.missing_protocol.call(null, "IFn.-invoke", a);
     }
     return t.call(null, a, b, c, d, e, f, g, h, i, j, l, k, m, n, q, s, p, r, x, w, y)
-  }, a = function(a, u, v, z, A, C, B, F, E, I, G, J, H, K, L, U, V, ea, Q, ja, R) {
+  }, a = function(a, u, v, z, A, C, B, G, E, I, H, J, F, K, L, N, V, ea, R, ja, S) {
     switch(arguments.length) {
       case 1:
         return b.call(this, a);
@@ -1742,33 +1742,33 @@ cljs.core._invoke = function() {
       case 7:
         return h.call(this, a, u, v, z, A, C, B);
       case 8:
-        return i.call(this, a, u, v, z, A, C, B, F);
+        return i.call(this, a, u, v, z, A, C, B, G);
       case 9:
-        return j.call(this, a, u, v, z, A, C, B, F, E);
+        return j.call(this, a, u, v, z, A, C, B, G, E);
       case 10:
-        return k.call(this, a, u, v, z, A, C, B, F, E, I);
+        return k.call(this, a, u, v, z, A, C, B, G, E, I);
       case 11:
-        return l.call(this, a, u, v, z, A, C, B, F, E, I, G);
+        return l.call(this, a, u, v, z, A, C, B, G, E, I, H);
       case 12:
-        return m.call(this, a, u, v, z, A, C, B, F, E, I, G, J);
+        return m.call(this, a, u, v, z, A, C, B, G, E, I, H, J);
       case 13:
-        return n.call(this, a, u, v, z, A, C, B, F, E, I, G, J, H);
+        return n.call(this, a, u, v, z, A, C, B, G, E, I, H, J, F);
       case 14:
-        return p.call(this, a, u, v, z, A, C, B, F, E, I, G, J, H, K);
+        return p.call(this, a, u, v, z, A, C, B, G, E, I, H, J, F, K);
       case 15:
-        return r.call(this, a, u, v, z, A, C, B, F, E, I, G, J, H, K, L);
+        return r.call(this, a, u, v, z, A, C, B, G, E, I, H, J, F, K, L);
       case 16:
-        return q.call(this, a, u, v, z, A, C, B, F, E, I, G, J, H, K, L, U);
+        return q.call(this, a, u, v, z, A, C, B, G, E, I, H, J, F, K, L, N);
       case 17:
-        return s.call(this, a, u, v, z, A, C, B, F, E, I, G, J, H, K, L, U, V);
+        return s.call(this, a, u, v, z, A, C, B, G, E, I, H, J, F, K, L, N, V);
       case 18:
-        return w.call(this, a, u, v, z, A, C, B, F, E, I, G, J, H, K, L, U, V, ea);
+        return w.call(this, a, u, v, z, A, C, B, G, E, I, H, J, F, K, L, N, V, ea);
       case 19:
-        return y.call(this, a, u, v, z, A, C, B, F, E, I, G, J, H, K, L, U, V, ea, Q);
+        return y.call(this, a, u, v, z, A, C, B, G, E, I, H, J, F, K, L, N, V, ea, R);
       case 20:
-        return t.call(this, a, u, v, z, A, C, B, F, E, I, G, J, H, K, L, U, V, ea, Q, ja);
+        return t.call(this, a, u, v, z, A, C, B, G, E, I, H, J, F, K, L, N, V, ea, R, ja);
       case 21:
-        return x.call(this, a, u, v, z, A, C, B, F, E, I, G, J, H, K, L, U, V, ea, Q, ja, R)
+        return x.call(this, a, u, v, z, A, C, B, G, E, I, H, J, F, K, L, N, V, ea, R, ja, S)
     }
     throw Error("Invalid arity: " + arguments.length);
   };
@@ -19042,12 +19042,12 @@ shoelace.client.go_alphabet = function() {
           return a[2] = null, a[1] = 7, "\ufdd0:recur"
         }
         if(5 === c) {
-          var c = a[6], f = cljs.core.rest.call(null, a[7]), c = cljs.core.apply.call(null, c, f);
+          var c = a[7], f = cljs.core.rest.call(null, a[6]), c = cljs.core.apply.call(null, c, f);
           a[2] = c;
           a[1] = 7;
           return"\ufdd0:recur"
         }
-        return 4 === c ? (c = a[2], f = cljs.core.first.call(null, c), f = b.call(null, f), a[6] = f, a[7] = c, a[1] = cljs.core.truth_(f) ? 5 : 6, "\ufdd0:recur") : 3 === c ? (c = a[2], cljs.core.async.impl.ioc_helpers.return_chan.call(null, a, c)) : 2 === c ? cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, a, 4, e) : 1 === c ? (a[2] = null, a[1] = 2, "\ufdd0:recur") : null
+        return 4 === c ? (c = a[2], f = cljs.core.first.call(null, c), f = b.call(null, f), a[6] = c, a[7] = f, a[1] = cljs.core.truth_(f) ? 5 : 6, "\ufdd0:recur") : 3 === c ? (c = a[2], cljs.core.async.impl.ioc_helpers.return_chan.call(null, a, c)) : 2 === c ? cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, a, 4, e) : 1 === c ? (a[2] = null, a[1] = 2, "\ufdd0:recur") : null
       }, c = null, i = function() {
         var a = Array(8);
         a[0] = c;
@@ -19221,16 +19221,16 @@ shoelace.client.update_cols_for_media = function(a) {
     if(f < e) {
       for(var g = cljs.core._nth.call(null, d, f), h = cljs.core.seq.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, g)), i = null, j = 0, k = 0;;) {
         if(k < j) {
-          var l = cljs.core._nth.call(null, i, k), m = shoelace.client.col_for_media.call(null, l, a), n = shoelace.client.id__GT_sel.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, l)), p = document.querySelector(dommy.core.selector.call(null, [cljs.core.str(n), cljs.core.str(" .width")].join(""))), n = document.querySelector(dommy.core.selector.call(null, [cljs.core.str(n), cljs.core.str(" .offset")].join("")));
+          var l = cljs.core._nth.call(null, i, k), m = shoelace.client.final_col_for_media.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, g), (new cljs.core.Keyword("\ufdd0:id")).call(null, l), a), n = shoelace.client.id__GT_sel.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, l)), p = document.querySelector(dommy.core.selector.call(null, [cljs.core.str(n), cljs.core.str(" .width")].join(""))), n = document.querySelector(dommy.core.selector.call(null, [cljs.core.str(n), cljs.core.str(" .offset")].join("")));
           a.call(null, l);
           shoelace.client.update_col_for_media.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, g), (new cljs.core.Keyword("\ufdd0:id")).call(null, l), a);
           bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([n, "\ufdd0:width", b * m.call(null, 0)], !0), cljs.core.PersistentVector.fromArray([p, "\ufdd0:width", b * m.call(null, 1) - shoelace.client.col_margin_width], !0));
           k += 1
         }else {
           if(h = cljs.core.seq.call(null, h)) {
-            cljs.core.chunked_seq_QMARK_.call(null, h) ? (j = cljs.core.chunk_first.call(null, h), h = cljs.core.chunk_rest.call(null, h), i = j, j = cljs.core.count.call(null, j)) : (i = cljs.core.first.call(null, h), j = shoelace.client.col_for_media.call(null, i, a), l = shoelace.client.id__GT_sel.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, i)), k = document.querySelector(dommy.core.selector.call(null, [cljs.core.str(l), cljs.core.str(" .width")].join(""))), l = document.querySelector(dommy.core.selector.call(null, 
-            [cljs.core.str(l), cljs.core.str(" .offset")].join(""))), a.call(null, i), shoelace.client.update_col_for_media.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, g), (new cljs.core.Keyword("\ufdd0:id")).call(null, i), a), bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([l, "\ufdd0:width", b * j.call(null, 0)], !0), cljs.core.PersistentVector.fromArray([k, "\ufdd0:width", b * j.call(null, 1) - shoelace.client.col_margin_width], 
-            !0)), h = cljs.core.next.call(null, h), i = null, j = 0), k = 0
+            cljs.core.chunked_seq_QMARK_.call(null, h) ? (j = cljs.core.chunk_first.call(null, h), h = cljs.core.chunk_rest.call(null, h), i = j, j = cljs.core.count.call(null, j)) : (i = cljs.core.first.call(null, h), j = shoelace.client.final_col_for_media.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, g), (new cljs.core.Keyword("\ufdd0:id")).call(null, i), a), l = shoelace.client.id__GT_sel.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, i)), k = document.querySelector(dommy.core.selector.call(null, 
+            [cljs.core.str(l), cljs.core.str(" .width")].join(""))), l = document.querySelector(dommy.core.selector.call(null, [cljs.core.str(l), cljs.core.str(" .offset")].join(""))), a.call(null, i), shoelace.client.update_col_for_media.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, g), (new cljs.core.Keyword("\ufdd0:id")).call(null, i), a), bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([l, "\ufdd0:width", b * j.call(null, 0)], !0), 
+            cljs.core.PersistentVector.fromArray([k, "\ufdd0:width", b * j.call(null, 1) - shoelace.client.col_margin_width], !0)), h = cljs.core.next.call(null, h), i = null, j = 0), k = 0
           }else {
             break
           }
@@ -19248,13 +19248,13 @@ shoelace.client.update_cols_for_media = function(a) {
           e = null;
           for(h = f = 0;;) {
             if(h < f) {
-              i = cljs.core._nth.call(null, e, h), j = shoelace.client.col_for_media.call(null, i, a), l = shoelace.client.id__GT_sel.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, i)), k = document.querySelector(dommy.core.selector.call(null, [cljs.core.str(l), cljs.core.str(" .width")].join(""))), l = document.querySelector(dommy.core.selector.call(null, [cljs.core.str(l), cljs.core.str(" .offset")].join(""))), a.call(null, i), shoelace.client.update_col_for_media.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, 
-              g), (new cljs.core.Keyword("\ufdd0:id")).call(null, i), a), bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([l, "\ufdd0:width", b * j.call(null, 0)], !0), cljs.core.PersistentVector.fromArray([k, "\ufdd0:width", b * j.call(null, 1) - shoelace.client.col_margin_width], !0)), h += 1
+              i = cljs.core._nth.call(null, e, h), j = shoelace.client.final_col_for_media.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, g), (new cljs.core.Keyword("\ufdd0:id")).call(null, i), a), l = shoelace.client.id__GT_sel.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, i)), k = document.querySelector(dommy.core.selector.call(null, [cljs.core.str(l), cljs.core.str(" .width")].join(""))), l = document.querySelector(dommy.core.selector.call(null, [cljs.core.str(l), cljs.core.str(" .offset")].join(""))), 
+              a.call(null, i), shoelace.client.update_col_for_media.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, g), (new cljs.core.Keyword("\ufdd0:id")).call(null, i), a), bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([l, "\ufdd0:width", b * j.call(null, 0)], !0), cljs.core.PersistentVector.fromArray([k, "\ufdd0:width", b * j.call(null, 1) - shoelace.client.col_margin_width], !0)), h += 1
             }else {
               if(d = cljs.core.seq.call(null, d)) {
-                cljs.core.chunked_seq_QMARK_.call(null, d) ? (f = cljs.core.chunk_first.call(null, d), d = cljs.core.chunk_rest.call(null, d), e = f, f = cljs.core.count.call(null, f)) : (e = cljs.core.first.call(null, d), f = shoelace.client.col_for_media.call(null, e, a), i = shoelace.client.id__GT_sel.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, e)), h = document.querySelector(dommy.core.selector.call(null, [cljs.core.str(i), cljs.core.str(" .width")].join(""))), i = document.querySelector(dommy.core.selector.call(null, 
-                [cljs.core.str(i), cljs.core.str(" .offset")].join(""))), a.call(null, e), shoelace.client.update_col_for_media.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, g), (new cljs.core.Keyword("\ufdd0:id")).call(null, e), a), bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([i, "\ufdd0:width", b * f.call(null, 0)], !0), cljs.core.PersistentVector.fromArray([h, "\ufdd0:width", b * f.call(null, 1) - shoelace.client.col_margin_width], 
-                !0)), d = cljs.core.next.call(null, d), e = null, f = 0), h = 0
+                cljs.core.chunked_seq_QMARK_.call(null, d) ? (f = cljs.core.chunk_first.call(null, d), d = cljs.core.chunk_rest.call(null, d), e = f, f = cljs.core.count.call(null, f)) : (e = cljs.core.first.call(null, d), f = shoelace.client.final_col_for_media.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, g), (new cljs.core.Keyword("\ufdd0:id")).call(null, e), a), i = shoelace.client.id__GT_sel.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, e)), h = document.querySelector(dommy.core.selector.call(null, 
+                [cljs.core.str(i), cljs.core.str(" .width")].join(""))), i = document.querySelector(dommy.core.selector.call(null, [cljs.core.str(i), cljs.core.str(" .offset")].join(""))), a.call(null, e), shoelace.client.update_col_for_media.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, g), (new cljs.core.Keyword("\ufdd0:id")).call(null, e), a), bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([i, "\ufdd0:width", b * f.call(null, 0)], 
+                !0), cljs.core.PersistentVector.fromArray([h, "\ufdd0:width", b * f.call(null, 1) - shoelace.client.col_margin_width], !0)), d = cljs.core.next.call(null, d), e = null, f = 0), h = 0
               }else {
                 break
               }
@@ -19373,49 +19373,49 @@ shoelace.client.add_col_BANG_ = function(a, b, c, d) {
     shoelace.client.stop_propagation.call(null, b);
     b.preventDefault();
     shoelace.client.set_active_row_BANG_.call(null, d);
-    var g = b.x, h = dommy.core.px.call(null, m.call(null, a), "width"), i = cljs.core.deref.call(null, shoelace.client.settings).call(null, "\ufdd0:media-mode"), j = shoelace.client.calc_col_unit.call(null), l = shoelace.client.get_row.call(null, d), k = shoelace.client.get_col.call(null, d, e), q = shoelace.client.col_for_media.call(null, k, i), p = shoelace.client.grid_cols - shoelace.client.total_cols_used.call(null, l, i), r = (cljs.core.truth_(shoelace.client.row_wraps_for_media_QMARK_.call(null, 
-    l, i)) ? shoelace.client.grid_cols : q.call(null, n.call(null, a)) + p) * j - shoelace.client.col_margin_width, w;
-    w = function(b) {
+    var g = b.x, h = dommy.core.px.call(null, m.call(null, a), "width"), i = cljs.core.deref.call(null, shoelace.client.settings).call(null, "\ufdd0:media-mode"), j = shoelace.client.calc_col_unit.call(null), l = shoelace.client.get_row.call(null, d), k = shoelace.client.get_col.call(null, d, e), q = shoelace.client.col_for_media.call(null, k, i), p = shoelace.client.final_col_for_media.call(null, d, e, i), r = shoelace.client.grid_cols - shoelace.client.total_cols_used.call(null, l, i), w = (cljs.core.truth_(shoelace.client.row_wraps_for_media_QMARK_.call(null, 
+    l, i)) ? shoelace.client.grid_cols : q.call(null, n.call(null, a)) + r) * j - shoelace.client.col_margin_width, t;
+    t = function(b) {
       var b = cljs.core.quot.call(null, b, j), c;
       c = shoelace.client.row_wraps_for_media_QMARK_.call(null, l, i);
       c = cljs.core.truth_(c) ? b + q.call(null, n.call(null, cljs.core._EQ_.call(null, a, "\ufdd0:offset") ? "\ufdd0:width" : "\ufdd0:offset")) < shoelace.client.grid_cols : c;
       if(cljs.core.truth_(c) || (c = b < q.call(null, n.call(null, a)))) {
         return c
       }
-      c = (c = cljs.core._EQ_.call(null, p, 0)) ? b < q.call(null, n.call(null, a)) : c;
+      c = (c = cljs.core._EQ_.call(null, r, 0)) ? b < q.call(null, n.call(null, a)) : c;
       if(cljs.core.truth_(c)) {
         return c
       }
       c = (c = cljs.core._EQ_.call(null, a, "\ufdd0:offset")) ? c : 0 < b;
-      return cljs.core.truth_(c) ? (c = b + q.call(null, n.call(null, cljs.core._EQ_.call(null, a, "\ufdd0:offset") ? "\ufdd0:width" : "\ufdd0:offset")) < shoelace.client.grid_cols) ? b < p + q.call(null, n.call(null, a)) : c : c
+      return cljs.core.truth_(c) ? (c = b + q.call(null, n.call(null, cljs.core._EQ_.call(null, a, "\ufdd0:offset") ? "\ufdd0:width" : "\ufdd0:offset")) < shoelace.client.grid_cols) ? b < r + q.call(null, n.call(null, a)) : c : c
     };
-    var t;
-    t = function(b) {
+    var F;
+    F = function(b) {
       b = h + (b.x - g);
-      b = b > r ? r : b;
-      return cljs.core.truth_(w.call(null, b)) ? dommy.core.set_px_BANG_.call(null, m.call(null, a), "\ufdd0:width", b) : null
+      b = b > w ? w : b;
+      return cljs.core.truth_(t.call(null, b)) ? dommy.core.set_px_BANG_.call(null, m.call(null, a), "\ufdd0:width", b) : null
     };
-    var H, K = function() {
+    var K, L = function() {
       var b = (cljs.core._EQ_.call(null, a, "\ufdd0:offset") ? shoelace.client.col_margin_width : 0) + dommy.core.px.call(null, m.call(null, a), "width"), c = cljs.core.quot.call(null, b, j), b = cljs.core.mod.call(null, b, j), c = cljs.core._EQ_.call(null, a, "\ufdd0:offset") ? 0 < c ? c : 0 : (b > shoelace.client.snap_threshold ? cljs.core._PLUS_ : cljs.core.max).call(null, c, 1), f = cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, l), "\ufdd0:cols", (new cljs.core.Keyword("\ufdd0:pos")).call(null, 
       k), i], !0), b = cljs.core.assoc_in.call(null, function() {
         var a = cljs.core.get_in.call(null, cljs.core.deref.call(null, shoelace.client.layout), f);
         return cljs.core.truth_(a) ? a : cljs.core.PersistentVector.fromArray([null, null], !0)
       }(), cljs.core.PersistentVector.fromArray([n.call(null, a)], !0), c);
-      cljs.core.not_EQ_.call(null, q, b) && (cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, f, b), y.call(null, i, a, c));
+      cljs.core.not_EQ_.call(null, p.call(null, n.call(null, a)), b.call(null, n.call(null, a))) && (cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, f, b), y.call(null, i, a, c));
       shoelace.client.update_col_for_media.call(null, d, e, i);
       dommy.core.add_class_BANG_.call(null, m.call(null, a), "\ufdd0:easing");
       return dommy.core.set_px_BANG_.call(null, m.call(null, a), "\ufdd0:width", c * j - (cljs.core._EQ_.call(null, a, "\ufdd0:width") ? shoelace.client.col_margin_width : 0))
     };
-    H = function() {
-      dommy.core.unlisten_BANG_.call(null, document, "\ufdd0:mousemove", t);
-      K.call(null);
+    K = function() {
+      dommy.core.unlisten_BANG_.call(null, document, "\ufdd0:mousemove", F);
+      L.call(null);
       return setTimeout(function() {
         s.call(null);
         return dommy.core.remove_class_BANG_.call(null, f, "\ufdd0:dragging")
       }, 300)
     };
-    var L = cljs.core.not_EQ_.call(null, i, "\ufdd0:xs");
-    return(L ? L : cljs.core._EQ_.call(null, a, "\ufdd0:width")) ? (dommy.core.add_class_BANG_.call(null, f, "\ufdd0:dragging"), dommy.core.remove_class_BANG_.call(null, m.call(null, a), "\ufdd0:easing"), dommy.core.add_class_BANG_.call(null, c, "\ufdd0:hidden"), dommy.core.listen_BANG_.call(null, document, "\ufdd0:mousemove", t), dommy.core.listen_once_BANG_.call(null, document, "\ufdd0:mouseup", H)) : null
+    var N = cljs.core.not_EQ_.call(null, i, "\ufdd0:xs");
+    return(N ? N : cljs.core._EQ_.call(null, a, "\ufdd0:width")) ? (dommy.core.add_class_BANG_.call(null, f, "\ufdd0:dragging"), dommy.core.remove_class_BANG_.call(null, m.call(null, a), "\ufdd0:easing"), dommy.core.add_class_BANG_.call(null, c, "\ufdd0:hidden"), dommy.core.listen_BANG_.call(null, document, "\ufdd0:mousemove", F), dommy.core.listen_once_BANG_.call(null, document, "\ufdd0:mouseup", K)) : null
   };
   cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.update_in, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, r), "\ufdd0:cols"], !0), cljs.core.conj, cljs.core.PersistentArrayMap.fromArray(["\ufdd0:id", e, "\ufdd0:name", !1, "\ufdd0:pos", cljs.core.count.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, r)), cljs.core.deref.call(null, shoelace.client.settings).call(null, "\ufdd0:media-mode"), cljs.core.PersistentVector.fromArray([0, 
   1], !0)], !0));
@@ -19927,33 +19927,33 @@ shoelace.client.make_media_previews = function() {
       if(y < w) {
         for(var t = cljs.core._nth.call(null, s, y), x = cljs.core.seq.call(null, a), D = null, u = 0, v = 0;;) {
           if(v < u) {
-            var z = cljs.core._nth.call(null, D, v), A = cljs.core.nth.call(null, z, 0, null), C = cljs.core.nth.call(null, z, 1, null), B, F = document.createElement("div");
-            F.className = "preview-row";
-            B = F;
+            var z = cljs.core._nth.call(null, D, v), A = cljs.core.nth.call(null, z, 0, null), C = cljs.core.nth.call(null, z, 1, null), B, G = document.createElement("div");
+            G.className = "preview-row";
+            B = G;
             var E = shoelace.client.col_width * shoelace.client.media_factor.call(null, A);
             dommy.core.set_px_BANG_.call(null, C, "\ufdd0:width", 3 * shoelace.client.grid_cols + shoelace.client.grid_cols * E);
             dommy.core.append_BANG_.call(null, C, B);
-            for(var I = cljs.core.seq.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, t)), G = null, J = 0, H = 0;;) {
-              if(H < J) {
-                var K = cljs.core._nth.call(null, G, H), L, U = document.createElement("div");
-                U.className = "preview-col";
-                L = U;
+            for(var I = cljs.core.seq.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, t)), H = null, J = 0, F = 0;;) {
+              if(F < J) {
+                var K = cljs.core._nth.call(null, H, F), L, N = document.createElement("div");
+                N.className = "preview-col";
+                L = N;
                 var V, ea = document.createElement("div");
                 ea.className = "preview-col-offset";
                 V = ea;
-                var Q, ja = document.createElement("div");
+                var R, ja = document.createElement("div");
                 ja.className = "preview-col-width";
-                Q = ja;
-                var R = shoelace.client.final_col_for_media.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, t), (new cljs.core.Keyword("\ufdd0:id")).call(null, K), A);
-                bigsky.aui.util.applies.call(null, dommy.core.append_BANG_, cljs.core.PersistentVector.fromArray([B, L], !0), cljs.core.PersistentVector.fromArray([L, V], !0), cljs.core.PersistentVector.fromArray([L, Q], !0));
-                bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([V, "\ufdd0:width", 3 * R.call(null, 0) + R.call(null, 0) * E], !0), cljs.core.PersistentVector.fromArray([Q, "\ufdd0:width", 3 * (R.call(null, 1) - 1) + R.call(null, 1) * E], !0));
-                H += 1
+                R = ja;
+                var S = shoelace.client.final_col_for_media.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, t), (new cljs.core.Keyword("\ufdd0:id")).call(null, K), A);
+                bigsky.aui.util.applies.call(null, dommy.core.append_BANG_, cljs.core.PersistentVector.fromArray([B, L], !0), cljs.core.PersistentVector.fromArray([L, V], !0), cljs.core.PersistentVector.fromArray([L, R], !0));
+                bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([V, "\ufdd0:width", 3 * S.call(null, 0) + S.call(null, 0) * E], !0), cljs.core.PersistentVector.fromArray([R, "\ufdd0:width", 3 * (S.call(null, 1) - 1) + S.call(null, 1) * E], !0));
+                F += 1
               }else {
                 var Ra = cljs.core.seq.call(null, I);
                 if(Ra) {
                   var ta = Ra;
                   if(cljs.core.chunked_seq_QMARK_.call(null, ta)) {
-                    var kb = cljs.core.chunk_first.call(null, ta), Db = cljs.core.chunk_rest.call(null, ta), N = kb, ua = cljs.core.count.call(null, kb), I = Db, G = N, J = ua
+                    var kb = cljs.core.chunk_first.call(null, ta), Db = cljs.core.chunk_rest.call(null, ta), O = kb, ua = cljs.core.count.call(null, kb), I = Db, H = O, J = ua
                   }else {
                     var Eb = cljs.core.first.call(null, ta), W, lb = document.createElement("div");
                     lb.className = "preview-col";
@@ -19968,10 +19968,10 @@ shoelace.client.make_media_previews = function() {
                     bigsky.aui.util.applies.call(null, dommy.core.append_BANG_, cljs.core.PersistentVector.fromArray([B, W], !0), cljs.core.PersistentVector.fromArray([W, va], !0), cljs.core.PersistentVector.fromArray([W, wa], !0));
                     bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([va, "\ufdd0:width", 3 * aa.call(null, 0) + aa.call(null, 0) * E], !0), cljs.core.PersistentVector.fromArray([wa, "\ufdd0:width", 3 * (aa.call(null, 1) - 1) + aa.call(null, 1) * E], !0));
                     I = cljs.core.next.call(null, ta);
-                    G = null;
+                    H = null;
                     J = 0
                   }
-                  H = 0
+                  F = 0
                 }else {
                   break
                 }
@@ -19991,9 +19991,9 @@ shoelace.client.make_media_previews = function() {
                 var xa = shoelace.client.col_width * shoelace.client.media_factor.call(null, fa);
                 dommy.core.set_px_BANG_.call(null, Sa, "\ufdd0:width", 3 * shoelace.client.grid_cols + shoelace.client.grid_cols * xa);
                 dommy.core.append_BANG_.call(null, Sa, ba);
-                for(var Ua = cljs.core.seq.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, t)), Va = null, Wa = 0, S = 0;;) {
-                  if(S < Wa) {
-                    var ya = cljs.core._nth.call(null, Va, S), X, ob = document.createElement("div");
+                for(var Ua = cljs.core.seq.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, t)), Va = null, Wa = 0, T = 0;;) {
+                  if(T < Wa) {
+                    var ya = cljs.core._nth.call(null, Va, T), X, ob = document.createElement("div");
                     ob.className = "preview-col";
                     X = ob;
                     var Ja, za = document.createElement("div");
@@ -20005,15 +20005,15 @@ shoelace.client.make_media_previews = function() {
                     var Ka = shoelace.client.final_col_for_media.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, t), (new cljs.core.Keyword("\ufdd0:id")).call(null, ya), fa);
                     bigsky.aui.util.applies.call(null, dommy.core.append_BANG_, cljs.core.PersistentVector.fromArray([ba, X], !0), cljs.core.PersistentVector.fromArray([X, Ja], !0), cljs.core.PersistentVector.fromArray([X, Xa], !0));
                     bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([Ja, "\ufdd0:width", 3 * Ka.call(null, 0) + Ka.call(null, 0) * xa], !0), cljs.core.PersistentVector.fromArray([Xa, "\ufdd0:width", 3 * (Ka.call(null, 1) - 1) + Ka.call(null, 1) * xa], !0));
-                    S += 1
+                    T += 1
                   }else {
                     var Ya = cljs.core.seq.call(null, Ua);
                     if(Ya) {
-                      var O = Ya;
-                      if(cljs.core.chunked_seq_QMARK_.call(null, O)) {
-                        var La = cljs.core.chunk_first.call(null, O), Za = cljs.core.chunk_rest.call(null, O), $a = La, Aa = cljs.core.count.call(null, La), Ua = Za, Va = $a, Wa = Aa
+                      var P = Ya;
+                      if(cljs.core.chunked_seq_QMARK_.call(null, P)) {
+                        var La = cljs.core.chunk_first.call(null, P), Za = cljs.core.chunk_rest.call(null, P), $a = La, Aa = cljs.core.count.call(null, La), Ua = Za, Va = $a, Wa = Aa
                       }else {
-                        var P = cljs.core.first.call(null, O), ca, qb = document.createElement("div");
+                        var Q = cljs.core.first.call(null, P), ca, qb = document.createElement("div");
                         qb.className = "preview-col";
                         ca = qb;
                         var da, rb = document.createElement("div");
@@ -20022,14 +20022,14 @@ shoelace.client.make_media_previews = function() {
                         var Ba, Ma = document.createElement("div");
                         Ma.className = "preview-col-width";
                         Ba = Ma;
-                        var na = shoelace.client.final_col_for_media.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, t), (new cljs.core.Keyword("\ufdd0:id")).call(null, P), fa);
+                        var na = shoelace.client.final_col_for_media.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, t), (new cljs.core.Keyword("\ufdd0:id")).call(null, Q), fa);
                         bigsky.aui.util.applies.call(null, dommy.core.append_BANG_, cljs.core.PersistentVector.fromArray([ba, ca], !0), cljs.core.PersistentVector.fromArray([ca, da], !0), cljs.core.PersistentVector.fromArray([ca, Ba], !0));
                         bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([da, "\ufdd0:width", 3 * na.call(null, 0) + na.call(null, 0) * xa], !0), cljs.core.PersistentVector.fromArray([Ba, "\ufdd0:width", 3 * (na.call(null, 1) - 1) + na.call(null, 1) * xa], !0));
-                        Ua = cljs.core.next.call(null, O);
+                        Ua = cljs.core.next.call(null, P);
                         Va = null;
                         Wa = 0
                       }
-                      S = 0
+                      T = 0
                     }else {
                       break
                     }
@@ -20061,9 +20061,9 @@ shoelace.client.make_media_previews = function() {
                 var Da = shoelace.client.col_width * shoelace.client.media_factor.call(null, ga);
                 dommy.core.set_px_BANG_.call(null, eb, "\ufdd0:width", 3 * shoelace.client.grid_cols + shoelace.client.grid_cols * Da);
                 dommy.core.append_BANG_.call(null, eb, Oa);
-                for(var M = cljs.core.seq.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, t)), ha = null, fb = 0, T = 0;;) {
-                  if(T < fb) {
-                    var Hb = cljs.core._nth.call(null, ha, T), pa, Pa = document.createElement("div");
+                for(var M = cljs.core.seq.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, t)), ha = null, fb = 0, U = 0;;) {
+                  if(U < fb) {
+                    var Hb = cljs.core._nth.call(null, ha, U), pa, Pa = document.createElement("div");
                     Pa.className = "preview-col";
                     pa = Pa;
                     var Ea, Qa = document.createElement("div");
@@ -20075,7 +20075,7 @@ shoelace.client.make_media_previews = function() {
                     var Fa = shoelace.client.final_col_for_media.call(null, (new cljs.core.Keyword("\ufdd0:id")).call(null, t), (new cljs.core.Keyword("\ufdd0:id")).call(null, Hb), ga);
                     bigsky.aui.util.applies.call(null, dommy.core.append_BANG_, cljs.core.PersistentVector.fromArray([Oa, pa], !0), cljs.core.PersistentVector.fromArray([pa, Ea], !0), cljs.core.PersistentVector.fromArray([pa, ia], !0));
                     bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([Ea, "\ufdd0:width", 3 * Fa.call(null, 0) + Fa.call(null, 0) * Da], !0), cljs.core.PersistentVector.fromArray([ia, "\ufdd0:width", 3 * (Fa.call(null, 1) - 1) + Fa.call(null, 1) * Da], !0));
-                    T += 1
+                    U += 1
                   }else {
                     var ra = cljs.core.seq.call(null, M);
                     if(ra) {
@@ -20099,7 +20099,7 @@ shoelace.client.make_media_previews = function() {
                         ha = null;
                         fb = 0
                       }
-                      T = 0
+                      U = 0
                     }else {
                       break
                     }
@@ -20472,27 +20472,27 @@ shoelace.client.import_layout = function(a) {
             dommy.core.add_class_BANG_.call(null, (new cljs.core.Keyword("\ufdd0:offset")).call(null, A), "\ufdd0:easing");
             cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, cljs.core.conj.call(null, B, "\ufdd0:name"), (new cljs.core.Keyword("\ufdd0:name")).call(null, u));
             cljs.core.truth_((new cljs.core.Keyword("\ufdd0:name")).call(null, u)) && (C.value = (new cljs.core.Keyword("\ufdd0:name")).call(null, u));
-            for(var F = cljs.core.seq.call(null, grid.core.sizes), E = null, I = 0, G = 0;;) {
-              if(G < I) {
-                var J = cljs.core._nth.call(null, E, G);
+            for(var G = cljs.core.seq.call(null, grid.core.sizes), E = null, I = 0, H = 0;;) {
+              if(H < I) {
+                var J = cljs.core._nth.call(null, E, H);
                 cljs.core.truth_(J.call(null, u)) && (bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:offset")).call(null, A), "\ufdd0:width", w * J.call(null, u).call(null, 0)], !0), cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:width")).call(null, A), "\ufdd0:width", w * J.call(null, u).call(null, 1) - shoelace.client.col_margin_width], !0)), cljs.core.swap_BANG_.call(null, shoelace.client.layout, 
                 cljs.core.assoc_in, cljs.core.conj.call(null, B, J), J.call(null, u)));
-                G += 1
+                H += 1
               }else {
-                var H = cljs.core.seq.call(null, F);
-                if(H) {
-                  var K = H;
+                var F = cljs.core.seq.call(null, G);
+                if(F) {
+                  var K = F;
                   if(cljs.core.chunked_seq_QMARK_.call(null, K)) {
-                    var L = cljs.core.chunk_first.call(null, K), U = cljs.core.chunk_rest.call(null, K), V = L, ea = cljs.core.count.call(null, L), F = U, E = V, I = ea
+                    var L = cljs.core.chunk_first.call(null, K), N = cljs.core.chunk_rest.call(null, K), V = L, ea = cljs.core.count.call(null, L), G = N, E = V, I = ea
                   }else {
-                    var Q = cljs.core.first.call(null, K);
-                    cljs.core.truth_(Q.call(null, u)) && (bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:offset")).call(null, A), "\ufdd0:width", w * Q.call(null, u).call(null, 0)], !0), cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:width")).call(null, A), "\ufdd0:width", w * Q.call(null, u).call(null, 1) - shoelace.client.col_margin_width], !0)), cljs.core.swap_BANG_.call(null, shoelace.client.layout, 
-                    cljs.core.assoc_in, cljs.core.conj.call(null, B, Q), Q.call(null, u)));
-                    F = cljs.core.next.call(null, K);
+                    var R = cljs.core.first.call(null, K);
+                    cljs.core.truth_(R.call(null, u)) && (bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:offset")).call(null, A), "\ufdd0:width", w * R.call(null, u).call(null, 0)], !0), cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:width")).call(null, A), "\ufdd0:width", w * R.call(null, u).call(null, 1) - shoelace.client.col_margin_width], !0)), cljs.core.swap_BANG_.call(null, shoelace.client.layout, 
+                    cljs.core.assoc_in, cljs.core.conj.call(null, B, R), R.call(null, u)));
+                    G = cljs.core.next.call(null, K);
                     E = null;
                     I = 0
                   }
-                  G = 0
+                  H = 0
                 }else {
                   break
                 }
@@ -20504,23 +20504,23 @@ shoelace.client.import_layout = function(a) {
           }else {
             var ja = cljs.core.seq.call(null, y);
             if(ja) {
-              var R = ja;
-              if(cljs.core.chunked_seq_QMARK_.call(null, R)) {
-                var Ra = cljs.core.chunk_first.call(null, R), ta = cljs.core.chunk_rest.call(null, R), kb = Ra, Db = cljs.core.count.call(null, Ra), y = ta, t = kb, x = Db
+              var S = ja;
+              if(cljs.core.chunked_seq_QMARK_.call(null, S)) {
+                var Ra = cljs.core.chunk_first.call(null, S), ta = cljs.core.chunk_rest.call(null, S), kb = Ra, Db = cljs.core.count.call(null, Ra), y = ta, t = kb, x = Db
               }else {
-                var N = cljs.core.first.call(null, R), ua = shoelace.client.add_col_BANG_.call(null, !1, m, n, k);
+                var O = cljs.core.first.call(null, S), ua = shoelace.client.add_col_BANG_.call(null, !1, m, n, k);
                 cljs.core.nth.call(null, ua, 0, null);
                 cljs.core.nth.call(null, ua, 1, null);
-                var Eb = cljs.core.nth.call(null, ua, 2, null), W = cljs.core.nth.call(null, ua, 3, null), lb = cljs.core.nth.call(null, ua, 4, null), va = cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, s), "\ufdd0:cols", (new cljs.core.Keyword("\ufdd0:pos")).call(null, N)], !0);
+                var Eb = cljs.core.nth.call(null, ua, 2, null), W = cljs.core.nth.call(null, ua, 3, null), lb = cljs.core.nth.call(null, ua, 4, null), va = cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, s), "\ufdd0:cols", (new cljs.core.Keyword("\ufdd0:pos")).call(null, O)], !0);
                 dommy.core.add_class_BANG_.call(null, (new cljs.core.Keyword("\ufdd0:width")).call(null, W), "\ufdd0:easing");
                 dommy.core.add_class_BANG_.call(null, (new cljs.core.Keyword("\ufdd0:offset")).call(null, W), "\ufdd0:easing");
-                cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, cljs.core.conj.call(null, va, "\ufdd0:name"), (new cljs.core.Keyword("\ufdd0:name")).call(null, N));
-                cljs.core.truth_((new cljs.core.Keyword("\ufdd0:name")).call(null, N)) && (lb.value = (new cljs.core.Keyword("\ufdd0:name")).call(null, N));
+                cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, cljs.core.conj.call(null, va, "\ufdd0:name"), (new cljs.core.Keyword("\ufdd0:name")).call(null, O));
+                cljs.core.truth_((new cljs.core.Keyword("\ufdd0:name")).call(null, O)) && (lb.value = (new cljs.core.Keyword("\ufdd0:name")).call(null, O));
                 for(var Ha = cljs.core.seq.call(null, grid.core.sizes), wa = null, Ia = 0, aa = 0;;) {
                   if(aa < Ia) {
                     var ka = cljs.core._nth.call(null, wa, aa);
-                    cljs.core.truth_(ka.call(null, N)) && (bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:offset")).call(null, W), "\ufdd0:width", w * ka.call(null, N).call(null, 0)], !0), cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:width")).call(null, W), "\ufdd0:width", w * ka.call(null, N).call(null, 1) - shoelace.client.col_margin_width], !0)), cljs.core.swap_BANG_.call(null, shoelace.client.layout, 
-                    cljs.core.assoc_in, cljs.core.conj.call(null, va, ka), ka.call(null, N)));
+                    cljs.core.truth_(ka.call(null, O)) && (bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:offset")).call(null, W), "\ufdd0:width", w * ka.call(null, O).call(null, 0)], !0), cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:width")).call(null, W), "\ufdd0:width", w * ka.call(null, O).call(null, 1) - shoelace.client.col_margin_width], !0)), cljs.core.swap_BANG_.call(null, shoelace.client.layout, 
+                    cljs.core.assoc_in, cljs.core.conj.call(null, va, ka), ka.call(null, O)));
                     aa += 1
                   }else {
                     var la = cljs.core.seq.call(null, Ha);
@@ -20530,8 +20530,8 @@ shoelace.client.import_layout = function(a) {
                         var mb = cljs.core.chunk_first.call(null, ma), Fb = cljs.core.chunk_rest.call(null, ma), Gb = mb, nb = cljs.core.count.call(null, mb), Ha = Fb, wa = Gb, Ia = nb
                       }else {
                         var fa = cljs.core.first.call(null, ma);
-                        cljs.core.truth_(fa.call(null, N)) && (bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:offset")).call(null, W), "\ufdd0:width", w * fa.call(null, N).call(null, 0)], !0), cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:width")).call(null, W), "\ufdd0:width", w * fa.call(null, N).call(null, 1) - shoelace.client.col_margin_width], !0)), cljs.core.swap_BANG_.call(null, shoelace.client.layout, 
-                        cljs.core.assoc_in, cljs.core.conj.call(null, va, fa), fa.call(null, N)));
+                        cljs.core.truth_(fa.call(null, O)) && (bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:offset")).call(null, W), "\ufdd0:width", w * fa.call(null, O).call(null, 0)], !0), cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:width")).call(null, W), "\ufdd0:width", w * fa.call(null, O).call(null, 1) - shoelace.client.col_margin_width], !0)), cljs.core.swap_BANG_.call(null, shoelace.client.layout, 
+                        cljs.core.assoc_in, cljs.core.conj.call(null, va, fa), fa.call(null, O)));
                         Ha = cljs.core.next.call(null, ma);
                         wa = null;
                         Ia = 0
@@ -20544,7 +20544,7 @@ shoelace.client.import_layout = function(a) {
                 }
                 dommy.core.add_class_BANG_.call(null, n, "\ufdd0:hidden");
                 cljs.core.async.put_BANG_.call(null, Eb, cljs.core.PersistentVector.fromArray(["\ufdd0:draw-classes"], !0));
-                y = cljs.core.next.call(null, R);
+                y = cljs.core.next.call(null, S);
                 t = null;
                 x = 0
               }
@@ -20562,33 +20562,33 @@ shoelace.client.import_layout = function(a) {
           if(cljs.core.chunked_seq_QMARK_.call(null, ba)) {
             var Ta = cljs.core.chunk_first.call(null, ba), xa = cljs.core.chunk_rest.call(null, ba), Ua = Ta, Va = cljs.core.count.call(null, Ta), d = xa, e = Ua, f = Va
           }else {
-            var Wa = cljs.core.first.call(null, ba), S = grid.core.edn__GT_row.call(null, Wa), ya = shoelace.client.create_row.call(null), X = cljs.core.nth.call(null, ya, 0, null), ob = cljs.core.nth.call(null, ya, 1, null), Ja = cljs.core.nth.call(null, ya, 2, null), za = cljs.core.nth.call(null, ya, 3, null), Xa = cljs.core.nth.call(null, ya, 4, null);
+            var Wa = cljs.core.first.call(null, ba), T = grid.core.edn__GT_row.call(null, Wa), ya = shoelace.client.create_row.call(null), X = cljs.core.nth.call(null, ya, 0, null), ob = cljs.core.nth.call(null, ya, 1, null), Ja = cljs.core.nth.call(null, ya, 2, null), za = cljs.core.nth.call(null, ya, 3, null), Xa = cljs.core.nth.call(null, ya, 4, null);
             dommy.core.insert_before_BANG_.call(null, ob, c);
             cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.conj, cljs.core.PersistentArrayMap.fromArray(["\ufdd0:id", X, "\ufdd0:pos", cljs.core.count.call(null, cljs.core.deref.call(null, shoelace.client.layout)), "\ufdd0:cols", cljs.core.PersistentVector.EMPTY, "\ufdd0:wrap", !1, "\ufdd0:name", !1], !0));
-            if(cljs.core.truth_((new cljs.core.Keyword("\ufdd0:name")).call(null, S))) {
+            if(cljs.core.truth_((new cljs.core.Keyword("\ufdd0:name")).call(null, T))) {
               var pb = shoelace.client.get_row.call(null, X);
-              cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, pb), "\ufdd0:name"], !0), (new cljs.core.Keyword("\ufdd0:name")).call(null, S));
-              Xa.value = (new cljs.core.Keyword("\ufdd0:name")).call(null, S)
+              cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, pb), "\ufdd0:name"], !0), (new cljs.core.Keyword("\ufdd0:name")).call(null, T));
+              Xa.value = (new cljs.core.Keyword("\ufdd0:name")).call(null, T)
             }
-            if(cljs.core.truth_((new cljs.core.Keyword("\ufdd0:wrap")).call(null, S))) {
+            if(cljs.core.truth_((new cljs.core.Keyword("\ufdd0:wrap")).call(null, T))) {
               var Ka = shoelace.client.get_row.call(null, X);
-              cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, Ka), "\ufdd0:wrap"], !0), (new cljs.core.Keyword("\ufdd0:wrap")).call(null, S))
+              cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, Ka), "\ufdd0:wrap"], !0), (new cljs.core.Keyword("\ufdd0:wrap")).call(null, T))
             }
-            for(var Ya = shoelace.client.get_row.call(null, X), O = shoelace.client.calc_col_unit.call(null), La = cljs.core.seq.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, S)), Za = null, $a = 0, Aa = 0;;) {
+            for(var Ya = shoelace.client.get_row.call(null, X), P = shoelace.client.calc_col_unit.call(null), La = cljs.core.seq.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, T)), Za = null, $a = 0, Aa = 0;;) {
               if(Aa < $a) {
-                var P = cljs.core._nth.call(null, Za, Aa), ca = shoelace.client.add_col_BANG_.call(null, !1, Ja, za, X);
+                var Q = cljs.core._nth.call(null, Za, Aa), ca = shoelace.client.add_col_BANG_.call(null, !1, Ja, za, X);
                 cljs.core.nth.call(null, ca, 0, null);
                 cljs.core.nth.call(null, ca, 1, null);
-                var qb = cljs.core.nth.call(null, ca, 2, null), da = cljs.core.nth.call(null, ca, 3, null), rb = cljs.core.nth.call(null, ca, 4, null), Ba = cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, Ya), "\ufdd0:cols", (new cljs.core.Keyword("\ufdd0:pos")).call(null, P)], !0);
+                var qb = cljs.core.nth.call(null, ca, 2, null), da = cljs.core.nth.call(null, ca, 3, null), rb = cljs.core.nth.call(null, ca, 4, null), Ba = cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, Ya), "\ufdd0:cols", (new cljs.core.Keyword("\ufdd0:pos")).call(null, Q)], !0);
                 dommy.core.add_class_BANG_.call(null, (new cljs.core.Keyword("\ufdd0:width")).call(null, da), "\ufdd0:easing");
                 dommy.core.add_class_BANG_.call(null, (new cljs.core.Keyword("\ufdd0:offset")).call(null, da), "\ufdd0:easing");
-                cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, cljs.core.conj.call(null, Ba, "\ufdd0:name"), (new cljs.core.Keyword("\ufdd0:name")).call(null, P));
-                cljs.core.truth_((new cljs.core.Keyword("\ufdd0:name")).call(null, P)) && (rb.value = (new cljs.core.Keyword("\ufdd0:name")).call(null, P));
+                cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, cljs.core.conj.call(null, Ba, "\ufdd0:name"), (new cljs.core.Keyword("\ufdd0:name")).call(null, Q));
+                cljs.core.truth_((new cljs.core.Keyword("\ufdd0:name")).call(null, Q)) && (rb.value = (new cljs.core.Keyword("\ufdd0:name")).call(null, Q));
                 for(var Ma = cljs.core.seq.call(null, grid.core.sizes), na = null, Na = 0, Y = 0;;) {
                   if(Y < Na) {
                     var oa = cljs.core._nth.call(null, na, Y);
-                    cljs.core.truth_(oa.call(null, P)) && (bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:offset")).call(null, da), "\ufdd0:width", O * oa.call(null, P).call(null, 0)], !0), cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:width")).call(null, da), "\ufdd0:width", O * oa.call(null, P).call(null, 1) - shoelace.client.col_margin_width], !0)), cljs.core.swap_BANG_.call(null, shoelace.client.layout, 
-                    cljs.core.assoc_in, cljs.core.conj.call(null, Ba, oa), oa.call(null, P)));
+                    cljs.core.truth_(oa.call(null, Q)) && (bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:offset")).call(null, da), "\ufdd0:width", P * oa.call(null, Q).call(null, 0)], !0), cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:width")).call(null, da), "\ufdd0:width", P * oa.call(null, Q).call(null, 1) - shoelace.client.col_margin_width], !0)), cljs.core.swap_BANG_.call(null, shoelace.client.layout, 
+                    cljs.core.assoc_in, cljs.core.conj.call(null, Ba, oa), oa.call(null, Q)));
                     Y += 1
                   }else {
                     var sb = cljs.core.seq.call(null, Ma);
@@ -20598,8 +20598,8 @@ shoelace.client.import_layout = function(a) {
                         var tb = cljs.core.chunk_first.call(null, Ca), ab = cljs.core.chunk_rest.call(null, Ca), bb = tb, cb = cljs.core.count.call(null, tb), Ma = ab, na = bb, Na = cb
                       }else {
                         var Z = cljs.core.first.call(null, Ca);
-                        cljs.core.truth_(Z.call(null, P)) && (bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:offset")).call(null, da), "\ufdd0:width", O * Z.call(null, P).call(null, 0)], !0), cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:width")).call(null, da), "\ufdd0:width", O * Z.call(null, P).call(null, 1) - shoelace.client.col_margin_width], !0)), cljs.core.swap_BANG_.call(null, shoelace.client.layout, 
-                        cljs.core.assoc_in, cljs.core.conj.call(null, Ba, Z), Z.call(null, P)));
+                        cljs.core.truth_(Z.call(null, Q)) && (bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:offset")).call(null, da), "\ufdd0:width", P * Z.call(null, Q).call(null, 0)], !0), cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:width")).call(null, da), "\ufdd0:width", P * Z.call(null, Q).call(null, 1) - shoelace.client.col_margin_width], !0)), cljs.core.swap_BANG_.call(null, shoelace.client.layout, 
+                        cljs.core.assoc_in, cljs.core.conj.call(null, Ba, Z), Z.call(null, Q)));
                         Ma = cljs.core.next.call(null, Ca);
                         na = null;
                         Na = 0
@@ -20623,15 +20623,15 @@ shoelace.client.import_layout = function(a) {
                     var M = cljs.core.first.call(null, ga), ha = shoelace.client.add_col_BANG_.call(null, !1, Ja, za, X);
                     cljs.core.nth.call(null, ha, 0, null);
                     cljs.core.nth.call(null, ha, 1, null);
-                    var fb = cljs.core.nth.call(null, ha, 2, null), T = cljs.core.nth.call(null, ha, 3, null), Hb = cljs.core.nth.call(null, ha, 4, null), pa = cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, Ya), "\ufdd0:cols", (new cljs.core.Keyword("\ufdd0:pos")).call(null, M)], !0);
-                    dommy.core.add_class_BANG_.call(null, (new cljs.core.Keyword("\ufdd0:width")).call(null, T), "\ufdd0:easing");
-                    dommy.core.add_class_BANG_.call(null, (new cljs.core.Keyword("\ufdd0:offset")).call(null, T), "\ufdd0:easing");
+                    var fb = cljs.core.nth.call(null, ha, 2, null), U = cljs.core.nth.call(null, ha, 3, null), Hb = cljs.core.nth.call(null, ha, 4, null), pa = cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, Ya), "\ufdd0:cols", (new cljs.core.Keyword("\ufdd0:pos")).call(null, M)], !0);
+                    dommy.core.add_class_BANG_.call(null, (new cljs.core.Keyword("\ufdd0:width")).call(null, U), "\ufdd0:easing");
+                    dommy.core.add_class_BANG_.call(null, (new cljs.core.Keyword("\ufdd0:offset")).call(null, U), "\ufdd0:easing");
                     cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, cljs.core.conj.call(null, pa, "\ufdd0:name"), (new cljs.core.Keyword("\ufdd0:name")).call(null, M));
                     cljs.core.truth_((new cljs.core.Keyword("\ufdd0:name")).call(null, M)) && (Hb.value = (new cljs.core.Keyword("\ufdd0:name")).call(null, M));
                     for(var Pa = cljs.core.seq.call(null, grid.core.sizes), Ea = null, Qa = 0, ia = 0;;) {
                       if(ia < Qa) {
                         var qa = cljs.core._nth.call(null, Ea, ia);
-                        cljs.core.truth_(qa.call(null, M)) && (bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:offset")).call(null, T), "\ufdd0:width", O * qa.call(null, M).call(null, 0)], !0), cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:width")).call(null, T), "\ufdd0:width", O * qa.call(null, M).call(null, 1) - shoelace.client.col_margin_width], !0)), cljs.core.swap_BANG_.call(null, shoelace.client.layout, 
+                        cljs.core.truth_(qa.call(null, M)) && (bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:offset")).call(null, U), "\ufdd0:width", P * qa.call(null, M).call(null, 0)], !0), cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:width")).call(null, U), "\ufdd0:width", P * qa.call(null, M).call(null, 1) - shoelace.client.col_margin_width], !0)), cljs.core.swap_BANG_.call(null, shoelace.client.layout, 
                         cljs.core.assoc_in, cljs.core.conj.call(null, pa, qa), qa.call(null, M)));
                         ia += 1
                       }else {
@@ -20642,7 +20642,7 @@ shoelace.client.import_layout = function(a) {
                             var sa = cljs.core.chunk_first.call(null, ra), vb = cljs.core.chunk_rest.call(null, ra), Ib = sa, Jb = cljs.core.count.call(null, sa), Pa = vb, Ea = Ib, Qa = Jb
                           }else {
                             var Ga = cljs.core.first.call(null, ra);
-                            cljs.core.truth_(Ga.call(null, M)) && (bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:offset")).call(null, T), "\ufdd0:width", O * Ga.call(null, M).call(null, 0)], !0), cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:width")).call(null, T), "\ufdd0:width", O * Ga.call(null, M).call(null, 1) - shoelace.client.col_margin_width], !0)), cljs.core.swap_BANG_.call(null, shoelace.client.layout, 
+                            cljs.core.truth_(Ga.call(null, M)) && (bigsky.aui.util.applies.call(null, dommy.core.set_px_BANG_, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:offset")).call(null, U), "\ufdd0:width", P * Ga.call(null, M).call(null, 0)], !0), cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:width")).call(null, U), "\ufdd0:width", P * Ga.call(null, M).call(null, 1) - shoelace.client.col_margin_width], !0)), cljs.core.swap_BANG_.call(null, shoelace.client.layout, 
                             cljs.core.assoc_in, cljs.core.conj.call(null, pa, Ga), Ga.call(null, M)));
                             Pa = cljs.core.next.call(null, ra);
                             Ea = null;
