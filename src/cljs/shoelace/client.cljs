@@ -156,11 +156,6 @@
   [col-id size type]
   (sel1 (str "#" (name col-id) " ." (name size) "-" (name type))))
 
-(defn row-wraps-for-media?
-  [row media]
-  (or (:wrap row)
-      (> (total-cols-used row media) grid-cols)))
-
 (defn stop-propagation
   [e]
   (.stopPropagation e))
@@ -257,11 +252,7 @@
                 cur-cols-used (col-for-media col media)
                 fcols (final-col-for-media row-id col-id media)
                 max-cols (- grid-cols (total-cols-used row media))
-                max-width (- (* (if (row-wraps-for-media? row media)
-                                  grid-cols
-                                  (+ (cur-cols-used (type-pos type)) max-cols))
-                                col-unit)
-                             col-margin-width)
+                max-width (- (* grid-cols col-unit) col-margin-width)
                 snap! (fn []
                         (let [w (+ (if (= type :offset) col-margin-width 0)
                                    (dom/px (els type) "width"))
@@ -288,21 +279,9 @@
                                           (if (= type :width) col-margin-width 0)))))
                 valid-step (fn [width]
                              (let [c (quot width col-unit)]
-                               (or
-                                ;;if they are wrapping we stop constraining
-                                (and (row-wraps-for-media? row media) (< (+ c (cur-cols-used
-                                                          (type-pos (if (= type :offset) :width :offset))))
-                                                    grid-cols))
-                                (< c (cur-cols-used (type-pos type)))
-                                (and (= max-cols 0)
-                                     (< c (cur-cols-used (type-pos type))))
-                                (and (or (= type :offset) (> c 0))
-                                     (< (+ c (cur-cols-used
-                                              (type-pos (if (= type :offset)
-                                                          :width
-                                                          :offset))))
-                                        grid-cols)
-                                     (< c (+ max-cols (cur-cols-used (type-pos type))))))))
+                               (< (+ c (cur-cols-used
+                                        (type-pos (if (= type :offset) :width :offset))))
+                                  grid-cols)))
                 move-handler (fn [e]
                                (let [dx (- (aget e "x") start-x)
                                      sdx (+ start-w dx)
@@ -365,14 +344,13 @@
         name-el (node [:input.row-name {:placeholder "Name Row"}])
         tools-el (node [:.tools])
         dupe-row-el (node [:span.dupe-row [:i.icon-double-angle-down]])
-        grow-row-el (node [:span.grow-row.active [:i.icon-level-down]])
         remv-row-el (node [:span.remv-row [:i.icon-remove]])
         new-col-el (node [:.new-col.no-cols])
         clear-el (node [:.clear])]
 
     (applies dom/append!
              [cols-el new-col-el]
-             [tools-el dupe-row-el grow-row-el remv-row-el]
+             [tools-el dupe-row-el remv-row-el]
              [row-el cols-el name-el tools-el clear-el])
 
     (applies dom/listen!
@@ -386,10 +364,7 @@
                                                 false
                                                 new-name))))]
              [new-col-el :mousedown (fn [e] (add-col! e cols-el new-col-el row-id))]
-             [grow-row-el :mousedown (fn [e]
-                                       (let [row (get-row row-id)]
-                                         (swap! layout assoc-in [(:pos row) :wrap] true)
-                                         (dom/remove-class! new-col-el :hidden)))]
+
              [remv-row-el :mousedown (fn [e]
                (let [row (get-row row-id)]
                  (dom/add-class! row-el :removing)
@@ -411,16 +386,12 @@
                                                  {:id duped-row-id
                                                   :pos 0
                                                   :cols []
-                                                  :wrap false
                                                   :name false}))))
                  (when (:name row)
                    (let [duped-row (get-row duped-row-id)]
                      (swap! layout assoc-in [(:pos duped-row) :name] (:name row))
                      (aset duped-name-el "value" (:name row))))
 
-                 (when (:wrap row)
-                   (let [duped-row (get-row duped-row-id)]
-                     (swap! layout assoc-in [(:pos duped-row) :wrap] (:wrap row))))
 
                  (let [new-row (get-row duped-row-id)
                        col-unit (calc-col-unit)]
@@ -449,7 +420,7 @@
 (defn add-row! []
   (this-as new-row-el
     (let [[row-id row-el] (create-row)]
-      (swap! layout conj {:id row-id :pos (count @layout) :cols [] :wrap false :name false})
+      (swap! layout conj {:id row-id :pos (count @layout) :cols [] :name false})
       (dom/insert-before! row-el new-row-el)
       (set-active-row! row-id))))
 
@@ -779,17 +750,12 @@
                  {:id duped-row-id
                   :pos (count @layout)
                   :cols []
-                  :wrap false
                   :name false})
 
           (when (:name row)
             (let [duped-row (get-row duped-row-id)]
               (swap! layout assoc-in [(:pos duped-row) :name] (:name row))
               (aset duped-name-el "value" (:name row))))
-
-          (when (:wrap row)
-            (let [duped-row (get-row duped-row-id)]
-              (swap! layout assoc-in [(:pos duped-row) :wrap] (:wrap row))))
 
           (let [new-row (get-row duped-row-id)
                 col-unit (calc-col-unit)]
