@@ -19470,6 +19470,7 @@ shoelace.client.add_col_BANG_ = function(a, b, c, d) {
         return cljs.core.truth_(a) ? a : cljs.core.PersistentVector.fromArray([null, null], !0)
       }(), cljs.core.PersistentVector.fromArray([n.call(null, a)], !0), c);
       cljs.core.not_EQ_.call(null, p.call(null, n.call(null, a)), b.call(null, n.call(null, a))) && cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, f, b);
+      cljs.core.swap_BANG_.call(null, shoelace.client.layout, cljs.core.assoc_in, cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:pos")).call(null, l), "\ufdd0:cols", (new cljs.core.Keyword("\ufdd0:pos")).call(null, k)], !0), grid.core.percolate.call(null, shoelace.client.get_col.call(null, d, e), i));
       shoelace.client.update_col_for_media.call(null, d, e, i);
       dommy.core.add_class_BANG_.call(null, m.call(null, a), "\ufdd0:easing");
       return dommy.core.set_px_BANG_.call(null, m.call(null, a), "\ufdd0:width", c * j - (cljs.core._EQ_.call(null, a, "\ufdd0:width") ? shoelace.client.col_margin_width : 0))

@@ -206,6 +206,8 @@
                           (when (not= (fcols (type-pos type)) (new-dims (type-pos type)))
                             (swap! layout assoc-in path new-dims))
 
+                          (swap! layout assoc-in [(:pos row) :cols (:pos col)] (percolate (get-col row-id col-id) media))
+
                           (update-col-for-media row-id col-id media)
                           (dom/add-class! (els type) :easing)
                           (dom/set-px! (els type)
