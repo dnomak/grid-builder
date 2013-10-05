@@ -5,7 +5,7 @@
    [dommy.core :as dom]
    [dommy.utils :refer [dissoc-in]]
    [cljs.core.async :refer [>! <! put! chan sliding-buffer]]
-   [bigsky.aui.util :refer [event-chan applies jget jset]]
+   [bigsky.aui.util :refer [event-chan applies jget jset watch-change watch-change-in watch-change-when]]
    [bigsky.aui.draggable :refer [draggable]]
    [ajax.core :refer [GET POST]]
    [gist.core :as gist]
@@ -37,16 +37,6 @@
   (concat (subvec data 0 after)
           [val]
           (subvec data after)))
-
-(defn watch-change
-  ([data prop watch-name handler]
-     (add-watch data watch-name
-                (fn [k r os ns]
-                  (when (not (= (prop os) (prop ns)))
-                    (handler (prop os) (prop ns)))))
-    watch-name)
-  ([data prop handler]
-     (watch-change data prop (keyword (str "watch-change" (name prop))) handler)))
 
 (defn spy [x]
   (js/console.log (str x))
@@ -208,9 +198,7 @@
         offset-handle-el (node [:.offset-handle])
         row (get-row row-id)
         total-cols (fn [] (total-cols-used (get-row row-id) (@settings :media-mode)))
-        check-to-hide-new-col (fn [] (if (= grid-cols (total-cols))
-                                      (dom/add-class! new-col-el :hidden)
-                                      (dom/remove-class! new-col-el :hidden)))
+
         handle-remove (fn [e]
                         (stop-propagation e)
                         (let [row (get-row row-id)
@@ -221,7 +209,7 @@
                                                     (filter (fn [c] (not (= (:id c) col-id)))
                                                             (get-in @layout path)))))
                           (dom/remove! col-el)
-                          (check-to-hide-new-col)
+
                           (when (zero? (count (get-in @layout path)))
                             (dom/add-class! new-col-el :no-cols))))
         draw-class-type (fn [media type size]
@@ -234,6 +222,9 @@
         draw-classes (fn []
                        (let [col (get-col row-id col-id)]
                          (doseq [media sizes]
+                           (applies dom/set-text!
+                                    [(get-class-el col-id media :offset) ""]
+                                    [(get-class-el col-id media :width)  ""])
                            (when (media col)
                              (let [[offset width] (media col)]
                                (when offset (draw-class-type media :offset offset))
@@ -268,8 +259,7 @@
                                                  new-width)]
 
                           (when (not= (fcols (type-pos type)) (new-dims (type-pos type)))
-                            (swap! layout assoc-in path new-dims)
-                            (draw-class-type media type new-width))
+                            (swap! layout assoc-in path new-dims))
 
                           (update-col-for-media row-id col-id media)
                           (dom/add-class! (els type) :easing)
@@ -291,8 +281,9 @@
                 stop-handler (fn [e]
                                (dom/unlisten! js/document :mousemove move-handler)
                                (snap!)
-                               (js/setTimeout #(do (check-to-hide-new-col)
-                                                   (dom/remove-class! col-el :dragging))
+                               (js/setTimeout #(applies dom/remove-class!
+                                                        [new-col-el :hidden]
+                                                        [col-el :dragging])
                                               300))]
             (when (or (not= media :xs) (= type :width))
               (dom/add-class! col-el :dragging)
@@ -312,7 +303,6 @@
              [col-el offset-el width-el remove-el]
              [cols-el col-el])
 
-    (check-to-hide-new-col)
     (dom/insert-before! col-el new-col-el)
     (dom/remove-class! new-col-el :no-cols)
 
@@ -335,6 +325,17 @@
 
     (when e (handle-drag :width e))
 
+    ;;if the layout changes we want to draw it again
+    (watch-change-when layout
+                       (fn [os ns]
+                         (let [row (get-row row-id)
+                               col (get-col row-id col-id)
+                               path [(:pos row) :cols (:pos col)]]
+                           (not= (get-in os path) (get-in ns path))))
+                       (keyword col-id :change-col)
+                       (fn [os ns]
+                         (draw-classes)))
+
     [col-id col-el (go-alphabet :draw-classes draw-classes) els name-el]))
 
 (defn create-row []
@@ -344,13 +345,14 @@
         name-el (node [:input.row-name {:placeholder "Name Row"}])
         tools-el (node [:.tools])
         dupe-row-el (node [:span.dupe-row [:i.icon-double-angle-down]])
+        clear-row-el (node [:span.clear-row [:i.icon-undo]])
         remv-row-el (node [:span.remv-row [:i.icon-remove]])
         new-col-el (node [:.new-col.no-cols])
         clear-el (node [:.clear])]
 
     (applies dom/append!
              [cols-el new-col-el]
-             [tools-el dupe-row-el remv-row-el]
+             [tools-el dupe-row-el clear-row-el remv-row-el]
              [row-el cols-el name-el tools-el clear-el])
 
     (applies dom/listen!
@@ -375,6 +377,15 @@
                                                     (filter (fn [r] (not (= (:id r) row-id)))
                                                             @layout))))
                      (dom/remove! row-el)))))]
+
+             [clear-row-el :mousedown (fn [e]
+               (let [row (get-row row-id)
+                     media (:media-mode @settings)]
+                 (swap! layout assoc-in [(:pos row) :cols]
+                        (vec (for [col (row :cols)]
+                               (dissoc col media))))
+                 (update-cols-for-media media)))]
+
              [dupe-row-el :mousedown (fn [e]
                (let [row (get-row row-id)
                      [duped-row-id duped-row-el duped-cols-el duped-new-col-el duped-name-el] (create-row)]

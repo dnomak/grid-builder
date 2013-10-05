@@ -25,3 +25,30 @@
 
 (defn jset [o k v]
   (apply aset (conj (key->path o k) v)))
+
+(defn watch-change-when
+  [data when-fn watch-name handler]
+  (add-watch data watch-name
+             (fn [k r os ns]
+               (when (when-fn os ns)
+                 (handler os ns))))
+  watch-name)
+
+(defn watch-change-in
+  ([data path watch-name handler]
+     (watch-change-when data
+                        (fn [os ns]
+                          (not= (get-in os path)
+                                (get-in ns path)))
+                        watch-name
+                        (fn [os ns]
+                          (handler (get-in os path)
+                                   (get-in ns path)))))
+  ([data path handler]
+     (watch-change-in data path (keyword (apply str "watch-change" (map name path))))))
+
+(defn watch-change
+  ([data prop watch-name handler]
+     (watch-change-in data [prop] watch-name handler))
+  ([data prop handler]
+     (watch-change data prop (keyword (str "watch-change" (name prop))) handler)))
