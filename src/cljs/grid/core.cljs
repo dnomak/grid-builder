@@ -2,7 +2,8 @@
   (:require
    [clojure.string :refer [join split]]
    [cljs.reader :refer [read-string]]
-   [hiccups.runtime :as hrt]))
+   [hiccups.runtime :as hrt]
+   [bigsky.aui.util :refer [spy]]))
 
 (def grid-cols 12)
 
@@ -157,7 +158,7 @@
    (filter (fn [[k v]] (not= v [nil nil]))
            (for [[k v] col]
              (do
-               (if (k sizes-index)
+               (if (and (k sizes-index) (not= k :xs)) ;;note that :xs is excluded!
                  (let [prior-size (final-col-for-media col (size-prior k))]
                    (let [[offset width] v]
                      (if prior-size

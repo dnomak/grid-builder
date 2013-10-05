@@ -203,10 +203,16 @@
                                                  [(type-pos type)]
                                                  new-width)]
 
+                          (spy [media fcols new-dims])
                           (when (not= (fcols (type-pos type)) (new-dims (type-pos type)))
                             (swap! layout assoc-in path new-dims))
 
+                          (spy col)
+                          (spy (get-col row-id col-id))
                           (swap! layout assoc-in [(:pos row) :cols (:pos col)] (percolate (get-col row-id col-id) media))
+                          (spy (get-col row-id col-id))
+
+                          (draw-classes)
 
                           (update-col-for-media row-id col-id media)
                           (dom/add-class! (els type) :easing)
