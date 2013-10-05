@@ -1,7 +1,13 @@
 (ns bigsky.aui.util
   (:require
-   [cljs.core.async :refer [put! chan]]
-   [dommy.core :as dom]))
+   [cljs.core.async :refer [put! chan <!]]
+   [dommy.core :as dom])
+  (:require-macros
+   [cljs.core.async.macros :refer [go]]))
+
+(defn spy [x]
+  (js/console.log (str x))
+  x)
 
 (defn event-chan
   ([selector event msg-name]
@@ -12,6 +18,18 @@
        rc))
   ([selector event]
      (event-chan selector event event)))
+
+(defn go-alphabet
+  [& args]
+  (let [actions (apply hash-map args)
+        in-chan (chan)]
+    (go (loop []
+          (let [msg (<! in-chan)
+                action (actions (first msg))]
+            (when action
+              (apply action (rest msg)))
+            (recur))))
+    in-chan))
 
 (defn applies
   [f & args]
@@ -25,6 +43,12 @@
 
 (defn jset [o k v]
   (apply aset (conj (key->path o k) v)))
+
+(defn insert-after
+  [data after val]
+  (concat (subvec data 0 after)
+          [val]
+          (subvec data after)))
 
 (defn watch-change-when
   [data when-fn watch-name handler]

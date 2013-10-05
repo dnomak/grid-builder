@@ -5,13 +5,16 @@
    [dommy.core :as dom]
    [dommy.utils :refer [dissoc-in]]
    [cljs.core.async :refer [>! <! put! chan sliding-buffer]]
-   [bigsky.aui.util :refer [event-chan applies jget jset watch-change watch-change-in watch-change-when]]
+   [bigsky.aui.util :refer [event-chan applies jget jset watch-change watch-change-in
+                            watch-change-when insert-after go-alphabet spy]]
    [bigsky.aui.draggable :refer [draggable]]
    [ajax.core :refer [GET POST]]
    [gist.core :as gist]
    [ednio.core :as ednio]
    [cljs.reader :refer [read-string]]
-   [grid.core :as grid :refer [sizes sizes-index size-classes valid-layout? edn->row vcat]])
+   [grid.core :as grid :refer [sizes sizes-index size-classes sizes-up-to sizes-up-to-memo total-cols-used
+                               col-for-media cols-for-media grid-cols percolate
+                               final-col-for-media sizes-after valid-layout? edn->row vcat size-prior]])
   (:require-macros
    [cljs.core.async.macros :refer [go]]
    [dommy.macros :refer [node sel sel1]]))
@@ -20,32 +23,6 @@
   [names selectors]
   (zipmap names (for [s selectors] (sel1 s))))
 
-(defn go-alphabet
-  [& args]
-  (let [actions (apply hash-map args)
-        in-chan (chan)]
-    (go (loop []
-          (let [msg (<! in-chan)
-                action (actions (first msg))]
-            (when action
-              (apply action (rest msg)))
-            (recur))))
-    in-chan))
-
-(defn insert-after
-  [data after val]
-  (concat (subvec data 0 after)
-          [val]
-          (subvec data after)))
-
-(defn spy [x]
-  (js/console.log (str x))
-  x)
-
-(def col-offset-pos 0)
-
-(def col-width-pos 1)
-
 (def col-height 150)
 
 (def col-width 60)
@@ -53,8 +30,6 @@
 (def col-margin-width 15)
 
 (def snap-threshold 20)
-
-(def grid-cols 12)
 
 (def body js/document.body)
 
@@ -92,36 +67,6 @@
 (defn get-col
   [row-id col-id]
   (get-by-id (:cols (get-row row-id)) col-id))
-
-(defn sizes-up-to
-  [max]
-  (reverse (subvec sizes 0 (inc (sizes-index max)))))
-
-(def sizes-up-to-memo (memoize sizes-up-to))
-
-(defn col-for-media
-  [col media]
-  (let [found (first (keep #(% col) (sizes-up-to-memo media)))]
-    (if found
-      found
-      [0 grid-cols])))
-
-(defn cols-for-media
-  [row media]
-  (map #(col-for-media % media) (:cols row)))
-
-;;walks up to resolve nils
-(defn final-col-for-media
-  [row-id col-id media]
-  (let [col (get-col row-id col-id)
-        medias (keep #(% col) (sizes-up-to-memo media))
-        offset (first (keep #(% 0) medias))
-        width  (first (keep #(% 1) medias))]
-    [(or offset 0) (or width 12)]))
-
-(defn total-cols-used
-  [row media]
-  (apply + (flatten (cols-for-media row media))))
 
 (defn id->sel [id]
   (str "#" (name id)))
@@ -167,7 +112,7 @@
   (let [col-unit (calc-col-unit)]
     (doseq [row @layout]
       (doseq [col (:cols row)]
-        (let [widths (final-col-for-media (:id row) (:id col) media)
+        (let [widths (final-col-for-media (get-col (:id row) (:id col)) media)
               id (id->sel (:id col))
               width-el (sel1 (str id " .width"))
               offset-el (sel1 (str id " .offset"))
@@ -241,7 +186,7 @@
                 row (get-row row-id)
                 col (get-col row-id col-id)
                 cur-cols-used (col-for-media col media)
-                fcols (final-col-for-media row-id col-id media)
+                fcols (final-col-for-media (get-col row-id col-id) media)
                 max-cols (- grid-cols (total-cols-used row media))
                 max-width (- (* grid-cols col-unit) col-margin-width)
                 snap! (fn []
@@ -296,7 +241,7 @@
            {:id col-id
             :name false
             :pos (count (:cols row))
-            (@settings :media-mode) [0 1]})
+            (@settings :media-mode) [nil 1]})
 
     (applies dom/append!
              [width-el nested-el name-el classes-el offset-handle-el]
@@ -383,7 +328,7 @@
                      media (:media-mode @settings)]
                  (swap! layout assoc-in [(:pos row) :cols]
                         (vec (for [col (row :cols)]
-                               (dissoc col media))))
+                               (percolate (dissoc col media) media))))
                  (update-cols-for-media media)))]
 
              [dupe-row-el :mousedown (fn [e]
@@ -511,8 +456,6 @@
    :md 0.11
    :lg 0.15})
 
-
-
 (defn make-media-previews []
   (let [preview-els (sels sizes (for [size sizes] (str ".preview." (name size) " .preview-rows")))]
     (go-alphabet
@@ -529,7 +472,7 @@
                         (let [col-el (node [:.preview-col])
                               offset-el (node [:.preview-col-offset])
                               width-el (node [:.preview-col-width])
-                              fwidths (final-col-for-media (:id row) (:id col) size)]
+                              fwidths (final-col-for-media (get-col (:id row) (:id col)) size)]
                           (applies dom/append!
                                    [row-el col-el]
                                    [col-el offset-el]
@@ -671,8 +614,8 @@
                  (update-output)
                  (put! media-previews-chan [:update])))
 
-    (applies watch-change
-             [settings :media-mode
+    (applies (partial watch-change settings)
+             [:media-mode
               (fn [old-mode new-mode]
                 (applies dom/remove-class!
                          [container old-mode]
@@ -683,11 +626,11 @@
                 (update-cols-for-media new-mode)
                 (aset workspace "scrollTop" 0))]
 
-             [settings :output-mode
+             [:output-mode
               (fn [ov nv]
                 (update-output))]
 
-             [settings :include-container
+             [:include-container
               (fn [ov nv]
                 (update-output))])
 

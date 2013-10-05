@@ -4,11 +4,53 @@
    [cljs.reader :refer [read-string]]
    [hiccups.runtime :as hrt]))
 
+(def grid-cols 12)
+
 (def vcat (comp vec concat))
 
 (def sizes [:xs :sm :md :lg])
 
 (def sizes-index {:xs 0 :sm 1 :md 2 :lg 3})
+
+(defn size-prior
+  [size]
+  (if-let [cur (sizes-index size)]
+    (if (> cur 0)
+      (sizes (dec cur)))))
+
+(defn sizes-up-to
+  [size]
+  (reverse (subvec sizes 0 (inc (sizes-index size)))))
+
+(def sizes-up-to-memo (memoize sizes-up-to))
+
+(defn sizes-after
+  [size]
+  (if (= size :lg)
+    []
+    (subvec sizes (inc (sizes-index size)))))
+
+(defn col-for-media
+  [col media]
+  (let [found (first (keep #(% col) (sizes-up-to-memo media)))]
+    (if found
+      found
+      [nil grid-cols])))
+
+(defn final-col-for-media
+  [col media]
+  (let [medias (keep #(% col) (sizes-up-to-memo media))
+        offset (first (keep #(% 0) medias))
+        width  (first (keep #(% 1) medias))]
+    [(or offset 0) (or width 12)]))
+
+(defn cols-for-media
+  [row media]
+  (map #(col-for-media % media) (:cols row)))
+
+(defn total-cols-used
+  [row media]
+  (apply + (flatten (cols-for-media row media))))
 
 (defn valid-size?
   [size]
@@ -107,3 +149,23 @@
 (defn edn-string->html
   [edn-string]
   (hrt/render-html (layout->html (edn-string->layout edn-string))))
+
+(defn percolate
+  [col media]
+  (into
+   {}
+   (filter (fn [[k v]] (not= v [nil nil]))
+           (for [[k v] col]
+             (do
+               (if (k sizes-index)
+                 (let [prior-size (final-col-for-media col (size-prior k))]
+                   (let [[offset width] v]
+                     (if prior-size
+                       [k [(if (= (prior-size 0) offset)
+                             nil
+                             offset)
+                           (if (= (prior-size 1) width)
+                             nil
+                             width)]]
+                       [k [offset width]])))
+                 [k v]))))))
