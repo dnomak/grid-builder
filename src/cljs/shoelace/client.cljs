@@ -46,6 +46,8 @@
                      :gist-id false
                      :gist-version false}))
 
+(def undo-history (atom []))
+
 (def layout (atom []))
 
 (defn not-none?
@@ -129,7 +131,7 @@
         offset-el (node [:.offset])
         remove-el (node [:.remove [:i.icon-remove]])
         width-el (node [:.width])
-        nested-el (node [:.nested [:i.icon-th]])
+        nested-el (node [:.nested.hidden [:i.icon-th]])
         classes-el (node [:.classes
                           [:.xs-width] [:.xs-offset]
                           [:.sm-width] [:.sm-offset]
@@ -203,14 +205,11 @@
                                                  [(type-pos type)]
                                                  new-width)]
 
-                          (spy [media fcols new-dims])
                           (when (not= (fcols (type-pos type)) (new-dims (type-pos type)))
                             (swap! layout assoc-in path new-dims))
 
-                          (spy col)
-                          (spy (get-col row-id col-id))
-                          (swap! layout assoc-in [(:pos row) :cols (:pos col)] (percolate (get-col row-id col-id) media))
-                          (spy (get-col row-id col-id))
+                          (swap! layout assoc-in [(:pos row) :cols (:pos col)]
+                                 (percolate (get-col row-id col-id) media))
 
                           (draw-classes)
 
@@ -233,15 +232,10 @@
                                    (dom/set-px! (els type) :width nw))))
                 stop-handler (fn [e]
                                (dom/unlisten! js/document :mousemove move-handler)
-                               (snap!)
-                               (js/setTimeout #(applies dom/remove-class!
-                                                        [new-col-el :hidden]
-                                                        [col-el :dragging])
-                                              300))]
+                               (snap!))]
             (when (or (not= media :xs) (= type :width))
               (dom/add-class! col-el :dragging)
               (dom/remove-class! (els type) :easing)
-              (dom/add-class! new-col-el :hidden)
               (dom/listen! js/document :mousemove move-handler)
               (dom/listen-once! js/document :mouseup stop-handler))))]
 

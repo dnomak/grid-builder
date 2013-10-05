@@ -137,7 +137,11 @@
              [:div.row {:class (str "row " (:name r))}]
              [:div.row])
            (map (fn [c]
-                  [:div {:class (join " " (size-classes c))}])
+                  (let [all-classes (join " " (size-classes c))]
+                    [:div
+                     (if (not= (count all-classes) 0)
+                       {:class (join " " (size-classes c))}
+                       {})]))
                 (:cols r))))
    rows))
 
