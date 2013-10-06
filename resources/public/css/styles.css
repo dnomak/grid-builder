@@ -7513,7 +7513,7 @@ input {
   outline: none;
 }
 .easing {
-  transition: width 0.5s, margin 0.5s, height 0.5s, top 0.5s, left 0.5s, right 0.5s, background 0.5s, opacity 0.5s, font-size 0.5s;
+  transition: width 0.5s, margin 0.5s, height 0.5s, top 0.5s, left 0.5s, right 0.5s, background 0.5s, opacity 0.5s, font-size 0.3s;
 }
 .no-changes {
   background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));

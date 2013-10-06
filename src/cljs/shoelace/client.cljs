@@ -40,6 +40,7 @@
   (keyword (str prefix "-" @id)))
 
 (def settings (atom {:media-mode :sm
+                     :use-less-mixin false
                      :include-container true
                      :active-row :none
                      :output-mode :html
@@ -161,7 +162,7 @@
                             (dom/add-class! new-col-el :no-cols))))
         draw-class-type (fn [media type size]
                           (dom/set-text! (get-class-el col-id media type)
-                                         (if (and (= type :offset) (zero? size))
+                                         (if (and (= type :offset) (nil? size))
                                            ""
                                            (str (name media) "-"
                                                 (when (= type :offset) "offset-")
@@ -188,9 +189,11 @@
                 row (get-row row-id)
                 col (get-col row-id col-id)
                 cur-cols-used (col-for-media col media)
-                fcols (final-col-for-media (get-col row-id col-id) media)
-                max-cols (- grid-cols (total-cols-used row media))
+                fcols (final-col-for-media col media)
+                tfcols (+ (or (fcols 0) 0) (or (fcols 1) 0))
                 max-width (- (* grid-cols col-unit) col-margin-width)
+                dim-pos (type-pos type)
+                dim-pos-op (type-pos (if (= type :offset) :width :offset))
                 snap! (fn []
                         (let [w (+ (if (= type :offset) col-margin-width 0)
                                    (dom/px (els type) "width"))
@@ -220,10 +223,9 @@
                                        (- (* new-width col-unit)
                                           (if (= type :width) col-margin-width 0)))))
                 valid-step (fn [width]
-                             (let [c (quot width col-unit)]
-                               (< (+ c (cur-cols-used
-                                        (type-pos (if (= type :offset) :width :offset))))
-                                  grid-cols)))
+                             (<= (+ (- (quot width col-unit) (dec (fcols dim-pos)))
+                                    tfcols)
+                                 grid-cols))
                 move-handler (fn [e]
                                (let [dx (- (aget e "x") start-x)
                                      sdx (+ start-w dx)
@@ -417,6 +419,7 @@
                     :haml (sel1 :.output-haml)
                     :edn  (sel1 :.output-edn)}
         els-to-mode (zipmap (vals output-els) (keys output-els))
+        use-less-mixin-el (sel1 :.use-less-mixin)
         include-container-el (sel1 :.include-container)]
 
     (watch-change settings :output-mode :output-mode-done
@@ -424,19 +427,23 @@
                     (dom/remove-class! (output-els old) :active)
                     (dom/add-class! (output-els new) :active)))
 
-    (dom/listen! [options-el :li]
-                 :click
-                 (fn [e]
-                   (js/console.log e)
-                   (swap! settings assoc :output-mode (els-to-mode (aget e "target")))))
-
     (dom/set-attr! include-container-el
                    :checked
                    (@settings :include-container))
 
-    (dom/listen! include-container-el
-                 :change
-                 #(swap! settings assoc :include-container (aget include-container-el "checked")))))
+    (applies dom/listen!
+             [[options-el :li]
+              :click
+              (fn [e]
+                (swap! settings assoc :output-mode (els-to-mode (aget e "target"))))]
+
+             [use-less-mixin-el
+              :change
+              #(swap! settings assoc :use-less-mixin (aget use-less-mixin-el "checked"))]
+
+             [include-container-el
+              :change
+              #(swap! settings assoc :include-container (aget include-container-el "checked"))])))
 
 (defn make-collapse-pane
   [state workspace pane-el collapse-el]
@@ -556,7 +563,8 @@
 
 (defn draw-workspace []
   (let [workspace (sel1 :.workspace)
-        output (sel1 :pre.output)
+        output (sel1 :pre.output.lang-html)
+        output-less (sel1 :pre.output.lang-text)
         copy-output-el (sel1 :.copy-output)
         container (node [:.sl-container])
         rows (node [:.rows])
@@ -633,6 +641,10 @@
               (fn [ov nv]
                 (update-output))]
 
+             [:use-less-mixin
+              (fn [ov nv]
+                (update-output))]
+
              [:include-container
               (fn [ov nv]
                 (update-output))])
@@ -641,7 +653,9 @@
 
     (applies dom/listen!
              [meta-el :mouseenter #(dom/add-class! meta-el :left-hand-path)]
+
              [meta-el :mouseleave #(dom/remove-class! meta-el :left-hand-path)]
+
              [copy-code-el :click
               (fn []
                 (.select copy-output-el)
@@ -757,7 +771,7 @@
 (if (= (aget js/window.location "pathname") "/preview/")
   (do (load-gist (fn [encoded-id id content]
                    (js/console.log content)
-                   (dom/set-html! (sel1 ".container")
+                   (dom/set-html! (sel1 ".output-preview")
                                   (grid/edn-string->html (aget content "files" "grid.edn" "content")))
 
                    (let [rand-span #(node [:span (str (join "" (range 1 (rand 8))) " ")])
@@ -779,9 +793,7 @@
                                                    left  (aget e "offsetX")]
                                                (if (> left (/ width 2))
                                                  (start-text el)
-                                                 (start-remv el))))]
-                              [:mouseenter (fn [e] (spy [:enter e]))]
-                              [:mouseleave (fn [e] (spy [:leave e]))])))))
+                                                 (start-remv el))))])))))
   (do
     (draw-workspace)
     (load-workspace)))

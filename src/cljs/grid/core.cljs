@@ -66,13 +66,17 @@
   (and (>= n low)
        (<= n high)))
 
+(defn valid-dim?
+  [size dim low high]
+  (or (nil? dim)
+      (and (integer? dim)
+           (between? dim low high))))
+
 (defn valid-media?
   [[size offset width]]
   (and (valid-size? size)
-       (integer? offset)
-       (integer? width)
-       (between? offset 0 12)
-       (between? width 1 12)))
+       (valid-dim? size offset 0 12)
+       (valid-dim? size width 1 12)))
 
 (defn valid-layout-col?
   [col]
@@ -124,9 +128,10 @@
             (map (fn [s]
                    (if (s c)
                      (let [[offset width] (s c)]
-                       [(when (> offset 0)
+                       [(when (not (nil? offset))
                           (str "col-" (name s) "-offset-" offset))
-                        (str "col-" (name s) "-" width)])))
+                        (when (not (nil? width))
+                          (str "col-" (name s) "-" width))])))
                  sizes)))))
 
 (defn layout->html
@@ -144,6 +149,10 @@
                        {})]))
                 (:cols r))))
    rows))
+
+(defn layout->less-mixin
+  [rows]
+  ())
 
 (defn edn-string->layout
   [edn-string]
