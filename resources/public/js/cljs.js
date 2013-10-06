@@ -18865,8 +18865,11 @@ grid.core.percolate = function(a) {
                     var a = e.call(null, grid.core.sizes_index);
                     return cljs.core.truth_(a) ? cljs.core.not_EQ_.call(null, e, "\ufdd0:xs") : a
                   }()) ? function() {
-                    var c = grid.core.final_col_for_media.call(null, a, grid.core.size_prior.call(null, e)), d = i, f = cljs.core.nth.call(null, d, 0, null), d = cljs.core.nth.call(null, d, 1, null);
-                    return cljs.core.truth_(c) ? cljs.core.PersistentVector.fromArray([e, cljs.core.PersistentVector.fromArray([cljs.core._EQ_.call(null, c.call(null, 0), f) ? null : f, cljs.core._EQ_.call(null, c.call(null, 1), d) ? null : d], !0)], !0) : cljs.core.PersistentVector.fromArray([e, cljs.core.PersistentVector.fromArray([f, d], !0)], !0)
+                    var c = grid.core.final_col_for_media.call(null, a, grid.core.size_prior.call(null, e)), d = cljs.core.truth_(function() {
+                      var c = (new cljs.core.Keyword("\ufdd0:xs")).call(null, a);
+                      return cljs.core.truth_(c) ? (new cljs.core.Keyword("\ufdd0:xs")).call(null, a).call(null, 1) : c
+                    }()) ? c : cljs.core.PersistentVector.fromArray([null, null], !0), f = i, g = cljs.core.nth.call(null, f, 0, null), f = cljs.core.nth.call(null, f, 1, null);
+                    return cljs.core.truth_(c) ? cljs.core.PersistentVector.fromArray([e, cljs.core.PersistentVector.fromArray([cljs.core._EQ_.call(null, d.call(null, 0), g) ? null : g, cljs.core._EQ_.call(null, d.call(null, 1), f) ? null : f], !0)], !0) : cljs.core.PersistentVector.fromArray([e, cljs.core.PersistentVector.fromArray([g, f], !0)], !0)
                   }() : cljs.core.PersistentVector.fromArray([e, i], !0));
                   c += 1
                 }else {
@@ -18880,8 +18883,11 @@ grid.core.percolate = function(a) {
             var a = j.call(null, grid.core.sizes_index);
             return cljs.core.truth_(a) ? cljs.core.not_EQ_.call(null, j, "\ufdd0:xs") : a
           }()) ? function() {
-            var c = grid.core.final_col_for_media.call(null, a, grid.core.size_prior.call(null, j)), d = k, e = cljs.core.nth.call(null, d, 0, null), d = cljs.core.nth.call(null, d, 1, null);
-            return cljs.core.truth_(c) ? cljs.core.PersistentVector.fromArray([j, cljs.core.PersistentVector.fromArray([cljs.core._EQ_.call(null, c.call(null, 0), e) ? null : e, cljs.core._EQ_.call(null, c.call(null, 1), d) ? null : d], !0)], !0) : cljs.core.PersistentVector.fromArray([j, cljs.core.PersistentVector.fromArray([e, d], !0)], !0)
+            var c = grid.core.final_col_for_media.call(null, a, grid.core.size_prior.call(null, j)), d = cljs.core.truth_(function() {
+              var c = (new cljs.core.Keyword("\ufdd0:xs")).call(null, a);
+              return cljs.core.truth_(c) ? (new cljs.core.Keyword("\ufdd0:xs")).call(null, a).call(null, 1) : c
+            }()) ? c : cljs.core.PersistentVector.fromArray([null, null], !0), e = k, f = cljs.core.nth.call(null, e, 0, null), e = cljs.core.nth.call(null, e, 1, null);
+            return cljs.core.truth_(c) ? cljs.core.PersistentVector.fromArray([j, cljs.core.PersistentVector.fromArray([cljs.core._EQ_.call(null, d.call(null, 0), f) ? null : f, cljs.core._EQ_.call(null, d.call(null, 1), e) ? null : e], !0)], !0) : cljs.core.PersistentVector.fromArray([j, cljs.core.PersistentVector.fromArray([f, e], !0)], !0)
           }() : cljs.core.PersistentVector.fromArray([j, k], !0), c.call(null, cljs.core.rest.call(null, e)))
         }
         return null

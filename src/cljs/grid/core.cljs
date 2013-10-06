@@ -179,13 +179,17 @@
            (for [[k v] col]
              (do
                (if (and (k sizes-index) (not= k :xs)) ;;note that :xs is excluded!
-                 (let [prior-size (final-col-for-media col (size-prior k))]
+                 (let [prior-size (final-col-for-media col (size-prior k))
+                       check-size (if (and (:xs col) ((:xs col) 1))
+                                    prior-size
+                                    [nil nil])]
+
                    (let [[offset width] v]
                      (if prior-size
-                       [k [(if (= (prior-size 0) offset)
+                       [k [(if (= (check-size 0) offset)
                              nil
                              offset)
-                           (if (= (prior-size 1) width)
+                           (if (= (check-size 1) width)
                              nil
                              width)]]
                        [k [offset width]])))
