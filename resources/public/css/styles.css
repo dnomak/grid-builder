@@ -8549,12 +8549,15 @@ h6 {
   outline: 1px solid #e6e6e6;
   min-height: 150px;
 }
+.container.output-preview [class^="col-"] .wrap {
+  min-height: 150px;
+}
 .container.output-preview [class^="col-"]:hover {
   background-color: #f0f4ff;
   outline: 1px solid #004cff;
 }
 .container.output-preview [class^="col-"]:hover .wrap {
-  outline: 1px solid #666666;
+  outline: 1px solid #004cff;
 }
 .controls {
   border-top: 1px solid #333;

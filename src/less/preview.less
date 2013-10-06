@@ -70,11 +70,14 @@ h1, h2, h3, h4, h5, h6 {
     [class^="col-"] {
       outline: 1px solid hsl(0, 0%, 90%);
       min-height: 150px;
+      .wrap {
+        min-height: 150px;
+      }
       &:hover {
         background-color: hsl(222, 100%, 97%);
         outline: 1px solid hsl(222, 100%, 50%);
         .wrap {
-          outline: 1px solid hsl(0, 0%, 40%);
+          outline: 1px solid hsl(222, 100%, 50%);
         }
       }
     }
