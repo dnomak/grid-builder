@@ -135,20 +135,25 @@
                  sizes)))))
 
 (defn layout->html
-  [rows]
-  (map
-   (fn [r]
-     (conj (if (:name r)
-             [:div.row {:class (str "row " (:name r))}]
-             [:div.row])
-           (map (fn [c]
-                  (let [all-classes (join " " (size-classes c))]
-                    [:div
-                     (if (not= (count all-classes) 0)
-                       {:class (join " " (size-classes c))}
-                       {})]))
-                (:cols r))))
-   rows))
+  ([rows content-fn]
+      (map
+       (fn [r]
+         (conj (if (:name r)
+                 [:div.row {:class (str "row " (:name r))}]
+                 [:div.row])
+               (map (fn [c]
+                      (let [all-classes (join " " (size-classes c))
+                            col [:div
+                                 (if (not= (count all-classes) 0)
+                                   {:class (join " " (size-classes c))}
+                                   {})]]
+                        (if (nil? content-fn)
+                          col
+                          (conj col (content-fn r c)))))
+                    (:cols r))))
+       rows))
+  ([rows]
+     (layout->html rows nil)))
 
 (defn layout->less-mixin
   [rows]
@@ -162,7 +167,9 @@
 
 (defn edn-string->html
   [edn-string]
-  (hrt/render-html (layout->html (edn-string->layout edn-string))))
+  (hrt/render-html (layout->html
+                    (edn-string->layout edn-string)
+                    (fn [row col] [:div.wrap]))))
 
 (defn percolate
   [col media]

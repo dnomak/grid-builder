@@ -776,7 +776,7 @@
 
                    (let [rand-span #(node [:span (str (join "" (range 1 (rand 8))) " ")])
                          start-text (fn [el]
-                                      (let [interval (.setInterval js/window #(dom/append! el (rand-span)) 15)]
+                                      (let [interval (.setInterval js/window #(dom/append! (sel1 el :.wrap) (rand-span)) 15)]
                                         (dom/listen-once! body :mouseup #(.clearInterval js/window interval))))
                          start-remv (fn [el]
                                       (let [interval (.setInterval js/window

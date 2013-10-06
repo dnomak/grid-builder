@@ -18810,14 +18810,29 @@ grid.core.size_classes = function(a) {
     return null
   }, grid.core.sizes))))
 };
-grid.core.layout__GT_html = function(a) {
-  return cljs.core.map.call(null, function(a) {
-    return cljs.core.conj.call(null, cljs.core.truth_((new cljs.core.Keyword("\ufdd0:name")).call(null, a)) ? cljs.core.PersistentVector.fromArray(["\ufdd0:div.row", cljs.core.PersistentArrayMap.fromArray(["\ufdd0:class", [cljs.core.str("row "), cljs.core.str((new cljs.core.Keyword("\ufdd0:name")).call(null, a))].join("")], !0)], !0) : cljs.core.PersistentVector.fromArray(["\ufdd0:div.row"], !0), cljs.core.map.call(null, function(a) {
-      var b = clojure.string.join.call(null, " ", grid.core.size_classes.call(null, a));
-      return cljs.core.PersistentVector.fromArray(["\ufdd0:div", cljs.core.not_EQ_.call(null, cljs.core.count.call(null, b), 0) ? cljs.core.PersistentArrayMap.fromArray(["\ufdd0:class", clojure.string.join.call(null, " ", grid.core.size_classes.call(null, a))], !0) : cljs.core.ObjMap.EMPTY], !0)
-    }, (new cljs.core.Keyword("\ufdd0:cols")).call(null, a)))
-  }, a)
-};
+grid.core.layout__GT_html = function() {
+  var a = null, b = function(b) {
+    return a.call(null, b, null)
+  }, c = function(a, b) {
+    return cljs.core.map.call(null, function(a) {
+      return cljs.core.conj.call(null, cljs.core.truth_((new cljs.core.Keyword("\ufdd0:name")).call(null, a)) ? cljs.core.PersistentVector.fromArray(["\ufdd0:div.row", cljs.core.PersistentArrayMap.fromArray(["\ufdd0:class", [cljs.core.str("row "), cljs.core.str((new cljs.core.Keyword("\ufdd0:name")).call(null, a))].join("")], !0)], !0) : cljs.core.PersistentVector.fromArray(["\ufdd0:div.row"], !0), cljs.core.map.call(null, function(c) {
+        var d = clojure.string.join.call(null, " ", grid.core.size_classes.call(null, c)), d = cljs.core.PersistentVector.fromArray(["\ufdd0:div", cljs.core.not_EQ_.call(null, cljs.core.count.call(null, d), 0) ? cljs.core.PersistentArrayMap.fromArray(["\ufdd0:class", clojure.string.join.call(null, " ", grid.core.size_classes.call(null, c))], !0) : cljs.core.ObjMap.EMPTY], !0);
+        return null == b ? d : cljs.core.conj.call(null, d, b.call(null, a, c))
+      }, (new cljs.core.Keyword("\ufdd0:cols")).call(null, a)))
+    }, a)
+  }, a = function(a, e) {
+    switch(arguments.length) {
+      case 1:
+        return b.call(this, a);
+      case 2:
+        return c.call(this, a, e)
+    }
+    throw Error("Invalid arity: " + arguments.length);
+  };
+  a.cljs$core$IFn$_invoke$arity$1 = b;
+  a.cljs$core$IFn$_invoke$arity$2 = c;
+  return a
+}();
 grid.core.layout__GT_less_mixin = function() {
   return cljs.core.List.EMPTY
 };
@@ -18826,7 +18841,9 @@ grid.core.edn_string__GT_layout = function(a) {
   return cljs.core.truth_(grid.core.valid_layout_QMARK_.call(null, a)) ? cljs.core.map.call(null, grid.core.edn__GT_row, a) : null
 };
 grid.core.edn_string__GT_html = function(a) {
-  return hiccups.runtime.render_html.call(null, grid.core.layout__GT_html.call(null, grid.core.edn_string__GT_layout.call(null, a)))
+  return hiccups.runtime.render_html.call(null, grid.core.layout__GT_html.call(null, grid.core.edn_string__GT_layout.call(null, a), function() {
+    return cljs.core.PersistentVector.fromArray(["\ufdd0:div.wrap"], !0)
+  }))
 };
 grid.core.percolate = function(a) {
   return cljs.core.into.call(null, cljs.core.ObjMap.EMPTY, cljs.core.filter.call(null, function(a) {
@@ -20799,7 +20816,7 @@ cljs.core._EQ_.call(null, window.location.pathname, "/preview/") ? shoelace.clie
   e = function(a) {
     var b = window.setInterval(function(b) {
       return function() {
-        return dommy.core.append_BANG_.call(null, a, b.call(null))
+        return dommy.core.append_BANG_.call(null, dommy.utils.__GT_Array.call(null, dommy.template.__GT_node_like.call(null, a).getElementsByClassName("wrap"))[0], b.call(null))
       }
     }(d), 15);
     return dommy.core.listen_once_BANG_.call(null, shoelace.client.body, "\ufdd0:mouseup", function(a) {
