@@ -9,7 +9,7 @@ footer {
   border-top: 1px solid hsl(0, 0%, 22%);
   font-weight: @semibold;
   padding: 8px 10px 10px 10px;
-  
+
   background-size: 30px 30px;
   .clearfix;
   ul {
@@ -31,6 +31,20 @@ footer {
     }
     &.meta {
       float:right;
+
+      .built-reveal {
+        font-size: 0px;
+      }
+
+      &.left-hand-path {
+        .built-magic {
+          font-size: 0px;
+        }
+        .built-reveal {
+          font-size: 14px;
+        }
+      }
+
     }
   }
 }

@@ -565,6 +565,7 @@
         media-mode (:media-mode @settings)
         media-previews-chan (make-media-previews)
         copy-code-el (sel1 :.copy-code)
+        meta-el (sel1 :.meta)
         update-output (fn []
           (let [mode (:output-mode @settings)
                 code (condp = mode
@@ -639,6 +640,8 @@
     (update-output)
 
     (applies dom/listen!
+             [meta-el :mouseenter #(dom/add-class! meta-el :left-hand-path)]
+             [meta-el :mouseleave #(dom/remove-class! meta-el :left-hand-path)]
              [copy-code-el :click
               (fn []
                 (.select copy-output-el)
