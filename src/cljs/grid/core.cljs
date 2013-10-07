@@ -200,4 +200,11 @@
              (not (percolated :md))
              (not (percolated :lg)))
       (assoc percolated :xs [nil 12])
-      percolated)))
+
+      (if (and (percolated :xs)
+               (= ((percolated :xs) 1) 12)
+               (or (percolated :sm)
+                   (percolated :md)
+                   (percolated :lg)))
+        (assoc percolated :xs [nil nil])
+        percolated))))

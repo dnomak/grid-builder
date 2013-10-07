@@ -18897,7 +18897,18 @@ grid.core.percolate = function(a) {
   return function() {
     var a = cljs.core.not.call(null, b.call(null, "\ufdd0:xs"));
     return a && (a = cljs.core.not.call(null, b.call(null, "\ufdd0:sm"))) ? (a = cljs.core.not.call(null, b.call(null, "\ufdd0:md"))) ? cljs.core.not.call(null, b.call(null, "\ufdd0:lg")) : a : a
-  }() ? cljs.core.assoc.call(null, b, "\ufdd0:xs", cljs.core.PersistentVector.fromArray([null, 12], !0)) : b
+  }() ? cljs.core.assoc.call(null, b, "\ufdd0:xs", cljs.core.PersistentVector.fromArray([null, 12], !0)) : cljs.core.truth_(function() {
+    var a = b.call(null, "\ufdd0:xs");
+    if(cljs.core.truth_(a) && (a = cljs.core._EQ_.call(null, b.call(null, "\ufdd0:xs").call(null, 1), 12))) {
+      a = b.call(null, "\ufdd0:sm");
+      if(cljs.core.truth_(a)) {
+        return a
+      }
+      a = b.call(null, "\ufdd0:md");
+      return cljs.core.truth_(a) ? a : b.call(null, "\ufdd0:lg")
+    }
+    return a
+  }()) ? cljs.core.assoc.call(null, b, "\ufdd0:xs", cljs.core.PersistentVector.fromArray([null, null], !0)) : b
 };
 var ednio = {core:{}};
 ednio.core.url = "http://edn.io/";
@@ -19489,10 +19500,7 @@ shoelace.client.add_col_BANG_ = function(a, b, c, d) {
     shoelace.client.set_active_row_BANG_.call(null, d);
     var c = b.x, g = dommy.core.px.call(null, m.call(null, a), "width"), h = cljs.core.deref.call(null, shoelace.client.settings).call(null, "\ufdd0:media-mode"), i = shoelace.client.calc_col_unit.call(null), j = shoelace.client.get_row.call(null, d), l = shoelace.client.get_col.call(null, d, e);
     grid.core.col_for_media.call(null, l, h);
-    var k = grid.core.final_col_for_media.call(null, l, h), q;
-    q = k.call(null, 0);
-    q = cljs.core.truth_(q) ? q : 0;
-    var s;
+    var k = grid.core.final_col_for_media.call(null, l, h), q = k.call(null, 0), q = cljs.core.truth_(q) ? q : 0, s;
     s = k.call(null, 1);
     s = cljs.core.truth_(s) ? s : 0;
     var p = q + s, r = grid.core.grid_cols * i - shoelace.client.col_margin_width, t = n.call(null, a);
@@ -19517,8 +19525,7 @@ shoelace.client.add_col_BANG_ = function(a, b, c, d) {
       shoelace.client.update_col_for_media.call(null, d, e, h);
       dommy.core.add_class_BANG_.call(null, m.call(null, a), "\ufdd0:easing");
       return dommy.core.set_px_BANG_.call(null, m.call(null, a), "\ufdd0:width", c * i - (cljs.core._EQ_.call(null, a, "\ufdd0:width") ? shoelace.client.col_margin_width : 0))
-    };
-    q = function() {
+    }, q = function() {
       dommy.core.unlisten_BANG_.call(null, document, "\ufdd0:mousemove", v);
       return P.call(null)
     };
