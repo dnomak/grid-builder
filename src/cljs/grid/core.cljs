@@ -173,24 +173,31 @@
 
 (defn percolate
   [col media]
-  (into
-   {}
-   (filter (fn [[k v]] (not= v [nil nil]))
-           (for [[k v] col]
-             (do
-               (if (and (k sizes-index) (not= k :xs)) ;;note that :xs is excluded!
-                 (let [prior-size (final-col-for-media col (size-prior k))
-                       check-size (if (and (:xs col) ((:xs col) 1))
-                                    prior-size
-                                    [nil nil])]
+  (let [percolated
+        (into
+         {}
+         (filter (fn [[k v]] (not= v [nil nil]))
+                 (for [[k v] col]
+                   (do
+                     (if (and (k sizes-index) (not= k :xs)) ;;note that :xs is excluded!
+                       (let [prior-size (final-col-for-media col (size-prior k))
+                             check-size (if (and (:xs col) ((:xs col) 1))
+                                          prior-size
+                                          [nil nil])]
 
-                   (let [[offset width] v]
-                     (if prior-size
-                       [k [(if (= (check-size 0) offset)
-                             nil
-                             offset)
-                           (if (= (check-size 1) width)
-                             nil
-                             width)]]
-                       [k [offset width]])))
-                 [k v]))))))
+                         (let [[offset width] v]
+                           (if prior-size
+                             [k [(if (= (check-size 0) offset)
+                                   nil
+                                   offset)
+                                 (if (= (check-size 1) width)
+                                   nil
+                                                width)]]
+                             [k [offset width]])))
+                       [k v])))))]
+    (if (and (not (percolated :xs))
+             (not (percolated :sm))
+             (not (percolated :md))
+             (not (percolated :lg)))
+      (assoc percolated :xs [nil 12])
+      percolated)))

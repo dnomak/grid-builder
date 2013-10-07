@@ -18846,54 +18846,58 @@ grid.core.edn_string__GT_html = function(a) {
   }))
 };
 grid.core.percolate = function(a) {
-  return cljs.core.into.call(null, cljs.core.ObjMap.EMPTY, cljs.core.filter.call(null, function(a) {
+  var b = cljs.core.into.call(null, cljs.core.ObjMap.EMPTY, cljs.core.filter.call(null, function(a) {
     cljs.core.nth.call(null, a, 0, null);
     a = cljs.core.nth.call(null, a, 1, null);
     return cljs.core.not_EQ_.call(null, a, cljs.core.PersistentVector.fromArray([null, null], !0))
-  }, function c(d) {
+  }, function d(b) {
     return new cljs.core.LazySeq(null, !1, function() {
       for(;;) {
-        var e = cljs.core.seq.call(null, d);
-        if(e) {
-          if(cljs.core.chunked_seq_QMARK_.call(null, e)) {
-            var f = cljs.core.chunk_first.call(null, e), g = cljs.core.count.call(null, f), h = cljs.core.chunk_buffer.call(null, g);
+        var f = cljs.core.seq.call(null, b);
+        if(f) {
+          if(cljs.core.chunked_seq_QMARK_.call(null, f)) {
+            var g = cljs.core.chunk_first.call(null, f), h = cljs.core.count.call(null, g), i = cljs.core.chunk_buffer.call(null, h);
             return function() {
-              for(var c = 0;;) {
-                if(c < g) {
-                  var d = cljs.core._nth.call(null, f, c), e = cljs.core.nth.call(null, d, 0, null), i = cljs.core.nth.call(null, d, 1, null);
-                  cljs.core.chunk_append.call(null, h, cljs.core.truth_(function() {
+              for(var b = 0;;) {
+                if(b < h) {
+                  var d = cljs.core._nth.call(null, g, b), e = cljs.core.nth.call(null, d, 0, null), f = cljs.core.nth.call(null, d, 1, null);
+                  cljs.core.chunk_append.call(null, i, cljs.core.truth_(function() {
                     var a = e.call(null, grid.core.sizes_index);
                     return cljs.core.truth_(a) ? cljs.core.not_EQ_.call(null, e, "\ufdd0:xs") : a
                   }()) ? function() {
-                    var c = grid.core.final_col_for_media.call(null, a, grid.core.size_prior.call(null, e)), d = cljs.core.truth_(function() {
-                      var c = (new cljs.core.Keyword("\ufdd0:xs")).call(null, a);
-                      return cljs.core.truth_(c) ? (new cljs.core.Keyword("\ufdd0:xs")).call(null, a).call(null, 1) : c
-                    }()) ? c : cljs.core.PersistentVector.fromArray([null, null], !0), f = i, g = cljs.core.nth.call(null, f, 0, null), f = cljs.core.nth.call(null, f, 1, null);
-                    return cljs.core.truth_(c) ? cljs.core.PersistentVector.fromArray([e, cljs.core.PersistentVector.fromArray([cljs.core._EQ_.call(null, d.call(null, 0), g) ? null : g, cljs.core._EQ_.call(null, d.call(null, 1), f) ? null : f], !0)], !0) : cljs.core.PersistentVector.fromArray([e, cljs.core.PersistentVector.fromArray([g, f], !0)], !0)
-                  }() : cljs.core.PersistentVector.fromArray([e, i], !0));
-                  c += 1
+                    var b = grid.core.final_col_for_media.call(null, a, grid.core.size_prior.call(null, e)), d = cljs.core.truth_(function() {
+                      var b = (new cljs.core.Keyword("\ufdd0:xs")).call(null, a);
+                      return cljs.core.truth_(b) ? (new cljs.core.Keyword("\ufdd0:xs")).call(null, a).call(null, 1) : b
+                    }()) ? b : cljs.core.PersistentVector.fromArray([null, null], !0), g = f, h = cljs.core.nth.call(null, g, 0, null), g = cljs.core.nth.call(null, g, 1, null);
+                    return cljs.core.truth_(b) ? cljs.core.PersistentVector.fromArray([e, cljs.core.PersistentVector.fromArray([cljs.core._EQ_.call(null, d.call(null, 0), h) ? null : h, cljs.core._EQ_.call(null, d.call(null, 1), g) ? null : g], !0)], !0) : cljs.core.PersistentVector.fromArray([e, cljs.core.PersistentVector.fromArray([h, g], !0)], !0)
+                  }() : cljs.core.PersistentVector.fromArray([e, f], !0));
+                  b += 1
                 }else {
                   return!0
                 }
               }
-            }() ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, h), c.call(null, cljs.core.chunk_rest.call(null, e))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, h), null)
+            }() ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, i), d.call(null, cljs.core.chunk_rest.call(null, f))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, i), null)
           }
-          var i = cljs.core.first.call(null, e), j = cljs.core.nth.call(null, i, 0, null), k = cljs.core.nth.call(null, i, 1, null);
+          var j = cljs.core.first.call(null, f), k = cljs.core.nth.call(null, j, 0, null), l = cljs.core.nth.call(null, j, 1, null);
           return cljs.core.cons.call(null, cljs.core.truth_(function() {
-            var a = j.call(null, grid.core.sizes_index);
-            return cljs.core.truth_(a) ? cljs.core.not_EQ_.call(null, j, "\ufdd0:xs") : a
+            var a = k.call(null, grid.core.sizes_index);
+            return cljs.core.truth_(a) ? cljs.core.not_EQ_.call(null, k, "\ufdd0:xs") : a
           }()) ? function() {
-            var c = grid.core.final_col_for_media.call(null, a, grid.core.size_prior.call(null, j)), d = cljs.core.truth_(function() {
-              var c = (new cljs.core.Keyword("\ufdd0:xs")).call(null, a);
-              return cljs.core.truth_(c) ? (new cljs.core.Keyword("\ufdd0:xs")).call(null, a).call(null, 1) : c
-            }()) ? c : cljs.core.PersistentVector.fromArray([null, null], !0), e = k, f = cljs.core.nth.call(null, e, 0, null), e = cljs.core.nth.call(null, e, 1, null);
-            return cljs.core.truth_(c) ? cljs.core.PersistentVector.fromArray([j, cljs.core.PersistentVector.fromArray([cljs.core._EQ_.call(null, d.call(null, 0), f) ? null : f, cljs.core._EQ_.call(null, d.call(null, 1), e) ? null : e], !0)], !0) : cljs.core.PersistentVector.fromArray([j, cljs.core.PersistentVector.fromArray([f, e], !0)], !0)
-          }() : cljs.core.PersistentVector.fromArray([j, k], !0), c.call(null, cljs.core.rest.call(null, e)))
+            var b = grid.core.final_col_for_media.call(null, a, grid.core.size_prior.call(null, k)), d = cljs.core.truth_(function() {
+              var b = (new cljs.core.Keyword("\ufdd0:xs")).call(null, a);
+              return cljs.core.truth_(b) ? (new cljs.core.Keyword("\ufdd0:xs")).call(null, a).call(null, 1) : b
+            }()) ? b : cljs.core.PersistentVector.fromArray([null, null], !0), e = l, f = cljs.core.nth.call(null, e, 0, null), e = cljs.core.nth.call(null, e, 1, null);
+            return cljs.core.truth_(b) ? cljs.core.PersistentVector.fromArray([k, cljs.core.PersistentVector.fromArray([cljs.core._EQ_.call(null, d.call(null, 0), f) ? null : f, cljs.core._EQ_.call(null, d.call(null, 1), e) ? null : e], !0)], !0) : cljs.core.PersistentVector.fromArray([k, cljs.core.PersistentVector.fromArray([f, e], !0)], !0)
+          }() : cljs.core.PersistentVector.fromArray([k, l], !0), d.call(null, cljs.core.rest.call(null, f)))
         }
         return null
       }
     }, null)
-  }.call(null, a)))
+  }.call(null, a)));
+  return function() {
+    var a = cljs.core.not.call(null, b.call(null, "\ufdd0:xs"));
+    return a && (a = cljs.core.not.call(null, b.call(null, "\ufdd0:sm"))) ? (a = cljs.core.not.call(null, b.call(null, "\ufdd0:md"))) ? cljs.core.not.call(null, b.call(null, "\ufdd0:lg")) : a : a
+  }() ? cljs.core.assoc.call(null, b, "\ufdd0:xs", cljs.core.PersistentVector.fromArray([null, 12], !0)) : b
 };
 var ednio = {core:{}};
 ednio.core.url = "http://edn.io/";
@@ -19485,7 +19489,10 @@ shoelace.client.add_col_BANG_ = function(a, b, c, d) {
     shoelace.client.set_active_row_BANG_.call(null, d);
     var c = b.x, g = dommy.core.px.call(null, m.call(null, a), "width"), h = cljs.core.deref.call(null, shoelace.client.settings).call(null, "\ufdd0:media-mode"), i = shoelace.client.calc_col_unit.call(null), j = shoelace.client.get_row.call(null, d), l = shoelace.client.get_col.call(null, d, e);
     grid.core.col_for_media.call(null, l, h);
-    var k = grid.core.final_col_for_media.call(null, l, h), q = k.call(null, 0), q = cljs.core.truth_(q) ? q : 0, s;
+    var k = grid.core.final_col_for_media.call(null, l, h), q;
+    q = k.call(null, 0);
+    q = cljs.core.truth_(q) ? q : 0;
+    var s;
     s = k.call(null, 1);
     s = cljs.core.truth_(s) ? s : 0;
     var p = q + s, r = grid.core.grid_cols * i - shoelace.client.col_margin_width, t = n.call(null, a);
@@ -19510,7 +19517,8 @@ shoelace.client.add_col_BANG_ = function(a, b, c, d) {
       shoelace.client.update_col_for_media.call(null, d, e, h);
       dommy.core.add_class_BANG_.call(null, m.call(null, a), "\ufdd0:easing");
       return dommy.core.set_px_BANG_.call(null, m.call(null, a), "\ufdd0:width", c * i - (cljs.core._EQ_.call(null, a, "\ufdd0:width") ? shoelace.client.col_margin_width : 0))
-    }, q = function() {
+    };
+    q = function() {
       dommy.core.unlisten_BANG_.call(null, document, "\ufdd0:mousemove", v);
       return P.call(null)
     };
