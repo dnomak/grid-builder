@@ -246,7 +246,8 @@
 
     (swap! layout update-in [(:pos row) :cols] conj
            {:id col-id
-            :name false
+            :name (if (@settings :use-less-mixin) (str "col-" (:pos row) "-" (count (:cols row))) false)
+            :from-mixin (@settings :use-less-mixin)
             :pos (count (:cols row))
             (@settings :media-mode) [nil 1]})
 
@@ -269,11 +270,19 @@
       (fn [e]
         (let [row (get-row row-id)
               col (get-col row-id col-id)
-              new-name (.-value name-el)]
-          (swap! layout assoc-in [(:pos row) :cols (:pos col) :name]
-                 (if (zero? (count new-name))
-                   false
-                   new-name)))))
+              input-val(.-value name-el)
+              use-mixin (and (@settings :use-less-mixin)
+                             (zero? (count input-val)))
+              new-name (if use-mixin
+                         (str "col-" (:pos row) "-" (:pos col))
+                         input-val)]
+          (when use-mixin (aset name-el "value" new-name))
+          (swap! layout assoc-in [(:pos row) :cols (:pos col)]
+                 (assoc col
+                   :name (if (zero? (count new-name))
+                           false
+                           new-name)
+                   :from-mixin use-mixin)))))
 
     (when e (handle-drag :width e))
 
@@ -281,14 +290,30 @@
     (watch-change-when layout
                        (fn [os ns]
                          (let [row (get-row row-id)
-                               col (get-col row-id col-id)
-                               path [(:pos row) :cols (:pos col)]]
-                           (not= (get-in os path) (get-in ns path))))
+                               col (get-col row-id col-id)]
+                           [(:pos row) :cols (:pos col)]))
                        (keyword col-id :change-col)
                        (fn [os ns]
+                         (let [col (get-col row-id col-id)]
+                           (aset name-el "value" (or (:name col) "")))
                          (draw-classes)))
 
     [col-id col-el (go-alphabet :draw-classes draw-classes) els name-el]))
+
+(defn update-less-mixin-classes []
+  (let [new-layout (vec (for [row @layout]
+                          (let [cols (vec (for [col (:cols row)]
+                                            (if (:from-mixin col)
+                                              (assoc col :name (str "col-" (:pos row) "-" (:pos col)))
+                                              col)))]
+                            (if (:from-mixin row)
+                              (assoc row
+                                :name (str "row-" (:pos row))
+                                :cols cols)
+                              (assoc row
+                                :cols cols)))))]
+    (when (not= new-layout @layout)
+      (reset! layout new-layout))))
 
 (defn create-row []
   (let [row-id (new-id! "row")
@@ -302,6 +327,15 @@
         new-col-el (node [:.new-col.no-cols])
         clear-el (node [:.clear])]
 
+    (watch-change-when layout
+                       (fn [os ns]
+                         (let [row (get-row row-id)]
+                           [(:pos row)]))
+                       (keyword row-id :change-row)
+                       (fn [os ns]
+                         (let [row (get-row row-id)]
+                           (aset name-el "value" (or (:name row) "")))))
+
     (applies dom/append!
              [cols-el new-col-el]
              [tools-el dupe-row-el clear-row-el remv-row-el]
@@ -312,11 +346,19 @@
                                   (stop-propagation e)
                                   (set-active-row! row-id))]
              [name-el :change (fn [e] (let [row (get-row row-id)
-                                           new-name (.-value name-el)]
-                                       (swap! layout assoc-in [(:pos row) :name]
-                                              (if (zero? (count new-name))
-                                                false
-                                                new-name))))]
+                                           input-val (.-value name-el)
+                                           use-mixin (and (@settings :use-less-mixin)
+                                                          (zero? (count input-val)))
+                                           new-name (if use-mixin
+                                                      (str "row-" (:pos row))
+                                                      input-val)]
+                                       (when use-mixin (aset name-el "value" new-name))
+                                       (swap! layout assoc-in [(:pos row)]
+                                              (assoc (get-row row-id)
+                                                :name (if (zero? (count new-name))
+                                                        false
+                                                        new-name)
+                                                :from-mixin use-mixin))))]
              [new-col-el :mousedown (fn [e] (add-col! e cols-el new-col-el row-id))]
 
              [remv-row-el :mousedown (fn [e]
@@ -348,24 +390,33 @@
                                    (insert-after @layout (inc (:pos row))
                                                  {:id duped-row-id
                                                   :pos 0
-                                                  :cols []
-                                                  :name false}))))
+                                                  :cols []}))))
                  (when (:name row)
-                   (let [duped-row (get-row duped-row-id)]
-                     (swap! layout assoc-in [(:pos duped-row) :name] (:name row))
-                     (aset duped-name-el "value" (:name row))))
-
+                   (let [duped-row (get-row duped-row-id)
+                         new-name (if (@settings :use-less-mixin)
+                                    (str "row-" (:pos duped-row))
+                                    (:name row))]
+                     (swap! layout assoc-in [(:pos duped-row)]
+                            (assoc duped-row
+                              :name new-name
+                              :from-mixin (@settings :use-less-mixin)))
+                     (aset duped-name-el "value" new-name)))
 
                  (let [new-row (get-row duped-row-id)
                        col-unit (calc-col-unit)]
                    (doseq [col (:cols row)]
                      (let [[new-col-id new-col-el new-col-in-chan els col-name-el]
                            (add-col! false duped-cols-el duped-new-col-el duped-row-id)
-                           path [(:pos new-row) :cols (:pos col)]]
-                       (swap! layout assoc-in (conj path :name) (:name col))
+                           path [(:pos new-row) :cols (:pos col)]
+                           new-col-name (if (@settings :use-less-mixin)
+                                          (str "col-" (:pos new-row) "-" (:pos col))
+                                          (:name col))]
+                       (swap! layout assoc-in path (get-col duped-row-id new-col-id)
+                              :name new-col-name
+                              :from-mixin (@settings :use-less-mixin))
                        (dom/add-class! (:width els) :easing)
-                       (when (:name col)
-                         (aset col-name-el "value" (:name col)))
+                       (when new-col-name
+                         (aset col-name-el "value" new-col-name))
                        (doseq [size sizes]
                          (when (size col)
                            (applies dom/set-px!
@@ -376,14 +427,21 @@
                        (when (= grid-cols (total-cols-used (get-row duped-row-id)
                                                            (@settings :media-mode)))
                          (dom/add-class! duped-new-col-el :hidden))
-                       (put! new-col-in-chan [:draw-classes]))))))])
+                       (put! new-col-in-chan [:draw-classes])))
+                   (when (@settings :use-less-mixin (update-less-mixin-classes))))))])
 
     [row-id row-el cols-el new-col-el name-el]))
 
 (defn add-row! []
   (this-as new-row-el
     (let [[row-id row-el] (create-row)]
-      (swap! layout conj {:id row-id :pos (count @layout) :cols [] :name false})
+      (swap! layout conj {:id row-id
+                          :pos (count @layout)
+                          :cols []
+                          :name (if (@settings :use-less-mixin)
+                                  (str "row-" (count @layout))
+                                  false)
+                          :from-mixin (@settings :use-less-mixin)})
       (dom/insert-before! row-el new-row-el)
       (set-active-row! row-id))))
 
@@ -577,6 +635,41 @@
         media-previews-chan (make-media-previews)
         copy-code-el (sel1 :.copy-code)
         meta-el (sel1 :.meta)
+        start-using-less-mixin (fn []
+                                 (let [new-layout (vec (for [row @layout]
+                                                         (let [cols (for [col (:cols row)]
+                                                                      (if (not (:name col))
+                                                                        (assoc col
+                                                                          :name (str "col-" (:pos row) "-" (:pos col))
+                                                                          :from-mixin true)
+                                                                        col))]
+
+                                                           (if (not (:name row))
+                                                             (assoc row
+                                                               :name (str "row-" (:pos row))
+                                                               :from-mixin true
+                                                               :cols (vec cols))
+                                                             (assoc row :cols (vec cols))))))]
+                                   (when (not= new-layout @layout)
+                                     (reset! layout new-layout)))
+                                 (dom/remove-class! output-less :hidden))
+        stop-using-less-mixin (fn []
+                                (let [new-layout (vec (for [row @layout]
+                                                        (let [cols (for [col (:cols row)]
+                                                                     (if (:from-mixin col)
+                                                                       (assoc col
+                                                                         :name false
+                                                                         :from-mixin false)
+                                                                       col))]
+                                                          (if (:from-mixin row)
+                                                            (assoc row
+                                                              :name false
+                                                              :from-mixin false
+                                                              :cols (vec cols))
+                                                            (assoc row :cols (vec cols))))))]
+                                  (when (not= new-layout @layout)
+                                    (reset! layout new-layout)))
+                                (dom/add-class! output-less :hidden))
         update-output (fn []
           (let [mode (:output-mode @settings)
                 code (condp = mode
@@ -596,6 +689,8 @@
               (do (dom/set-text! output (str code))
                   (js/PR.prettyPrint)))
             (aset copy-output-el "value" code)))]
+
+    (stop-using-less-mixin)
 
     (make-options)
 
@@ -646,6 +741,10 @@
 
              [:use-less-mixin
               (fn [ov nv]
+                (if nv
+                  (start-using-less-mixin)
+                  (stop-using-less-mixin))
+
                 (update-output))]
 
              [:include-container

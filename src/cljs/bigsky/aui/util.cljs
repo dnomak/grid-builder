@@ -54,16 +54,16 @@
   [data when-fn watch-name handler]
   (add-watch data watch-name
              (fn [k r os ns]
-               (when (when-fn os ns)
+               (when (let [path (when-fn os ns)]
+                       (not= (get-in os path)
+                             (get-in ns path)))
                  (handler os ns))))
   watch-name)
 
 (defn watch-change-in
   ([data path watch-name handler]
      (watch-change-when data
-                        (fn [os ns]
-                          (not= (get-in os path)
-                                (get-in ns path)))
+                        (fn [os ns] path)
                         watch-name
                         (fn [os ns]
                           (handler (get-in os path)
