@@ -191,9 +191,9 @@
                 cur-cols-used (col-for-media col media)
                 fcols (final-col-for-media col media)
                 tfcols (+ (or (fcols 0) 0) (or (fcols 1) 0))
-                max-width (- (* grid-cols col-unit) col-margin-width)
                 dim-pos (type-pos type)
-                dim-pos-op (type-pos (if (= type :offset) :width :offset))
+                dim-pos-opp (type-pos (if (= type :offset) :width :offset))
+                max-width (- (* (- grid-cols (fcols dim-pos-opp)) col-unit) col-margin-width)
                 snap! (fn []
                         (let [w (+ (if (= type :offset) col-margin-width 0)
                                    (dom/px (els type) "width"))
@@ -218,19 +218,22 @@
 
                           (update-col-for-media row-id col-id media)
                           (dom/add-class! (els type) :easing)
+
                           (dom/set-px! (els type)
                                        :width
                                        (- (* new-width col-unit)
                                           (if (= type :width) col-margin-width 0)))))
                 valid-step (fn [width]
-                             (<= (+ (- (quot width col-unit) (dec (fcols dim-pos)))
+                             (<= (+ (- width (dec (fcols dim-pos)))
                                     tfcols)
                                  grid-cols))
                 move-handler (fn [e]
                                (let [dx (- (aget e "x") start-x)
                                      sdx (+ start-w dx)
-                                     nw (if (> sdx  max-width) max-width sdx)]
-                                 (when (valid-step nw)
+                                     nw (if (> sdx  max-width) max-width sdx)
+                                     qw (quot nw col-unit)]
+                                 (when (valid-step qw)
+                                   (draw-class-type media type qw)
                                    (dom/set-px! (els type) :width nw))))
                 stop-handler (fn [e]
                                (dom/unlisten! js/document :mousemove move-handler)
