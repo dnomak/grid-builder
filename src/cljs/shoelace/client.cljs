@@ -183,7 +183,7 @@
           (stop-propagation e)
           (.preventDefault e)
           (set-active-row! row-id)
-          (let [start-x (aget e "x")
+          (let [start-x (aget e "clientX")
                 start-w (dom/px (els type) "width")
                 media (@settings :media-mode)
                 col-unit (calc-col-unit)
@@ -229,7 +229,7 @@
                                     tfcols)
                                  grid-cols))
                 move-handler (fn [e]
-                               (let [dx (- (aget e "x") start-x)
+                               (let [dx (- (aget e "clientX") start-x)
                                      sdx (+ start-w dx)
                                      nw (if (> sdx  max-width) max-width sdx)
                                      qw (quot nw col-unit)]

@@ -20074,7 +20074,7 @@ shoelace.client.add_col_BANG_ = function(a, b, c, d) {
     shoelace.client.stop_propagation.call(null, b);
     b.preventDefault();
     shoelace.client.set_active_row_BANG_.call(null, d);
-    var c = b.x, g = dommy.core.px.call(null, m.call(null, a), "width"), h = cljs.core.deref.call(null, shoelace.client.settings).call(null, "\ufdd0:media-mode"), i = shoelace.client.calc_col_unit.call(null), j = shoelace.client.get_row.call(null, d), k = shoelace.client.get_col.call(null, d, e);
+    var c = b.clientX, g = dommy.core.px.call(null, m.call(null, a), "width"), h = cljs.core.deref.call(null, shoelace.client.settings).call(null, "\ufdd0:media-mode"), i = shoelace.client.calc_col_unit.call(null), j = shoelace.client.get_row.call(null, d), k = shoelace.client.get_col.call(null, d, e);
     grid.core.col_for_media.call(null, k, h);
     var l = grid.core.final_col_for_media.call(null, k, h), q = l.call(null, 0), q = cljs.core.truth_(q) ? q : 0, s;
     s = l.call(null, 1);
@@ -20083,7 +20083,7 @@ shoelace.client.add_col_BANG_ = function(a, b, c, d) {
       return a - (l.call(null, r) - 1) + p <= grid.core.grid_cols
     };
     J = function(b) {
-      var b = g + (b.x - c), b = b > t ? t : b, d = cljs.core.quot.call(null, b, i);
+      var b = g + (b.clientX - c), b = b > t ? t : b, d = cljs.core.quot.call(null, b, i);
       return cljs.core.truth_(K.call(null, d)) ? (w.call(null, h, a, d), dommy.core.set_px_BANG_.call(null, m.call(null, a), "\ufdd0:width", b)) : null
     };
     var M = function() {
