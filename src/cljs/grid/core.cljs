@@ -234,7 +234,7 @@
 (defn layout->jade
   [rows include-container ignore-grid-classes]
   (let [container (if include-container ".container\n" "")
-        row-class (if ignore-grid-classes [] [".row"])
+        row-class (if ignore-grid-classes [] ["row"])
         row-prefix (if include-container "  " "")
         col-prefix (if include-container "    " "  ")]
     (str container

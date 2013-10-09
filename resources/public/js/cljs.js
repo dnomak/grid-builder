@@ -19146,7 +19146,7 @@ grid.core.percolate = function(a) {
   }()) ? cljs.core.assoc.call(null, b, "\ufdd0:xs", cljs.core.PersistentVector.fromArray([null, null], !0)) : b
 };
 grid.core.layout__GT_jade = function(a, b, c) {
-  var d = cljs.core.truth_(b) ? ".container\n" : "", e = cljs.core.truth_(c) ? cljs.core.PersistentVector.EMPTY : cljs.core.PersistentVector.fromArray([".row"], !0), f = cljs.core.truth_(b) ? "  " : "", g = cljs.core.truth_(b) ? "    " : "  ";
+  var d = cljs.core.truth_(b) ? ".container\n" : "", e = cljs.core.truth_(c) ? cljs.core.PersistentVector.EMPTY : cljs.core.PersistentVector.fromArray(["row"], !0), f = cljs.core.truth_(b) ? "  " : "", g = cljs.core.truth_(b) ? "    " : "  ";
   return[cljs.core.str(d), cljs.core.str(clojure.string.join.call(null, "\n", cljs.core.map.call(null, function(a) {
     return[cljs.core.str(f), cljs.core.str([cljs.core.str("."), cljs.core.str(clojure.string.trim.call(null, clojure.string.join.call(null, ".", cljs.core.conj.call(null, e, (new cljs.core.Keyword("\ufdd0:name")).call(null, a))))), cljs.core.str("\n")].join("")), cljs.core.str(g), cljs.core.str(clojure.string.join.call(null, [cljs.core.str("\n"), cljs.core.str(g)].join(""), cljs.core.map.call(null, function(a) {
       return[cljs.core.str("."), cljs.core.str(clojure.string.join.call(null, ".", grid.core.size_classes.call(null, a, c)))].join("")
