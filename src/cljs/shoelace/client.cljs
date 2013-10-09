@@ -245,11 +245,13 @@
                                    (dom/set-px! (els type) :width nw))))
                 stop-handler (fn [e]
                                (dom/unlisten! js/document :mousemove move-handler)
+                               (dom/unlisten! js/document :touchmove move-handler)
                                (snap!))]
             (when (or (not= media :xs) (= type :width))
               (dom/add-class! col-el :dragging)
               (dom/remove-class! (els type) :easing)
               (dom/listen! js/document :mousemove move-handler)
+              (dom/listen! js/document :touchmove move-handler)
               (dom/listen-once! js/document :mouseup stop-handler))))]
 
     (swap! layout update-in [(:pos row) :cols] conj
