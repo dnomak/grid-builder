@@ -13,7 +13,7 @@
    [ednio.core :as ednio]
    [cljs.reader :refer [read-string]]
    [grid.core :as grid :refer [sizes sizes-index size-classes sizes-up-to sizes-up-to-memo total-cols-used
-                               col-for-media cols-for-media grid-cols percolate
+                               col-for-media cols-for-media grid-cols percolate layout->less-mixin
                                final-col-for-media sizes-after valid-layout? edn->row vcat size-prior]])
   (:require-macros
    [cljs.core.async.macros :refer [go]]
@@ -446,8 +446,8 @@
       (set-active-row! row-id))))
 
 (defn layout->jade
-  [rows]
-  (let [include-container (:include-container @settings)
+  [rows ignore-grid-classes]
+  (let [include-container ignore-grid-classes
         container (if include-container ".container\n" "")
         row-prefix (if include-container "  " "")
         col-prefix (if include-container "    " "  ")]
@@ -459,7 +459,7 @@
                       (->> (:cols row)
                            (map
                             (fn [col]
-                              (str "." (join "." (size-classes col)))))
+                              (str "." (join "." (size-classes col (:use-less-mixin @settings))))))
                            (join (str "\n" col-prefix))))))
               (join "\n")))))
 
@@ -672,15 +672,20 @@
                                 (dom/add-class! output-less :hidden))
         update-output (fn []
           (let [mode (:output-mode @settings)
+                use-less-mixin (:use-less-mixin @settings)
                 code (condp = mode
-                       :html (let [layout-html (grid/layout->html @layout)]
+                       :html (let [layout-html (grid/layout->html @layout (fn []  "") use-less-mixin)]
                                (js/html_beautify
                                 (hrt/render-html
                                  (if (:include-container @settings)
                                    (conj [:div.container] layout-html)
                                    layout-html))))
-                       :jade (layout->jade @layout)
+                       :jade (layout->jade @layout use-less-mixin)
                        :edn  (layout->edn @layout))]
+
+            (when use-less-mixin
+              (dom/set-text! output-less (layout->less-mixin @layout)))
+
             (dom/remove-class! output :prettyprinted)
             (if (= mode :edn)
               (do

@@ -120,44 +120,63 @@
                         (map edn->col cols))
      :wrap false}))
 
-(defn size-classes [c]
+(defn size-classes [c ignore-grid-classes]
   (remove nil?
           (flatten
            (concat
             (if (:name c) [(split (:name c) #"\s+")] [])
-            (map (fn [s]
-                   (if (s c)
-                     (let [[offset width] (s c)]
-                       [(when (not (nil? offset))
-                          (str "col-" (name s) "-offset-" offset))
-                        (when (not (nil? width))
-                          (str "col-" (name s) "-" width))])))
-                 sizes)))))
+            (when (not ignore-grid-classes)
+              (map (fn [s]
+                     (if (s c)
+                       (let [[offset width] (s c)]
+                         [(when (not (nil? offset))
+                            (str "col-" (name s) "-offset-" offset))
+                          (when (not (nil? width))
+                            (str "col-" (name s) "-" width))])))
+                   sizes))))))
 
 (defn layout->html
-  ([rows content-fn]
+  ([rows content-fn ignore-grid-classes]
       (map
        (fn [r]
          (conj (if (:name r)
                  [:div.row {:class (str "row " (:name r))}]
                  [:div.row])
                (map (fn [c]
-                      (let [all-classes (join " " (size-classes c))
+                      (let [all-classes (join " " (size-classes c ignore-grid-classes))
                             col [:div
                                  (if (not= (count all-classes) 0)
-                                   {:class (join " " (size-classes c))}
+                                   {:class (join " " (size-classes c ignore-grid-classes))}
                                    {})]]
                         (if (nil? content-fn)
                           col
                           (conj col (content-fn r c)))))
                     (:cols r))))
        rows))
+  ([rows content-fn]
+     (layout->html rows content-fn false))
   ([rows]
-     (layout->html rows nil)))
+     (layout->html rows nil false)))
 
 (defn layout->less-mixin
   [rows]
-  ())
+  (->>
+   (for [row rows]
+     [(str "." (:name row) " {")
+      (str "  .make-row();")
+      (for [col (:cols row)]
+        [(str "  ." (:name col) " {")
+         (for [size sizes :when (col size)]
+           (let [[offset width] (col size)]
+             [(when (not (nil? offset))
+                (str "    .make-" (name size) "-column-offset(" offset ");"))
+              (when (not (nil? width))
+                (str "    .make-" (name size) "-column(" width ");"))]))
+         "  }"])
+      "}"])
+   (flatten)
+   (remove nil?)
+   (join "\n")))
 
 (defn edn-string->layout
   [edn-string]
@@ -181,10 +200,12 @@
                    (do
                      (if (and (k sizes-index) (not= k :xs)) ;;note that :xs is excluded!
                        (let [prior-size (final-col-for-media col (size-prior k))
-                             check-size (if (and (:xs col) ((:xs col) 1))
+                             check-size (if (or (not= k :sm)
+                                                (and (= k :sm)
+                                                     (:xs col)
+                                                     ((:xs col) 1)))
                                           prior-size
                                           [nil nil])]
-
                          (let [[offset width] v]
                            (if prior-size
                              [k [(if (= (check-size 0) offset)
@@ -192,7 +213,7 @@
                                    offset)
                                  (if (= (check-size 1) width)
                                    nil
-                                                width)]]
+                                   width)]]
                              [k [offset width]])))
                        [k v])))))]
     (if (and (not (percolated :xs))
