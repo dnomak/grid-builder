@@ -20,6 +20,13 @@
    [cljs.core.async.macros :refer [go]]
    [dommy.macros :refer [node sel sel1]]))
 
+(def is-safari
+  (let [ua (.toLowerCase js/navigator.userAgent)]
+    (and (not= (.indexOf ua "safari") -1)
+         (= (.indexOf ua "chrome") -1))))
+
+(def transition-end (if is-safari "webkitTransitionEnd" "transitionend"))
+
 (defn sels
   [names selectors]
   (zipmap names (for [s selectors] (sel1 s))))
@@ -365,7 +372,7 @@
              [remv-row-el :mousedown (fn [e]
                (let [row (get-row row-id)]
                  (dom/add-class! row-el :removing)
-                 (dom/listen-once! row-el :transitionend
+                 (dom/listen-once! row-el transition-end
                    (fn [] (reset! layout
                                  (into []
                                        (map-indexed (fn [i r] (assoc r :pos i))
@@ -491,7 +498,7 @@
                        [pane-el :collapsed]
                        [collapse-el :collapsed]
                        [workspace state])
-              (dom/listen-once! pane-el :transitionend
+              (dom/listen-once! pane-el transition-end
                                 #(swap! settings assoc state (not collapsed)))))))
 
 (def media-factor

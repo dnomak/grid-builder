@@ -19807,6 +19807,11 @@ bigsky.aui.draggable.draggable = function() {
   return a
 }();
 var shoelace = {client:{}};
+shoelace.client.is_safari = function() {
+  var a = navigator.userAgent.toLowerCase(), b = cljs.core.not_EQ_.call(null, a.indexOf("safari"), -1);
+  return b ? cljs.core._EQ_.call(null, a.indexOf("chrome"), -1) : b
+}();
+shoelace.client.transition_end = cljs.core.truth_(shoelace.client.is_safari) ? "webkitTransitionEnd" : "transitionend";
 shoelace.client.sels = function(a, b) {
   return cljs.core.zipmap.call(null, a, function d(a) {
     return new cljs.core.LazySeq(null, !1, function() {
@@ -20301,7 +20306,7 @@ shoelace.client.create_row = function create_row() {
   }], !0), cljs.core.PersistentVector.fromArray([i, "\ufdd0:mousedown", function() {
     shoelace.client.get_row.call(null, b);
     dommy.core.add_class_BANG_.call(null, c, "\ufdd0:removing");
-    return dommy.core.listen_once_BANG_.call(null, c, "\ufdd0:transitionend", function() {
+    return dommy.core.listen_once_BANG_.call(null, c, shoelace.client.transition_end, function() {
       cljs.core.reset_BANG_.call(null, shoelace.client.layout, cljs.core.into.call(null, cljs.core.PersistentVector.EMPTY, cljs.core.map_indexed.call(null, function(b, c) {
         return cljs.core.assoc.call(null, c, "\ufdd0:pos", b)
       }, cljs.core.filter.call(null, function(c) {
@@ -20457,7 +20462,7 @@ shoelace.client.make_collapse_pane = function(a, b, c, d) {
   return dommy.core.listen_BANG_.call(null, d, "\ufdd0:click", function() {
     var e = cljs.core.deref.call(null, shoelace.client.settings).call(null, a), f = cljs.core.truth_(e) ? dommy.core.remove_class_BANG_ : dommy.core.add_class_BANG_;
     bigsky.aui.util.applies.call(null, f, cljs.core.PersistentVector.fromArray([c, "\ufdd0:collapsed"], !0), cljs.core.PersistentVector.fromArray([d, "\ufdd0:collapsed"], !0), cljs.core.PersistentVector.fromArray([b, a], !0));
-    return dommy.core.listen_once_BANG_.call(null, c, "\ufdd0:transitionend", function() {
+    return dommy.core.listen_once_BANG_.call(null, c, shoelace.client.transition_end, function() {
       return cljs.core.swap_BANG_.call(null, shoelace.client.settings, cljs.core.assoc, a, cljs.core.not.call(null, e))
     })
   })
