@@ -18817,8 +18817,10 @@ grid.core.layout__GT_html = function() {
   }, c = function(b, c) {
     return a.call(null, b, c, !1)
   }, d = function(a, b, c) {
+    var d = cljs.core.truth_(c) ? "" : "row";
     return cljs.core.map.call(null, function(a) {
-      return cljs.core.conj.call(null, cljs.core.truth_((new cljs.core.Keyword("\ufdd0:name")).call(null, a)) ? cljs.core.PersistentVector.fromArray(["\ufdd0:div.row", cljs.core.PersistentArrayMap.fromArray(["\ufdd0:class", [cljs.core.str("row "), cljs.core.str((new cljs.core.Keyword("\ufdd0:name")).call(null, a))].join("")], !0)], !0) : cljs.core.PersistentVector.fromArray(["\ufdd0:div.row"], !0), cljs.core.map.call(null, function(d) {
+      return cljs.core.conj.call(null, cljs.core.truth_((new cljs.core.Keyword("\ufdd0:name")).call(null, a)) ? cljs.core.PersistentVector.fromArray(["\ufdd0:div", cljs.core.PersistentArrayMap.fromArray(["\ufdd0:class", clojure.string.trim.call(null, clojure.string.join.call(null, " ", cljs.core.PersistentVector.fromArray([d, (new cljs.core.Keyword("\ufdd0:name")).call(null, a)], !0)))], !0)], !0) : cljs.core.PersistentVector.fromArray(["\ufdd0:div", cljs.core.PersistentArrayMap.fromArray(["\ufdd0:class", 
+      d], !0)], !0), cljs.core.map.call(null, function(d) {
         var e = clojure.string.join.call(null, " ", grid.core.size_classes.call(null, d, c)), e = cljs.core.PersistentVector.fromArray(["\ufdd0:div", cljs.core.not_EQ_.call(null, cljs.core.count.call(null, e), 0) ? cljs.core.PersistentArrayMap.fromArray(["\ufdd0:class", clojure.string.join.call(null, " ", grid.core.size_classes.call(null, d, c))], !0) : cljs.core.ObjMap.EMPTY], !0);
         return null == b ? e : cljs.core.conj.call(null, e, b.call(null, a, d))
       }, (new cljs.core.Keyword("\ufdd0:cols")).call(null, a)))
@@ -19142,6 +19144,347 @@ grid.core.percolate = function(a) {
     }
     return a
   }()) ? cljs.core.assoc.call(null, b, "\ufdd0:xs", cljs.core.PersistentVector.fromArray([null, null], !0)) : b
+};
+grid.core.layout__GT_jade = function(a, b, c) {
+  var d = cljs.core.truth_(b) ? ".container\n" : "", e = cljs.core.truth_(c) ? cljs.core.PersistentVector.EMPTY : cljs.core.PersistentVector.fromArray([".row"], !0), f = cljs.core.truth_(b) ? "  " : "", g = cljs.core.truth_(b) ? "    " : "  ";
+  return[cljs.core.str(d), cljs.core.str(clojure.string.join.call(null, "\n", cljs.core.map.call(null, function(a) {
+    return[cljs.core.str(f), cljs.core.str([cljs.core.str("."), cljs.core.str(clojure.string.trim.call(null, clojure.string.join.call(null, ".", cljs.core.conj.call(null, e, (new cljs.core.Keyword("\ufdd0:name")).call(null, a))))), cljs.core.str("\n")].join("")), cljs.core.str(g), cljs.core.str(clojure.string.join.call(null, [cljs.core.str("\n"), cljs.core.str(g)].join(""), cljs.core.map.call(null, function(a) {
+      return[cljs.core.str("."), cljs.core.str(clojure.string.join.call(null, ".", grid.core.size_classes.call(null, a, c)))].join("")
+    }, (new cljs.core.Keyword("\ufdd0:cols")).call(null, a))))].join("")
+  }, a)))].join("")
+};
+grid.core.layout__GT_edn = function(a) {
+  return cljs.core.vec.call(null, function c(a) {
+    return new cljs.core.LazySeq(null, !1, function() {
+      for(;;) {
+        var e = cljs.core.seq.call(null, a);
+        if(e) {
+          if(cljs.core.chunked_seq_QMARK_.call(null, e)) {
+            var f = cljs.core.chunk_first.call(null, e), g = cljs.core.count.call(null, f), h = cljs.core.chunk_buffer.call(null, g);
+            return function() {
+              for(var a = 0;;) {
+                if(a < g) {
+                  var c = cljs.core._nth.call(null, f, a);
+                  cljs.core.chunk_append.call(null, h, grid.core.vcat.call(null, cljs.core.truth_((new cljs.core.Keyword("\ufdd0:name")).call(null, c)) ? cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:name")).call(null, c)], !0) : cljs.core.PersistentVector.EMPTY, function() {
+                    return function m(a) {
+                      return new cljs.core.LazySeq(null, !1, function() {
+                        for(;;) {
+                          var c = cljs.core.seq.call(null, a);
+                          if(c) {
+                            if(cljs.core.chunked_seq_QMARK_.call(null, c)) {
+                              var d = cljs.core.chunk_first.call(null, c), e = cljs.core.count.call(null, d), f = cljs.core.chunk_buffer.call(null, e);
+                              return function() {
+                                for(var a = 0;;) {
+                                  if(a < e) {
+                                    var c = cljs.core._nth.call(null, d, a);
+                                    cljs.core.chunk_append.call(null, f, grid.core.vcat.call(null, cljs.core.truth_((new cljs.core.Keyword("\ufdd0:name")).call(null, c)) ? cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:name")).call(null, c)], !0) : cljs.core.PersistentVector.EMPTY, function() {
+                                      var a = c;
+                                      return function x(c) {
+                                        return new cljs.core.LazySeq(null, !1, function() {
+                                          for(var d = c;;) {
+                                            if(d = cljs.core.seq.call(null, d)) {
+                                              if(cljs.core.chunked_seq_QMARK_.call(null, d)) {
+                                                var e = cljs.core.chunk_first.call(null, d), f = cljs.core.count.call(null, e), g = cljs.core.chunk_buffer.call(null, f);
+                                                a: {
+                                                  for(var h = 0;;) {
+                                                    if(h < f) {
+                                                      var i = cljs.core._nth.call(null, e, h);
+                                                      cljs.core.truth_(i.call(null, a)) && cljs.core.chunk_append.call(null, g, grid.core.vcat.call(null, cljs.core.PersistentVector.fromArray([i], !0), i.call(null, a)));
+                                                      h += 1
+                                                    }else {
+                                                      e = !0;
+                                                      break a
+                                                    }
+                                                  }
+                                                  e = void 0
+                                                }
+                                                return e ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, g), x.call(null, cljs.core.chunk_rest.call(null, d))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, g), null)
+                                              }
+                                              g = cljs.core.first.call(null, d);
+                                              if(cljs.core.truth_(g.call(null, a))) {
+                                                return cljs.core.cons.call(null, grid.core.vcat.call(null, cljs.core.PersistentVector.fromArray([g], !0), g.call(null, a)), x.call(null, cljs.core.rest.call(null, d)))
+                                              }
+                                              d = cljs.core.rest.call(null, d)
+                                            }else {
+                                              return null
+                                            }
+                                          }
+                                        }, null)
+                                      }.call(null, grid.core.sizes)
+                                    }()));
+                                    a += 1
+                                  }else {
+                                    return!0
+                                  }
+                                }
+                              }() ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, f), m.call(null, cljs.core.chunk_rest.call(null, c))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, f), null)
+                            }
+                            var g = cljs.core.first.call(null, c);
+                            return cljs.core.cons.call(null, grid.core.vcat.call(null, cljs.core.truth_((new cljs.core.Keyword("\ufdd0:name")).call(null, g)) ? cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:name")).call(null, g)], !0) : cljs.core.PersistentVector.EMPTY, function() {
+                              var a = g;
+                              return function u(c) {
+                                return new cljs.core.LazySeq(null, !1, function() {
+                                  for(var d = c;;) {
+                                    if(d = cljs.core.seq.call(null, d)) {
+                                      if(cljs.core.chunked_seq_QMARK_.call(null, d)) {
+                                        var e = cljs.core.chunk_first.call(null, d), f = cljs.core.count.call(null, e), g = cljs.core.chunk_buffer.call(null, f);
+                                        a: {
+                                          for(var h = 0;;) {
+                                            if(h < f) {
+                                              var i = cljs.core._nth.call(null, e, h);
+                                              cljs.core.truth_(i.call(null, a)) && cljs.core.chunk_append.call(null, g, grid.core.vcat.call(null, cljs.core.PersistentVector.fromArray([i], !0), i.call(null, a)));
+                                              h += 1
+                                            }else {
+                                              e = !0;
+                                              break a
+                                            }
+                                          }
+                                          e = void 0
+                                        }
+                                        return e ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, g), u.call(null, cljs.core.chunk_rest.call(null, d))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, g), null)
+                                      }
+                                      g = cljs.core.first.call(null, d);
+                                      if(cljs.core.truth_(g.call(null, a))) {
+                                        return cljs.core.cons.call(null, grid.core.vcat.call(null, cljs.core.PersistentVector.fromArray([g], !0), g.call(null, a)), u.call(null, cljs.core.rest.call(null, d)))
+                                      }
+                                      d = cljs.core.rest.call(null, d)
+                                    }else {
+                                      return null
+                                    }
+                                  }
+                                }, null)
+                              }.call(null, grid.core.sizes)
+                            }()), m.call(null, cljs.core.rest.call(null, c)))
+                          }
+                          return null
+                        }
+                      }, null)
+                    }.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, c))
+                  }()));
+                  a += 1
+                }else {
+                  return!0
+                }
+              }
+            }() ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, h), c.call(null, cljs.core.chunk_rest.call(null, e))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, h), null)
+          }
+          var i = cljs.core.first.call(null, e);
+          return cljs.core.cons.call(null, grid.core.vcat.call(null, cljs.core.truth_((new cljs.core.Keyword("\ufdd0:name")).call(null, i)) ? cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:name")).call(null, i)], !0) : cljs.core.PersistentVector.EMPTY, function() {
+            return function k(a) {
+              return new cljs.core.LazySeq(null, !1, function() {
+                for(;;) {
+                  var c = cljs.core.seq.call(null, a);
+                  if(c) {
+                    if(cljs.core.chunked_seq_QMARK_.call(null, c)) {
+                      var d = cljs.core.chunk_first.call(null, c), e = cljs.core.count.call(null, d), f = cljs.core.chunk_buffer.call(null, e);
+                      return function() {
+                        for(var a = 0;;) {
+                          if(a < e) {
+                            var c = cljs.core._nth.call(null, d, a);
+                            cljs.core.chunk_append.call(null, f, grid.core.vcat.call(null, cljs.core.truth_((new cljs.core.Keyword("\ufdd0:name")).call(null, c)) ? cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:name")).call(null, c)], !0) : cljs.core.PersistentVector.EMPTY, function() {
+                              var a = c;
+                              return function u(c) {
+                                return new cljs.core.LazySeq(null, !1, function() {
+                                  for(var d = c;;) {
+                                    if(d = cljs.core.seq.call(null, d)) {
+                                      if(cljs.core.chunked_seq_QMARK_.call(null, d)) {
+                                        var e = cljs.core.chunk_first.call(null, d), f = cljs.core.count.call(null, e), g = cljs.core.chunk_buffer.call(null, f);
+                                        a: {
+                                          for(var h = 0;;) {
+                                            if(h < f) {
+                                              var i = cljs.core._nth.call(null, e, h);
+                                              cljs.core.truth_(i.call(null, a)) && cljs.core.chunk_append.call(null, g, grid.core.vcat.call(null, cljs.core.PersistentVector.fromArray([i], !0), i.call(null, a)));
+                                              h += 1
+                                            }else {
+                                              e = !0;
+                                              break a
+                                            }
+                                          }
+                                          e = void 0
+                                        }
+                                        return e ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, g), u.call(null, cljs.core.chunk_rest.call(null, d))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, g), null)
+                                      }
+                                      g = cljs.core.first.call(null, d);
+                                      if(cljs.core.truth_(g.call(null, a))) {
+                                        return cljs.core.cons.call(null, grid.core.vcat.call(null, cljs.core.PersistentVector.fromArray([g], !0), g.call(null, a)), u.call(null, cljs.core.rest.call(null, d)))
+                                      }
+                                      d = cljs.core.rest.call(null, d)
+                                    }else {
+                                      return null
+                                    }
+                                  }
+                                }, null)
+                              }.call(null, grid.core.sizes)
+                            }()));
+                            a += 1
+                          }else {
+                            return!0
+                          }
+                        }
+                      }() ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, f), k.call(null, cljs.core.chunk_rest.call(null, c))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, f), null)
+                    }
+                    var g = cljs.core.first.call(null, c);
+                    return cljs.core.cons.call(null, grid.core.vcat.call(null, cljs.core.truth_((new cljs.core.Keyword("\ufdd0:name")).call(null, g)) ? cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:name")).call(null, g)], !0) : cljs.core.PersistentVector.EMPTY, function() {
+                      var a = g;
+                      return function v(c) {
+                        return new cljs.core.LazySeq(null, !1, function() {
+                          for(var d = c;;) {
+                            if(d = cljs.core.seq.call(null, d)) {
+                              if(cljs.core.chunked_seq_QMARK_.call(null, d)) {
+                                var e = cljs.core.chunk_first.call(null, d), f = cljs.core.count.call(null, e), g = cljs.core.chunk_buffer.call(null, f);
+                                a: {
+                                  for(var h = 0;;) {
+                                    if(h < f) {
+                                      var i = cljs.core._nth.call(null, e, h);
+                                      cljs.core.truth_(i.call(null, a)) && cljs.core.chunk_append.call(null, g, grid.core.vcat.call(null, cljs.core.PersistentVector.fromArray([i], !0), i.call(null, a)));
+                                      h += 1
+                                    }else {
+                                      e = !0;
+                                      break a
+                                    }
+                                  }
+                                  e = void 0
+                                }
+                                return e ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, g), v.call(null, cljs.core.chunk_rest.call(null, d))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, g), null)
+                              }
+                              g = cljs.core.first.call(null, d);
+                              if(cljs.core.truth_(g.call(null, a))) {
+                                return cljs.core.cons.call(null, grid.core.vcat.call(null, cljs.core.PersistentVector.fromArray([g], !0), g.call(null, a)), v.call(null, cljs.core.rest.call(null, d)))
+                              }
+                              d = cljs.core.rest.call(null, d)
+                            }else {
+                              return null
+                            }
+                          }
+                        }, null)
+                      }.call(null, grid.core.sizes)
+                    }()), k.call(null, cljs.core.rest.call(null, c)))
+                  }
+                  return null
+                }
+              }, null)
+            }.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, i))
+          }()), c.call(null, cljs.core.rest.call(null, e)))
+        }
+        return null
+      }
+    }, null)
+  }.call(null, a))
+};
+grid.core.ebo = cljs.core.PersistentVector.fromArray(["\ufdd0:.edn-bracket-open.tag", "["], !0);
+grid.core.ebc = cljs.core.PersistentVector.fromArray(["\ufdd0:.edn-bracket-close.tag", "]"], !0);
+grid.core.sizes__GT_html = function(a) {
+  return grid.core.vcat.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:ul.edn-media"], !0), cljs.core.vec.call(null, function c(a) {
+    return new cljs.core.LazySeq(null, !1, function() {
+      for(;;) {
+        var e = cljs.core.seq.call(null, a);
+        if(e) {
+          if(cljs.core.chunked_seq_QMARK_.call(null, e)) {
+            var f = cljs.core.chunk_first.call(null, e), g = cljs.core.count.call(null, f), h = cljs.core.chunk_buffer.call(null, g);
+            return function() {
+              for(var a = 0;;) {
+                if(a < g) {
+                  var c = cljs.core._nth.call(null, f, a), d = cljs.core.nth.call(null, c, 0, null), e = cljs.core.nth.call(null, c, 1, null), i = cljs.core.nth.call(null, c, 2, null);
+                  cljs.core.chunk_append.call(null, h, cljs.core.PersistentVector.fromArray(["\ufdd0:li", grid.core.ebo, cljs.core.PersistentVector.fromArray(["\ufdd0:span.edn-kw.atn", "" + cljs.core.str(d)], !0), cljs.core.PersistentVector.fromArray(["\ufdd0:span.edn-kw.atv", function() {
+                    var a = e;
+                    return cljs.core.truth_(a) ? a : "nil"
+                  }()], !0), cljs.core.PersistentVector.fromArray(["\ufdd0:span.edn-kw.atv.edn-width", function() {
+                    var a = i;
+                    return cljs.core.truth_(a) ? a : "nil"
+                  }()], !0), grid.core.ebc], !0));
+                  a += 1
+                }else {
+                  return!0
+                }
+              }
+            }() ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, h), c.call(null, cljs.core.chunk_rest.call(null, e))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, h), null)
+          }
+          var i = cljs.core.first.call(null, e), j = cljs.core.nth.call(null, i, 0, null), k = cljs.core.nth.call(null, i, 1, null), l = cljs.core.nth.call(null, i, 2, null);
+          return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:li", grid.core.ebo, cljs.core.PersistentVector.fromArray(["\ufdd0:span.edn-kw.atn", "" + cljs.core.str(j)], !0), cljs.core.PersistentVector.fromArray(["\ufdd0:span.edn-kw.atv", function() {
+            var a = k;
+            return cljs.core.truth_(a) ? a : "nil"
+          }()], !0), cljs.core.PersistentVector.fromArray(["\ufdd0:span.edn-kw.atv.edn-width", function() {
+            var a = l;
+            return cljs.core.truth_(a) ? a : "nil"
+          }()], !0), grid.core.ebc], !0), c.call(null, cljs.core.rest.call(null, e)))
+        }
+        return null
+      }
+    }, null)
+  }.call(null, a)))
+};
+grid.core.cols__GT_html = function(a) {
+  a = grid.core.vcat.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:ul.edn-cols"], !0), cljs.core.vec.call(null, function c(a) {
+    return new cljs.core.LazySeq(null, !1, function() {
+      for(;;) {
+        var e = cljs.core.seq.call(null, a);
+        if(e) {
+          if(cljs.core.chunked_seq_QMARK_.call(null, e)) {
+            var f = cljs.core.chunk_first.call(null, e), g = cljs.core.count.call(null, f), h = cljs.core.chunk_buffer.call(null, g);
+            a: {
+              for(var i = 0;;) {
+                if(i < g) {
+                  var j = cljs.core._nth.call(null, f, i);
+                  cljs.core.chunk_append.call(null, h, cljs.core.string_QMARK_.call(null, cljs.core.first.call(null, j)) ? cljs.core.PersistentVector.fromArray(["\ufdd0:li", grid.core.ebo, cljs.core.PersistentVector.fromArray(["\ufdd0:.edn-name.atv", [cljs.core.str('"'), cljs.core.str(cljs.core.first.call(null, j)), cljs.core.str('"')].join("")], !0), grid.core.sizes__GT_html.call(null, cljs.core.rest.call(null, j)), grid.core.ebc], !0) : cljs.core.PersistentVector.fromArray(["\ufdd0:li", grid.core.ebo, 
+                  grid.core.sizes__GT_html.call(null, j), grid.core.ebc], !0));
+                  i += 1
+                }else {
+                  f = !0;
+                  break a
+                }
+              }
+              f = void 0
+            }
+            return f ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, h), c.call(null, cljs.core.chunk_rest.call(null, e))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, h), null)
+          }
+          h = cljs.core.first.call(null, e);
+          return cljs.core.cons.call(null, cljs.core.string_QMARK_.call(null, cljs.core.first.call(null, h)) ? cljs.core.PersistentVector.fromArray(["\ufdd0:li", grid.core.ebo, cljs.core.PersistentVector.fromArray(["\ufdd0:.edn-name.atv", [cljs.core.str('"'), cljs.core.str(cljs.core.first.call(null, h)), cljs.core.str('"')].join("")], !0), grid.core.sizes__GT_html.call(null, cljs.core.rest.call(null, h)), grid.core.ebc], !0) : cljs.core.PersistentVector.fromArray(["\ufdd0:li", grid.core.ebo, grid.core.sizes__GT_html.call(null, 
+          h), grid.core.ebc], !0), c.call(null, cljs.core.rest.call(null, e)))
+        }
+        return null
+      }
+    }, null)
+  }.call(null, a)));
+  return 1 < cljs.core.count.call(null, a) ? cljs.core.assoc.call(null, a, cljs.core.count.call(null, a) - 1, cljs.core.conj.call(null, cljs.core.last.call(null, a), grid.core.ebc)) : cljs.core.conj.call(null, a, grid.core.ebc)
+};
+grid.core.rows__GT_html = function(a) {
+  return grid.core.vcat.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:.all-edn", grid.core.ebo, grid.core.vcat.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:ul.edn-rows"], !0), function() {
+    var b = cljs.core.vec.call(null, function d(a) {
+      return new cljs.core.LazySeq(null, !1, function() {
+        for(;;) {
+          var b = cljs.core.seq.call(null, a);
+          if(b) {
+            if(cljs.core.chunked_seq_QMARK_.call(null, b)) {
+              var g = cljs.core.chunk_first.call(null, b), h = cljs.core.count.call(null, g), i = cljs.core.chunk_buffer.call(null, h);
+              a: {
+                for(var j = 0;;) {
+                  if(j < h) {
+                    var k = cljs.core._nth.call(null, g, j);
+                    cljs.core.chunk_append.call(null, i, cljs.core.string_QMARK_.call(null, cljs.core.first.call(null, k)) ? cljs.core.PersistentVector.fromArray(["\ufdd0:li", grid.core.ebo, cljs.core.PersistentVector.fromArray(["\ufdd0:.edn-name.atv", [cljs.core.str('"'), cljs.core.str(cljs.core.first.call(null, k)), cljs.core.str('"')].join("")], !0), grid.core.cols__GT_html.call(null, cljs.core.rest.call(null, k))], !0) : cljs.core.PersistentVector.fromArray(["\ufdd0:li", grid.core.ebo, grid.core.cols__GT_html.call(null, 
+                    k)], !0));
+                    j += 1
+                  }else {
+                    g = !0;
+                    break a
+                  }
+                }
+                g = void 0
+              }
+              return g ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, i), d.call(null, cljs.core.chunk_rest.call(null, b))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, i), null)
+            }
+            i = cljs.core.first.call(null, b);
+            return cljs.core.cons.call(null, cljs.core.string_QMARK_.call(null, cljs.core.first.call(null, i)) ? cljs.core.PersistentVector.fromArray(["\ufdd0:li", grid.core.ebo, cljs.core.PersistentVector.fromArray(["\ufdd0:.edn-name.atv", [cljs.core.str('"'), cljs.core.str(cljs.core.first.call(null, i)), cljs.core.str('"')].join("")], !0), grid.core.cols__GT_html.call(null, cljs.core.rest.call(null, i))], !0) : cljs.core.PersistentVector.fromArray(["\ufdd0:li", grid.core.ebo, grid.core.cols__GT_html.call(null, 
+            i)], !0), d.call(null, cljs.core.rest.call(null, b)))
+          }
+          return null
+        }
+      }, null)
+    }.call(null, a));
+    return 0 < cljs.core.count.call(null, b) ? cljs.core.assoc.call(null, b, cljs.core.count.call(null, b) - 1, function() {
+      var a = cljs.core.last.call(null, b), e = cljs.core.PersistentVector.fromArray([cljs.core.count.call(null, a) - 1, cljs.core.count.call(null, cljs.core.last.call(null, a)) - 1, cljs.core.count.call(null, cljs.core.last.call(null, cljs.core.last.call(null, a))) - 1], !0), f = cljs.core.get_in.call(null, a, e);
+      return cljs.core.vector_QMARK_.call(null, f) ? cljs.core.assoc_in.call(null, a, e, cljs.core.conj.call(null, f, grid.core.ebc)) : cljs.core.conj.call(null, a, grid.core.ebc)
+    }()) : cljs.core.conj.call(null, b, grid.core.ebc)
+  }())], !0))
 };
 var ednio = {core:{}};
 ednio.core.url = "http://edn.io/";
@@ -20092,232 +20435,6 @@ shoelace.client.add_row_BANG_ = function() {
   dommy.core.insert_before_BANG_.call(null, a, this);
   return shoelace.client.set_active_row_BANG_.call(null, b)
 };
-shoelace.client.layout__GT_jade = function(a, b) {
-  var c = cljs.core.truth_(b) ? ".container\n" : "", d = cljs.core.truth_(b) ? "  " : "", e = cljs.core.truth_(b) ? "    " : "  ";
-  return[cljs.core.str(c), cljs.core.str(clojure.string.join.call(null, "\n", cljs.core.map.call(null, function(a) {
-    return[cljs.core.str(d), cljs.core.str(".row\n"), cljs.core.str(e), cljs.core.str(clojure.string.join.call(null, [cljs.core.str("\n"), cljs.core.str(e)].join(""), cljs.core.map.call(null, function(a) {
-      return[cljs.core.str("."), cljs.core.str(clojure.string.join.call(null, ".", grid.core.size_classes.call(null, a, (new cljs.core.Keyword("\ufdd0:use-less-mixin")).call(null, cljs.core.deref.call(null, shoelace.client.settings)))))].join("")
-    }, (new cljs.core.Keyword("\ufdd0:cols")).call(null, a))))].join("")
-  }, a)))].join("")
-};
-shoelace.client.layout__GT_edn = function(a) {
-  return cljs.core.vec.call(null, function c(a) {
-    return new cljs.core.LazySeq(null, !1, function() {
-      for(;;) {
-        var e = cljs.core.seq.call(null, a);
-        if(e) {
-          if(cljs.core.chunked_seq_QMARK_.call(null, e)) {
-            var f = cljs.core.chunk_first.call(null, e), g = cljs.core.count.call(null, f), h = cljs.core.chunk_buffer.call(null, g);
-            return function() {
-              for(var a = 0;;) {
-                if(a < g) {
-                  var c = cljs.core._nth.call(null, f, a);
-                  cljs.core.chunk_append.call(null, h, grid.core.vcat.call(null, cljs.core.truth_((new cljs.core.Keyword("\ufdd0:name")).call(null, c)) ? cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:name")).call(null, c)], !0) : cljs.core.PersistentVector.EMPTY, function() {
-                    return function m(a) {
-                      return new cljs.core.LazySeq(null, !1, function() {
-                        for(;;) {
-                          var c = cljs.core.seq.call(null, a);
-                          if(c) {
-                            if(cljs.core.chunked_seq_QMARK_.call(null, c)) {
-                              var d = cljs.core.chunk_first.call(null, c), e = cljs.core.count.call(null, d), f = cljs.core.chunk_buffer.call(null, e);
-                              return function() {
-                                for(var a = 0;;) {
-                                  if(a < e) {
-                                    var c = cljs.core._nth.call(null, d, a);
-                                    cljs.core.chunk_append.call(null, f, grid.core.vcat.call(null, cljs.core.truth_((new cljs.core.Keyword("\ufdd0:name")).call(null, c)) ? cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:name")).call(null, c)], !0) : cljs.core.PersistentVector.EMPTY, function() {
-                                      var a = c;
-                                      return function x(c) {
-                                        return new cljs.core.LazySeq(null, !1, function() {
-                                          for(var d = c;;) {
-                                            if(d = cljs.core.seq.call(null, d)) {
-                                              if(cljs.core.chunked_seq_QMARK_.call(null, d)) {
-                                                var e = cljs.core.chunk_first.call(null, d), f = cljs.core.count.call(null, e), g = cljs.core.chunk_buffer.call(null, f);
-                                                a: {
-                                                  for(var h = 0;;) {
-                                                    if(h < f) {
-                                                      var i = cljs.core._nth.call(null, e, h);
-                                                      cljs.core.truth_(i.call(null, a)) && cljs.core.chunk_append.call(null, g, grid.core.vcat.call(null, cljs.core.PersistentVector.fromArray([i], !0), i.call(null, a)));
-                                                      h += 1
-                                                    }else {
-                                                      e = !0;
-                                                      break a
-                                                    }
-                                                  }
-                                                  e = void 0
-                                                }
-                                                return e ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, g), x.call(null, cljs.core.chunk_rest.call(null, d))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, g), null)
-                                              }
-                                              g = cljs.core.first.call(null, d);
-                                              if(cljs.core.truth_(g.call(null, a))) {
-                                                return cljs.core.cons.call(null, grid.core.vcat.call(null, cljs.core.PersistentVector.fromArray([g], !0), g.call(null, a)), x.call(null, cljs.core.rest.call(null, d)))
-                                              }
-                                              d = cljs.core.rest.call(null, d)
-                                            }else {
-                                              return null
-                                            }
-                                          }
-                                        }, null)
-                                      }.call(null, grid.core.sizes)
-                                    }()));
-                                    a += 1
-                                  }else {
-                                    return!0
-                                  }
-                                }
-                              }() ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, f), m.call(null, cljs.core.chunk_rest.call(null, c))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, f), null)
-                            }
-                            var g = cljs.core.first.call(null, c);
-                            return cljs.core.cons.call(null, grid.core.vcat.call(null, cljs.core.truth_((new cljs.core.Keyword("\ufdd0:name")).call(null, g)) ? cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:name")).call(null, g)], !0) : cljs.core.PersistentVector.EMPTY, function() {
-                              var a = g;
-                              return function u(c) {
-                                return new cljs.core.LazySeq(null, !1, function() {
-                                  for(var d = c;;) {
-                                    if(d = cljs.core.seq.call(null, d)) {
-                                      if(cljs.core.chunked_seq_QMARK_.call(null, d)) {
-                                        var e = cljs.core.chunk_first.call(null, d), f = cljs.core.count.call(null, e), g = cljs.core.chunk_buffer.call(null, f);
-                                        a: {
-                                          for(var h = 0;;) {
-                                            if(h < f) {
-                                              var i = cljs.core._nth.call(null, e, h);
-                                              cljs.core.truth_(i.call(null, a)) && cljs.core.chunk_append.call(null, g, grid.core.vcat.call(null, cljs.core.PersistentVector.fromArray([i], !0), i.call(null, a)));
-                                              h += 1
-                                            }else {
-                                              e = !0;
-                                              break a
-                                            }
-                                          }
-                                          e = void 0
-                                        }
-                                        return e ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, g), u.call(null, cljs.core.chunk_rest.call(null, d))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, g), null)
-                                      }
-                                      g = cljs.core.first.call(null, d);
-                                      if(cljs.core.truth_(g.call(null, a))) {
-                                        return cljs.core.cons.call(null, grid.core.vcat.call(null, cljs.core.PersistentVector.fromArray([g], !0), g.call(null, a)), u.call(null, cljs.core.rest.call(null, d)))
-                                      }
-                                      d = cljs.core.rest.call(null, d)
-                                    }else {
-                                      return null
-                                    }
-                                  }
-                                }, null)
-                              }.call(null, grid.core.sizes)
-                            }()), m.call(null, cljs.core.rest.call(null, c)))
-                          }
-                          return null
-                        }
-                      }, null)
-                    }.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, c))
-                  }()));
-                  a += 1
-                }else {
-                  return!0
-                }
-              }
-            }() ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, h), c.call(null, cljs.core.chunk_rest.call(null, e))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, h), null)
-          }
-          var i = cljs.core.first.call(null, e);
-          return cljs.core.cons.call(null, grid.core.vcat.call(null, cljs.core.truth_((new cljs.core.Keyword("\ufdd0:name")).call(null, i)) ? cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:name")).call(null, i)], !0) : cljs.core.PersistentVector.EMPTY, function() {
-            return function k(a) {
-              return new cljs.core.LazySeq(null, !1, function() {
-                for(;;) {
-                  var c = cljs.core.seq.call(null, a);
-                  if(c) {
-                    if(cljs.core.chunked_seq_QMARK_.call(null, c)) {
-                      var d = cljs.core.chunk_first.call(null, c), e = cljs.core.count.call(null, d), f = cljs.core.chunk_buffer.call(null, e);
-                      return function() {
-                        for(var a = 0;;) {
-                          if(a < e) {
-                            var c = cljs.core._nth.call(null, d, a);
-                            cljs.core.chunk_append.call(null, f, grid.core.vcat.call(null, cljs.core.truth_((new cljs.core.Keyword("\ufdd0:name")).call(null, c)) ? cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:name")).call(null, c)], !0) : cljs.core.PersistentVector.EMPTY, function() {
-                              var a = c;
-                              return function u(c) {
-                                return new cljs.core.LazySeq(null, !1, function() {
-                                  for(var d = c;;) {
-                                    if(d = cljs.core.seq.call(null, d)) {
-                                      if(cljs.core.chunked_seq_QMARK_.call(null, d)) {
-                                        var e = cljs.core.chunk_first.call(null, d), f = cljs.core.count.call(null, e), g = cljs.core.chunk_buffer.call(null, f);
-                                        a: {
-                                          for(var h = 0;;) {
-                                            if(h < f) {
-                                              var i = cljs.core._nth.call(null, e, h);
-                                              cljs.core.truth_(i.call(null, a)) && cljs.core.chunk_append.call(null, g, grid.core.vcat.call(null, cljs.core.PersistentVector.fromArray([i], !0), i.call(null, a)));
-                                              h += 1
-                                            }else {
-                                              e = !0;
-                                              break a
-                                            }
-                                          }
-                                          e = void 0
-                                        }
-                                        return e ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, g), u.call(null, cljs.core.chunk_rest.call(null, d))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, g), null)
-                                      }
-                                      g = cljs.core.first.call(null, d);
-                                      if(cljs.core.truth_(g.call(null, a))) {
-                                        return cljs.core.cons.call(null, grid.core.vcat.call(null, cljs.core.PersistentVector.fromArray([g], !0), g.call(null, a)), u.call(null, cljs.core.rest.call(null, d)))
-                                      }
-                                      d = cljs.core.rest.call(null, d)
-                                    }else {
-                                      return null
-                                    }
-                                  }
-                                }, null)
-                              }.call(null, grid.core.sizes)
-                            }()));
-                            a += 1
-                          }else {
-                            return!0
-                          }
-                        }
-                      }() ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, f), k.call(null, cljs.core.chunk_rest.call(null, c))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, f), null)
-                    }
-                    var g = cljs.core.first.call(null, c);
-                    return cljs.core.cons.call(null, grid.core.vcat.call(null, cljs.core.truth_((new cljs.core.Keyword("\ufdd0:name")).call(null, g)) ? cljs.core.PersistentVector.fromArray([(new cljs.core.Keyword("\ufdd0:name")).call(null, g)], !0) : cljs.core.PersistentVector.EMPTY, function() {
-                      var a = g;
-                      return function v(c) {
-                        return new cljs.core.LazySeq(null, !1, function() {
-                          for(var d = c;;) {
-                            if(d = cljs.core.seq.call(null, d)) {
-                              if(cljs.core.chunked_seq_QMARK_.call(null, d)) {
-                                var e = cljs.core.chunk_first.call(null, d), f = cljs.core.count.call(null, e), g = cljs.core.chunk_buffer.call(null, f);
-                                a: {
-                                  for(var h = 0;;) {
-                                    if(h < f) {
-                                      var i = cljs.core._nth.call(null, e, h);
-                                      cljs.core.truth_(i.call(null, a)) && cljs.core.chunk_append.call(null, g, grid.core.vcat.call(null, cljs.core.PersistentVector.fromArray([i], !0), i.call(null, a)));
-                                      h += 1
-                                    }else {
-                                      e = !0;
-                                      break a
-                                    }
-                                  }
-                                  e = void 0
-                                }
-                                return e ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, g), v.call(null, cljs.core.chunk_rest.call(null, d))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, g), null)
-                              }
-                              g = cljs.core.first.call(null, d);
-                              if(cljs.core.truth_(g.call(null, a))) {
-                                return cljs.core.cons.call(null, grid.core.vcat.call(null, cljs.core.PersistentVector.fromArray([g], !0), g.call(null, a)), v.call(null, cljs.core.rest.call(null, d)))
-                              }
-                              d = cljs.core.rest.call(null, d)
-                            }else {
-                              return null
-                            }
-                          }
-                        }, null)
-                      }.call(null, grid.core.sizes)
-                    }()), k.call(null, cljs.core.rest.call(null, c)))
-                  }
-                  return null
-                }
-              }, null)
-            }.call(null, (new cljs.core.Keyword("\ufdd0:cols")).call(null, i))
-          }()), c.call(null, cljs.core.rest.call(null, e)))
-        }
-        return null
-      }
-    }, null)
-  }.call(null, a))
-};
 shoelace.client.make_options = function() {
   var a = document.querySelector(dommy.core.selector.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:.options"], !0)));
   document.querySelector(dommy.core.selector.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:.options", "\ufdd0:ul"], !0)));
@@ -20667,121 +20784,6 @@ shoelace.client.make_media_previews = function() {
     }
   })
 };
-shoelace.client.ebo = cljs.core.PersistentVector.fromArray(["\ufdd0:.edn-bracket-open.tag", "["], !0);
-shoelace.client.ebc = cljs.core.PersistentVector.fromArray(["\ufdd0:.edn-bracket-close.tag", "]"], !0);
-shoelace.client.sizes__GT_html = function(a) {
-  return grid.core.vcat.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:ul.edn-media"], !0), cljs.core.vec.call(null, function c(a) {
-    return new cljs.core.LazySeq(null, !1, function() {
-      for(;;) {
-        var e = cljs.core.seq.call(null, a);
-        if(e) {
-          if(cljs.core.chunked_seq_QMARK_.call(null, e)) {
-            var f = cljs.core.chunk_first.call(null, e), g = cljs.core.count.call(null, f), h = cljs.core.chunk_buffer.call(null, g);
-            return function() {
-              for(var a = 0;;) {
-                if(a < g) {
-                  var c = cljs.core._nth.call(null, f, a), d = cljs.core.nth.call(null, c, 0, null), e = cljs.core.nth.call(null, c, 1, null), i = cljs.core.nth.call(null, c, 2, null);
-                  cljs.core.chunk_append.call(null, h, cljs.core.PersistentVector.fromArray(["\ufdd0:li", shoelace.client.ebo, cljs.core.PersistentVector.fromArray(["\ufdd0:span.edn-kw.atn", "" + cljs.core.str(d)], !0), cljs.core.PersistentVector.fromArray(["\ufdd0:span.edn-kw.atv", function() {
-                    var a = e;
-                    return cljs.core.truth_(a) ? a : "nil"
-                  }()], !0), cljs.core.PersistentVector.fromArray(["\ufdd0:span.edn-kw.atv.edn-width", function() {
-                    var a = i;
-                    return cljs.core.truth_(a) ? a : "nil"
-                  }()], !0), shoelace.client.ebc], !0));
-                  a += 1
-                }else {
-                  return!0
-                }
-              }
-            }() ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, h), c.call(null, cljs.core.chunk_rest.call(null, e))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, h), null)
-          }
-          var i = cljs.core.first.call(null, e), j = cljs.core.nth.call(null, i, 0, null), k = cljs.core.nth.call(null, i, 1, null), l = cljs.core.nth.call(null, i, 2, null);
-          return cljs.core.cons.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:li", shoelace.client.ebo, cljs.core.PersistentVector.fromArray(["\ufdd0:span.edn-kw.atn", "" + cljs.core.str(j)], !0), cljs.core.PersistentVector.fromArray(["\ufdd0:span.edn-kw.atv", function() {
-            var a = k;
-            return cljs.core.truth_(a) ? a : "nil"
-          }()], !0), cljs.core.PersistentVector.fromArray(["\ufdd0:span.edn-kw.atv.edn-width", function() {
-            var a = l;
-            return cljs.core.truth_(a) ? a : "nil"
-          }()], !0), shoelace.client.ebc], !0), c.call(null, cljs.core.rest.call(null, e)))
-        }
-        return null
-      }
-    }, null)
-  }.call(null, a)))
-};
-shoelace.client.cols__GT_html = function(a) {
-  a = grid.core.vcat.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:ul.edn-cols"], !0), cljs.core.vec.call(null, function c(a) {
-    return new cljs.core.LazySeq(null, !1, function() {
-      for(;;) {
-        var e = cljs.core.seq.call(null, a);
-        if(e) {
-          if(cljs.core.chunked_seq_QMARK_.call(null, e)) {
-            var f = cljs.core.chunk_first.call(null, e), g = cljs.core.count.call(null, f), h = cljs.core.chunk_buffer.call(null, g);
-            a: {
-              for(var i = 0;;) {
-                if(i < g) {
-                  var j = cljs.core._nth.call(null, f, i);
-                  cljs.core.chunk_append.call(null, h, cljs.core.string_QMARK_.call(null, cljs.core.first.call(null, j)) ? cljs.core.PersistentVector.fromArray(["\ufdd0:li", shoelace.client.ebo, cljs.core.PersistentVector.fromArray(["\ufdd0:.edn-name.atv", [cljs.core.str('"'), cljs.core.str(cljs.core.first.call(null, j)), cljs.core.str('"')].join("")], !0), shoelace.client.sizes__GT_html.call(null, cljs.core.rest.call(null, j)), shoelace.client.ebc], !0) : cljs.core.PersistentVector.fromArray(["\ufdd0:li", 
-                  shoelace.client.ebo, shoelace.client.sizes__GT_html.call(null, j), shoelace.client.ebc], !0));
-                  i += 1
-                }else {
-                  f = !0;
-                  break a
-                }
-              }
-              f = void 0
-            }
-            return f ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, h), c.call(null, cljs.core.chunk_rest.call(null, e))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, h), null)
-          }
-          h = cljs.core.first.call(null, e);
-          return cljs.core.cons.call(null, cljs.core.string_QMARK_.call(null, cljs.core.first.call(null, h)) ? cljs.core.PersistentVector.fromArray(["\ufdd0:li", shoelace.client.ebo, cljs.core.PersistentVector.fromArray(["\ufdd0:.edn-name.atv", [cljs.core.str('"'), cljs.core.str(cljs.core.first.call(null, h)), cljs.core.str('"')].join("")], !0), shoelace.client.sizes__GT_html.call(null, cljs.core.rest.call(null, h)), shoelace.client.ebc], !0) : cljs.core.PersistentVector.fromArray(["\ufdd0:li", shoelace.client.ebo, 
-          shoelace.client.sizes__GT_html.call(null, h), shoelace.client.ebc], !0), c.call(null, cljs.core.rest.call(null, e)))
-        }
-        return null
-      }
-    }, null)
-  }.call(null, a)));
-  return 1 < cljs.core.count.call(null, a) ? cljs.core.assoc.call(null, a, cljs.core.count.call(null, a) - 1, cljs.core.conj.call(null, cljs.core.last.call(null, a), shoelace.client.ebc)) : cljs.core.conj.call(null, a, shoelace.client.ebc)
-};
-shoelace.client.rows__GT_html = function(a) {
-  return grid.core.vcat.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:.all-edn", shoelace.client.ebo, grid.core.vcat.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:ul.edn-rows"], !0), function() {
-    var b = cljs.core.vec.call(null, function d(a) {
-      return new cljs.core.LazySeq(null, !1, function() {
-        for(;;) {
-          var b = cljs.core.seq.call(null, a);
-          if(b) {
-            if(cljs.core.chunked_seq_QMARK_.call(null, b)) {
-              var g = cljs.core.chunk_first.call(null, b), h = cljs.core.count.call(null, g), i = cljs.core.chunk_buffer.call(null, h);
-              a: {
-                for(var j = 0;;) {
-                  if(j < h) {
-                    var k = cljs.core._nth.call(null, g, j);
-                    cljs.core.chunk_append.call(null, i, cljs.core.string_QMARK_.call(null, cljs.core.first.call(null, k)) ? cljs.core.PersistentVector.fromArray(["\ufdd0:li", shoelace.client.ebo, cljs.core.PersistentVector.fromArray(["\ufdd0:.edn-name.atv", [cljs.core.str('"'), cljs.core.str(cljs.core.first.call(null, k)), cljs.core.str('"')].join("")], !0), shoelace.client.cols__GT_html.call(null, cljs.core.rest.call(null, k))], !0) : cljs.core.PersistentVector.fromArray(["\ufdd0:li", shoelace.client.ebo, 
-                    shoelace.client.cols__GT_html.call(null, k)], !0));
-                    j += 1
-                  }else {
-                    g = !0;
-                    break a
-                  }
-                }
-                g = void 0
-              }
-              return g ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, i), d.call(null, cljs.core.chunk_rest.call(null, b))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, i), null)
-            }
-            i = cljs.core.first.call(null, b);
-            return cljs.core.cons.call(null, cljs.core.string_QMARK_.call(null, cljs.core.first.call(null, i)) ? cljs.core.PersistentVector.fromArray(["\ufdd0:li", shoelace.client.ebo, cljs.core.PersistentVector.fromArray(["\ufdd0:.edn-name.atv", [cljs.core.str('"'), cljs.core.str(cljs.core.first.call(null, i)), cljs.core.str('"')].join("")], !0), shoelace.client.cols__GT_html.call(null, cljs.core.rest.call(null, i))], !0) : cljs.core.PersistentVector.fromArray(["\ufdd0:li", shoelace.client.ebo, 
-            shoelace.client.cols__GT_html.call(null, i)], !0), d.call(null, cljs.core.rest.call(null, b)))
-          }
-          return null
-        }
-      }, null)
-    }.call(null, a));
-    return 0 < cljs.core.count.call(null, b) ? cljs.core.assoc.call(null, b, cljs.core.count.call(null, b) - 1, function() {
-      var a = cljs.core.last.call(null, b), e = cljs.core.PersistentVector.fromArray([cljs.core.count.call(null, a) - 1, cljs.core.count.call(null, cljs.core.last.call(null, a)) - 1, cljs.core.count.call(null, cljs.core.last.call(null, cljs.core.last.call(null, a))) - 1], !0), f = cljs.core.get_in.call(null, a, e);
-      return cljs.core.vector_QMARK_.call(null, f) ? cljs.core.assoc_in.call(null, a, e, cljs.core.conj.call(null, f, shoelace.client.ebc)) : cljs.core.conj.call(null, a, shoelace.client.ebc)
-    }()) : cljs.core.conj.call(null, b, shoelace.client.ebc)
-  }())], !0))
-};
 shoelace.client.show = function(a) {
   return dommy.core.remove_class_BANG_.call(null, document.querySelector(dommy.core.selector.call(null, a)), "\ufdd0:hidden")
 };
@@ -21003,16 +21005,16 @@ shoelace.client.draw_workspace = function() {
         }, e), html_beautify(hiccups.runtime.render_html.call(null, cljs.core.truth_((new cljs.core.Keyword("\ufdd0:include-container")).call(null, cljs.core.deref.call(null, shoelace.client.settings))) ? cljs.core.conj.call(null, cljs.core.PersistentVector.fromArray(["\ufdd0:div.container"], !0), b) : b))
       }
       if(b.call(null, "\ufdd0:jade", a)) {
-        return shoelace.client.layout__GT_jade.call(null, cljs.core.deref.call(null, shoelace.client.layout), e)
+        return grid.core.layout__GT_jade.call(null, cljs.core.deref.call(null, shoelace.client.layout), e, e)
       }
       if(b.call(null, "\ufdd0:edn", a)) {
-        return shoelace.client.layout__GT_edn.call(null, cljs.core.deref.call(null, shoelace.client.layout))
+        return grid.core.layout__GT_edn.call(null, cljs.core.deref.call(null, shoelace.client.layout))
       }
       throw Error([cljs.core.str("No matching clause: "), cljs.core.str(a)].join(""));
     }();
     cljs.core.truth_(e) && dommy.core.set_text_BANG_.call(null, c, grid.core.layout__GT_less_mixin.call(null, cljs.core.deref.call(null, shoelace.client.layout)));
     dommy.core.remove_class_BANG_.call(null, b, "\ufdd0:prettyprinted");
-    cljs.core._EQ_.call(null, a, "\ufdd0:edn") ? (dommy.core.set_html_BANG_.call(null, b, ""), dommy.core.append_BANG_.call(null, b, dommy.template.__GT_node_like.call(null, shoelace.client.rows__GT_html.call(null, f)))) : (dommy.core.set_text_BANG_.call(null, b, "" + cljs.core.str(f)), PR.prettyPrint());
+    cljs.core._EQ_.call(null, a, "\ufdd0:edn") ? (dommy.core.set_html_BANG_.call(null, b, ""), dommy.core.append_BANG_.call(null, b, dommy.template.__GT_node_like.call(null, grid.core.rows__GT_html.call(null, f)))) : (dommy.core.set_text_BANG_.call(null, b, "" + cljs.core.str(f)), PR.prettyPrint());
     return d.value = f
   };
   n.call(null);
@@ -21103,7 +21105,7 @@ shoelace.client.draw_workspace = function() {
     return window.open([cljs.core.str(window.location.protocol), cljs.core.str("//"), cljs.core.str(window.location.host), cljs.core.str("/preview/#"), cljs.core.str((new cljs.core.Keyword("\ufdd0:gist-id")).call(null, cljs.core.deref.call(null, shoelace.client.settings)))].join("")).focus()
   }], !0), cljs.core.PersistentVector.fromArray([dommy.utils.__GT_Array.call(null, document.getElementsByClassName("btn-save"))[0], "\ufdd0:click", function() {
     shoelace.client.show_loading.call(null);
-    return gist.core.create.call(null, "shoelace grid", "" + cljs.core.str(shoelace.client.layout__GT_edn.call(null, cljs.core.deref.call(null, shoelace.client.layout))), function(a) {
+    return gist.core.create.call(null, "shoelace grid", "" + cljs.core.str(grid.core.layout__GT_edn.call(null, cljs.core.deref.call(null, shoelace.client.layout))), function(a) {
       cljs.core.swap_BANG_.call(null, shoelace.client.settings, cljs.core.assoc, "\ufdd0:gist-id", gist.core.encode_id.call(null, a.id));
       window.location.hash = (new cljs.core.Keyword("\ufdd0:gist-id")).call(null, cljs.core.deref.call(null, shoelace.client.settings));
       shoelace.client.hide_loading.call(null);
@@ -21111,14 +21113,14 @@ shoelace.client.draw_workspace = function() {
     })
   }], !0), cljs.core.PersistentVector.fromArray([dommy.utils.__GT_Array.call(null, document.getElementsByClassName("btn-update"))[0], "\ufdd0:click", function() {
     shoelace.client.show_loading.call(null);
-    return gist.core.update.call(null, (new cljs.core.Keyword("\ufdd0:gist-id")).call(null, cljs.core.deref.call(null, shoelace.client.settings)), "shoelace grid", "" + cljs.core.str(shoelace.client.layout__GT_edn.call(null, cljs.core.deref.call(null, shoelace.client.layout))), function(a) {
+    return gist.core.update.call(null, (new cljs.core.Keyword("\ufdd0:gist-id")).call(null, cljs.core.deref.call(null, shoelace.client.settings)), "shoelace grid", "" + cljs.core.str(grid.core.layout__GT_edn.call(null, cljs.core.deref.call(null, shoelace.client.layout))), function(a) {
       a = a.id;
       shoelace.client.hide_loading.call(null);
       cljs.core.swap_BANG_.call(null, shoelace.client.settings, cljs.core.assoc, "\ufdd0:gist-id", gist.core.encode_id.call(null, a));
       return window.location.hash = (new cljs.core.Keyword("\ufdd0:gist-id")).call(null, cljs.core.deref.call(null, shoelace.client.settings))
     })
   }], !0), cljs.core.PersistentVector.fromArray([dommy.utils.__GT_Array.call(null, document.getElementsByClassName("btn-gist"))[0], "\ufdd0:click", function() {
-    return gist.core.create.call(null, "shoelace layout", "" + cljs.core.str(shoelace.client.layout__GT_edn.call(null, cljs.core.deref.call(null, shoelace.client.layout))), function(a) {
+    return gist.core.create.call(null, "shoelace layout", "" + cljs.core.str(grid.core.layout__GT_edn.call(null, cljs.core.deref.call(null, shoelace.client.layout))), function(a) {
       return console.log(a)
     })
   }], !0));

@@ -13,7 +13,8 @@
    [ednio.core :as ednio]
    [cljs.reader :refer [read-string]]
    [grid.core :as grid :refer [sizes sizes-index size-classes sizes-up-to sizes-up-to-memo total-cols-used
-                               col-for-media cols-for-media grid-cols percolate layout->less-mixin
+                               col-for-media cols-for-media grid-cols percolate layout->less-mixin layout->jade
+                               layout->edn sizes->html cols->html rows->html
                                final-col-for-media sizes-after valid-layout? edn->row vcat size-prior]])
   (:require-macros
    [cljs.core.async.macros :refer [go]]
@@ -445,33 +446,6 @@
       (dom/insert-before! row-el new-row-el)
       (set-active-row! row-id))))
 
-(defn layout->jade
-  [rows ignore-grid-classes]
-  (let [include-container ignore-grid-classes
-        container (if include-container ".container\n" "")
-        row-prefix (if include-container "  " "")
-        col-prefix (if include-container "    " "  ")]
-    (str container
-         (->> rows
-              (map
-               (fn [row]
-                 (str row-prefix ".row\n" col-prefix
-                      (->> (:cols row)
-                           (map
-                            (fn [col]
-                              (str "." (join "." (size-classes col (:use-less-mixin @settings))))))
-                           (join (str "\n" col-prefix))))))
-              (join "\n")))))
-
-(defn layout->edn
-  [rows]
-  (vec (for [row rows]
-         (vcat (if (:name row) [(:name row)] [])
-               (for [col (:cols row)]
-                 (vcat (if (:name col) [(:name col)] [])
-                       (for [size sizes :when (size col)]
-                         (vcat [size] (size col)))))))))
-
 (defn make-options []
   (let [options-el (sel1 [:.options])
         ul (sel1 [:.options :ul])
@@ -553,55 +527,6 @@
                                    [width-el  :width (+ (* (dec (fwidths 1)) 3)
                                                         (* (fwidths 1)  col-unit))]))))))))))
 
-(def ebo [:.edn-bracket-open.tag "["])
-(def ebc [:.edn-bracket-close.tag "]"])
-
-(defn sizes->html
-  [sizes]
-  (vcat  [:ul.edn-media]
-         (vec (for [[size offset width] sizes]
-                [:li ebo
-                 [:span.edn-kw.atn (str size)]
-                 [:span.edn-kw.atv (or offset "nil")]
-                 [:span.edn-kw.atv.edn-width (or width "nil")] ebc]))))
-
-(defn cols->html
-  [cols]
-  (let [els (vcat [:ul.edn-cols]
-                  (vec (for [col cols]
-                         (if (string? (first col))
-                           [:li ebo [:.edn-name.atv (str \" (first col) \")] (sizes->html (rest col)) ebc]
-                           [:li ebo (sizes->html col) ebc]))))]
-    (if (> (count els) 1)
-      (assoc els
-        (dec (count els))
-        (conj (last els) ebc))
-      (conj els ebc))))
-
-(defn rows->html
-  [rows]
-  (vcat [:.all-edn ebo
-         (vcat [:ul.edn-rows]
-               (let [els
-                     (vec (for [row rows]
-                            (if (string? (first row))
-                              [:li ebo [:.edn-name.atv (str \" (first row) \")] (cols->html (rest row))]
-                              [:li ebo (cols->html row)])))]
-                 (if (> (count els) 0)
-                   (assoc els
-                     (dec (count els))
-                     (let [last-row (last els)
-                           path [(dec (count last-row))
-                                 (dec (count (last last-row)))
-                                 (dec (count (last (last last-row))))]
-                           last-col (get-in last-row path)]
-                       (if (vector? last-col)
-                         (assoc-in last-row
-                                   path
-                                   (conj last-col ebc))
-                         (conj last-row ebc))))
-                   (conj els ebc))))]))
-
 
 (defn- show [sel]
   (dom/remove-class! (sel1 sel) :hidden))
@@ -680,7 +605,7 @@
                                  (if (:include-container @settings)
                                    (conj [:div.container] layout-html)
                                    layout-html))))
-                       :jade (layout->jade @layout use-less-mixin)
+                       :jade (layout->jade @layout use-less-mixin use-less-mixin)
                        :edn  (layout->edn @layout))]
 
             (when use-less-mixin

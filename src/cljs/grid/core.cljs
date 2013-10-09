@@ -1,6 +1,6 @@
 (ns grid.core
   (:require
-   [clojure.string :refer [join split]]
+   [clojure.string :refer [join split trim]]
    [cljs.reader :refer [read-string]]
    [hiccups.runtime :as hrt]
    [bigsky.aui.util :refer [spy]]))
@@ -137,22 +137,23 @@
 
 (defn layout->html
   ([rows content-fn ignore-grid-classes]
-      (map
-       (fn [r]
-         (conj (if (:name r)
-                 [:div.row {:class (str "row " (:name r))}]
-                 [:div.row])
-               (map (fn [c]
-                      (let [all-classes (join " " (size-classes c ignore-grid-classes))
-                            col [:div
-                                 (if (not= (count all-classes) 0)
-                                   {:class (join " " (size-classes c ignore-grid-classes))}
-                                   {})]]
-                        (if (nil? content-fn)
-                          col
-                          (conj col (content-fn r c)))))
-                    (:cols r))))
-       rows))
+     (let [row-class (if ignore-grid-classes "" "row")]
+       (map
+        (fn [r]
+          (conj (if (:name r)
+                  [:div {:class (trim (join " " [row-class (:name r)]))}]
+                  [:div {:class row-class}])
+                (map (fn [c]
+                       (let [all-classes (join " " (size-classes c ignore-grid-classes))
+                             col [:div
+                                  (if (not= (count all-classes) 0)
+                                    {:class (join " " (size-classes c ignore-grid-classes))}
+                                    {})]]
+                         (if (nil? content-fn)
+                           col
+                           (conj col (content-fn r c)))))
+                     (:cols r))))
+        rows)))
   ([rows content-fn]
      (layout->html rows content-fn false))
   ([rows]
@@ -229,3 +230,82 @@
                    (percolated :lg)))
         (assoc percolated :xs [nil nil])
         percolated))))
+
+(defn layout->jade
+  [rows include-container ignore-grid-classes]
+  (let [container (if include-container ".container\n" "")
+        row-class (if ignore-grid-classes [] [".row"])
+        row-prefix (if include-container "  " "")
+        col-prefix (if include-container "    " "  ")]
+    (str container
+         (->> rows
+              (map
+               (fn [row]
+                 (str row-prefix
+                      (str "." (trim (join "." (conj row-class (:name row)))) "\n")
+                      col-prefix
+                      (->> (:cols row)
+                           (map
+                            (fn [col]
+                              (str "." (join "." (size-classes col ignore-grid-classes)))))
+                           (join (str "\n" col-prefix))))))
+              (join "\n")))))
+
+(defn layout->edn
+  [rows]
+  (vec (for [row rows]
+         (vcat (if (:name row) [(:name row)] [])
+               (for [col (:cols row)]
+                 (vcat (if (:name col) [(:name col)] [])
+                       (for [size sizes :when (size col)]
+                         (vcat [size] (size col)))))))))
+
+
+(def ebo [:.edn-bracket-open.tag "["])
+(def ebc [:.edn-bracket-close.tag "]"])
+
+(defn sizes->html
+  [sizes]
+  (vcat  [:ul.edn-media]
+         (vec (for [[size offset width] sizes]
+                [:li ebo
+                 [:span.edn-kw.atn (str size)]
+                 [:span.edn-kw.atv (or offset "nil")]
+                 [:span.edn-kw.atv.edn-width (or width "nil")] ebc]))))
+
+(defn cols->html
+  [cols]
+  (let [els (vcat [:ul.edn-cols]
+                  (vec (for [col cols]
+                         (if (string? (first col))
+                           [:li ebo [:.edn-name.atv (str \" (first col) \")] (sizes->html (rest col)) ebc]
+                           [:li ebo (sizes->html col) ebc]))))]
+    (if (> (count els) 1)
+      (assoc els
+        (dec (count els))
+        (conj (last els) ebc))
+      (conj els ebc))))
+
+(defn rows->html
+  [rows]
+  (vcat [:.all-edn ebo
+         (vcat [:ul.edn-rows]
+               (let [els
+                     (vec (for [row rows]
+                            (if (string? (first row))
+                              [:li ebo [:.edn-name.atv (str \" (first row) \")] (cols->html (rest row))]
+                              [:li ebo (cols->html row)])))]
+                 (if (> (count els) 0)
+                   (assoc els
+                     (dec (count els))
+                     (let [last-row (last els)
+                           path [(dec (count last-row))
+                                 (dec (count (last last-row)))
+                                 (dec (count (last (last last-row))))]
+                           last-col (get-in last-row path)]
+                       (if (vector? last-col)
+                         (assoc-in last-row
+                                   path
+                                   (conj last-col ebc))
+                         (conj last-row ebc))))
+                   (conj els ebc))))]))
