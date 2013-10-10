@@ -59,6 +59,8 @@
 
 (def layout (atom []))
 
+(def preview-data (atom {}))
+
 (defn not-none?
   [x]
   (not (= :none x)))
@@ -362,6 +364,7 @@
     (applies dom/listen!
              [row-el :mousedown (fn [e]
                                   (stop-propagation e)
+                                  (dom/remove-class! new-col-el :hidden)
                                   (set-active-row! row-id))]
              [name-el :change (fn [e] (let [row (get-row row-id)
                                            input-val (.-value name-el)
@@ -564,6 +567,36 @@
 (defn hide-loading []
   (hide :.blackout-overlay))
 
+(defn make-preview
+  []
+  (let [preview-el (sel1 :.preview-pane)
+        add-image (node [:a.btn.btn-shoelace.add-image "img"])
+        add-text (node [:a.btn.btn-shoelace.add-text "txt"])
+        tools (node [:.preview-tools add-image add-text])]
+    (dom/listen! [preview-el :.wrap] :click
+                 (fn [e]
+                   (let [col (aget e "selectedTarget")
+                         row-id (keyword (dom/attr col :row))
+                         col-id (keyword (dom/attr col :col))
+                         path [row-id col-id]
+                         cur (or (get-in @preview-data path) [])
+                         src (aget e "srcElement")]
+                     (dom/append! col tools)
+
+                     (when (dom/has-class? src :add-text)
+                       (swap! preview-data assoc-in path
+                              (conj cur {:type :text :id (new-id! "text")}))
+                       (dom/append! col (node [:.preview-text]))
+                       (spy @preview-data))
+
+                     (when (dom/has-class? src :preview-text)
+                       (spy [:ADD-MORE-TEXT]))
+
+                     (when (dom/has-class? src :add-image)
+                       (swap! preview-data assoc-in path
+                              (conj cur {:type :img :id (new-id! "img")}))
+                       (dom/append! col (node [:.preview-image]))))))))
+
 (defn draw-workspace []
   (let [workspace (sel1 :.workspace)
         output (sel1 :pre.output.lang-html)
@@ -578,6 +611,7 @@
         copy-code-el (sel1 :.copy-code)
         meta-el (sel1 :.meta)
         app-frame (sel1 :.application-frame)
+        preview-el (sel1 :.preview-pane)
         preview-button (sel1 :.btn-preview)
         output-preview (sel1 :.output-preview)
         edit-button (sel1 :.btn-edit)
@@ -648,6 +682,7 @@
 
     (stop-using-less-mixin)
 
+    (make-preview)
     (make-options)
 
     (make-collapse-pane
@@ -728,21 +763,16 @@
 
              [preview-button :click
               (fn []
+                (dom/remove-class! preview-el :hidden)
                 (dom/listen! js/window :resize resize-preview)
                 (resize-preview)
                 (dom/add-class! preview-button :hidden)
-                (dom/remove-class! edit-button :hidden)
-
-                (comment let [win (.open js/window (str (aget js/window.location "protocol")
-                                                "//"
-                                                (aget js/window.location "host")
-                                                "/preview/#"
-                                                (:gist-id @settings)))]
-                  (.focus win)))]
+                (dom/remove-class! edit-button :hidden))]
 
              [edit-button :click
               (fn []
                 (dom/unlisten! js/window :resize resize-preview)
+                (dom/listen-once! app-frame transition-end #(dom/add-class! preview-el :hidden))
                 (dom/set-px! app-frame :margin-top 0)
                 (dom/remove-class! preview-button :hidden)
                 (dom/add-class! edit-button :hidden))]

@@ -189,7 +189,9 @@
   [edn]
   (hrt/render-html (layout->html
                     edn
-                    (fn [row col] [:div.wrap]))))
+                    (fn [row col]
+                      [:div.wrap {:row (name (:id row))
+                                  :col (name (:id col))}]))))
 
 (defn edn-string->html
   [edn-string]

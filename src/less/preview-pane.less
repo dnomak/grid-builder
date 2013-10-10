@@ -1,8 +1,28 @@
 .preview-pane {
   background: white;
-  padding-top: 65px;
+  padding-top: 55px;
   height: 100%;
   .wrap {
     min-height: 150px;
+    position: relative;
+    .preview-tools {
+       position: absolute;
+       left: 0;
+       top: 0;
+    }
+    .btn {
+         font-family: helvetica;
+    }
+    .preview-text {
+      transition: 0.2;
+      min-height: 1.5em;
+      &:hover {
+        background: #FFFDC8;
+      }
+    }
+    .preview-image {
+      background: #ccc;
+      height: 5em;
+    }
   }
 }

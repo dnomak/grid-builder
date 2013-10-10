@@ -8568,11 +8568,31 @@ h6 {
 }
 .preview-pane {
   background: white;
-  padding-top: 65px;
+  padding-top: 55px;
   height: 100%;
 }
 .preview-pane .wrap {
   min-height: 150px;
+  position: relative;
+}
+.preview-pane .wrap .preview-tools {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.preview-pane .wrap .btn {
+  font-family: helvetica;
+}
+.preview-pane .wrap .preview-text {
+  transition: 0.2;
+  min-height: 1.5em;
+}
+.preview-pane .wrap .preview-text:hover {
+  background: #FFFDC8;
+}
+.preview-pane .wrap .preview-image {
+  background: #ccc;
+  height: 5em;
 }
 body {
   background-color: black;
