@@ -14,7 +14,7 @@
    [cljs.reader :refer [read-string]]
    [grid.core :as grid :refer [sizes sizes-index size-classes sizes-up-to sizes-up-to-memo total-cols-used
                                col-for-media cols-for-media grid-cols percolate layout->less-mixin layout->jade
-                               layout->edn sizes->html cols->html rows->html
+                               layout->edn sizes->html cols->html rows->html edn->html
                                final-col-for-media sizes-after valid-layout? edn->row vcat size-prior]])
   (:require-macros
    [cljs.core.async.macros :refer [go]]
@@ -133,6 +133,16 @@
                    [offset-el :width (* col-unit (widths 0))]
                    [width-el :width (- (* col-unit (widths 1)) col-margin-width)]))))))
 
+(defn listens!
+  [el events handler]
+  (doseq [event events]
+    (dom/listen! el event handler)
+    ))
+(defn unlistens!
+  [el events handler]
+  (doseq [event events]
+    (dom/unlisten! el event handler)))
+
 (defn add-col!
   [e cols-el new-col-el row-id]
   (let [col-id (new-id! 'col)
@@ -244,14 +254,12 @@
                                    (draw-class-type media type qw)
                                    (dom/set-px! (els type) :width nw))))
                 stop-handler (fn [e]
-                               (dom/unlisten! js/document :mousemove move-handler)
-                               (dom/unlisten! js/document :touchmove move-handler)
+                               (unlistens! js/document [:mousemove :touchmove] move-handler)
                                (snap!))]
             (when (or (not= media :xs) (= type :width))
               (dom/add-class! col-el :dragging)
               (dom/remove-class! (els type) :easing)
-              (dom/listen! js/document :mousemove move-handler)
-              (dom/listen! js/document :touchmove move-handler)
+              (listens! js/document [:mousemove :touchmove] move-handler)
               (dom/listen-once! js/document :mouseup stop-handler))))]
 
     (swap! layout update-in [(:pos row) :cols] conj
@@ -269,7 +277,7 @@
     (dom/insert-before! col-el new-col-el)
     (dom/remove-class! new-col-el :no-cols)
 
-    (applies #(dom/listen! %1 :mousedown %2)
+    (applies #(listens! %1 [:mousedown :touchstart] %2)
              [remove-el        #(handle-remove %)]
              [offset-handle-el #(handle-drag :offset %)]
              [offset-el        #(handle-drag :offset %)]
@@ -569,6 +577,13 @@
         media-previews-chan (make-media-previews)
         copy-code-el (sel1 :.copy-code)
         meta-el (sel1 :.meta)
+        app-frame (sel1 :.application-frame)
+        preview-button (sel1 :.btn-preview)
+        output-preview (sel1 :.output-preview)
+        edit-button (sel1 :.btn-edit)
+        resize-preview (fn []
+                         (dom/set-px! app-frame :margin-top (spy  (- (dom/px app-frame :height)))))
+
         start-using-less-mixin (fn []
                                  (let [new-layout (vec (for [row @layout]
                                                          (let [cols (for [col (:cols row)]
@@ -619,6 +634,8 @@
 
             (when use-less-mixin
               (dom/set-text! output-less (layout->less-mixin @layout)))
+
+            (dom/set-html! output-preview (edn->html @layout))
 
             (dom/remove-class! output :prettyprinted)
             (if (= mode :edn)
@@ -709,14 +726,26 @@
               (fn [e]
                 (set-active-row! :none))]
 
-             [(sel1 :.btn-preview) :click
+             [preview-button :click
               (fn []
-                (let [win (.open js/window (str (aget js/window.location "protocol")
+                (dom/listen! js/window :resize resize-preview)
+                (resize-preview)
+                (dom/add-class! preview-button :hidden)
+                (dom/remove-class! edit-button :hidden)
+
+                (comment let [win (.open js/window (str (aget js/window.location "protocol")
                                                 "//"
                                                 (aget js/window.location "host")
                                                 "/preview/#"
                                                 (:gist-id @settings)))]
                   (.focus win)))]
+
+             [edit-button :click
+              (fn []
+                (dom/unlisten! js/window :resize resize-preview)
+                (dom/set-px! app-frame :margin-top 0)
+                (dom/remove-class! preview-button :hidden)
+                (dom/add-class! edit-button :hidden))]
 
              [(sel1 :.btn-save) :click
               (fn []

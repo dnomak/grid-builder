@@ -7447,6 +7447,10 @@ a .icon-flip-vertical:before {
   overflow-y: hidden;
   border-top: 55px solid rgba(255, 255, 255, 0);
 }
+.application-frame.preview-mode {
+  height: 0;
+  min-height: 0;
+}
 .panels-wrapper {
   position: absolute;
   height: 100%;
@@ -7548,6 +7552,7 @@ input {
 header {
   background-color: #2e2e2e;
   position: fixed;
+  top: 0;
   height: 55px;
   width: 100%;
   z-index: 999;
@@ -8561,22 +8566,13 @@ h6 {
 .container.output-preview [class^="col-"]:hover .wrap {
   outline: 1px solid #004cff;
 }
-.controls {
-  border-top: 1px solid #333;
-  font-family: helvetica;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.5);
+.preview-pane {
+  background: white;
+  padding-top: 65px;
+  height: 100%;
 }
-.controls > div {
-  float: left;
-  margin-right: 10px;
-  padding: 10px;
-}
-.controls > div.active {
-  background: rgba(255, 255, 255, 0.5);
+.preview-pane .wrap {
+  min-height: 150px;
 }
 body {
   background-color: black;

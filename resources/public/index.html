@@ -20,6 +20,7 @@
           <li><a class="btn btn-shoelace btn-update hidden"><i class="icon-refresh"> </i>Update</a></li>
           <li><a class="btn btn-shoelace btn-fork hidden"><i class="icon-code-fork"> </i>Fork</a></li>
           <li><a class="btn btn-shoelace btn-preview hidden"><i class="icon-eye-open"> </i>Preview</a></li>
+          <li><a class="btn btn-shoelace btn-edit hidden"><i class="icon-pencil"></i>Edit</a></li>
         </ul>
         <ul class="share">
           <li><a class="btn btn-shoelace btn-gist"><i class="icon-github"> </i>Gist</a></li>
@@ -33,7 +34,7 @@
         </ul>
       </div>
     </header>
-    <div class="application-frame">
+    <div class="application-frame easing">
       <div class="panels-wrapper">
         <div class="navigator easing">
           <div class="preview xs easing">
@@ -108,6 +109,22 @@
         <!-- -->
       </div>
       </div>
+    </div>
+    <div class="preview preview-pane">
+         <div class="container">
+           <div class="row">
+             <div class="col-sm-12">
+               Hover Guide
+               <ul class="hover-guide">
+                 <li class="container-guide">Gray - Container</li>
+                 <li class="row-guide">Red - Row</li>
+                 <li class="col-guide">Blue - Col</li>
+                 <li></li>
+               </ul>
+             </div>
+           </div>
+         </div>
+         <div class="container output-preview"></div>
     </div>
     <footer>
       <ul>

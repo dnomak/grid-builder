@@ -185,11 +185,15 @@
     (when (valid-layout? rows)
       (map edn->row rows))))
 
+(defn edn->html
+  [edn]
+  (hrt/render-html (layout->html
+                    edn
+                    (fn [row col] [:div.wrap]))))
+
 (defn edn-string->html
   [edn-string]
-  (hrt/render-html (layout->html
-                    (edn-string->layout edn-string)
-                    (fn [row col] [:div.wrap]))))
+  (edn->html (edn-string->layout edn-string)))
 
 (defn percolate
   [col media]
