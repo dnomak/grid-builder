@@ -69,3 +69,42 @@ input {
     font-weight: @semibold;
   }
 }
+
+body.home {
+
+
+}
+
+
+.home {
+  background-color: hsl(216, 95%, 67%);
+  padding-top: 80px;
+  color: hsl(0, 0%, 100%);
+  font-size: 18px;
+}
+.main-logo {
+  text-align: center;
+}
+.start {
+  .border-radius(10px);
+  font-size: 30px;
+  color: hsl(0, 0%, 100%);
+  padding: 15px 30px;
+}
+
+.features {
+  background-color: hsl(0, 0%, 15%);
+  padding: 50px 0px;
+  background-position: top center;
+  background-repeat: repeat-y;
+  .box-shadow(inset 0px 0px 30px hsla(0, 0%, 0%, 1.0));
+  @media(min-width: @screen-sm) {
+    background-image: url("img/sm.png");
+  }
+  @media(min-width: @screen-md) {
+    background-image: url("img/md.png");
+  }
+  @media(min-width: @screen-lg) {
+    background-image: url("img/lg.png");
+  }
+}

@@ -3,34 +3,25 @@
   <head>
     <title>Shoelace - Visual Bootstrap 3 Grid Builder</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The only visual Bootstrap 3 grid builder featuring full responsive media query views and fully functional preview.">
     <script src="//code.jquery.com/jquery-latest.min.js"></script>
     <script src="//use.typekit.net/xlr6gwy.js"></script>
-    <script>try{Typekit.load();}catch(e){}</script>
-    <script src="js/bootstrap.min.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script><!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.js?b45bc0"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js?b45bc0"></script><![endif]-->
     <link rel="stylesheet" href="css/bigsky.aui.css">
     <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
     <header>
       <div class="logo"></div>
-
       <div class="menu">
         <ul class="modify">
           <li><a class="btn btn-shoelace btn-save"><i class="icon-cloud-upload"> </i>Save</a></li>
-          <li><a class="btn btn-shoelace btn-update hidden"><i class="icon-refresh"> </i>Update</a></li>
+          <li><a class="btn btn-shoelace btn-update hidden"><i class="icon-code-fork"> </i>Update & Fork</a></li>
           <li><a class="btn btn-shoelace btn-fork hidden"><i class="icon-code-fork"> </i>Fork</a></li>
           <li><a class="btn btn-shoelace btn-preview hidden"><i class="icon-eye-open"> </i>Preview</a></li>
           <li><a class="btn btn-shoelace btn-edit hidden"><i class="icon-pencil"></i>Edit</a></li>
-        </ul>
-        <ul class="share">
-          <li><a class="btn btn-shoelace btn-gist"><i class="icon-github"> </i>Gist</a></li>
-          <li><a class="btn btn-shoelace btn-tweet" href="https://twitter.com/share" data-lang="en"><i class="icon-twitter"> </i>Tweet</a>
-          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></li>
-
-
-
-
-          <li><a class="btn btn-shoelace btn-email"><i class="icon-envelope"> </i>Email</a></li>
         </ul>
       </div>
     </header>
@@ -51,80 +42,73 @@
               <div class="size-icon"><i class="icon-tablet"> </i></div>
               <div class="title">Tablet</div>
             </div>
-           <div class="preview-container">
-             <div class="preview-rows"></div>
-           </div>
+            <div class="preview-container">
+              <div class="preview-rows"></div>
+            </div>
           </div>
           <div class="preview md easing">
             <div class="title-bar">
               <div class="size-icon"><i class="icon-laptop"> </i></div>
               <div class="title">Desktop</div>
             </div>
-           <div class="preview-container">
-             <div class="preview-rows"></div>
-           </div>
+            <div class="preview-container">
+              <div class="preview-rows"></div>
+            </div>
           </div>
           <div class="preview lg easing">
             <div class="title-bar">
               <div class="size-icon"><i class="icon-desktop">  </i></div>
               <div class="title">Large Desktop</div>
             </div>
-           <div class="preview-container">
-             <div class="preview-rows"></div>
-           </div>
+            <div class="preview-container">
+              <div class="preview-rows"></div>
+            </div>
           </div>
         </div>
         <div class="workspace easing"></div>
         <div class="html easing">
-          <div class="collapse-panel right">
-            <span class="open"><i class="icon-caret-right"></i></span>
-            <span class="closed"><i class="icon-caret-left"></i></span>
-          </div>
+          <div class="collapse-panel right"> <span class="open"><i class="icon-caret-right"> </i></span><span class="closed"><i class="icon-caret-left"> </i></span></div>
           <div class="html-wrapper">
-
-          <div class="options easing">
-            <ul>
-              <li class="output-html easing active">HTML</li>
-              <li class="output-jade easing">Jade</li>
-              <li class="output-edn easing">EDN</li>
-            </ul>
-            <div class="container-check">
-              <label>
-                <input type="checkbox" class="use-less-mixin"> Use LESS Mixin
-              </label>
-
-              <label>
-                <input type="checkbox" class="include-container"> Include Container
-              </label>
+            <div class="options easing">
+              <ul>
+                <li class="output-html easing active">HTML</li>
+                <li class="output-jade easing">Jade</li>
+                <li class="output-edn easing">EDN</li>
+              </ul>
+              <div class="container-check">
+                <label>
+                  <input type="checkbox" class="use-less-mixin">Use LESS Mixin
+                </label>
+                <label>
+                  <input type="checkbox" class="include-container">Include Container
+                </label>
+              </div>
+              <div class="clear"></div>
             </div>
-            <div class="clear"></div>
+            <div class="output_container">
+              <div class="copy-code">Copy</div>
+              <pre class="output prettyprint lang-html markup"></pre>
+              <pre class="output prettyprint lang-text mixins"></pre>
+            </div>
+            <textarea class="copy-output"></textarea>
           </div>
-          <div class="output_container">
-          <div class="copy-code">Copy</div>
-            <pre class="output prettyprint lang-html markup"></pre>
-            <pre class="output prettyprint lang-text mixins"></pre>
-          </div>
-          <textarea class="copy-output"></textarea>
         </div>
-        <!-- -->
-      </div>
       </div>
     </div>
     <div class="preview preview-pane hidden">
-         <div class="container">
-           <div class="row">
-             <div class="col-sm-12">
-               Hover Guide
-               <ul class="hover-guide">
-                 <li class="container-guide">Gray - Container</li>
-                 <li class="row-guide">Red - Row</li>
-                 <li class="col-guide">Blue - Col</li>
-                 <li></li>
-               </ul>
-             </div>
-           </div>
-         </div>
-         <div class="container output-preview"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">Hover Guide
+            <ul class="hover-guide">
+              <li class="container-guide">Gray - Container</li>
+              <li class="row-guide">Red - Row</li>
+              <li class="col-guide">Blue - Col</li>
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="container output-preview"></div>
     </div>
     <footer>
       <ul>
@@ -134,14 +118,14 @@
         <li><a href="#">Get Bootstrap</a></li>
       </ul>
       <ul class="meta">
-        <li><a href="#">Built with <span class="built-magic easing">Cybernetic Alchemy</span><span class="built-reveal easing">UX and Clojure</span></a></li>
+        <li><a href="#">Built with<span class="built-magic easing">Cybernetic Alchemy</span><span class="built-reveal easing">UX and Clojure</span></a></li>
       </ul>
     </footer>
-  <div class="blackout-overlay">
-    <div class="notification">Lacing it up!</div>
-  </div>
+    <div class="blackout-overlay">
+      <div class="notification">Lacing it up!</div>
+    </div>
+    <script type="text/javascript" src="https://google-code-prettify.googlecode.com/svn/loader/prettify.js"></script>
+    <script type="text/javascript" src="http://jsbeautifier.org/js/lib/beautify-html.js"></script>
+    <script type="text/javascript" src="js/cljs.js"></script>
   </body>
-  <script type="text/javascript" src="https://google-code-prettify.googlecode.com/svn/loader/prettify.js"></script>
-  <script type="text/javascript" src="http://jsbeautifier.org/js/lib/beautify-html.js"></script>
-  <script type="text/javascript" src="js/cljs.js"></script>
 </html>

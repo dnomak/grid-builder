@@ -1,0 +1,77 @@
+!!! 5
+html(lang='en')
+  head
+    title Shoelace - Visual Bootstrap 3 Grid Builder
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='description', content='The only visual Bootstrap 3 grid builder featuring full responsive media query views and fully functional preview.')
+
+    script(src='//code.jquery.com/jquery-latest.min.js')
+    script(src='//use.typekit.net/xlr6gwy.js')
+    script
+      try{Typekit.load();}catch(e){}
+    //- script(src='js/bootstrap.min.js')
+    // if lt IE 9
+
+      script(src='//cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.js?b45bc0')
+      script(src='//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js?b45bc0')
+
+    link(rel='stylesheet', href='css/bigsky.aui.css')
+    link(rel='stylesheet', href='css/styles.css')
+  body.home
+    //- header
+    //-   .logo
+    //-   .menu
+    //-     ul.modify
+    //-       li
+    //-         a.btn.btn-shoelace
+    //-           i.icon-rocket    
+    //-           | Welcome
+    .container
+      .row
+        .col-sm-5
+          .main-logo
+            img(src="img/biglogo.png")
+          h1 Shoelace Logo
+        .col-sm-7
+          a.btn.btn-success.start Start Building
+            
+
+      .row 
+        .col-sm-12
+          p Shoelace is a visual, intuitive Bootstrap 3 grid builder based on the idea that the construction of a responsive grid can be abstracted away from the design of a project.
+          p Shoelace lets you see your grid layout in relation to the media query sizes, and adjust them accordingly. With the live preview, it's easy to see exactly how your grid will behave at any media size.
+          p Sholace is also built to prevent any grid errors or impossible designs. With the "what you <em>think</em> is what you get" grid builder, you don't have to worry about breaking your layout or making a sneaky mistake.
+
+
+    .features
+      .container
+
+        .row
+          .col-sm-5
+            img(src="img/columns.jpg")
+          .col-sm-7
+            h2 Purely Visual
+            p Shoelace is a visual grid builder that lets you draw your grid at any media size, and then adjust it for different media query sizes. The builder is intuitive and knows how to handle the responsible column inheritence and rules.
+        .row
+          .col-sm-7
+            h2 Perfect Output
+            p Shoelace is not a template builder. You don't build your project with shoelace, just your grids and responsive layouts. Or, you can use Shoelace to preview and perfect grid designs as you use them in your projects, without the trial and error of working with your actual code.
+          .col-sm-5
+            img(src="img/output.png")
+        .row
+          .col-sm-5
+            img(src="http://placehold.it/500x300")
+          .col-sm-7
+            h2 asdf
+            p asdfasdf
+        .row
+          .col-sm-7
+            h2 asdfsdfasdf
+            p asdfasdfasdfasdfas
+          .col-sm-5
+            img(src="http://placehold.it/500x300")
+          
+    
+    script(type='text/javascript', src='https://google-code-prettify.googlecode.com/svn/loader/prettify.js')
+    script(type='text/javascript', src='http://jsbeautifier.org/js/lib/beautify-html.js')
+    script(type='text/javascript', src='js/cljs.js')

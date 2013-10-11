@@ -1,0 +1,145 @@
+!!! 5
+html(lang='en')
+  head
+    title Shoelace - Visual Bootstrap 3 Grid Builder
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='description', content='The only visual Bootstrap 3 grid builder featuring full responsive media query views and fully functional preview.')
+
+    script(src='//code.jquery.com/jquery-latest.min.js')
+    script(src='//use.typekit.net/xlr6gwy.js')
+    script
+      try{Typekit.load();}catch(e){}
+    //- script(src='js/bootstrap.min.js')
+    // if lt IE 9
+
+      script(src='//cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.js?b45bc0')
+      script(src='//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js?b45bc0')
+
+    link(rel='stylesheet', href='css/bigsky.aui.css')
+    link(rel='stylesheet', href='css/styles.css')
+  body
+    header
+      .logo
+      .menu
+        ul.modify
+          li
+            a.btn.btn-shoelace.btn-save
+              i.icon-cloud-upload  
+              | Save
+          li
+            a.btn.btn-shoelace.btn-update.hidden
+              i.icon-code-fork  
+              | Update & Fork
+          li
+            a.btn.btn-shoelace.btn-fork.hidden
+              i.icon-code-fork  
+              | Fork
+          li
+            a.btn.btn-shoelace.btn-preview.hidden
+              i.icon-eye-open  
+              | Preview
+          li
+            a.btn.btn-shoelace.btn-edit.hidden
+              i.icon-pencil
+              | Edit
+        //- ul.share
+        //-   li
+        //-     a.btn.btn-shoelace.btn-gist
+        //-       i.icon-github  
+        //-       | Gist
+        //-   li
+        //-     a.btn.btn-shoelace.btn-email
+        //-       i.icon-envelope  
+        //-       | Email
+    .application-frame.easing
+      .panels-wrapper
+        .navigator.easing
+          .preview.xs.easing
+            .title-bar
+              .size-icon
+                i.icon-mobile-phone  
+              .title Phone
+            .preview-container
+              .preview-rows
+          .preview.sm.easing
+            .title-bar
+              .size-icon
+                i.icon-tablet  
+              .title Tablet
+            .preview-container
+              .preview-rows
+          .preview.md.easing
+            .title-bar
+              .size-icon
+                i.icon-laptop  
+              .title Desktop
+            .preview-container
+              .preview-rows
+          .preview.lg.easing
+            .title-bar
+              .size-icon
+                i.icon-desktop   
+              .title Large Desktop
+            .preview-container
+              .preview-rows
+        .workspace.easing
+        .html.easing
+          .collapse-panel.right  
+            span.open
+              i.icon-caret-right  
+            span.closed
+              i.icon-caret-left  
+          .html-wrapper
+            .options.easing
+              ul
+                li.output-html.easing.active HTML
+                li.output-jade.easing Jade
+                li.output-edn.easing EDN
+              .container-check
+                label
+                  input.use-less-mixin(type='checkbox')
+                  | Use LESS Mixin
+                label
+                  input.include-container(type='checkbox')
+                  | Include Container
+              .clear
+            .output_container
+              .copy-code Copy
+              pre.output.prettyprint.lang-html.markup.
+                
+              pre.output.prettyprint.lang-text.mixins.
+                
+            textarea.copy-output
+             
+    .preview.preview-pane.hidden
+      .container
+        .row
+          .col-sm-12
+            | Hover Guide
+            ul.hover-guide
+              li.container-guide Gray - Container
+              li.row-guide Red - Row
+              li.col-guide Blue - Col
+              li
+      .container.output-preview
+    footer
+      ul
+        li
+          a(href='#') About Shoelace
+        li
+          a(href='#') Design by Erik
+        li
+          a(href='http://github.com/shaunxcode') Code by Shaun
+        li
+          a(href='#') Get Bootstrap
+      ul.meta
+        li
+          a(href='#')
+            | Built with
+            span.built-magic.easing Cybernetic Alchemy
+            span.built-reveal.easing UX and Clojure
+    .blackout-overlay
+      .notification Lacing it up!
+    script(type='text/javascript', src='https://google-code-prettify.googlecode.com/svn/loader/prettify.js')
+    script(type='text/javascript', src='http://jsbeautifier.org/js/lib/beautify-html.js')
+    script(type='text/javascript', src='js/cljs.js')

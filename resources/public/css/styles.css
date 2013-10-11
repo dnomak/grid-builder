@@ -7549,6 +7549,46 @@ input {
   font-size: 22px;
   font-weight: 600;
 }
+.home {
+  background-color: #5b9bfb;
+  padding-top: 80px;
+  color: #ffffff;
+  font-size: 18px;
+}
+.main-logo {
+  text-align: center;
+}
+.start {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  font-size: 30px;
+  color: #ffffff;
+  padding: 15px 30px;
+}
+.features {
+  background-color: #262626;
+  padding: 50px 0px;
+  background-position: top center;
+  background-repeat: repeat-y;
+  -webkit-box-shadow: inset 0px 0px 30px #000000;
+  box-shadow: inset 0px 0px 30px #000000;
+}
+@media (min-width: 768px) {
+  .features {
+    background-image: url("img/sm.png");
+  }
+}
+@media (min-width: 992px) {
+  .features {
+    background-image: url("img/md.png");
+  }
+}
+@media (min-width: 1200px) {
+  .features {
+    background-image: url("img/lg.png");
+  }
+}
 header {
   background-color: #2e2e2e;
   position: fixed;
@@ -8499,7 +8539,7 @@ body.preview {
   color: #cccccc;
   background-color: #ffffff;
 }
-.container {
+.preview-pane .container {
   width: auto;
   overflow: auto;
   position: inherit;
@@ -8594,7 +8634,7 @@ h6 {
   background: #ccc;
   height: 5em;
 }
-body {
+body.example {
   background-color: black;
 }
 .mixin-examples div {
