@@ -656,14 +656,15 @@
         update-output (fn []
           (let [mode (:output-mode @settings)
                 use-less-mixin (:use-less-mixin @settings)
+                include-container (:include-container @settings)
                 code (condp = mode
                        :html (let [layout-html (grid/layout->html @layout (fn []  "") use-less-mixin)]
                                (js/html_beautify
                                 (hrt/render-html
-                                 (if (:include-container @settings)
+                                 (if include-container
                                    (conj [:div.container] layout-html)
                                    layout-html))))
-                       :jade (layout->jade @layout use-less-mixin use-less-mixin)
+                       :jade (layout->jade @layout include-container use-less-mixin)
                        :edn  (layout->edn @layout))]
 
             (when use-less-mixin

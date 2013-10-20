@@ -248,7 +248,9 @@
               (map
                (fn [row]
                  (str row-prefix
-                      (str "." (trim (join "." (conj row-class (:name row)))) "\n")
+                      (str "." (trim (join "." (if (:name row)
+                                                 (conj row-class (:name row))
+                                                 row-class))) "\n")
                       col-prefix
                       (->> (:cols row)
                            (map
