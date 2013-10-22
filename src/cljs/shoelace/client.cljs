@@ -572,7 +572,7 @@
         add-image (node [:a.btn.btn-shoelace.add-image "img"])
         add-text (node [:a.btn.btn-shoelace.add-text "txt"])
         tools (node [:.preview-tools add-image add-text])]
-    (dom/listen! [preview-el :.wrap] :click
+    (comment dom/listen! [preview-el :.wrap] :click
                  (fn [e]
                    (let [col (aget e "selectedTarget")
                          row-id (keyword (dom/attr col :row))
