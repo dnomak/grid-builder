@@ -558,7 +558,6 @@
   (hide :.btn-save)
   (applies show
            [:.btn-update]
-           [:.btn-fork]
            [:.btn-preview]))
 
 (defn show-loading []
