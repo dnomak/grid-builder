@@ -2,5 +2,4 @@
 
 A web app for lacing your bootstrap grid up 
 
-a row contains columns. 
-columns may contain rows.
+Stable Herou version update 11/13/13
