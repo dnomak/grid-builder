@@ -31,20 +31,6 @@
   [id handler]
   (.get js/$ (str url "gists/" id) handler))
 
-(defn encode-id
-  [id]
-  (string/join
-   ""
-   (let [r (int (rand 9))]
-     (concat [(char (+ 70 r))]
-             (map #(char (+ (+ 70 r)
-                            (read-string (str %))))
-                  (into [] (str id)))))))
+(def encode-id identity)
 
-(defn decode-id
-  [sid]
-  (let [[r & cs] (into [] sid)
-        ri (- (.charCodeAt r 0) 70)]
-    (read-string (string/join
-                  ""
-                  (map #(str (- (.charCodeAt % 0) (+ 70 ri))) cs)))))
+(def decode-id identity)

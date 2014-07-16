@@ -3389,22 +3389,22 @@ cljs.core.with_meta = function with_meta(b, c) {
   var d = cljs.core.fn_QMARK_.call(null, b);
   d && (d = b ? ((d = b.cljs$lang$protocol_mask$partition0$ & 262144) ? d : b.cljs$core$IWithMeta$) || (b.cljs$lang$protocol_mask$partition0$ ? 0 : cljs.core.type_satisfies_.call(null, cljs.core.IWithMeta, b)) : cljs.core.type_satisfies_.call(null, cljs.core.IWithMeta, b), d = !d);
   return d ? with_meta.call(null, function() {
-    if(void 0 === cljs.core.t7465) {
-      cljs.core.t7465 = {};
-      cljs.core.t7465 = function(b, c, d, e) {
+    if(void 0 === cljs.core.t5163) {
+      cljs.core.t5163 = {};
+      cljs.core.t5163 = function(b, c, d, e) {
         this.meta = b;
         this.o = c;
         this.with_meta = d;
-        this.meta7466 = e;
+        this.meta5164 = e;
         this.cljs$lang$protocol_mask$partition1$ = 0;
         this.cljs$lang$protocol_mask$partition0$ = 393217
       };
-      cljs.core.t7465.cljs$lang$type = !0;
-      cljs.core.t7465.cljs$lang$ctorStr = "cljs.core/t7465";
-      cljs.core.t7465.cljs$lang$ctorPrWriter = function(b, c) {
-        return cljs.core._write.call(null, c, "cljs.core/t7465")
+      cljs.core.t5163.cljs$lang$type = !0;
+      cljs.core.t5163.cljs$lang$ctorStr = "cljs.core/t5163";
+      cljs.core.t5163.cljs$lang$ctorPrWriter = function(b, c) {
+        return cljs.core._write.call(null, c, "cljs.core/t5163")
       };
-      var d = cljs.core.t7465.prototype, f = function(b, c) {
+      var d = cljs.core.t5163.prototype, f = function(b, c) {
         return cljs.core.apply.call(null, b.o, c)
       }, g = function(b, c) {
         var b = this, d = null;
@@ -3418,19 +3418,19 @@ cljs.core.with_meta = function with_meta(b, c) {
       };
       g.cljs$core$IFn$_invoke$arity$variadic = f;
       d.call = g;
-      cljs.core.t7465.prototype.apply = function(b, c) {
+      cljs.core.t5163.prototype.apply = function(b, c) {
         b = this;
         return b.call.apply(b, [b].concat(c.slice()))
       };
-      cljs.core.t7465.prototype.cljs$core$Fn$ = !0;
-      cljs.core.t7465.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
-        return this.meta7466
+      cljs.core.t5163.prototype.cljs$core$Fn$ = !0;
+      cljs.core.t5163.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
+        return this.meta5164
       };
-      cljs.core.t7465.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, c) {
-        return new cljs.core.t7465(this.meta, this.o, this.with_meta, c)
+      cljs.core.t5163.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, c) {
+        return new cljs.core.t5163(this.meta, this.o, this.with_meta, c)
       }
     }
-    return new cljs.core.t7465(c, b, with_meta, null)
+    return new cljs.core.t5163(c, b, with_meta, null)
   }(), c) : cljs.core._with_meta.call(null, b, c)
 };
 cljs.core.meta = function(a) {
@@ -12837,24 +12837,24 @@ cljs.core.async.impl.ioc_helpers.finished_QMARK_ = function(a) {
   return"\ufdd0:finished" === a[cljs.core.async.impl.ioc_helpers.STATE_IDX]
 };
 cljs.core.async.impl.ioc_helpers.fn_handler = function fn_handler(b) {
-  void 0 === cljs.core.async.impl.ioc_helpers.t8303 && (cljs.core.async.impl.ioc_helpers.t8303 = {}, cljs.core.async.impl.ioc_helpers.t8303 = function(b, d, e) {
+  void 0 === cljs.core.async.impl.ioc_helpers.t6012 && (cljs.core.async.impl.ioc_helpers.t6012 = {}, cljs.core.async.impl.ioc_helpers.t6012 = function(b, d, e) {
     this.f = b;
     this.fn_handler = d;
-    this.meta8304 = e;
+    this.meta6013 = e;
     this.cljs$lang$protocol_mask$partition1$ = 0;
     this.cljs$lang$protocol_mask$partition0$ = 393216
-  }, cljs.core.async.impl.ioc_helpers.t8303.cljs$lang$type = !0, cljs.core.async.impl.ioc_helpers.t8303.cljs$lang$ctorStr = "cljs.core.async.impl.ioc-helpers/t8303", cljs.core.async.impl.ioc_helpers.t8303.cljs$lang$ctorPrWriter = function(b, d) {
-    return cljs.core._write.call(null, d, "cljs.core.async.impl.ioc-helpers/t8303")
-  }, cljs.core.async.impl.ioc_helpers.t8303.prototype.cljs$core$async$impl$protocols$Handler$ = !0, cljs.core.async.impl.ioc_helpers.t8303.prototype.cljs$core$async$impl$protocols$Handler$active_QMARK_$arity$1 = function() {
+  }, cljs.core.async.impl.ioc_helpers.t6012.cljs$lang$type = !0, cljs.core.async.impl.ioc_helpers.t6012.cljs$lang$ctorStr = "cljs.core.async.impl.ioc-helpers/t6012", cljs.core.async.impl.ioc_helpers.t6012.cljs$lang$ctorPrWriter = function(b, d) {
+    return cljs.core._write.call(null, d, "cljs.core.async.impl.ioc-helpers/t6012")
+  }, cljs.core.async.impl.ioc_helpers.t6012.prototype.cljs$core$async$impl$protocols$Handler$ = !0, cljs.core.async.impl.ioc_helpers.t6012.prototype.cljs$core$async$impl$protocols$Handler$active_QMARK_$arity$1 = function() {
     return!0
-  }, cljs.core.async.impl.ioc_helpers.t8303.prototype.cljs$core$async$impl$protocols$Handler$commit$arity$1 = function() {
+  }, cljs.core.async.impl.ioc_helpers.t6012.prototype.cljs$core$async$impl$protocols$Handler$commit$arity$1 = function() {
     return this.f
-  }, cljs.core.async.impl.ioc_helpers.t8303.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
-    return this.meta8304
-  }, cljs.core.async.impl.ioc_helpers.t8303.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, d) {
-    return new cljs.core.async.impl.ioc_helpers.t8303(this.f, this.fn_handler, d)
+  }, cljs.core.async.impl.ioc_helpers.t6012.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
+    return this.meta6013
+  }, cljs.core.async.impl.ioc_helpers.t6012.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, d) {
+    return new cljs.core.async.impl.ioc_helpers.t6012(this.f, this.fn_handler, d)
   });
-  return new cljs.core.async.impl.ioc_helpers.t8303(b, fn_handler, null)
+  return new cljs.core.async.impl.ioc_helpers.t6012(b, fn_handler, null)
 };
 cljs.core.async.impl.ioc_helpers.run_state_machine = function(a) {
   return cljs.core.async.impl.ioc_helpers.aget_object.call(null, a, cljs.core.async.impl.ioc_helpers.FN_IDX).call(null, a)
@@ -12912,234 +12912,59 @@ cljs.core.async.impl.ioc_helpers.return_chan = function(a, b) {
   cljs.core.async.impl.protocols.close_BANG_.call(null, c);
   return c
 };
-cljs.core.async.impl.buffers = {};
-cljs.core.async.impl.buffers.acopy = function(a, b, c, d, e) {
-  for(var f = 0;;) {
-    if(f < e) {
-      c[d + f] = a[b + f], f += 1
-    }else {
-      return null
-    }
-  }
-};
-cljs.core.async.impl.buffers.RingBuffer = function(a, b, c, d) {
-  this.head = a;
-  this.tail = b;
-  this.length = c;
-  this.arr = d
-};
-cljs.core.async.impl.buffers.RingBuffer.cljs$lang$type = !0;
-cljs.core.async.impl.buffers.RingBuffer.cljs$lang$ctorStr = "cljs.core.async.impl.buffers/RingBuffer";
-cljs.core.async.impl.buffers.RingBuffer.cljs$lang$ctorPrWriter = function(a, b) {
-  return cljs.core._write.call(null, b, "cljs.core.async.impl.buffers/RingBuffer")
-};
-cljs.core.async.impl.buffers.RingBuffer.prototype.pop = function() {
-  if(0 === this.length) {
-    return null
-  }
-  var a = this.arr[this.tail];
-  this.arr[this.tail] = null;
-  this.tail = (this.tail + 1) % this.arr.length;
-  this.length -= 1;
-  return a
-};
-cljs.core.async.impl.buffers.RingBuffer.prototype.unshift = function(a) {
-  this.arr[this.head] = a;
-  this.head = (this.head + 1) % this.arr.length;
-  this.length += 1;
-  return null
-};
-cljs.core.async.impl.buffers.RingBuffer.prototype.unbounded_unshift = function(a) {
-  this.length + 1 === this.arr.length && this.resize();
-  return this.unshift(a)
-};
-cljs.core.async.impl.buffers.RingBuffer.prototype.resize = function() {
-  var a = Array(2 * this.arr.length);
-  return this.tail < this.head ? (cljs.core.async.impl.buffers.acopy.call(null, this.arr, this.tail, a, 0, this.length), this.tail = 0, this.head = this.length, this.arr = a) : this.tail > this.head ? (cljs.core.async.impl.buffers.acopy.call(null, this.arr, this.tail, a, 0, this.arr.length - this.tail), cljs.core.async.impl.buffers.acopy.call(null, this.arr, 0, a, this.arr.length - this.tail, this.head), this.tail = 0, this.head = this.length, this.arr = a) : this.tail === this.head ? (this.head = 
-  this.tail = 0, this.arr = a) : null
-};
-cljs.core.async.impl.buffers.RingBuffer.prototype.cleanup = function(a) {
-  for(var b = this.length, c = 0;;) {
-    if(c < b) {
-      var d = this.pop();
-      a.call(null, d) && this.unshift(d);
-      c += 1
-    }else {
-      return null
-    }
-  }
-};
-cljs.core.async.impl.buffers.ring_buffer = function(a) {
-  if(!(0 < a)) {
-    throw Error([cljs.core.str("Assert failed: "), cljs.core.str("Can't create a ring buffer of size 0"), cljs.core.str("\n"), cljs.core.str(cljs.core.pr_str.call(null, cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, ">", ">", -1640531465, null), new cljs.core.Symbol(null, "n", "n", -1640531417, null), 0), cljs.core.hash_map("\ufdd0:line", 75, "\ufdd0:column", 11))))].join(""));
-  }
-  return new cljs.core.async.impl.buffers.RingBuffer(0, 0, 0, Array(a))
-};
-cljs.core.async.impl.buffers.FixedBuffer = function(a, b) {
-  this.buf = a;
-  this.n = b;
-  this.cljs$lang$protocol_mask$partition1$ = 0;
-  this.cljs$lang$protocol_mask$partition0$ = 2
-};
-cljs.core.async.impl.buffers.FixedBuffer.cljs$lang$type = !0;
-cljs.core.async.impl.buffers.FixedBuffer.cljs$lang$ctorStr = "cljs.core.async.impl.buffers/FixedBuffer";
-cljs.core.async.impl.buffers.FixedBuffer.cljs$lang$ctorPrWriter = function(a, b) {
-  return cljs.core._write.call(null, b, "cljs.core.async.impl.buffers/FixedBuffer")
-};
-cljs.core.async.impl.buffers.FixedBuffer.prototype.cljs$core$ICounted$_count$arity$1 = function() {
-  return this.buf.length
-};
-cljs.core.async.impl.buffers.FixedBuffer.prototype.cljs$core$async$impl$protocols$Buffer$ = !0;
-cljs.core.async.impl.buffers.FixedBuffer.prototype.cljs$core$async$impl$protocols$Buffer$full_QMARK_$arity$1 = function() {
-  return this.buf.length === this.n
-};
-cljs.core.async.impl.buffers.FixedBuffer.prototype.cljs$core$async$impl$protocols$Buffer$remove_BANG_$arity$1 = function() {
-  return this.buf.pop()
-};
-cljs.core.async.impl.buffers.FixedBuffer.prototype.cljs$core$async$impl$protocols$Buffer$add_BANG_$arity$2 = function(a, b) {
-  if(!cljs.core.not.call(null, a.cljs$core$async$impl$protocols$Buffer$full_QMARK_$arity$1(a))) {
-    throw Error([cljs.core.str("Assert failed: "), cljs.core.str("Can't add to a full buffer"), cljs.core.str("\n"), cljs.core.str(cljs.core.pr_str.call(null, cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, "not", "not", -1640422260, null), cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol("impl", "full?", "impl/full?", -1337857039, null), new cljs.core.Symbol(null, "this", "this", -1636972457, null)), cljs.core.hash_map("\ufdd0:line", 87, "\ufdd0:column", 18))), cljs.core.hash_map("\ufdd0:line", 
-    87, "\ufdd0:column", 13))))].join(""));
-  }
-  return this.buf.unshift(b)
-};
-cljs.core.async.impl.buffers.fixed_buffer = function(a) {
-  return new cljs.core.async.impl.buffers.FixedBuffer(cljs.core.async.impl.buffers.ring_buffer.call(null, a), a)
-};
-cljs.core.async.impl.buffers.DroppingBuffer = function(a, b) {
-  this.buf = a;
-  this.n = b;
-  this.cljs$lang$protocol_mask$partition1$ = 0;
-  this.cljs$lang$protocol_mask$partition0$ = 2
-};
-cljs.core.async.impl.buffers.DroppingBuffer.cljs$lang$type = !0;
-cljs.core.async.impl.buffers.DroppingBuffer.cljs$lang$ctorStr = "cljs.core.async.impl.buffers/DroppingBuffer";
-cljs.core.async.impl.buffers.DroppingBuffer.cljs$lang$ctorPrWriter = function(a, b) {
-  return cljs.core._write.call(null, b, "cljs.core.async.impl.buffers/DroppingBuffer")
-};
-cljs.core.async.impl.buffers.DroppingBuffer.prototype.cljs$core$ICounted$_count$arity$1 = function() {
-  return this.buf.length
-};
-cljs.core.async.impl.buffers.DroppingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$ = !0;
-cljs.core.async.impl.buffers.DroppingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$full_QMARK_$arity$1 = function() {
-  return!1
-};
-cljs.core.async.impl.buffers.DroppingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$remove_BANG_$arity$1 = function() {
-  return this.buf.pop()
-};
-cljs.core.async.impl.buffers.DroppingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$add_BANG_$arity$2 = function(a, b) {
-  return this.buf.length === this.n ? null : this.buf.unshift(b)
-};
-cljs.core.async.impl.buffers.dropping_buffer = function(a) {
-  return new cljs.core.async.impl.buffers.DroppingBuffer(cljs.core.async.impl.buffers.ring_buffer.call(null, a), a)
-};
-cljs.core.async.impl.buffers.SlidingBuffer = function(a, b) {
-  this.buf = a;
-  this.n = b;
-  this.cljs$lang$protocol_mask$partition1$ = 0;
-  this.cljs$lang$protocol_mask$partition0$ = 2
-};
-cljs.core.async.impl.buffers.SlidingBuffer.cljs$lang$type = !0;
-cljs.core.async.impl.buffers.SlidingBuffer.cljs$lang$ctorStr = "cljs.core.async.impl.buffers/SlidingBuffer";
-cljs.core.async.impl.buffers.SlidingBuffer.cljs$lang$ctorPrWriter = function(a, b) {
-  return cljs.core._write.call(null, b, "cljs.core.async.impl.buffers/SlidingBuffer")
-};
-cljs.core.async.impl.buffers.SlidingBuffer.prototype.cljs$core$ICounted$_count$arity$1 = function() {
-  return this.buf.length
-};
-cljs.core.async.impl.buffers.SlidingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$ = !0;
-cljs.core.async.impl.buffers.SlidingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$full_QMARK_$arity$1 = function() {
-  return!1
-};
-cljs.core.async.impl.buffers.SlidingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$remove_BANG_$arity$1 = function() {
-  return this.buf.pop()
-};
-cljs.core.async.impl.buffers.SlidingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$add_BANG_$arity$2 = function(a, b) {
-  this.buf.length === this.n && a.cljs$core$async$impl$protocols$Buffer$remove_BANG_$arity$1(a);
-  return this.buf.unshift(b)
-};
-cljs.core.async.impl.buffers.sliding_buffer = function(a) {
-  return new cljs.core.async.impl.buffers.SlidingBuffer(cljs.core.async.impl.buffers.ring_buffer.call(null, a), a)
-};
 cljs.core.async.impl.dispatch = {};
 cljs.core.async.impl.dispatch.message_channel = null;
-cljs.core.async.impl.dispatch.tasks = cljs.core.async.impl.buffers.ring_buffer.call(null, 32);
-cljs.core.async.impl.dispatch.running_QMARK_ = !1;
-cljs.core.async.impl.dispatch.queued_QMARK_ = !1;
-cljs.core.async.impl.dispatch.TASK_BATCH_SIZE = 1024;
-cljs.core.async.impl.dispatch.process_messages = function() {
-  cljs.core.async.impl.dispatch.running_QMARK_ = !0;
-  cljs.core.async.impl.dispatch.queued_QMARK_ = !1;
-  for(var a = 0;;) {
-    var b = cljs.core.async.impl.dispatch.tasks.pop();
-    if(null != b && (b.call(null), a < cljs.core.async.impl.dispatch.TASK_BATCH_SIZE)) {
-      a += 1;
-      continue
-    }
-    break
-  }
-  cljs.core.async.impl.dispatch.running_QMARK_ = !1;
-  return 0 < cljs.core.async.impl.dispatch.tasks.length ? cljs.core.async.impl.dispatch.queue_dispatcher.call(null) : null
-};
-"undefined" !== typeof MessageChannel && (cljs.core.async.impl.dispatch.message_channel = new MessageChannel, cljs.core.async.impl.dispatch.message_channel.port1.onmessage = function() {
-  return cljs.core.async.impl.dispatch.process_messages.call(null)
+cljs.core.async.impl.dispatch.tasks = null;
+"undefined" !== typeof MessageChannel && (cljs.core.async.impl.dispatch.message_channel = new MessageChannel, cljs.core.async.impl.dispatch.tasks = [], cljs.core.async.impl.dispatch.message_channel.port1.onmessage = function() {
+  return cljs.core.async.impl.dispatch.tasks.shift().call(null)
 });
-cljs.core.async.impl.dispatch.queue_dispatcher = function() {
-  if(cljs.core.truth_(function() {
-    var a = cljs.core.async.impl.dispatch.queued_QMARK_;
-    return cljs.core.truth_(a) ? cljs.core.async.impl.dispatch.running_QMARK_ : a
-  }())) {
-    return null
-  }
-  cljs.core.async.impl.dispatch.queued_QMARK_ = !0;
-  return"undefined" !== typeof MessageChannel ? cljs.core.async.impl.dispatch.message_channel.port2.postMessage(0) : "undefined" !== typeof setImmediate ? setImmediate(cljs.core.async.impl.dispatch.process_messages) : setTimeout(cljs.core.async.impl.dispatch.process_messages, 0)
+cljs.core.async.impl.dispatch.queue_task = function(a) {
+  cljs.core.async.impl.dispatch.tasks.push(a);
+  return cljs.core.async.impl.dispatch.message_channel.port2.postMessage(0)
 };
 cljs.core.async.impl.dispatch.run = function(a) {
-  cljs.core.async.impl.dispatch.tasks.unbounded_unshift(a);
-  return cljs.core.async.impl.dispatch.queue_dispatcher.call(null)
+  return"undefined" !== typeof MessageChannel ? cljs.core.async.impl.dispatch.queue_task.call(null, a) : "undefined" !== typeof setImmediate ? setImmediate(a) : setTimeout(a, 0)
 };
 cljs.core.async.impl.dispatch.queue_delay = function(a, b) {
   return setTimeout(a, b)
 };
 cljs.core.async.impl.channels = {};
 cljs.core.async.impl.channels.box = function box(b) {
-  void 0 === cljs.core.async.impl.channels.t8292 && (cljs.core.async.impl.channels.t8292 = {}, cljs.core.async.impl.channels.t8292 = function(b, d, e) {
+  void 0 === cljs.core.async.impl.channels.t5987 && (cljs.core.async.impl.channels.t5987 = {}, cljs.core.async.impl.channels.t5987 = function(b, d, e) {
     this.val = b;
     this.box = d;
-    this.meta8293 = e;
+    this.meta5988 = e;
     this.cljs$lang$protocol_mask$partition1$ = 0;
     this.cljs$lang$protocol_mask$partition0$ = 425984
-  }, cljs.core.async.impl.channels.t8292.cljs$lang$type = !0, cljs.core.async.impl.channels.t8292.cljs$lang$ctorStr = "cljs.core.async.impl.channels/t8292", cljs.core.async.impl.channels.t8292.cljs$lang$ctorPrWriter = function(b, d) {
-    return cljs.core._write.call(null, d, "cljs.core.async.impl.channels/t8292")
-  }, cljs.core.async.impl.channels.t8292.prototype.cljs$core$IDeref$_deref$arity$1 = function() {
+  }, cljs.core.async.impl.channels.t5987.cljs$lang$type = !0, cljs.core.async.impl.channels.t5987.cljs$lang$ctorStr = "cljs.core.async.impl.channels/t5987", cljs.core.async.impl.channels.t5987.cljs$lang$ctorPrWriter = function(b, d) {
+    return cljs.core._write.call(null, d, "cljs.core.async.impl.channels/t5987")
+  }, cljs.core.async.impl.channels.t5987.prototype.cljs$core$IDeref$_deref$arity$1 = function() {
     return this.val
-  }, cljs.core.async.impl.channels.t8292.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
-    return this.meta8293
-  }, cljs.core.async.impl.channels.t8292.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, d) {
-    return new cljs.core.async.impl.channels.t8292(this.val, this.box, d)
+  }, cljs.core.async.impl.channels.t5987.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
+    return this.meta5988
+  }, cljs.core.async.impl.channels.t5987.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, d) {
+    return new cljs.core.async.impl.channels.t5987(this.val, this.box, d)
   });
-  return new cljs.core.async.impl.channels.t8292(b, box, null)
+  return new cljs.core.async.impl.channels.t5987(b, box, null)
 };
-cljs.core.async.impl.channels.PutBox = function(a, b) {
-  this.handler = a;
-  this.val = b
+cljs.core.async.impl.channels.MMC = {};
+cljs.core.async.impl.channels.cleanup = function(a) {
+  var b;
+  b = a ? a.cljs$core$async$impl$channels$MMC$cleanup$arity$1 : a;
+  if(b) {
+    return a.cljs$core$async$impl$channels$MMC$cleanup$arity$1(a)
+  }
+  b = cljs.core.async.impl.channels.cleanup[goog.typeOf(null == a ? null : a)];
+  if(!b && (b = cljs.core.async.impl.channels.cleanup._, !b)) {
+    throw cljs.core.missing_protocol.call(null, "MMC.cleanup", a);
+  }
+  return b.call(null, a)
 };
-cljs.core.async.impl.channels.PutBox.cljs$lang$type = !0;
-cljs.core.async.impl.channels.PutBox.cljs$lang$ctorStr = "cljs.core.async.impl.channels/PutBox";
-cljs.core.async.impl.channels.PutBox.cljs$lang$ctorPrWriter = function(a, b) {
-  return cljs.core._write.call(null, b, "cljs.core.async.impl.channels/PutBox")
-};
-cljs.core.async.impl.channels.put_active_QMARK_ = function(a) {
-  return cljs.core.async.impl.protocols.active_QMARK_.call(null, a.handler)
-};
-cljs.core.async.impl.channels.MAX_DIRTY = 64;
-cljs.core.async.impl.channels.ManyToManyChannel = function(a, b, c, d, e, f) {
+cljs.core.async.impl.channels.ManyToManyChannel = function(a, b, c, d) {
   this.takes = a;
-  this.dirty_takes = b;
-  this.puts = c;
-  this.dirty_puts = d;
-  this.buf = e;
-  this.closed = f
+  this.puts = b;
+  this.buf = c;
+  this.closed = d
 };
 cljs.core.async.impl.channels.ManyToManyChannel.cljs$lang$type = !0;
 cljs.core.async.impl.channels.ManyToManyChannel.cljs$lang$ctorStr = "cljs.core.async.impl.channels/ManyToManyChannel";
@@ -13147,19 +12972,22 @@ cljs.core.async.impl.channels.ManyToManyChannel.cljs$lang$ctorPrWriter = functio
   return cljs.core._write.call(null, b, "cljs.core.async.impl.channels/ManyToManyChannel")
 };
 cljs.core.async.impl.channels.ManyToManyChannel.prototype.cljs$core$async$impl$protocols$Channel$ = !0;
-cljs.core.async.impl.channels.ManyToManyChannel.prototype.cljs$core$async$impl$protocols$Channel$close_BANG_$arity$1 = function() {
-  if(!this.closed) {
-    for(this.closed = !0;;) {
-      var a = this.takes.pop();
-      if(null != a) {
-        if(cljs.core.async.impl.protocols.active_QMARK_.call(null, a)) {
-          var b = cljs.core.async.impl.protocols.commit.call(null, a);
-          cljs.core.async.impl.dispatch.run.call(null, function(a) {
+cljs.core.async.impl.channels.ManyToManyChannel.prototype.cljs$core$async$impl$protocols$Channel$close_BANG_$arity$1 = function(a) {
+  a.cljs$core$async$impl$channels$MMC$cleanup$arity$1(a);
+  if(!cljs.core.deref.call(null, this.closed)) {
+    cljs.core.reset_BANG_.call(null, this.closed, !0);
+    for(var a = this.takes.length, b = 0;;) {
+      if(b < a) {
+        var c = this.takes[b];
+        if(cljs.core.async.impl.protocols.active_QMARK_.call(null, c)) {
+          var d = cljs.core.async.impl.protocols.commit.call(null, c);
+          null != d && cljs.core.async.impl.dispatch.run.call(null, function(a, b) {
             return function() {
-              return a.call(null, null)
+              return b.call(null, null)
             }
-          }(b, a))
+          }(b, d, c))
         }
+        b += 1
       }else {
         break
       }
@@ -13169,75 +12997,121 @@ cljs.core.async.impl.channels.ManyToManyChannel.prototype.cljs$core$async$impl$p
 };
 cljs.core.async.impl.channels.ManyToManyChannel.prototype.cljs$core$async$impl$protocols$ReadPort$ = !0;
 cljs.core.async.impl.channels.ManyToManyChannel.prototype.cljs$core$async$impl$protocols$ReadPort$take_BANG_$arity$2 = function(a, b) {
-  if(cljs.core.async.impl.protocols.active_QMARK_.call(null, b)) {
-    var c;
-    c = (c = null != this.buf) ? 0 < cljs.core.count.call(null, this.buf) : c;
-    if(c) {
-      return cljs.core.async.impl.protocols.commit.call(null, b), cljs.core.async.impl.channels.box.call(null, cljs.core.async.impl.protocols.remove_BANG_.call(null, this.buf))
-    }
-    for(;;) {
-      var d = this.puts.pop();
-      if(null != d) {
-        if(c = d.handler, d = d.val, cljs.core.async.impl.protocols.active_QMARK_.call(null, c)) {
-          return c = cljs.core.async.impl.protocols.commit.call(null, c), cljs.core.async.impl.protocols.commit.call(null, b), cljs.core.async.impl.dispatch.run.call(null, c), cljs.core.async.impl.channels.box.call(null, d)
+  a.cljs$core$async$impl$channels$MMC$cleanup$arity$1(a);
+  var c;
+  c = (c = null != this.buf) ? 0 < cljs.core.count.call(null, this.buf) : c;
+  if(c) {
+    return c = (c = cljs.core.async.impl.protocols.active_QMARK_.call(null, b)) ? null != cljs.core.async.impl.protocols.commit.call(null, b) : c, !1 !== c ? cljs.core.async.impl.channels.box.call(null, cljs.core.async.impl.protocols.remove_BANG_.call(null, this.buf)) : null
+  }
+  var d;
+  a: {
+    for(c = 0;;) {
+      if(c < this.puts.length) {
+        d = this.puts[c];
+        var e = cljs.core.nth.call(null, d, 0, null);
+        d = cljs.core.nth.call(null, d, 1, null);
+        var f = cljs.core.async.impl.protocols.active_QMARK_.call(null, b), e = (f ? cljs.core.async.impl.protocols.active_QMARK_.call(null, e) : f) ? cljs.core.PersistentVector.fromArray([cljs.core.async.impl.protocols.commit.call(null, b), cljs.core.async.impl.protocols.commit.call(null, e), d], !0) : null;
+        if(null != e) {
+          this.puts.splice(c, 1);
+          d = e;
+          break a
+        }else {
+          c += 1
         }
       }else {
-        if(this.closed) {
-          return cljs.core.async.impl.protocols.commit.call(null, b), cljs.core.async.impl.channels.box.call(null, null)
-        }
-        this.dirty_takes > cljs.core.async.impl.channels.MAX_DIRTY ? (this.dirty_takes = 0, this.takes.cleanup(cljs.core.async.impl.protocols.active_QMARK_)) : this.dirty_takes += 1;
-        if(!(this.takes.length < cljs.core.async.impl.protocols.MAX_QUEUE_SIZE)) {
-          throw Error([cljs.core.str("Assert failed: "), cljs.core.str([cljs.core.str("No more than "), cljs.core.str(cljs.core.async.impl.protocols.MAX_QUEUE_SIZE), cljs.core.str(" pending takes are allowed on a single channel.")].join("")), cljs.core.str("\n"), cljs.core.str(cljs.core.pr_str.call(null, cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, "<", "<", -1640531467, null), cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, ".-length", ".-length", 1395928862, null), 
-          new cljs.core.Symbol(null, "takes", "takes", -1530407291, null)), cljs.core.hash_map("\ufdd0:line", 90, "\ufdd0:column", 32)), new cljs.core.Symbol("impl", "MAX-QUEUE-SIZE", "impl/MAX-QUEUE-SIZE", -1989946393, null)), cljs.core.hash_map("\ufdd0:line", 90, "\ufdd0:column", 29))))].join(""));
-        }
-        this.takes.unbounded_unshift(b);
-        return null
+        d = null;
+        break a
       }
     }
-  }else {
+    d = void 0
+  }
+  c = cljs.core.nth.call(null, d, 0, null);
+  e = cljs.core.nth.call(null, d, 1, null);
+  d = cljs.core.nth.call(null, d, 2, null);
+  f = null == e;
+  if(f ? f : null == c) {
+    if(cljs.core.deref.call(null, this.closed)) {
+      return c = (c = cljs.core.async.impl.protocols.active_QMARK_.call(null, b)) ? null != cljs.core.async.impl.protocols.commit.call(null, b) : c, !1 !== c ? cljs.core.async.impl.channels.box.call(null, null) : null
+    }
+    if(!(this.takes.length < cljs.core.async.impl.protocols.MAX_QUEUE_SIZE)) {
+      throw Error([cljs.core.str("Assert failed: "), cljs.core.str([cljs.core.str("No more than "), cljs.core.str(cljs.core.async.impl.protocols.MAX_QUEUE_SIZE), cljs.core.str(" pending takes are allowed on a single channel.")].join("")), cljs.core.str("\n"), cljs.core.str(cljs.core.pr_str.call(null, cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, "<", "<", -1640531467, null), cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, ".-length", ".-length", 1395928862, null), new cljs.core.Symbol(null, 
+      "takes", "takes", -1530407291, null)), cljs.core.hash_map("\ufdd0:line", 102, "\ufdd0:column", 26)), new cljs.core.Symbol("impl", "MAX-QUEUE-SIZE", "impl/MAX-QUEUE-SIZE", -1989946393, null)), cljs.core.hash_map("\ufdd0:line", 102, "\ufdd0:column", 23))))].join(""));
+    }
+    this.takes.push(b);
     return null
   }
+  cljs.core.async.impl.dispatch.run.call(null, e);
+  return cljs.core.async.impl.channels.box.call(null, d)
 };
 cljs.core.async.impl.channels.ManyToManyChannel.prototype.cljs$core$async$impl$protocols$WritePort$ = !0;
 cljs.core.async.impl.channels.ManyToManyChannel.prototype.cljs$core$async$impl$protocols$WritePort$put_BANG_$arity$3 = function(a, b, c) {
   if(null == b) {
-    throw Error([cljs.core.str("Assert failed: "), cljs.core.str("Can't put nil in on a channel"), cljs.core.str("\n"), cljs.core.str(cljs.core.pr_str.call(null, cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, "not", "not", -1640422260, null), cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, "nil?", "nil?", -1637150201, null), new cljs.core.Symbol(null, "val", "val", -1640415014, null)), cljs.core.hash_map("\ufdd0:line", 30, "\ufdd0:column", 18))), cljs.core.hash_map("\ufdd0:line", 
-    30, "\ufdd0:column", 13))))].join(""));
+    throw Error([cljs.core.str("Assert failed: "), cljs.core.str("Can't put nil in on a channel"), cljs.core.str("\n"), cljs.core.str(cljs.core.pr_str.call(null, cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, "not", "not", -1640422260, null), cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, "nil?", "nil?", -1637150201, null), new cljs.core.Symbol(null, "val", "val", -1640415014, null)), cljs.core.hash_map("\ufdd0:line", 43, "\ufdd0:column", 18))), cljs.core.hash_map("\ufdd0:line", 
+    43, "\ufdd0:column", 13))))].join(""));
   }
-  a = (a = this.closed) ? a : !cljs.core.async.impl.protocols.active_QMARK_.call(null, c);
-  if(a) {
+  a.cljs$core$async$impl$channels$MMC$cleanup$arity$1(a);
+  if(cljs.core.deref.call(null, this.closed)) {
     return cljs.core.async.impl.channels.box.call(null, null)
   }
-  for(;;) {
-    if(a = this.takes.pop(), null != a) {
-      if(cljs.core.async.impl.protocols.active_QMARK_.call(null, a)) {
-        var d = cljs.core.async.impl.protocols.commit.call(null, a), c = cljs.core.async.impl.protocols.commit.call(null, c);
-        cljs.core.async.impl.dispatch.run.call(null, function(a) {
-          return function() {
-            return a.call(null, b)
-          }
-        }(d, c, a));
-        return cljs.core.async.impl.channels.box.call(null, null)
-      }
-    }else {
-      a = (a = null == this.buf) ? a : cljs.core.async.impl.protocols.full_QMARK_.call(null, this.buf);
-      if(a) {
-        this.dirty_puts > cljs.core.async.impl.channels.MAX_DIRTY ? (this.dirty_puts = 0, this.puts.cleanup(cljs.core.async.impl.channels.put_active_QMARK_)) : this.dirty_puts += 1;
-        if(!(this.puts.length < cljs.core.async.impl.protocols.MAX_QUEUE_SIZE)) {
-          throw Error([cljs.core.str("Assert failed: "), cljs.core.str([cljs.core.str("No more than "), cljs.core.str(cljs.core.async.impl.protocols.MAX_QUEUE_SIZE), cljs.core.str(" pending puts are allowed on a single channel."), cljs.core.str(" Consider using a windowed buffer.")].join("")), cljs.core.str("\n"), cljs.core.str(cljs.core.pr_str.call(null, cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, "<", "<", -1640531467, null), cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, 
-          ".-length", ".-length", 1395928862, null), new cljs.core.Symbol(null, "puts", "puts", -1637078787, null)), cljs.core.hash_map("\ufdd0:line", 56, "\ufdd0:column", 30)), new cljs.core.Symbol("impl", "MAX-QUEUE-SIZE", "impl/MAX-QUEUE-SIZE", -1989946393, null)), cljs.core.hash_map("\ufdd0:line", 56, "\ufdd0:column", 27))))].join(""));
+  a: {
+    for(a = 0;;) {
+      if(a < this.takes.length) {
+        var d = this.takes[a], e = cljs.core.async.impl.protocols.active_QMARK_.call(null, d);
+        if(e ? cljs.core.async.impl.protocols.active_QMARK_.call(null, c) : e) {
+          this.takes.splice(a, 1);
+          a = cljs.core.PersistentVector.fromArray([cljs.core.async.impl.protocols.commit.call(null, c), cljs.core.async.impl.protocols.commit.call(null, d)], !0);
+          break a
+        }else {
+          a += 1
         }
-        this.puts.unbounded_unshift(new cljs.core.async.impl.channels.PutBox(c, b));
-        return null
+      }else {
+        a = null;
+        break a
       }
-      c = cljs.core.async.impl.protocols.commit.call(null, c);
-      cljs.core.async.impl.protocols.add_BANG_.call(null, this.buf, b);
-      return cljs.core.async.impl.channels.box.call(null, null)
+    }
+    a = void 0
+  }
+  var d = cljs.core.nth.call(null, a, 0, null), f = cljs.core.nth.call(null, a, 1, null);
+  a = null == d;
+  if(a ? a : null == f) {
+    a = (a = null == this.buf) ? a : cljs.core.async.impl.protocols.full_QMARK_.call(null, this.buf);
+    if(a) {
+      if(!(this.puts.length < cljs.core.async.impl.protocols.MAX_QUEUE_SIZE)) {
+        throw Error([cljs.core.str("Assert failed: "), cljs.core.str([cljs.core.str("No more than "), cljs.core.str(cljs.core.async.impl.protocols.MAX_QUEUE_SIZE), cljs.core.str(" pending puts are allowed on a single channel."), cljs.core.str(" Consider using a windowed buffer.")].join("")), cljs.core.str("\n"), cljs.core.str(cljs.core.pr_str.call(null, cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, "<", "<", -1640531467, null), cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, 
+        ".-length", ".-length", 1395928862, null), new cljs.core.Symbol(null, "puts", "puts", -1637078787, null)), cljs.core.hash_map("\ufdd0:line", 66, "\ufdd0:column", 26)), new cljs.core.Symbol("impl", "MAX-QUEUE-SIZE", "impl/MAX-QUEUE-SIZE", -1989946393, null)), cljs.core.hash_map("\ufdd0:line", 66, "\ufdd0:column", 23))))].join(""));
+      }
+      this.puts.push(cljs.core.PersistentVector.fromArray([c, b], !0));
+      return null
+    }
+    c = (a = cljs.core.async.impl.protocols.active_QMARK_.call(null, c)) ? null != cljs.core.async.impl.protocols.commit.call(null, c) : a;
+    return!1 !== c ? (cljs.core.async.impl.protocols.add_BANG_.call(null, this.buf, b), cljs.core.async.impl.channels.box.call(null, null)) : null
+  }
+  cljs.core.async.impl.dispatch.run.call(null, function() {
+    return f.call(null, b)
+  });
+  return cljs.core.async.impl.channels.box.call(null, null)
+};
+cljs.core.async.impl.channels.ManyToManyChannel.prototype.cljs$core$async$impl$channels$MMC$ = !0;
+cljs.core.async.impl.channels.ManyToManyChannel.prototype.cljs$core$async$impl$channels$MMC$cleanup$arity$1 = function() {
+  for(var a = 0;;) {
+    if(a < this.puts.length) {
+      var b = this.puts[a], c = cljs.core.nth.call(null, b, 0, null);
+      cljs.core.nth.call(null, b, 1, null);
+      cljs.core.async.impl.protocols.active_QMARK_.call(null, c) ? a += 1 : this.puts.splice(a, 1)
+    }else {
+      break
+    }
+  }
+  for(a = 0;;) {
+    if(a < this.takes.length) {
+      cljs.core.async.impl.protocols.active_QMARK_.call(null, this.takes[a]) ? a += 1 : this.takes.splice(a, 1)
+    }else {
+      return null
     }
   }
 };
 cljs.core.async.impl.channels.chan = function(a) {
-  return new cljs.core.async.impl.channels.ManyToManyChannel(cljs.core.async.impl.buffers.ring_buffer.call(null, 32), 0, cljs.core.async.impl.buffers.ring_buffer.call(null, 32), 0, a, null)
+  return new cljs.core.async.impl.channels.ManyToManyChannel([], [], a, cljs.core.atom.call(null, null))
 };
 cljs.core.async.impl.timers = {};
 cljs.core.async.impl.timers.MAX_LEVEL = 15;
@@ -13480,25 +13354,141 @@ cljs.core.async.impl.timers.timeout = function(a) {
   }, a);
   return d
 };
+cljs.core.async.impl.buffers = {};
+cljs.core.async.impl.buffers.RingBuffer = function(a, b, c, d) {
+  this.head = a;
+  this.tail = b;
+  this.length = c;
+  this.arr = d
+};
+cljs.core.async.impl.buffers.RingBuffer.cljs$lang$type = !0;
+cljs.core.async.impl.buffers.RingBuffer.cljs$lang$ctorStr = "cljs.core.async.impl.buffers/RingBuffer";
+cljs.core.async.impl.buffers.RingBuffer.cljs$lang$ctorPrWriter = function(a, b) {
+  return cljs.core._write.call(null, b, "cljs.core.async.impl.buffers/RingBuffer")
+};
+cljs.core.async.impl.buffers.RingBuffer.prototype.pop = function() {
+  if(0 === this.length) {
+    return null
+  }
+  var a = this.arr[this.tail];
+  this.tail = (this.tail + 1) % this.arr.length;
+  this.length -= 1;
+  return a
+};
+cljs.core.async.impl.buffers.RingBuffer.prototype.unshift = function(a) {
+  this.arr[this.head] = a;
+  this.head = (this.head + 1) % this.arr.length;
+  this.length += 1;
+  return null
+};
+cljs.core.async.impl.buffers.ring_buffer = function(a) {
+  return new cljs.core.async.impl.buffers.RingBuffer(0, 0, 0, Array(a))
+};
+cljs.core.async.impl.buffers.FixedBuffer = function(a, b) {
+  this.buf = a;
+  this.n = b;
+  this.cljs$lang$protocol_mask$partition1$ = 0;
+  this.cljs$lang$protocol_mask$partition0$ = 2
+};
+cljs.core.async.impl.buffers.FixedBuffer.cljs$lang$type = !0;
+cljs.core.async.impl.buffers.FixedBuffer.cljs$lang$ctorStr = "cljs.core.async.impl.buffers/FixedBuffer";
+cljs.core.async.impl.buffers.FixedBuffer.cljs$lang$ctorPrWriter = function(a, b) {
+  return cljs.core._write.call(null, b, "cljs.core.async.impl.buffers/FixedBuffer")
+};
+cljs.core.async.impl.buffers.FixedBuffer.prototype.cljs$core$ICounted$_count$arity$1 = function() {
+  return this.buf.length
+};
+cljs.core.async.impl.buffers.FixedBuffer.prototype.cljs$core$async$impl$protocols$Buffer$ = !0;
+cljs.core.async.impl.buffers.FixedBuffer.prototype.cljs$core$async$impl$protocols$Buffer$full_QMARK_$arity$1 = function() {
+  return this.buf.length === this.n
+};
+cljs.core.async.impl.buffers.FixedBuffer.prototype.cljs$core$async$impl$protocols$Buffer$remove_BANG_$arity$1 = function() {
+  return this.buf.pop()
+};
+cljs.core.async.impl.buffers.FixedBuffer.prototype.cljs$core$async$impl$protocols$Buffer$add_BANG_$arity$2 = function(a, b) {
+  if(!cljs.core.not.call(null, a.cljs$core$async$impl$protocols$Buffer$full_QMARK_$arity$1(a))) {
+    throw Error([cljs.core.str("Assert failed: "), cljs.core.str("Can't add to a full buffer"), cljs.core.str("\n"), cljs.core.str(cljs.core.pr_str.call(null, cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol(null, "not", "not", -1640422260, null), cljs.core.with_meta(cljs.core.list(new cljs.core.Symbol("impl", "full?", "impl/full?", -1337857039, null), new cljs.core.Symbol(null, "this", "this", -1636972457, null)), cljs.core.hash_map("\ufdd0:line", 41, "\ufdd0:column", 18))), cljs.core.hash_map("\ufdd0:line", 
+    41, "\ufdd0:column", 13))))].join(""));
+  }
+  return this.buf.unshift(b)
+};
+cljs.core.async.impl.buffers.fixed_buffer = function(a) {
+  return new cljs.core.async.impl.buffers.FixedBuffer(cljs.core.async.impl.buffers.ring_buffer.call(null, a), a)
+};
+cljs.core.async.impl.buffers.DroppingBuffer = function(a, b) {
+  this.buf = a;
+  this.n = b;
+  this.cljs$lang$protocol_mask$partition1$ = 0;
+  this.cljs$lang$protocol_mask$partition0$ = 2
+};
+cljs.core.async.impl.buffers.DroppingBuffer.cljs$lang$type = !0;
+cljs.core.async.impl.buffers.DroppingBuffer.cljs$lang$ctorStr = "cljs.core.async.impl.buffers/DroppingBuffer";
+cljs.core.async.impl.buffers.DroppingBuffer.cljs$lang$ctorPrWriter = function(a, b) {
+  return cljs.core._write.call(null, b, "cljs.core.async.impl.buffers/DroppingBuffer")
+};
+cljs.core.async.impl.buffers.DroppingBuffer.prototype.cljs$core$ICounted$_count$arity$1 = function() {
+  return this.buf.length
+};
+cljs.core.async.impl.buffers.DroppingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$ = !0;
+cljs.core.async.impl.buffers.DroppingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$full_QMARK_$arity$1 = function() {
+  return!1
+};
+cljs.core.async.impl.buffers.DroppingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$remove_BANG_$arity$1 = function() {
+  return this.buf.pop()
+};
+cljs.core.async.impl.buffers.DroppingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$add_BANG_$arity$2 = function(a, b) {
+  return this.buf.length === this.n ? null : this.buf.unshift(b)
+};
+cljs.core.async.impl.buffers.dropping_buffer = function(a) {
+  return new cljs.core.async.impl.buffers.DroppingBuffer(cljs.core.async.impl.buffers.ring_buffer.call(null, a), a)
+};
+cljs.core.async.impl.buffers.SlidingBuffer = function(a, b) {
+  this.buf = a;
+  this.n = b;
+  this.cljs$lang$protocol_mask$partition1$ = 0;
+  this.cljs$lang$protocol_mask$partition0$ = 2
+};
+cljs.core.async.impl.buffers.SlidingBuffer.cljs$lang$type = !0;
+cljs.core.async.impl.buffers.SlidingBuffer.cljs$lang$ctorStr = "cljs.core.async.impl.buffers/SlidingBuffer";
+cljs.core.async.impl.buffers.SlidingBuffer.cljs$lang$ctorPrWriter = function(a, b) {
+  return cljs.core._write.call(null, b, "cljs.core.async.impl.buffers/SlidingBuffer")
+};
+cljs.core.async.impl.buffers.SlidingBuffer.prototype.cljs$core$ICounted$_count$arity$1 = function() {
+  return this.buf.length
+};
+cljs.core.async.impl.buffers.SlidingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$ = !0;
+cljs.core.async.impl.buffers.SlidingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$full_QMARK_$arity$1 = function() {
+  return!1
+};
+cljs.core.async.impl.buffers.SlidingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$remove_BANG_$arity$1 = function() {
+  return this.buf.pop()
+};
+cljs.core.async.impl.buffers.SlidingBuffer.prototype.cljs$core$async$impl$protocols$Buffer$add_BANG_$arity$2 = function(a, b) {
+  this.buf.length === this.n && a.cljs$core$async$impl$protocols$Buffer$remove_BANG_$arity$1(a);
+  return this.buf.unshift(b)
+};
+cljs.core.async.impl.buffers.sliding_buffer = function(a) {
+  return new cljs.core.async.impl.buffers.SlidingBuffer(cljs.core.async.impl.buffers.ring_buffer.call(null, a), a)
+};
 cljs.core.async.fn_handler = function fn_handler$$0(b) {
-  void 0 === cljs.core.async.t8236 && (cljs.core.async.t8236 = {}, cljs.core.async.t8236 = function(b, d, e) {
+  void 0 === cljs.core.async.t5934 && (cljs.core.async.t5934 = {}, cljs.core.async.t5934 = function(b, d, e) {
     this.f = b;
     this.fn_handler = d;
-    this.meta8237 = e;
+    this.meta5935 = e;
     this.cljs$lang$protocol_mask$partition1$ = 0;
     this.cljs$lang$protocol_mask$partition0$ = 393216
-  }, cljs.core.async.t8236.cljs$lang$type = !0, cljs.core.async.t8236.cljs$lang$ctorStr = "cljs.core.async/t8236", cljs.core.async.t8236.cljs$lang$ctorPrWriter = function(b, d) {
-    return cljs.core._write.call(null, d, "cljs.core.async/t8236")
-  }, cljs.core.async.t8236.prototype.cljs$core$async$impl$protocols$Handler$ = !0, cljs.core.async.t8236.prototype.cljs$core$async$impl$protocols$Handler$active_QMARK_$arity$1 = function() {
+  }, cljs.core.async.t5934.cljs$lang$type = !0, cljs.core.async.t5934.cljs$lang$ctorStr = "cljs.core.async/t5934", cljs.core.async.t5934.cljs$lang$ctorPrWriter = function(b, d) {
+    return cljs.core._write.call(null, d, "cljs.core.async/t5934")
+  }, cljs.core.async.t5934.prototype.cljs$core$async$impl$protocols$Handler$ = !0, cljs.core.async.t5934.prototype.cljs$core$async$impl$protocols$Handler$active_QMARK_$arity$1 = function() {
     return!0
-  }, cljs.core.async.t8236.prototype.cljs$core$async$impl$protocols$Handler$commit$arity$1 = function() {
+  }, cljs.core.async.t5934.prototype.cljs$core$async$impl$protocols$Handler$commit$arity$1 = function() {
     return this.f
-  }, cljs.core.async.t8236.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
-    return this.meta8237
-  }, cljs.core.async.t8236.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, d) {
-    return new cljs.core.async.t8236(this.f, this.fn_handler, d)
+  }, cljs.core.async.t5934.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
+    return this.meta5935
+  }, cljs.core.async.t5934.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, d) {
+    return new cljs.core.async.t5934(this.f, this.fn_handler, d)
   });
-  return new cljs.core.async.t8236(b, fn_handler$$0, null)
+  return new cljs.core.async.t5934(b, fn_handler$$0, null)
 };
 cljs.core.async.buffer = function(a) {
   return cljs.core.async.impl.buffers.fixed_buffer.call(null, a)
@@ -13612,47 +13602,47 @@ cljs.core.async.random_array = function(a) {
 };
 cljs.core.async.alt_flag = function alt_flag() {
   var b = cljs.core.atom.call(null, !0);
-  void 0 === cljs.core.async.t8247 && (cljs.core.async.t8247 = {}, cljs.core.async.t8247 = function(b, d, e) {
+  void 0 === cljs.core.async.t5945 && (cljs.core.async.t5945 = {}, cljs.core.async.t5945 = function(b, d, e) {
     this.flag = b;
     this.alt_flag = d;
-    this.meta8248 = e;
+    this.meta5946 = e;
     this.cljs$lang$protocol_mask$partition1$ = 0;
     this.cljs$lang$protocol_mask$partition0$ = 393216
-  }, cljs.core.async.t8247.cljs$lang$type = !0, cljs.core.async.t8247.cljs$lang$ctorStr = "cljs.core.async/t8247", cljs.core.async.t8247.cljs$lang$ctorPrWriter = function(b, d) {
-    return cljs.core._write.call(null, d, "cljs.core.async/t8247")
-  }, cljs.core.async.t8247.prototype.cljs$core$async$impl$protocols$Handler$ = !0, cljs.core.async.t8247.prototype.cljs$core$async$impl$protocols$Handler$active_QMARK_$arity$1 = function() {
+  }, cljs.core.async.t5945.cljs$lang$type = !0, cljs.core.async.t5945.cljs$lang$ctorStr = "cljs.core.async/t5945", cljs.core.async.t5945.cljs$lang$ctorPrWriter = function(b, d) {
+    return cljs.core._write.call(null, d, "cljs.core.async/t5945")
+  }, cljs.core.async.t5945.prototype.cljs$core$async$impl$protocols$Handler$ = !0, cljs.core.async.t5945.prototype.cljs$core$async$impl$protocols$Handler$active_QMARK_$arity$1 = function() {
     return cljs.core.deref.call(null, this.flag)
-  }, cljs.core.async.t8247.prototype.cljs$core$async$impl$protocols$Handler$commit$arity$1 = function() {
+  }, cljs.core.async.t5945.prototype.cljs$core$async$impl$protocols$Handler$commit$arity$1 = function() {
     cljs.core.reset_BANG_.call(null, this.flag, null);
     return!0
-  }, cljs.core.async.t8247.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
-    return this.meta8248
-  }, cljs.core.async.t8247.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, d) {
-    return new cljs.core.async.t8247(this.flag, this.alt_flag, d)
+  }, cljs.core.async.t5945.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
+    return this.meta5946
+  }, cljs.core.async.t5945.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, d) {
+    return new cljs.core.async.t5945(this.flag, this.alt_flag, d)
   });
-  return new cljs.core.async.t8247(b, alt_flag, null)
+  return new cljs.core.async.t5945(b, alt_flag, null)
 };
 cljs.core.async.alt_handler = function alt_handler(b, c) {
-  void 0 === cljs.core.async.t8254 && (cljs.core.async.t8254 = {}, cljs.core.async.t8254 = function(b, c, f, g) {
+  void 0 === cljs.core.async.t5952 && (cljs.core.async.t5952 = {}, cljs.core.async.t5952 = function(b, c, f, g) {
     this.cb = b;
     this.flag = c;
     this.alt_handler = f;
-    this.meta8255 = g;
+    this.meta5953 = g;
     this.cljs$lang$protocol_mask$partition1$ = 0;
     this.cljs$lang$protocol_mask$partition0$ = 393216
-  }, cljs.core.async.t8254.cljs$lang$type = !0, cljs.core.async.t8254.cljs$lang$ctorStr = "cljs.core.async/t8254", cljs.core.async.t8254.cljs$lang$ctorPrWriter = function(b, c) {
-    return cljs.core._write.call(null, c, "cljs.core.async/t8254")
-  }, cljs.core.async.t8254.prototype.cljs$core$async$impl$protocols$Handler$ = !0, cljs.core.async.t8254.prototype.cljs$core$async$impl$protocols$Handler$active_QMARK_$arity$1 = function() {
+  }, cljs.core.async.t5952.cljs$lang$type = !0, cljs.core.async.t5952.cljs$lang$ctorStr = "cljs.core.async/t5952", cljs.core.async.t5952.cljs$lang$ctorPrWriter = function(b, c) {
+    return cljs.core._write.call(null, c, "cljs.core.async/t5952")
+  }, cljs.core.async.t5952.prototype.cljs$core$async$impl$protocols$Handler$ = !0, cljs.core.async.t5952.prototype.cljs$core$async$impl$protocols$Handler$active_QMARK_$arity$1 = function() {
     return cljs.core.async.impl.protocols.active_QMARK_.call(null, this.flag)
-  }, cljs.core.async.t8254.prototype.cljs$core$async$impl$protocols$Handler$commit$arity$1 = function() {
+  }, cljs.core.async.t5952.prototype.cljs$core$async$impl$protocols$Handler$commit$arity$1 = function() {
     cljs.core.async.impl.protocols.commit.call(null, this.flag);
     return this.cb
-  }, cljs.core.async.t8254.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
-    return this.meta8255
-  }, cljs.core.async.t8254.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, c) {
-    return new cljs.core.async.t8254(this.cb, this.flag, this.alt_handler, c)
+  }, cljs.core.async.t5952.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
+    return this.meta5953
+  }, cljs.core.async.t5952.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, c) {
+    return new cljs.core.async.t5952(this.cb, this.flag, this.alt_handler, c)
   });
-  return new cljs.core.async.t8254(c, b, alt_handler, null)
+  return new cljs.core.async.t5952(c, b, alt_handler, null)
 };
 cljs.core.async.do_alts = function(a, b, c) {
   var d = cljs.core.async.alt_flag.call(null), e = cljs.core.count.call(null, b), f = cljs.core.async.random_array.call(null, e), g = (new cljs.core.Keyword("\ufdd0:priority")).call(null, c);
@@ -14417,12 +14407,12 @@ try {
   Window.prototype.dommy$template$PElement$ = !0, Window.prototype.dommy$template$PElement$_elem$arity$1 = function(a) {
     return a
   }
-}catch(e8866) {
-  if(e8866 instanceof ReferenceError) {
-    var __8867 = e8866;
+}catch(e6585) {
+  if(e6585 instanceof ReferenceError) {
+    var __6586 = e6585;
     console.log("PElement: js/Window not defined by browser, skipping it... (running on phantomjs?)")
   }else {
-    throw e8866;
+    throw e6585;
   }
 }
 dommy.template.node = function(a) {
@@ -14984,12 +14974,12 @@ bigsky.aui.util.go_alphabet = function() {
           return a[2] = null, a[1] = 7, "\ufdd0:recur"
         }
         if(5 === c) {
-          var c = a[6], f = cljs.core.rest.call(null, a[7]), c = cljs.core.apply.call(null, c, f);
+          var c = a[7], f = cljs.core.rest.call(null, a[6]), c = cljs.core.apply.call(null, c, f);
           a[2] = c;
           a[1] = 7;
           return"\ufdd0:recur"
         }
-        return 4 === c ? (c = a[2], f = cljs.core.first.call(null, c), f = b.call(null, f), a[6] = f, a[7] = c, a[1] = cljs.core.truth_(f) ? 5 : 6, "\ufdd0:recur") : 3 === c ? (c = a[2], cljs.core.async.impl.ioc_helpers.return_chan.call(null, a, c)) : 2 === c ? cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, a, 4, e) : 1 === c ? (a[2] = null, a[1] = 2, "\ufdd0:recur") : null
+        return 4 === c ? (c = a[2], f = cljs.core.first.call(null, c), f = b.call(null, f), a[6] = c, a[7] = f, a[1] = cljs.core.truth_(f) ? 5 : 6, "\ufdd0:recur") : 3 === c ? (c = a[2], cljs.core.async.impl.ioc_helpers.return_chan.call(null, a, c)) : 2 === c ? cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, a, 4, e) : 1 === c ? (a[2] = null, a[1] = 2, "\ufdd0:recur") : null
       }, c = null, i = function() {
         var a = Array(8);
         a[0] = c;
@@ -20225,20 +20215,8 @@ gist.core.update = function(a, b, c, d) {
 gist.core.fetch = function(a, b) {
   return $.get([cljs.core.str(gist.core.url), cljs.core.str("gists/"), cljs.core.str(a)].join(""), b)
 };
-gist.core.encode_id = function(a) {
-  return clojure.string.join.call(null, "", function() {
-    var b = cljs.core.rand.call(null, 9) | 0;
-    return cljs.core.concat.call(null, cljs.core.PersistentVector.fromArray([cljs.core.char$.call(null, 70 + b)], !0), cljs.core.map.call(null, function(a) {
-      return cljs.core.char$.call(null, 70 + b + cljs.reader.read_string.call(null, "" + cljs.core.str(a)))
-    }, cljs.core.into.call(null, cljs.core.PersistentVector.EMPTY, "" + cljs.core.str(a))))
-  }())
-};
-gist.core.decode_id = function(a) {
-  var b = cljs.core.into.call(null, cljs.core.PersistentVector.EMPTY, a), a = cljs.core.nth.call(null, b, 0, null), b = cljs.core.nthnext.call(null, b, 1), c = a.charCodeAt(0) - 70;
-  return cljs.reader.read_string.call(null, clojure.string.join.call(null, "", cljs.core.map.call(null, function(a) {
-    return"" + cljs.core.str(a.charCodeAt(0) - (70 + c))
-  }, b)))
-};
+gist.core.encode_id = cljs.core.identity;
+gist.core.decode_id = cljs.core.identity;
 bigsky.aui.draggable = {};
 bigsky.aui.draggable.draggable = function() {
   var a = null, b = function(b) {
@@ -20360,8 +20338,8 @@ bigsky.aui.draggable.draggable = function() {
             var b = a[1];
             if(2 === b) {
               var b = a[2], c = dommy.core.listen_BANG_.call(null, document, "\ufdd0:mousemove", d), f = dommy.core.listen_once_BANG_.call(null, document, "\ufdd0:mouseup", e);
-              a[5] = b;
-              a[6] = c;
+              a[5] = c;
+              a[6] = b;
               return cljs.core.async.impl.ioc_helpers.return_chan.call(null, a, f)
             }
             return 1 === b ? (b = cljs.core.vector.call(null, "\ufdd0:drag-start", 0, 0), cljs.core.async.impl.ioc_helpers.put_BANG_.call(null, a, 2, g, b)) : null
@@ -22197,13 +22175,13 @@ bigsky.aui.resizable.resizable = function(a) {
       }
       if(4 === c) {
         var d = b[5], e = b[2], d = cljs.core.nth.call(null, e, 0, null), c = cljs.core.nth.call(null, e, 1, null), e = cljs.core.nth.call(null, e, 2, null), j = cljs.core._EQ_.call(null, d, "\ufdd0:drag");
+        b[6] = c;
         b[5] = d;
-        b[6] = e;
-        b[7] = c;
+        b[7] = e;
         b[1] = j ? 5 : 6;
         return"\ufdd0:recur"
       }
-      return 5 === c ? (c = b[7], d = cljs.core.deref.call(null, g), c = (new cljs.core.Keyword("\ufdd0:width")).call(null, d) + c, c = dommy.core.set_px_BANG_.call(null, a, "\ufdd0:width", c), b[2] = c, b[1] = 7, "\ufdd0:recur") : 6 === c ? (b[2] = null, b[1] = 7, "\ufdd0:recur") : 7 === c ? (d = b[5], c = b[2], d = cljs.core._EQ_.call(null, d, "\ufdd0:drag-stop"), b[8] = c, b[1] = d ? 8 : 9, "\ufdd0:recur") : 8 === c ? (d = h.call(null), c = i.call(null), b[9] = d, b[2] = c, b[1] = 10, "\ufdd0:recur") : 
+      return 5 === c ? (c = b[6], d = cljs.core.deref.call(null, g), c = (new cljs.core.Keyword("\ufdd0:width")).call(null, d) + c, c = dommy.core.set_px_BANG_.call(null, a, "\ufdd0:width", c), b[2] = c, b[1] = 7, "\ufdd0:recur") : 6 === c ? (b[2] = null, b[1] = 7, "\ufdd0:recur") : 7 === c ? (d = b[5], c = b[2], d = cljs.core._EQ_.call(null, d, "\ufdd0:drag-stop"), b[8] = c, b[1] = d ? 8 : 9, "\ufdd0:recur") : 8 === c ? (d = h.call(null), c = i.call(null), b[9] = d, b[2] = c, b[1] = 10, "\ufdd0:recur") : 
       9 === c ? (b[2] = null, b[1] = 10, "\ufdd0:recur") : 10 === c ? (b[10] = b[2], b[2] = null, b[1] = 2, "\ufdd0:recur") : null
     }, c = null, d = function() {
       var a = Array(11);
